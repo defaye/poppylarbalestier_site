@@ -2,6 +2,44 @@
 # yarn lockfile v1
 
 
+"@fortawesome/fontawesome-common-types@^0.1.2":
+  version "0.1.2"
+  resolved "https://npm.fontawesome.com/FA217417-32F3-4AD4-ACB8-740E4E394ECF/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.1.2.tgz#d6aa075058f0c984d6e2ebcbc0052c1f7f9bea72"
+
+"@fortawesome/fontawesome-free-brands@^5.0.6":
+  version "5.0.6"
+  resolved "https://npm.fontawesome.com/FA217417-32F3-4AD4-ACB8-740E4E394ECF/@fortawesome/fontawesome-free-brands/-/fontawesome-free-brands-5.0.6.tgz#fee054ce0c4d74019020f6353ca85cfb408de719"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.1.2"
+
+"@fortawesome/fontawesome-pro-light@^5.0.6":
+  version "5.0.6"
+  resolved "https://npm.fontawesome.com/FA217417-32F3-4AD4-ACB8-740E4E394ECF/@fortawesome/fontawesome-pro-light/-/fontawesome-pro-light-5.0.6.tgz#df887d0816d48a7ac6510b0b14e6165fdc4e8074"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.1.2"
+
+"@fortawesome/fontawesome-pro-regular@^5.0.6":
+  version "5.0.6"
+  resolved "https://npm.fontawesome.com/FA217417-32F3-4AD4-ACB8-740E4E394ECF/@fortawesome/fontawesome-pro-regular/-/fontawesome-pro-regular-5.0.6.tgz#037bc59f3eb8e75ec83a726b78f0cafae07ef112"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.1.2"
+
+"@fortawesome/fontawesome-pro-solid@^5.0.6":
+  version "5.0.6"
+  resolved "https://npm.fontawesome.com/FA217417-32F3-4AD4-ACB8-740E4E394ECF/@fortawesome/fontawesome-pro-solid/-/fontawesome-pro-solid-5.0.6.tgz#9fec26ec6c4ce90fc87abfad18aee6134e5d3225"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.1.2"
+
+"@fortawesome/fontawesome@^1.1.3":
+  version "1.1.3"
+  resolved "https://npm.fontawesome.com/FA217417-32F3-4AD4-ACB8-740E4E394ECF/@fortawesome/fontawesome/-/fontawesome-1.1.3.tgz#7a4844345cbc7fb238f5f1788af73bd302ee9b80"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.1.2"
+
+"@fortawesome/vue-fontawesome@^0.0.22":
+  version "0.0.22"
+  resolved "https://npm.fontawesome.com/FA217417-32F3-4AD4-ACB8-740E4E394ECF/@fortawesome/vue-fontawesome/-/vue-fontawesome-0.0.22.tgz#720457bda0e5866265e5e0f8fe4fbd857fa5653f"
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"

@@ -38,3 +38,44 @@
 @import "~bootstrap/scss/carousel";
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/print";
+
+#app {
+    @include media-breakpoint-up(lg) {
+        border-style: solid;
+        border-color: $gray-100;
+        border-width: 1rem 1rem 0 1rem;
+    }
+}
+
+
+#top {
+    .icon-link,
+    .nav-link {
+        color: $gray-500;
+        &:hover,
+        &:active {
+            color: $purple;
+        }
+    }
+    letter-spacing: .2rem;
+    .navbar {
+        font-size: 1.1rem;
+        @include media-breakpoint-down(md) {
+            .nav-item {
+                text-align: center;
+                &:hover {
+                    background-color: rgba($purple, .5);
+                    .nav-link {
+                        color: $gray-100;
+                    }
+                }
+            }
+            background-color: rgba($gray-100, .5);
+        }
+        @include media-breakpoint-up(lg) {
+            font-size: 0.9rem;
+            border-top: 1px solid $gray-100;
+            border-bottom: 2px solid $gray-200;
+        }
+    }
+}

@@ -1,95 +1,61 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+@section('content')
+    <header id="top" class="container mt-4">
+        <div class="row">
+            <div class="col-12 order-lg-last">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <button class="navbar-toggler mb-1" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item active">
+                                <a href="#" class="nav-link text-uppercase">About</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a href="#" class="nav-link text-uppercase">Weddings</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a href="#" class="nav-link text-uppercase">Albums</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a href="#" class="nav-link text-uppercase">Engagements</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a href="#" class="nav-link text-uppercase">Family</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a href="#" class="nav-link text-uppercase">Testimonials</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a href="#" class="nav-link text-uppercase">Blog</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a href="#" class="nav-link text-uppercase">Contact</a>
+                            </li>
+                        </ul>
+                        {{-- <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form> --}}
+                    </div>
+                </nav>
+            </div>
+            <div class="col-12 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+                <div class="text-center">
+                        <h1 class="text-uppercase">{{ config('app.name') }}</h1>
+                        <div class="lead text-uppercase">***REMOVED***</div>
                 </div>
             </div>
+            <div class="col-12 col-lg-2 col-xl-3 d-flex align-items-center" style="font-size: 2rem;">
+                <a class="ml-auto" href="https://www.facebook.com/pages/***REMOVED***-***REMOVED***-***REMOVED***/261844107286000" target="_blank">
+                    <font-awesome-icon class="icon-link" :icon="['fab', 'facebook-square']"></font-awesome-icon>
+                </a>
+                <a class="link ml-1 mr-auto" href="https://twitter.com/poppyplp" target="_blank">
+                    <font-awesome-icon class="icon-link" :icon="['fab', 'twitter-square']"></font-awesome-icon>
+                </a>
+            </div>
         </div>
-    </body>
-</html>
+    </header>
+@stop
