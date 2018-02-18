@@ -69,338 +69,337 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "prefix", function() { return prefix; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fa500px", function() { return fa500px; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAccessibleIcon", function() { return faAccessibleIcon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAccusoft", function() { return faAccusoft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAdn", function() { return faAdn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAdversal", function() { return faAdversal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAffiliatetheme", function() { return faAffiliatetheme; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAlgolia", function() { return faAlgolia; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAmazon", function() { return faAmazon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAmazonPay", function() { return faAmazonPay; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAmilia", function() { return faAmilia; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAndroid", function() { return faAndroid; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAngellist", function() { return faAngellist; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAngrycreative", function() { return faAngrycreative; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAngular", function() { return faAngular; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAppStore", function() { return faAppStore; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAppStoreIos", function() { return faAppStoreIos; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faApper", function() { return faApper; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faApple", function() { return faApple; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faApplePay", function() { return faApplePay; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAsymmetrik", function() { return faAsymmetrik; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAudible", function() { return faAudible; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAutoprefixer", function() { return faAutoprefixer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAvianex", function() { return faAvianex; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAviato", function() { return faAviato; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAws", function() { return faAws; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBandcamp", function() { return faBandcamp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBehance", function() { return faBehance; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBehanceSquare", function() { return faBehanceSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBimobject", function() { return faBimobject; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBitbucket", function() { return faBitbucket; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBitcoin", function() { return faBitcoin; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBity", function() { return faBity; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBlackTie", function() { return faBlackTie; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBlackberry", function() { return faBlackberry; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBlogger", function() { return faBlogger; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBloggerB", function() { return faBloggerB; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBluetooth", function() { return faBluetooth; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBluetoothB", function() { return faBluetoothB; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBtc", function() { return faBtc; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBuromobelexperte", function() { return faBuromobelexperte; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBuysellads", function() { return faBuysellads; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCcAmazonPay", function() { return faCcAmazonPay; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCcAmex", function() { return faCcAmex; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCcApplePay", function() { return faCcApplePay; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCcDinersClub", function() { return faCcDinersClub; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCcDiscover", function() { return faCcDiscover; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCcJcb", function() { return faCcJcb; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCcMastercard", function() { return faCcMastercard; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCcPaypal", function() { return faCcPaypal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCcStripe", function() { return faCcStripe; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCcVisa", function() { return faCcVisa; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCentercode", function() { return faCentercode; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChrome", function() { return faChrome; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCloudscale", function() { return faCloudscale; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCloudsmith", function() { return faCloudsmith; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCloudversify", function() { return faCloudversify; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCodepen", function() { return faCodepen; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCodiepie", function() { return faCodiepie; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faConnectdevelop", function() { return faConnectdevelop; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faContao", function() { return faContao; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCpanel", function() { return faCpanel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCreativeCommons", function() { return faCreativeCommons; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCss3", function() { return faCss3; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCss3Alt", function() { return faCss3Alt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCuttlefish", function() { return faCuttlefish; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDAndD", function() { return faDAndD; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDashcube", function() { return faDashcube; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDelicious", function() { return faDelicious; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDeploydog", function() { return faDeploydog; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDeskpro", function() { return faDeskpro; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDeviantart", function() { return faDeviantart; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDigg", function() { return faDigg; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDigitalOcean", function() { return faDigitalOcean; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDiscord", function() { return faDiscord; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDiscourse", function() { return faDiscourse; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDochub", function() { return faDochub; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDocker", function() { return faDocker; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDraft2digital", function() { return faDraft2digital; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDribbble", function() { return faDribbble; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDribbbleSquare", function() { return faDribbbleSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDropbox", function() { return faDropbox; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDrupal", function() { return faDrupal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDyalog", function() { return faDyalog; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEarlybirds", function() { return faEarlybirds; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEdge", function() { return faEdge; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faElementor", function() { return faElementor; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEmber", function() { return faEmber; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEmpire", function() { return faEmpire; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEnvira", function() { return faEnvira; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faErlang", function() { return faErlang; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEthereum", function() { return faEthereum; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEtsy", function() { return faEtsy; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faExpeditedssl", function() { return faExpeditedssl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFacebook", function() { return faFacebook; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFacebookF", function() { return faFacebookF; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFacebookMessenger", function() { return faFacebookMessenger; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFacebookSquare", function() { return faFacebookSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFirefox", function() { return faFirefox; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFirstOrder", function() { return faFirstOrder; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFirstdraft", function() { return faFirstdraft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFlickr", function() { return faFlickr; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFlipboard", function() { return faFlipboard; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFly", function() { return faFly; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFontAwesome", function() { return faFontAwesome; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFontAwesomeAlt", function() { return faFontAwesomeAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFontAwesomeFlag", function() { return faFontAwesomeFlag; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFonticons", function() { return faFonticons; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFonticonsFi", function() { return faFonticonsFi; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFortAwesome", function() { return faFortAwesome; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFortAwesomeAlt", function() { return faFortAwesomeAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faForumbee", function() { return faForumbee; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFoursquare", function() { return faFoursquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFreeCodeCamp", function() { return faFreeCodeCamp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFreebsd", function() { return faFreebsd; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGetPocket", function() { return faGetPocket; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGg", function() { return faGg; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGgCircle", function() { return faGgCircle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGit", function() { return faGit; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGitSquare", function() { return faGitSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGithub", function() { return faGithub; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGithubAlt", function() { return faGithubAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGithubSquare", function() { return faGithubSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGitkraken", function() { return faGitkraken; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGitlab", function() { return faGitlab; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGitter", function() { return faGitter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGlide", function() { return faGlide; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGlideG", function() { return faGlideG; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGofore", function() { return faGofore; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGoodreads", function() { return faGoodreads; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGoodreadsG", function() { return faGoodreadsG; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGoogle", function() { return faGoogle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGoogleDrive", function() { return faGoogleDrive; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGooglePlay", function() { return faGooglePlay; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGooglePlus", function() { return faGooglePlus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGooglePlusG", function() { return faGooglePlusG; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGooglePlusSquare", function() { return faGooglePlusSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGoogleWallet", function() { return faGoogleWallet; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGratipay", function() { return faGratipay; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGrav", function() { return faGrav; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGripfire", function() { return faGripfire; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGrunt", function() { return faGrunt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGulp", function() { return faGulp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHackerNews", function() { return faHackerNews; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHackerNewsSquare", function() { return faHackerNewsSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHips", function() { return faHips; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHireAHelper", function() { return faHireAHelper; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHooli", function() { return faHooli; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHotjar", function() { return faHotjar; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHouzz", function() { return faHouzz; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHtml5", function() { return faHtml5; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHubspot", function() { return faHubspot; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faImdb", function() { return faImdb; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faInstagram", function() { return faInstagram; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faInternetExplorer", function() { return faInternetExplorer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faIoxhost", function() { return faIoxhost; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faItunes", function() { return faItunes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faItunesNote", function() { return faItunesNote; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faJenkins", function() { return faJenkins; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faJoget", function() { return faJoget; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faJoomla", function() { return faJoomla; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faJs", function() { return faJs; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faJsSquare", function() { return faJsSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faJsfiddle", function() { return faJsfiddle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faKeycdn", function() { return faKeycdn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faKickstarter", function() { return faKickstarter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faKickstarterK", function() { return faKickstarterK; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faKorvue", function() { return faKorvue; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLaravel", function() { return faLaravel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLastfm", function() { return faLastfm; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLastfmSquare", function() { return faLastfmSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLeanpub", function() { return faLeanpub; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLess", function() { return faLess; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLine", function() { return faLine; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLinkedin", function() { return faLinkedin; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLinkedinIn", function() { return faLinkedinIn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLinode", function() { return faLinode; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLinux", function() { return faLinux; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLyft", function() { return faLyft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMagento", function() { return faMagento; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMaxcdn", function() { return faMaxcdn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMedapps", function() { return faMedapps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMedium", function() { return faMedium; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMediumM", function() { return faMediumM; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMedrt", function() { return faMedrt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMeetup", function() { return faMeetup; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMicrosoft", function() { return faMicrosoft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMix", function() { return faMix; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMixcloud", function() { return faMixcloud; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMizuni", function() { return faMizuni; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faModx", function() { return faModx; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMonero", function() { return faMonero; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faNapster", function() { return faNapster; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faNintendoSwitch", function() { return faNintendoSwitch; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faNode", function() { return faNode; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faNodeJs", function() { return faNodeJs; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faNpm", function() { return faNpm; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faNs8", function() { return faNs8; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faNutritionix", function() { return faNutritionix; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faOdnoklassniki", function() { return faOdnoklassniki; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faOdnoklassnikiSquare", function() { return faOdnoklassnikiSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faOpencart", function() { return faOpencart; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faOpenid", function() { return faOpenid; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faOpera", function() { return faOpera; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faOptinMonster", function() { return faOptinMonster; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faOsi", function() { return faOsi; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPage4", function() { return faPage4; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPagelines", function() { return faPagelines; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPalfed", function() { return faPalfed; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPatreon", function() { return faPatreon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPaypal", function() { return faPaypal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPeriscope", function() { return faPeriscope; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPhabricator", function() { return faPhabricator; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPhoenixFramework", function() { return faPhoenixFramework; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPhp", function() { return faPhp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPiedPiper", function() { return faPiedPiper; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPiedPiperAlt", function() { return faPiedPiperAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPiedPiperPp", function() { return faPiedPiperPp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPinterest", function() { return faPinterest; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPinterestP", function() { return faPinterestP; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPinterestSquare", function() { return faPinterestSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPlaystation", function() { return faPlaystation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faProductHunt", function() { return faProductHunt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPushed", function() { return faPushed; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPython", function() { return faPython; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faQq", function() { return faQq; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faQuinscape", function() { return faQuinscape; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faQuora", function() { return faQuora; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRavelry", function() { return faRavelry; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faReact", function() { return faReact; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRebel", function() { return faRebel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRedRiver", function() { return faRedRiver; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faReddit", function() { return faReddit; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRedditAlien", function() { return faRedditAlien; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRedditSquare", function() { return faRedditSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRendact", function() { return faRendact; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRenren", function() { return faRenren; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faReplyd", function() { return faReplyd; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faResolving", function() { return faResolving; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRocketchat", function() { return faRocketchat; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRockrms", function() { return faRockrms; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSafari", function() { return faSafari; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSass", function() { return faSass; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSchlix", function() { return faSchlix; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faScribd", function() { return faScribd; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSearchengin", function() { return faSearchengin; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSellcast", function() { return faSellcast; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSellsy", function() { return faSellsy; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faServicestack", function() { return faServicestack; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faShirtsinbulk", function() { return faShirtsinbulk; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSimplybuilt", function() { return faSimplybuilt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSistrix", function() { return faSistrix; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSkyatlas", function() { return faSkyatlas; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSkype", function() { return faSkype; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSlack", function() { return faSlack; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSlackHash", function() { return faSlackHash; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSlideshare", function() { return faSlideshare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSnapchat", function() { return faSnapchat; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSnapchatGhost", function() { return faSnapchatGhost; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSnapchatSquare", function() { return faSnapchatSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSoundcloud", function() { return faSoundcloud; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSpeakap", function() { return faSpeakap; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSpotify", function() { return faSpotify; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStackExchange", function() { return faStackExchange; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStackOverflow", function() { return faStackOverflow; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStaylinked", function() { return faStaylinked; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSteam", function() { return faSteam; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSteamSquare", function() { return faSteamSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSteamSymbol", function() { return faSteamSymbol; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStickerMule", function() { return faStickerMule; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStrava", function() { return faStrava; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStripe", function() { return faStripe; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStripeS", function() { return faStripeS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStudiovinari", function() { return faStudiovinari; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStumbleupon", function() { return faStumbleupon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStumbleuponCircle", function() { return faStumbleuponCircle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSuperpowers", function() { return faSuperpowers; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSupple", function() { return faSupple; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTelegram", function() { return faTelegram; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTelegramPlane", function() { return faTelegramPlane; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTencentWeibo", function() { return faTencentWeibo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faThemeisle", function() { return faThemeisle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTrello", function() { return faTrello; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTripadvisor", function() { return faTripadvisor; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTumblr", function() { return faTumblr; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTumblrSquare", function() { return faTumblrSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTwitch", function() { return faTwitch; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTwitter", function() { return faTwitter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTwitterSquare", function() { return faTwitterSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTypo3", function() { return faTypo3; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUber", function() { return faUber; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUikit", function() { return faUikit; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUniregistry", function() { return faUniregistry; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUntappd", function() { return faUntappd; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUsb", function() { return faUsb; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUssunnah", function() { return faUssunnah; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVaadin", function() { return faVaadin; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faViacoin", function() { return faViacoin; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faViadeo", function() { return faViadeo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faViadeoSquare", function() { return faViadeoSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faViber", function() { return faViber; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVimeo", function() { return faVimeo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVimeoSquare", function() { return faVimeoSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVimeoV", function() { return faVimeoV; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVine", function() { return faVine; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVk", function() { return faVk; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVnv", function() { return faVnv; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVuejs", function() { return faVuejs; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWeibo", function() { return faWeibo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWeixin", function() { return faWeixin; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWhatsapp", function() { return faWhatsapp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWhatsappSquare", function() { return faWhatsappSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWhmcs", function() { return faWhmcs; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWikipediaW", function() { return faWikipediaW; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWindows", function() { return faWindows; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWordpress", function() { return faWordpress; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWordpressSimple", function() { return faWordpressSimple; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWpbeginner", function() { return faWpbeginner; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWpexplorer", function() { return faWpexplorer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWpforms", function() { return faWpforms; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faXbox", function() { return faXbox; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faXing", function() { return faXing; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faXingSquare", function() { return faXingSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faYCombinator", function() { return faYCombinator; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faYahoo", function() { return faYahoo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faYandex", function() { return faYandex; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faYandexInternational", function() { return faYandexInternational; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faYelp", function() { return faYelp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faYoast", function() { return faYoast; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faYoutube", function() { return faYoutube; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faYoutubeSquare", function() { return faYoutubeSquare; });
+/* unused harmony export prefix */
+/* unused harmony export fa500px */
+/* unused harmony export faAccessibleIcon */
+/* unused harmony export faAccusoft */
+/* unused harmony export faAdn */
+/* unused harmony export faAdversal */
+/* unused harmony export faAffiliatetheme */
+/* unused harmony export faAlgolia */
+/* unused harmony export faAmazon */
+/* unused harmony export faAmazonPay */
+/* unused harmony export faAmilia */
+/* unused harmony export faAndroid */
+/* unused harmony export faAngellist */
+/* unused harmony export faAngrycreative */
+/* unused harmony export faAngular */
+/* unused harmony export faAppStore */
+/* unused harmony export faAppStoreIos */
+/* unused harmony export faApper */
+/* unused harmony export faApple */
+/* unused harmony export faApplePay */
+/* unused harmony export faAsymmetrik */
+/* unused harmony export faAudible */
+/* unused harmony export faAutoprefixer */
+/* unused harmony export faAvianex */
+/* unused harmony export faAviato */
+/* unused harmony export faAws */
+/* unused harmony export faBandcamp */
+/* unused harmony export faBehance */
+/* unused harmony export faBehanceSquare */
+/* unused harmony export faBimobject */
+/* unused harmony export faBitbucket */
+/* unused harmony export faBitcoin */
+/* unused harmony export faBity */
+/* unused harmony export faBlackTie */
+/* unused harmony export faBlackberry */
+/* unused harmony export faBlogger */
+/* unused harmony export faBloggerB */
+/* unused harmony export faBluetooth */
+/* unused harmony export faBluetoothB */
+/* unused harmony export faBtc */
+/* unused harmony export faBuromobelexperte */
+/* unused harmony export faBuysellads */
+/* unused harmony export faCcAmazonPay */
+/* unused harmony export faCcAmex */
+/* unused harmony export faCcApplePay */
+/* unused harmony export faCcDinersClub */
+/* unused harmony export faCcDiscover */
+/* unused harmony export faCcJcb */
+/* unused harmony export faCcMastercard */
+/* unused harmony export faCcPaypal */
+/* unused harmony export faCcStripe */
+/* unused harmony export faCcVisa */
+/* unused harmony export faCentercode */
+/* unused harmony export faChrome */
+/* unused harmony export faCloudscale */
+/* unused harmony export faCloudsmith */
+/* unused harmony export faCloudversify */
+/* unused harmony export faCodepen */
+/* unused harmony export faCodiepie */
+/* unused harmony export faConnectdevelop */
+/* unused harmony export faContao */
+/* unused harmony export faCpanel */
+/* unused harmony export faCreativeCommons */
+/* unused harmony export faCss3 */
+/* unused harmony export faCss3Alt */
+/* unused harmony export faCuttlefish */
+/* unused harmony export faDAndD */
+/* unused harmony export faDashcube */
+/* unused harmony export faDelicious */
+/* unused harmony export faDeploydog */
+/* unused harmony export faDeskpro */
+/* unused harmony export faDeviantart */
+/* unused harmony export faDigg */
+/* unused harmony export faDigitalOcean */
+/* unused harmony export faDiscord */
+/* unused harmony export faDiscourse */
+/* unused harmony export faDochub */
+/* unused harmony export faDocker */
+/* unused harmony export faDraft2digital */
+/* unused harmony export faDribbble */
+/* unused harmony export faDribbbleSquare */
+/* unused harmony export faDropbox */
+/* unused harmony export faDrupal */
+/* unused harmony export faDyalog */
+/* unused harmony export faEarlybirds */
+/* unused harmony export faEdge */
+/* unused harmony export faElementor */
+/* unused harmony export faEmber */
+/* unused harmony export faEmpire */
+/* unused harmony export faEnvira */
+/* unused harmony export faErlang */
+/* unused harmony export faEthereum */
+/* unused harmony export faEtsy */
+/* unused harmony export faExpeditedssl */
+/* unused harmony export faFacebook */
+/* unused harmony export faFacebookF */
+/* unused harmony export faFacebookMessenger */
+/* unused harmony export faFacebookSquare */
+/* unused harmony export faFirefox */
+/* unused harmony export faFirstOrder */
+/* unused harmony export faFirstdraft */
+/* unused harmony export faFlickr */
+/* unused harmony export faFlipboard */
+/* unused harmony export faFly */
+/* unused harmony export faFontAwesome */
+/* unused harmony export faFontAwesomeAlt */
+/* unused harmony export faFontAwesomeFlag */
+/* unused harmony export faFonticons */
+/* unused harmony export faFonticonsFi */
+/* unused harmony export faFortAwesome */
+/* unused harmony export faFortAwesomeAlt */
+/* unused harmony export faForumbee */
+/* unused harmony export faFoursquare */
+/* unused harmony export faFreeCodeCamp */
+/* unused harmony export faFreebsd */
+/* unused harmony export faGetPocket */
+/* unused harmony export faGg */
+/* unused harmony export faGgCircle */
+/* unused harmony export faGit */
+/* unused harmony export faGitSquare */
+/* unused harmony export faGithub */
+/* unused harmony export faGithubAlt */
+/* unused harmony export faGithubSquare */
+/* unused harmony export faGitkraken */
+/* unused harmony export faGitlab */
+/* unused harmony export faGitter */
+/* unused harmony export faGlide */
+/* unused harmony export faGlideG */
+/* unused harmony export faGofore */
+/* unused harmony export faGoodreads */
+/* unused harmony export faGoodreadsG */
+/* unused harmony export faGoogle */
+/* unused harmony export faGoogleDrive */
+/* unused harmony export faGooglePlay */
+/* unused harmony export faGooglePlus */
+/* unused harmony export faGooglePlusG */
+/* unused harmony export faGooglePlusSquare */
+/* unused harmony export faGoogleWallet */
+/* unused harmony export faGratipay */
+/* unused harmony export faGrav */
+/* unused harmony export faGripfire */
+/* unused harmony export faGrunt */
+/* unused harmony export faGulp */
+/* unused harmony export faHackerNews */
+/* unused harmony export faHackerNewsSquare */
+/* unused harmony export faHips */
+/* unused harmony export faHireAHelper */
+/* unused harmony export faHooli */
+/* unused harmony export faHotjar */
+/* unused harmony export faHouzz */
+/* unused harmony export faHtml5 */
+/* unused harmony export faHubspot */
+/* unused harmony export faImdb */
+/* unused harmony export faInstagram */
+/* unused harmony export faInternetExplorer */
+/* unused harmony export faIoxhost */
+/* unused harmony export faItunes */
+/* unused harmony export faItunesNote */
+/* unused harmony export faJenkins */
+/* unused harmony export faJoget */
+/* unused harmony export faJoomla */
+/* unused harmony export faJs */
+/* unused harmony export faJsSquare */
+/* unused harmony export faJsfiddle */
+/* unused harmony export faKeycdn */
+/* unused harmony export faKickstarter */
+/* unused harmony export faKickstarterK */
+/* unused harmony export faKorvue */
+/* unused harmony export faLaravel */
+/* unused harmony export faLastfm */
+/* unused harmony export faLastfmSquare */
+/* unused harmony export faLeanpub */
+/* unused harmony export faLess */
+/* unused harmony export faLine */
+/* unused harmony export faLinkedin */
+/* unused harmony export faLinkedinIn */
+/* unused harmony export faLinode */
+/* unused harmony export faLinux */
+/* unused harmony export faLyft */
+/* unused harmony export faMagento */
+/* unused harmony export faMaxcdn */
+/* unused harmony export faMedapps */
+/* unused harmony export faMedium */
+/* unused harmony export faMediumM */
+/* unused harmony export faMedrt */
+/* unused harmony export faMeetup */
+/* unused harmony export faMicrosoft */
+/* unused harmony export faMix */
+/* unused harmony export faMixcloud */
+/* unused harmony export faMizuni */
+/* unused harmony export faModx */
+/* unused harmony export faMonero */
+/* unused harmony export faNapster */
+/* unused harmony export faNintendoSwitch */
+/* unused harmony export faNode */
+/* unused harmony export faNodeJs */
+/* unused harmony export faNpm */
+/* unused harmony export faNs8 */
+/* unused harmony export faNutritionix */
+/* unused harmony export faOdnoklassniki */
+/* unused harmony export faOdnoklassnikiSquare */
+/* unused harmony export faOpencart */
+/* unused harmony export faOpenid */
+/* unused harmony export faOpera */
+/* unused harmony export faOptinMonster */
+/* unused harmony export faOsi */
+/* unused harmony export faPage4 */
+/* unused harmony export faPagelines */
+/* unused harmony export faPalfed */
+/* unused harmony export faPatreon */
+/* unused harmony export faPaypal */
+/* unused harmony export faPeriscope */
+/* unused harmony export faPhabricator */
+/* unused harmony export faPhoenixFramework */
+/* unused harmony export faPhp */
+/* unused harmony export faPiedPiper */
+/* unused harmony export faPiedPiperAlt */
+/* unused harmony export faPiedPiperPp */
+/* unused harmony export faPinterest */
+/* unused harmony export faPinterestP */
+/* unused harmony export faPinterestSquare */
+/* unused harmony export faPlaystation */
+/* unused harmony export faProductHunt */
+/* unused harmony export faPushed */
+/* unused harmony export faPython */
+/* unused harmony export faQq */
+/* unused harmony export faQuinscape */
+/* unused harmony export faQuora */
+/* unused harmony export faRavelry */
+/* unused harmony export faReact */
+/* unused harmony export faRebel */
+/* unused harmony export faRedRiver */
+/* unused harmony export faReddit */
+/* unused harmony export faRedditAlien */
+/* unused harmony export faRedditSquare */
+/* unused harmony export faRendact */
+/* unused harmony export faRenren */
+/* unused harmony export faReplyd */
+/* unused harmony export faResolving */
+/* unused harmony export faRocketchat */
+/* unused harmony export faRockrms */
+/* unused harmony export faSafari */
+/* unused harmony export faSass */
+/* unused harmony export faSchlix */
+/* unused harmony export faScribd */
+/* unused harmony export faSearchengin */
+/* unused harmony export faSellcast */
+/* unused harmony export faSellsy */
+/* unused harmony export faServicestack */
+/* unused harmony export faShirtsinbulk */
+/* unused harmony export faSimplybuilt */
+/* unused harmony export faSistrix */
+/* unused harmony export faSkyatlas */
+/* unused harmony export faSkype */
+/* unused harmony export faSlack */
+/* unused harmony export faSlackHash */
+/* unused harmony export faSlideshare */
+/* unused harmony export faSnapchat */
+/* unused harmony export faSnapchatGhost */
+/* unused harmony export faSnapchatSquare */
+/* unused harmony export faSoundcloud */
+/* unused harmony export faSpeakap */
+/* unused harmony export faSpotify */
+/* unused harmony export faStackExchange */
+/* unused harmony export faStackOverflow */
+/* unused harmony export faStaylinked */
+/* unused harmony export faSteam */
+/* unused harmony export faSteamSquare */
+/* unused harmony export faSteamSymbol */
+/* unused harmony export faStickerMule */
+/* unused harmony export faStrava */
+/* unused harmony export faStripe */
+/* unused harmony export faStripeS */
+/* unused harmony export faStudiovinari */
+/* unused harmony export faStumbleupon */
+/* unused harmony export faStumbleuponCircle */
+/* unused harmony export faSuperpowers */
+/* unused harmony export faSupple */
+/* unused harmony export faTelegram */
+/* unused harmony export faTelegramPlane */
+/* unused harmony export faTencentWeibo */
+/* unused harmony export faThemeisle */
+/* unused harmony export faTrello */
+/* unused harmony export faTripadvisor */
+/* unused harmony export faTumblr */
+/* unused harmony export faTumblrSquare */
+/* unused harmony export faTwitch */
+/* unused harmony export faTwitter */
+/* unused harmony export faTwitterSquare */
+/* unused harmony export faTypo3 */
+/* unused harmony export faUber */
+/* unused harmony export faUikit */
+/* unused harmony export faUniregistry */
+/* unused harmony export faUntappd */
+/* unused harmony export faUsb */
+/* unused harmony export faUssunnah */
+/* unused harmony export faVaadin */
+/* unused harmony export faViacoin */
+/* unused harmony export faViadeo */
+/* unused harmony export faViadeoSquare */
+/* unused harmony export faViber */
+/* unused harmony export faVimeo */
+/* unused harmony export faVimeoSquare */
+/* unused harmony export faVimeoV */
+/* unused harmony export faVine */
+/* unused harmony export faVk */
+/* unused harmony export faVnv */
+/* unused harmony export faVuejs */
+/* unused harmony export faWeibo */
+/* unused harmony export faWeixin */
+/* unused harmony export faWhatsapp */
+/* unused harmony export faWhatsappSquare */
+/* unused harmony export faWhmcs */
+/* unused harmony export faWikipediaW */
+/* unused harmony export faWindows */
+/* unused harmony export faWordpress */
+/* unused harmony export faWordpressSimple */
+/* unused harmony export faWpbeginner */
+/* unused harmony export faWpexplorer */
+/* unused harmony export faWpforms */
+/* unused harmony export faXbox */
+/* unused harmony export faXing */
+/* unused harmony export faXingSquare */
+/* unused harmony export faYCombinator */
+/* unused harmony export faYahoo */
+/* unused harmony export faYandex */
+/* unused harmony export faYandexInternational */
+/* unused harmony export faYelp */
+/* unused harmony export faYoast */
+/* unused harmony export faYoutube */
+/* unused harmony export faYoutubeSquare */
 /*!
  * Font Awesome Free 5.0.6 by @fontawesome - http://fontawesome.com
  * License - http://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
@@ -486,14 +485,12 @@ var _extends = Object.assign || function (target) {
 function define(prefix, icons) {
   var normalized = Object.keys(icons).reduce(function (acc, iconName) {
     var icon = icons[iconName];
-    if (icon) {
-      var expanded = !!icon.icon;
+    var expanded = !!icon.icon;
 
-      if (expanded) {
-        acc[icon.iconName] = icon.icon;
-      } else {
-        acc[iconName] = icon;
-      }
+    if (expanded) {
+      acc[icon.iconName] = icon.icon;
+    } else {
+      acc[iconName] = icon;
     }
     return acc;
   }, {});
@@ -1184,7 +1181,7 @@ bunker(function () {
 });
 
 
-/* harmony default export */ __webpack_exports__["default"] = (icons$1);
+/* harmony default export */ __webpack_exports__["a"] = (icons$1);
 
 
 /***/ }),
@@ -1193,670 +1190,669 @@ bunker(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "prefix", function() { return prefix; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAddressBook", function() { return faAddressBook; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAddressCard", function() { return faAddressCard; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAdjust", function() { return faAdjust; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAlarmClock", function() { return faAlarmClock; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAlignCenter", function() { return faAlignCenter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAlignJustify", function() { return faAlignJustify; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAlignLeft", function() { return faAlignLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAlignRight", function() { return faAlignRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAmbulance", function() { return faAmbulance; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAmericanSignLanguageInterpreting", function() { return faAmericanSignLanguageInterpreting; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAnchor", function() { return faAnchor; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAngleDoubleDown", function() { return faAngleDoubleDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAngleDoubleLeft", function() { return faAngleDoubleLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAngleDoubleRight", function() { return faAngleDoubleRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAngleDoubleUp", function() { return faAngleDoubleUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAngleDown", function() { return faAngleDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAngleLeft", function() { return faAngleLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAngleRight", function() { return faAngleRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAngleUp", function() { return faAngleUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArchive", function() { return faArchive; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltCircleDown", function() { return faArrowAltCircleDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltCircleLeft", function() { return faArrowAltCircleLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltCircleRight", function() { return faArrowAltCircleRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltCircleUp", function() { return faArrowAltCircleUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltDown", function() { return faArrowAltDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltFromBottom", function() { return faArrowAltFromBottom; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltFromLeft", function() { return faArrowAltFromLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltFromRight", function() { return faArrowAltFromRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltFromTop", function() { return faArrowAltFromTop; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltLeft", function() { return faArrowAltLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltRight", function() { return faArrowAltRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltSquareDown", function() { return faArrowAltSquareDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltSquareLeft", function() { return faArrowAltSquareLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltSquareRight", function() { return faArrowAltSquareRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltSquareUp", function() { return faArrowAltSquareUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltToBottom", function() { return faArrowAltToBottom; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltToLeft", function() { return faArrowAltToLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltToRight", function() { return faArrowAltToRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltToTop", function() { return faArrowAltToTop; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowAltUp", function() { return faArrowAltUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowCircleDown", function() { return faArrowCircleDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowCircleLeft", function() { return faArrowCircleLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowCircleRight", function() { return faArrowCircleRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowCircleUp", function() { return faArrowCircleUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowDown", function() { return faArrowDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowFromBottom", function() { return faArrowFromBottom; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowFromLeft", function() { return faArrowFromLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowFromRight", function() { return faArrowFromRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowFromTop", function() { return faArrowFromTop; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowLeft", function() { return faArrowLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowRight", function() { return faArrowRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowSquareDown", function() { return faArrowSquareDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowSquareLeft", function() { return faArrowSquareLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowSquareRight", function() { return faArrowSquareRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowSquareUp", function() { return faArrowSquareUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowToBottom", function() { return faArrowToBottom; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowToLeft", function() { return faArrowToLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowToRight", function() { return faArrowToRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowToTop", function() { return faArrowToTop; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowUp", function() { return faArrowUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrows", function() { return faArrows; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowsAlt", function() { return faArrowsAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowsAltH", function() { return faArrowsAltH; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowsAltV", function() { return faArrowsAltV; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowsH", function() { return faArrowsH; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faArrowsV", function() { return faArrowsV; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAssistiveListeningSystems", function() { return faAssistiveListeningSystems; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAsterisk", function() { return faAsterisk; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAt", function() { return faAt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faAudioDescription", function() { return faAudioDescription; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBackward", function() { return faBackward; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBadge", function() { return faBadge; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBadgeCheck", function() { return faBadgeCheck; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBalanceScale", function() { return faBalanceScale; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBan", function() { return faBan; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBarcode", function() { return faBarcode; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBars", function() { return faBars; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBaseball", function() { return faBaseball; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBaseballBall", function() { return faBaseballBall; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBasketballBall", function() { return faBasketballBall; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBasketballHoop", function() { return faBasketballHoop; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBath", function() { return faBath; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBatteryBolt", function() { return faBatteryBolt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBatteryEmpty", function() { return faBatteryEmpty; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBatteryFull", function() { return faBatteryFull; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBatteryHalf", function() { return faBatteryHalf; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBatteryQuarter", function() { return faBatteryQuarter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBatterySlash", function() { return faBatterySlash; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBatteryThreeQuarters", function() { return faBatteryThreeQuarters; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBed", function() { return faBed; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBeer", function() { return faBeer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBell", function() { return faBell; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBellSlash", function() { return faBellSlash; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBicycle", function() { return faBicycle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBinoculars", function() { return faBinoculars; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBirthdayCake", function() { return faBirthdayCake; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBlind", function() { return faBlind; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBold", function() { return faBold; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBolt", function() { return faBolt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBomb", function() { return faBomb; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBook", function() { return faBook; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBookmark", function() { return faBookmark; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBowlingBall", function() { return faBowlingBall; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBowlingPins", function() { return faBowlingPins; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBoxingGlove", function() { return faBoxingGlove; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBraille", function() { return faBraille; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBriefcase", function() { return faBriefcase; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBrowser", function() { return faBrowser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBug", function() { return faBug; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBuilding", function() { return faBuilding; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBullhorn", function() { return faBullhorn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBullseye", function() { return faBullseye; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faBus", function() { return faBus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCalculator", function() { return faCalculator; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCalendar", function() { return faCalendar; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCalendarAlt", function() { return faCalendarAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCalendarCheck", function() { return faCalendarCheck; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCalendarEdit", function() { return faCalendarEdit; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCalendarExclamation", function() { return faCalendarExclamation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCalendarMinus", function() { return faCalendarMinus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCalendarPlus", function() { return faCalendarPlus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCalendarTimes", function() { return faCalendarTimes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCamera", function() { return faCamera; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCameraAlt", function() { return faCameraAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCameraRetro", function() { return faCameraRetro; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCar", function() { return faCar; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCaretCircleDown", function() { return faCaretCircleDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCaretCircleLeft", function() { return faCaretCircleLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCaretCircleRight", function() { return faCaretCircleRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCaretCircleUp", function() { return faCaretCircleUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCaretDown", function() { return faCaretDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCaretLeft", function() { return faCaretLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCaretRight", function() { return faCaretRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCaretSquareDown", function() { return faCaretSquareDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCaretSquareLeft", function() { return faCaretSquareLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCaretSquareRight", function() { return faCaretSquareRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCaretSquareUp", function() { return faCaretSquareUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCaretUp", function() { return faCaretUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCartArrowDown", function() { return faCartArrowDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCartPlus", function() { return faCartPlus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCertificate", function() { return faCertificate; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChartArea", function() { return faChartArea; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChartBar", function() { return faChartBar; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChartLine", function() { return faChartLine; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChartPie", function() { return faChartPie; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCheck", function() { return faCheck; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCheckCircle", function() { return faCheckCircle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCheckSquare", function() { return faCheckSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChess", function() { return faChess; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChessBishop", function() { return faChessBishop; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChessBishopAlt", function() { return faChessBishopAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChessBoard", function() { return faChessBoard; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChessClock", function() { return faChessClock; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChessClockAlt", function() { return faChessClockAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChessKing", function() { return faChessKing; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChessKingAlt", function() { return faChessKingAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChessKnight", function() { return faChessKnight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChessKnightAlt", function() { return faChessKnightAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChessPawn", function() { return faChessPawn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChessPawnAlt", function() { return faChessPawnAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChessQueen", function() { return faChessQueen; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChessQueenAlt", function() { return faChessQueenAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChessRook", function() { return faChessRook; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChessRookAlt", function() { return faChessRookAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChevronCircleDown", function() { return faChevronCircleDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChevronCircleLeft", function() { return faChevronCircleLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChevronCircleRight", function() { return faChevronCircleRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChevronCircleUp", function() { return faChevronCircleUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChevronDoubleDown", function() { return faChevronDoubleDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChevronDoubleLeft", function() { return faChevronDoubleLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChevronDoubleRight", function() { return faChevronDoubleRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChevronDoubleUp", function() { return faChevronDoubleUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChevronDown", function() { return faChevronDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChevronLeft", function() { return faChevronLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChevronRight", function() { return faChevronRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChevronSquareDown", function() { return faChevronSquareDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChevronSquareLeft", function() { return faChevronSquareLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChevronSquareRight", function() { return faChevronSquareRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChevronSquareUp", function() { return faChevronSquareUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChevronUp", function() { return faChevronUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faChild", function() { return faChild; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCircle", function() { return faCircle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCircleNotch", function() { return faCircleNotch; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faClipboard", function() { return faClipboard; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faClock", function() { return faClock; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faClone", function() { return faClone; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faClosedCaptioning", function() { return faClosedCaptioning; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCloud", function() { return faCloud; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCloudDownload", function() { return faCloudDownload; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCloudDownloadAlt", function() { return faCloudDownloadAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCloudUpload", function() { return faCloudUpload; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCloudUploadAlt", function() { return faCloudUploadAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faClub", function() { return faClub; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCode", function() { return faCode; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCodeBranch", function() { return faCodeBranch; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCodeCommit", function() { return faCodeCommit; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCodeMerge", function() { return faCodeMerge; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCoffee", function() { return faCoffee; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCog", function() { return faCog; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCogs", function() { return faCogs; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faColumns", function() { return faColumns; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faComment", function() { return faComment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCommentAlt", function() { return faCommentAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faComments", function() { return faComments; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCompass", function() { return faCompass; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCompress", function() { return faCompress; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCompressAlt", function() { return faCompressAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCompressWide", function() { return faCompressWide; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCopy", function() { return faCopy; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCopyright", function() { return faCopyright; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCreditCard", function() { return faCreditCard; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCreditCardBlank", function() { return faCreditCardBlank; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCreditCardFront", function() { return faCreditCardFront; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCricket", function() { return faCricket; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCrop", function() { return faCrop; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCrosshairs", function() { return faCrosshairs; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCube", function() { return faCube; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCubes", function() { return faCubes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCurling", function() { return faCurling; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faCut", function() { return faCut; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDatabase", function() { return faDatabase; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDeaf", function() { return faDeaf; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDesktop", function() { return faDesktop; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDesktopAlt", function() { return faDesktopAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDiamond", function() { return faDiamond; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDollarSign", function() { return faDollarSign; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDotCircle", function() { return faDotCircle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDownload", function() { return faDownload; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faDumbbell", function() { return faDumbbell; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEdit", function() { return faEdit; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEject", function() { return faEject; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEllipsisH", function() { return faEllipsisH; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEllipsisHAlt", function() { return faEllipsisHAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEllipsisV", function() { return faEllipsisV; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEllipsisVAlt", function() { return faEllipsisVAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEnvelope", function() { return faEnvelope; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEnvelopeOpen", function() { return faEnvelopeOpen; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEnvelopeSquare", function() { return faEnvelopeSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEraser", function() { return faEraser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEuroSign", function() { return faEuroSign; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faExchange", function() { return faExchange; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faExchangeAlt", function() { return faExchangeAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faExclamation", function() { return faExclamation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faExclamationCircle", function() { return faExclamationCircle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faExclamationSquare", function() { return faExclamationSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faExclamationTriangle", function() { return faExclamationTriangle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faExpand", function() { return faExpand; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faExpandAlt", function() { return faExpandAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faExpandArrows", function() { return faExpandArrows; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faExpandArrowsAlt", function() { return faExpandArrowsAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faExpandWide", function() { return faExpandWide; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faExternalLink", function() { return faExternalLink; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faExternalLinkAlt", function() { return faExternalLinkAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faExternalLinkSquare", function() { return faExternalLinkSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faExternalLinkSquareAlt", function() { return faExternalLinkSquareAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEye", function() { return faEye; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEyeDropper", function() { return faEyeDropper; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faEyeSlash", function() { return faEyeSlash; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFastBackward", function() { return faFastBackward; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFastForward", function() { return faFastForward; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFax", function() { return faFax; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFemale", function() { return faFemale; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFieldHockey", function() { return faFieldHockey; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFighterJet", function() { return faFighterJet; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFile", function() { return faFile; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFileAlt", function() { return faFileAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFileArchive", function() { return faFileArchive; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFileAudio", function() { return faFileAudio; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFileCheck", function() { return faFileCheck; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFileCode", function() { return faFileCode; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFileEdit", function() { return faFileEdit; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFileExcel", function() { return faFileExcel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFileExclamation", function() { return faFileExclamation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFileImage", function() { return faFileImage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFileMinus", function() { return faFileMinus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFilePdf", function() { return faFilePdf; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFilePlus", function() { return faFilePlus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFilePowerpoint", function() { return faFilePowerpoint; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFileTimes", function() { return faFileTimes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFileVideo", function() { return faFileVideo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFileWord", function() { return faFileWord; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFilm", function() { return faFilm; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFilmAlt", function() { return faFilmAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFilter", function() { return faFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFire", function() { return faFire; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFireExtinguisher", function() { return faFireExtinguisher; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFlag", function() { return faFlag; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFlagCheckered", function() { return faFlagCheckered; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFlask", function() { return faFlask; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFolder", function() { return faFolder; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFolderOpen", function() { return faFolderOpen; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFont", function() { return faFont; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFootballBall", function() { return faFootballBall; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFootballHelmet", function() { return faFootballHelmet; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faForward", function() { return faForward; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFrown", function() { return faFrown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faFutbol", function() { return faFutbol; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGamepad", function() { return faGamepad; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGavel", function() { return faGavel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGem", function() { return faGem; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGenderless", function() { return faGenderless; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGift", function() { return faGift; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGlassMartini", function() { return faGlassMartini; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGlobe", function() { return faGlobe; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGolfBall", function() { return faGolfBall; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGolfClub", function() { return faGolfClub; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faGraduationCap", function() { return faGraduationCap; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHSquare", function() { return faHSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faH1", function() { return faH1; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faH2", function() { return faH2; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faH3", function() { return faH3; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHandLizard", function() { return faHandLizard; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHandPaper", function() { return faHandPaper; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHandPeace", function() { return faHandPeace; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHandPointDown", function() { return faHandPointDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHandPointLeft", function() { return faHandPointLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHandPointRight", function() { return faHandPointRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHandPointUp", function() { return faHandPointUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHandPointer", function() { return faHandPointer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHandRock", function() { return faHandRock; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHandScissors", function() { return faHandScissors; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHandSpock", function() { return faHandSpock; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHandshake", function() { return faHandshake; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHashtag", function() { return faHashtag; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHdd", function() { return faHdd; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHeading", function() { return faHeading; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHeadphones", function() { return faHeadphones; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHeart", function() { return faHeart; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHeartbeat", function() { return faHeartbeat; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHexagon", function() { return faHexagon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHistory", function() { return faHistory; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHockeyPuck", function() { return faHockeyPuck; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHockeySticks", function() { return faHockeySticks; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHome", function() { return faHome; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHospital", function() { return faHospital; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHourglass", function() { return faHourglass; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHourglassEnd", function() { return faHourglassEnd; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHourglassHalf", function() { return faHourglassHalf; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faHourglassStart", function() { return faHourglassStart; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faICursor", function() { return faICursor; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faIdBadge", function() { return faIdBadge; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faIdCard", function() { return faIdCard; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faImage", function() { return faImage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faImages", function() { return faImages; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faInbox", function() { return faInbox; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faInboxIn", function() { return faInboxIn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faInboxOut", function() { return faInboxOut; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faIndent", function() { return faIndent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faIndustry", function() { return faIndustry; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faIndustryAlt", function() { return faIndustryAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faInfo", function() { return faInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faInfoCircle", function() { return faInfoCircle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faInfoSquare", function() { return faInfoSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faItalic", function() { return faItalic; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faJackOLantern", function() { return faJackOLantern; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faKey", function() { return faKey; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faKeyboard", function() { return faKeyboard; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLanguage", function() { return faLanguage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLaptop", function() { return faLaptop; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLeaf", function() { return faLeaf; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLemon", function() { return faLemon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLevelDown", function() { return faLevelDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLevelDownAlt", function() { return faLevelDownAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLevelUp", function() { return faLevelUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLevelUpAlt", function() { return faLevelUpAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLifeRing", function() { return faLifeRing; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLightbulb", function() { return faLightbulb; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLink", function() { return faLink; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLiraSign", function() { return faLiraSign; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faList", function() { return faList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faListAlt", function() { return faListAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faListOl", function() { return faListOl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faListUl", function() { return faListUl; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLocationArrow", function() { return faLocationArrow; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLock", function() { return faLock; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLockAlt", function() { return faLockAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLockOpen", function() { return faLockOpen; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLockOpenAlt", function() { return faLockOpenAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLongArrowAltDown", function() { return faLongArrowAltDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLongArrowAltLeft", function() { return faLongArrowAltLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLongArrowAltRight", function() { return faLongArrowAltRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLongArrowAltUp", function() { return faLongArrowAltUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLongArrowDown", function() { return faLongArrowDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLongArrowLeft", function() { return faLongArrowLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLongArrowRight", function() { return faLongArrowRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLongArrowUp", function() { return faLongArrowUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLowVision", function() { return faLowVision; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faLuchador", function() { return faLuchador; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMagic", function() { return faMagic; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMagnet", function() { return faMagnet; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMale", function() { return faMale; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMap", function() { return faMap; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMapMarker", function() { return faMapMarker; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMapMarkerAlt", function() { return faMapMarkerAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMapPin", function() { return faMapPin; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMapSigns", function() { return faMapSigns; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMars", function() { return faMars; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMarsDouble", function() { return faMarsDouble; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMarsStroke", function() { return faMarsStroke; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMarsStrokeH", function() { return faMarsStrokeH; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMarsStrokeV", function() { return faMarsStrokeV; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMedkit", function() { return faMedkit; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMeh", function() { return faMeh; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMercury", function() { return faMercury; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMicrochip", function() { return faMicrochip; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMicrophone", function() { return faMicrophone; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMicrophoneAlt", function() { return faMicrophoneAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMicrophoneSlash", function() { return faMicrophoneSlash; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMinus", function() { return faMinus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMinusCircle", function() { return faMinusCircle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMinusHexagon", function() { return faMinusHexagon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMinusOctagon", function() { return faMinusOctagon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMinusSquare", function() { return faMinusSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMobile", function() { return faMobile; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMobileAlt", function() { return faMobileAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMobileAndroid", function() { return faMobileAndroid; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMobileAndroidAlt", function() { return faMobileAndroidAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMoneyBill", function() { return faMoneyBill; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMoneyBillAlt", function() { return faMoneyBillAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMoon", function() { return faMoon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMotorcycle", function() { return faMotorcycle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMousePointer", function() { return faMousePointer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faMusic", function() { return faMusic; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faNeuter", function() { return faNeuter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faNewspaper", function() { return faNewspaper; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faObjectGroup", function() { return faObjectGroup; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faObjectUngroup", function() { return faObjectUngroup; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faOctagon", function() { return faOctagon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faOutdent", function() { return faOutdent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPaintBrush", function() { return faPaintBrush; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPaperPlane", function() { return faPaperPlane; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPaperclip", function() { return faPaperclip; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faParagraph", function() { return faParagraph; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPaste", function() { return faPaste; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPause", function() { return faPause; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPauseCircle", function() { return faPauseCircle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPaw", function() { return faPaw; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPen", function() { return faPen; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPenAlt", function() { return faPenAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPenSquare", function() { return faPenSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPencil", function() { return faPencil; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPencilAlt", function() { return faPencilAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPennant", function() { return faPennant; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPercent", function() { return faPercent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPhone", function() { return faPhone; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPhoneSlash", function() { return faPhoneSlash; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPhoneSquare", function() { return faPhoneSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPhoneVolume", function() { return faPhoneVolume; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPlane", function() { return faPlane; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPlaneAlt", function() { return faPlaneAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPlay", function() { return faPlay; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPlayCircle", function() { return faPlayCircle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPlug", function() { return faPlug; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPlus", function() { return faPlus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPlusCircle", function() { return faPlusCircle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPlusHexagon", function() { return faPlusHexagon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPlusOctagon", function() { return faPlusOctagon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPlusSquare", function() { return faPlusSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPodcast", function() { return faPodcast; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPoo", function() { return faPoo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPortrait", function() { return faPortrait; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPoundSign", function() { return faPoundSign; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPowerOff", function() { return faPowerOff; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPrint", function() { return faPrint; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faPuzzlePiece", function() { return faPuzzlePiece; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faQrcode", function() { return faQrcode; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faQuestion", function() { return faQuestion; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faQuestionCircle", function() { return faQuestionCircle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faQuestionSquare", function() { return faQuestionSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faQuidditch", function() { return faQuidditch; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faQuoteLeft", function() { return faQuoteLeft; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faQuoteRight", function() { return faQuoteRight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRacquet", function() { return faRacquet; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRandom", function() { return faRandom; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRectangleLandscape", function() { return faRectangleLandscape; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRectanglePortrait", function() { return faRectanglePortrait; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRectangleWide", function() { return faRectangleWide; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRecycle", function() { return faRecycle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRedo", function() { return faRedo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRedoAlt", function() { return faRedoAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRegistered", function() { return faRegistered; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRepeat", function() { return faRepeat; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRepeat1", function() { return faRepeat1; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRepeat1Alt", function() { return faRepeat1Alt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRepeatAlt", function() { return faRepeatAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faReply", function() { return faReply; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faReplyAll", function() { return faReplyAll; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRetweet", function() { return faRetweet; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRetweetAlt", function() { return faRetweetAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRoad", function() { return faRoad; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRocket", function() { return faRocket; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRss", function() { return faRss; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRssSquare", function() { return faRssSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRubleSign", function() { return faRubleSign; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faRupeeSign", function() { return faRupeeSign; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSave", function() { return faSave; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faScrubber", function() { return faScrubber; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSearch", function() { return faSearch; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSearchMinus", function() { return faSearchMinus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSearchPlus", function() { return faSearchPlus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faServer", function() { return faServer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faShare", function() { return faShare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faShareAll", function() { return faShareAll; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faShareAlt", function() { return faShareAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faShareAltSquare", function() { return faShareAltSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faShareSquare", function() { return faShareSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faShekelSign", function() { return faShekelSign; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faShield", function() { return faShield; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faShieldAlt", function() { return faShieldAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faShieldCheck", function() { return faShieldCheck; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faShip", function() { return faShip; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faShoppingBag", function() { return faShoppingBag; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faShoppingBasket", function() { return faShoppingBasket; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faShoppingCart", function() { return faShoppingCart; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faShower", function() { return faShower; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faShuttlecock", function() { return faShuttlecock; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSignIn", function() { return faSignIn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSignInAlt", function() { return faSignInAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSignLanguage", function() { return faSignLanguage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSignOut", function() { return faSignOut; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSignOutAlt", function() { return faSignOutAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSignal", function() { return faSignal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSitemap", function() { return faSitemap; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSlidersH", function() { return faSlidersH; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSlidersHSquare", function() { return faSlidersHSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSlidersV", function() { return faSlidersV; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSlidersVSquare", function() { return faSlidersVSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSmile", function() { return faSmile; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSnowflake", function() { return faSnowflake; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSort", function() { return faSort; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSortAlphaDown", function() { return faSortAlphaDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSortAlphaUp", function() { return faSortAlphaUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSortAmountDown", function() { return faSortAmountDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSortAmountUp", function() { return faSortAmountUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSortDown", function() { return faSortDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSortNumericDown", function() { return faSortNumericDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSortNumericUp", function() { return faSortNumericUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSortUp", function() { return faSortUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSpaceShuttle", function() { return faSpaceShuttle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSpade", function() { return faSpade; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSpinner", function() { return faSpinner; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSpinnerThird", function() { return faSpinnerThird; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSquare", function() { return faSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSquareFull", function() { return faSquareFull; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStar", function() { return faStar; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStarExclamation", function() { return faStarExclamation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStarHalf", function() { return faStarHalf; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStepBackward", function() { return faStepBackward; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStepForward", function() { return faStepForward; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStethoscope", function() { return faStethoscope; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStickyNote", function() { return faStickyNote; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStop", function() { return faStop; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStopCircle", function() { return faStopCircle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStopwatch", function() { return faStopwatch; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStreetView", function() { return faStreetView; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faStrikethrough", function() { return faStrikethrough; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSubscript", function() { return faSubscript; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSubway", function() { return faSubway; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSuitcase", function() { return faSuitcase; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSun", function() { return faSun; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSuperscript", function() { return faSuperscript; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSync", function() { return faSync; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faSyncAlt", function() { return faSyncAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTable", function() { return faTable; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTableTennis", function() { return faTableTennis; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTablet", function() { return faTablet; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTabletAlt", function() { return faTabletAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTabletAndroid", function() { return faTabletAndroid; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTabletAndroidAlt", function() { return faTabletAndroidAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTachometer", function() { return faTachometer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTachometerAlt", function() { return faTachometerAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTag", function() { return faTag; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTags", function() { return faTags; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTasks", function() { return faTasks; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTaxi", function() { return faTaxi; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTennisBall", function() { return faTennisBall; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTerminal", function() { return faTerminal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTextHeight", function() { return faTextHeight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTextWidth", function() { return faTextWidth; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTh", function() { return faTh; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faThLarge", function() { return faThLarge; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faThList", function() { return faThList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faThermometerEmpty", function() { return faThermometerEmpty; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faThermometerFull", function() { return faThermometerFull; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faThermometerHalf", function() { return faThermometerHalf; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faThermometerQuarter", function() { return faThermometerQuarter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faThermometerThreeQuarters", function() { return faThermometerThreeQuarters; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faThumbsDown", function() { return faThumbsDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faThumbsUp", function() { return faThumbsUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faThumbtack", function() { return faThumbtack; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTicket", function() { return faTicket; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTicketAlt", function() { return faTicketAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTimes", function() { return faTimes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTimesCircle", function() { return faTimesCircle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTimesHexagon", function() { return faTimesHexagon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTimesOctagon", function() { return faTimesOctagon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTimesSquare", function() { return faTimesSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTint", function() { return faTint; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faToggleOff", function() { return faToggleOff; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faToggleOn", function() { return faToggleOn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTrademark", function() { return faTrademark; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTrain", function() { return faTrain; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTransgender", function() { return faTransgender; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTransgenderAlt", function() { return faTransgenderAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTrash", function() { return faTrash; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTrashAlt", function() { return faTrashAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTree", function() { return faTree; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTreeAlt", function() { return faTreeAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTriangle", function() { return faTriangle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTrophy", function() { return faTrophy; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTrophyAlt", function() { return faTrophyAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTruck", function() { return faTruck; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTty", function() { return faTty; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTv", function() { return faTv; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faTvRetro", function() { return faTvRetro; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUmbrella", function() { return faUmbrella; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUnderline", function() { return faUnderline; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUndo", function() { return faUndo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUndoAlt", function() { return faUndoAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUniversalAccess", function() { return faUniversalAccess; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUniversity", function() { return faUniversity; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUnlink", function() { return faUnlink; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUnlock", function() { return faUnlock; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUnlockAlt", function() { return faUnlockAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUpload", function() { return faUpload; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUsdCircle", function() { return faUsdCircle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUsdSquare", function() { return faUsdSquare; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUser", function() { return faUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUserAlt", function() { return faUserAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUserCircle", function() { return faUserCircle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUserMd", function() { return faUserMd; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUserPlus", function() { return faUserPlus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUserSecret", function() { return faUserSecret; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUserTimes", function() { return faUserTimes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUsers", function() { return faUsers; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUtensilFork", function() { return faUtensilFork; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUtensilKnife", function() { return faUtensilKnife; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUtensilSpoon", function() { return faUtensilSpoon; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUtensils", function() { return faUtensils; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faUtensilsAlt", function() { return faUtensilsAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVenus", function() { return faVenus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVenusDouble", function() { return faVenusDouble; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVenusMars", function() { return faVenusMars; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVideo", function() { return faVideo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVolleyballBall", function() { return faVolleyballBall; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVolumeDown", function() { return faVolumeDown; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVolumeMute", function() { return faVolumeMute; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVolumeOff", function() { return faVolumeOff; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faVolumeUp", function() { return faVolumeUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWatch", function() { return faWatch; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWheelchair", function() { return faWheelchair; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWhistle", function() { return faWhistle; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWifi", function() { return faWifi; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWindow", function() { return faWindow; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWindowAlt", function() { return faWindowAlt; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWindowClose", function() { return faWindowClose; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWindowMaximize", function() { return faWindowMaximize; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWindowMinimize", function() { return faWindowMinimize; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWindowRestore", function() { return faWindowRestore; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWonSign", function() { return faWonSign; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faWrench", function() { return faWrench; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "faYenSign", function() { return faYenSign; });
+/* unused harmony export prefix */
+/* unused harmony export faAddressBook */
+/* unused harmony export faAddressCard */
+/* unused harmony export faAdjust */
+/* unused harmony export faAlarmClock */
+/* unused harmony export faAlignCenter */
+/* unused harmony export faAlignJustify */
+/* unused harmony export faAlignLeft */
+/* unused harmony export faAlignRight */
+/* unused harmony export faAmbulance */
+/* unused harmony export faAmericanSignLanguageInterpreting */
+/* unused harmony export faAnchor */
+/* unused harmony export faAngleDoubleDown */
+/* unused harmony export faAngleDoubleLeft */
+/* unused harmony export faAngleDoubleRight */
+/* unused harmony export faAngleDoubleUp */
+/* unused harmony export faAngleDown */
+/* unused harmony export faAngleLeft */
+/* unused harmony export faAngleRight */
+/* unused harmony export faAngleUp */
+/* unused harmony export faArchive */
+/* unused harmony export faArrowAltCircleDown */
+/* unused harmony export faArrowAltCircleLeft */
+/* unused harmony export faArrowAltCircleRight */
+/* unused harmony export faArrowAltCircleUp */
+/* unused harmony export faArrowAltDown */
+/* unused harmony export faArrowAltFromBottom */
+/* unused harmony export faArrowAltFromLeft */
+/* unused harmony export faArrowAltFromRight */
+/* unused harmony export faArrowAltFromTop */
+/* unused harmony export faArrowAltLeft */
+/* unused harmony export faArrowAltRight */
+/* unused harmony export faArrowAltSquareDown */
+/* unused harmony export faArrowAltSquareLeft */
+/* unused harmony export faArrowAltSquareRight */
+/* unused harmony export faArrowAltSquareUp */
+/* unused harmony export faArrowAltToBottom */
+/* unused harmony export faArrowAltToLeft */
+/* unused harmony export faArrowAltToRight */
+/* unused harmony export faArrowAltToTop */
+/* unused harmony export faArrowAltUp */
+/* unused harmony export faArrowCircleDown */
+/* unused harmony export faArrowCircleLeft */
+/* unused harmony export faArrowCircleRight */
+/* unused harmony export faArrowCircleUp */
+/* unused harmony export faArrowDown */
+/* unused harmony export faArrowFromBottom */
+/* unused harmony export faArrowFromLeft */
+/* unused harmony export faArrowFromRight */
+/* unused harmony export faArrowFromTop */
+/* unused harmony export faArrowLeft */
+/* unused harmony export faArrowRight */
+/* unused harmony export faArrowSquareDown */
+/* unused harmony export faArrowSquareLeft */
+/* unused harmony export faArrowSquareRight */
+/* unused harmony export faArrowSquareUp */
+/* unused harmony export faArrowToBottom */
+/* unused harmony export faArrowToLeft */
+/* unused harmony export faArrowToRight */
+/* unused harmony export faArrowToTop */
+/* unused harmony export faArrowUp */
+/* unused harmony export faArrows */
+/* unused harmony export faArrowsAlt */
+/* unused harmony export faArrowsAltH */
+/* unused harmony export faArrowsAltV */
+/* unused harmony export faArrowsH */
+/* unused harmony export faArrowsV */
+/* unused harmony export faAssistiveListeningSystems */
+/* unused harmony export faAsterisk */
+/* unused harmony export faAt */
+/* unused harmony export faAudioDescription */
+/* unused harmony export faBackward */
+/* unused harmony export faBadge */
+/* unused harmony export faBadgeCheck */
+/* unused harmony export faBalanceScale */
+/* unused harmony export faBan */
+/* unused harmony export faBarcode */
+/* unused harmony export faBars */
+/* unused harmony export faBaseball */
+/* unused harmony export faBaseballBall */
+/* unused harmony export faBasketballBall */
+/* unused harmony export faBasketballHoop */
+/* unused harmony export faBath */
+/* unused harmony export faBatteryBolt */
+/* unused harmony export faBatteryEmpty */
+/* unused harmony export faBatteryFull */
+/* unused harmony export faBatteryHalf */
+/* unused harmony export faBatteryQuarter */
+/* unused harmony export faBatterySlash */
+/* unused harmony export faBatteryThreeQuarters */
+/* unused harmony export faBed */
+/* unused harmony export faBeer */
+/* unused harmony export faBell */
+/* unused harmony export faBellSlash */
+/* unused harmony export faBicycle */
+/* unused harmony export faBinoculars */
+/* unused harmony export faBirthdayCake */
+/* unused harmony export faBlind */
+/* unused harmony export faBold */
+/* unused harmony export faBolt */
+/* unused harmony export faBomb */
+/* unused harmony export faBook */
+/* unused harmony export faBookmark */
+/* unused harmony export faBowlingBall */
+/* unused harmony export faBowlingPins */
+/* unused harmony export faBoxingGlove */
+/* unused harmony export faBraille */
+/* unused harmony export faBriefcase */
+/* unused harmony export faBrowser */
+/* unused harmony export faBug */
+/* unused harmony export faBuilding */
+/* unused harmony export faBullhorn */
+/* unused harmony export faBullseye */
+/* unused harmony export faBus */
+/* unused harmony export faCalculator */
+/* unused harmony export faCalendar */
+/* unused harmony export faCalendarAlt */
+/* unused harmony export faCalendarCheck */
+/* unused harmony export faCalendarEdit */
+/* unused harmony export faCalendarExclamation */
+/* unused harmony export faCalendarMinus */
+/* unused harmony export faCalendarPlus */
+/* unused harmony export faCalendarTimes */
+/* unused harmony export faCamera */
+/* unused harmony export faCameraAlt */
+/* unused harmony export faCameraRetro */
+/* unused harmony export faCar */
+/* unused harmony export faCaretCircleDown */
+/* unused harmony export faCaretCircleLeft */
+/* unused harmony export faCaretCircleRight */
+/* unused harmony export faCaretCircleUp */
+/* unused harmony export faCaretDown */
+/* unused harmony export faCaretLeft */
+/* unused harmony export faCaretRight */
+/* unused harmony export faCaretSquareDown */
+/* unused harmony export faCaretSquareLeft */
+/* unused harmony export faCaretSquareRight */
+/* unused harmony export faCaretSquareUp */
+/* unused harmony export faCaretUp */
+/* unused harmony export faCartArrowDown */
+/* unused harmony export faCartPlus */
+/* unused harmony export faCertificate */
+/* unused harmony export faChartArea */
+/* unused harmony export faChartBar */
+/* unused harmony export faChartLine */
+/* unused harmony export faChartPie */
+/* unused harmony export faCheck */
+/* unused harmony export faCheckCircle */
+/* unused harmony export faCheckSquare */
+/* unused harmony export faChess */
+/* unused harmony export faChessBishop */
+/* unused harmony export faChessBishopAlt */
+/* unused harmony export faChessBoard */
+/* unused harmony export faChessClock */
+/* unused harmony export faChessClockAlt */
+/* unused harmony export faChessKing */
+/* unused harmony export faChessKingAlt */
+/* unused harmony export faChessKnight */
+/* unused harmony export faChessKnightAlt */
+/* unused harmony export faChessPawn */
+/* unused harmony export faChessPawnAlt */
+/* unused harmony export faChessQueen */
+/* unused harmony export faChessQueenAlt */
+/* unused harmony export faChessRook */
+/* unused harmony export faChessRookAlt */
+/* unused harmony export faChevronCircleDown */
+/* unused harmony export faChevronCircleLeft */
+/* unused harmony export faChevronCircleRight */
+/* unused harmony export faChevronCircleUp */
+/* unused harmony export faChevronDoubleDown */
+/* unused harmony export faChevronDoubleLeft */
+/* unused harmony export faChevronDoubleRight */
+/* unused harmony export faChevronDoubleUp */
+/* unused harmony export faChevronDown */
+/* unused harmony export faChevronLeft */
+/* unused harmony export faChevronRight */
+/* unused harmony export faChevronSquareDown */
+/* unused harmony export faChevronSquareLeft */
+/* unused harmony export faChevronSquareRight */
+/* unused harmony export faChevronSquareUp */
+/* unused harmony export faChevronUp */
+/* unused harmony export faChild */
+/* unused harmony export faCircle */
+/* unused harmony export faCircleNotch */
+/* unused harmony export faClipboard */
+/* unused harmony export faClock */
+/* unused harmony export faClone */
+/* unused harmony export faClosedCaptioning */
+/* unused harmony export faCloud */
+/* unused harmony export faCloudDownload */
+/* unused harmony export faCloudDownloadAlt */
+/* unused harmony export faCloudUpload */
+/* unused harmony export faCloudUploadAlt */
+/* unused harmony export faClub */
+/* unused harmony export faCode */
+/* unused harmony export faCodeBranch */
+/* unused harmony export faCodeCommit */
+/* unused harmony export faCodeMerge */
+/* unused harmony export faCoffee */
+/* unused harmony export faCog */
+/* unused harmony export faCogs */
+/* unused harmony export faColumns */
+/* unused harmony export faComment */
+/* unused harmony export faCommentAlt */
+/* unused harmony export faComments */
+/* unused harmony export faCompass */
+/* unused harmony export faCompress */
+/* unused harmony export faCompressAlt */
+/* unused harmony export faCompressWide */
+/* unused harmony export faCopy */
+/* unused harmony export faCopyright */
+/* unused harmony export faCreditCard */
+/* unused harmony export faCreditCardBlank */
+/* unused harmony export faCreditCardFront */
+/* unused harmony export faCricket */
+/* unused harmony export faCrop */
+/* unused harmony export faCrosshairs */
+/* unused harmony export faCube */
+/* unused harmony export faCubes */
+/* unused harmony export faCurling */
+/* unused harmony export faCut */
+/* unused harmony export faDatabase */
+/* unused harmony export faDeaf */
+/* unused harmony export faDesktop */
+/* unused harmony export faDesktopAlt */
+/* unused harmony export faDiamond */
+/* unused harmony export faDollarSign */
+/* unused harmony export faDotCircle */
+/* unused harmony export faDownload */
+/* unused harmony export faDumbbell */
+/* unused harmony export faEdit */
+/* unused harmony export faEject */
+/* unused harmony export faEllipsisH */
+/* unused harmony export faEllipsisHAlt */
+/* unused harmony export faEllipsisV */
+/* unused harmony export faEllipsisVAlt */
+/* unused harmony export faEnvelope */
+/* unused harmony export faEnvelopeOpen */
+/* unused harmony export faEnvelopeSquare */
+/* unused harmony export faEraser */
+/* unused harmony export faEuroSign */
+/* unused harmony export faExchange */
+/* unused harmony export faExchangeAlt */
+/* unused harmony export faExclamation */
+/* unused harmony export faExclamationCircle */
+/* unused harmony export faExclamationSquare */
+/* unused harmony export faExclamationTriangle */
+/* unused harmony export faExpand */
+/* unused harmony export faExpandAlt */
+/* unused harmony export faExpandArrows */
+/* unused harmony export faExpandArrowsAlt */
+/* unused harmony export faExpandWide */
+/* unused harmony export faExternalLink */
+/* unused harmony export faExternalLinkAlt */
+/* unused harmony export faExternalLinkSquare */
+/* unused harmony export faExternalLinkSquareAlt */
+/* unused harmony export faEye */
+/* unused harmony export faEyeDropper */
+/* unused harmony export faEyeSlash */
+/* unused harmony export faFastBackward */
+/* unused harmony export faFastForward */
+/* unused harmony export faFax */
+/* unused harmony export faFemale */
+/* unused harmony export faFieldHockey */
+/* unused harmony export faFighterJet */
+/* unused harmony export faFile */
+/* unused harmony export faFileAlt */
+/* unused harmony export faFileArchive */
+/* unused harmony export faFileAudio */
+/* unused harmony export faFileCheck */
+/* unused harmony export faFileCode */
+/* unused harmony export faFileEdit */
+/* unused harmony export faFileExcel */
+/* unused harmony export faFileExclamation */
+/* unused harmony export faFileImage */
+/* unused harmony export faFileMinus */
+/* unused harmony export faFilePdf */
+/* unused harmony export faFilePlus */
+/* unused harmony export faFilePowerpoint */
+/* unused harmony export faFileTimes */
+/* unused harmony export faFileVideo */
+/* unused harmony export faFileWord */
+/* unused harmony export faFilm */
+/* unused harmony export faFilmAlt */
+/* unused harmony export faFilter */
+/* unused harmony export faFire */
+/* unused harmony export faFireExtinguisher */
+/* unused harmony export faFlag */
+/* unused harmony export faFlagCheckered */
+/* unused harmony export faFlask */
+/* unused harmony export faFolder */
+/* unused harmony export faFolderOpen */
+/* unused harmony export faFont */
+/* unused harmony export faFootballBall */
+/* unused harmony export faFootballHelmet */
+/* unused harmony export faForward */
+/* unused harmony export faFrown */
+/* unused harmony export faFutbol */
+/* unused harmony export faGamepad */
+/* unused harmony export faGavel */
+/* unused harmony export faGem */
+/* unused harmony export faGenderless */
+/* unused harmony export faGift */
+/* unused harmony export faGlassMartini */
+/* unused harmony export faGlobe */
+/* unused harmony export faGolfBall */
+/* unused harmony export faGolfClub */
+/* unused harmony export faGraduationCap */
+/* unused harmony export faHSquare */
+/* unused harmony export faH1 */
+/* unused harmony export faH2 */
+/* unused harmony export faH3 */
+/* unused harmony export faHandLizard */
+/* unused harmony export faHandPaper */
+/* unused harmony export faHandPeace */
+/* unused harmony export faHandPointDown */
+/* unused harmony export faHandPointLeft */
+/* unused harmony export faHandPointRight */
+/* unused harmony export faHandPointUp */
+/* unused harmony export faHandPointer */
+/* unused harmony export faHandRock */
+/* unused harmony export faHandScissors */
+/* unused harmony export faHandSpock */
+/* unused harmony export faHandshake */
+/* unused harmony export faHashtag */
+/* unused harmony export faHdd */
+/* unused harmony export faHeading */
+/* unused harmony export faHeadphones */
+/* unused harmony export faHeart */
+/* unused harmony export faHeartbeat */
+/* unused harmony export faHexagon */
+/* unused harmony export faHistory */
+/* unused harmony export faHockeyPuck */
+/* unused harmony export faHockeySticks */
+/* unused harmony export faHome */
+/* unused harmony export faHospital */
+/* unused harmony export faHourglass */
+/* unused harmony export faHourglassEnd */
+/* unused harmony export faHourglassHalf */
+/* unused harmony export faHourglassStart */
+/* unused harmony export faICursor */
+/* unused harmony export faIdBadge */
+/* unused harmony export faIdCard */
+/* unused harmony export faImage */
+/* unused harmony export faImages */
+/* unused harmony export faInbox */
+/* unused harmony export faInboxIn */
+/* unused harmony export faInboxOut */
+/* unused harmony export faIndent */
+/* unused harmony export faIndustry */
+/* unused harmony export faIndustryAlt */
+/* unused harmony export faInfo */
+/* unused harmony export faInfoCircle */
+/* unused harmony export faInfoSquare */
+/* unused harmony export faItalic */
+/* unused harmony export faJackOLantern */
+/* unused harmony export faKey */
+/* unused harmony export faKeyboard */
+/* unused harmony export faLanguage */
+/* unused harmony export faLaptop */
+/* unused harmony export faLeaf */
+/* unused harmony export faLemon */
+/* unused harmony export faLevelDown */
+/* unused harmony export faLevelDownAlt */
+/* unused harmony export faLevelUp */
+/* unused harmony export faLevelUpAlt */
+/* unused harmony export faLifeRing */
+/* unused harmony export faLightbulb */
+/* unused harmony export faLink */
+/* unused harmony export faLiraSign */
+/* unused harmony export faList */
+/* unused harmony export faListAlt */
+/* unused harmony export faListOl */
+/* unused harmony export faListUl */
+/* unused harmony export faLocationArrow */
+/* unused harmony export faLock */
+/* unused harmony export faLockAlt */
+/* unused harmony export faLockOpen */
+/* unused harmony export faLockOpenAlt */
+/* unused harmony export faLongArrowAltDown */
+/* unused harmony export faLongArrowAltLeft */
+/* unused harmony export faLongArrowAltRight */
+/* unused harmony export faLongArrowAltUp */
+/* unused harmony export faLongArrowDown */
+/* unused harmony export faLongArrowLeft */
+/* unused harmony export faLongArrowRight */
+/* unused harmony export faLongArrowUp */
+/* unused harmony export faLowVision */
+/* unused harmony export faLuchador */
+/* unused harmony export faMagic */
+/* unused harmony export faMagnet */
+/* unused harmony export faMale */
+/* unused harmony export faMap */
+/* unused harmony export faMapMarker */
+/* unused harmony export faMapMarkerAlt */
+/* unused harmony export faMapPin */
+/* unused harmony export faMapSigns */
+/* unused harmony export faMars */
+/* unused harmony export faMarsDouble */
+/* unused harmony export faMarsStroke */
+/* unused harmony export faMarsStrokeH */
+/* unused harmony export faMarsStrokeV */
+/* unused harmony export faMedkit */
+/* unused harmony export faMeh */
+/* unused harmony export faMercury */
+/* unused harmony export faMicrochip */
+/* unused harmony export faMicrophone */
+/* unused harmony export faMicrophoneAlt */
+/* unused harmony export faMicrophoneSlash */
+/* unused harmony export faMinus */
+/* unused harmony export faMinusCircle */
+/* unused harmony export faMinusHexagon */
+/* unused harmony export faMinusOctagon */
+/* unused harmony export faMinusSquare */
+/* unused harmony export faMobile */
+/* unused harmony export faMobileAlt */
+/* unused harmony export faMobileAndroid */
+/* unused harmony export faMobileAndroidAlt */
+/* unused harmony export faMoneyBill */
+/* unused harmony export faMoneyBillAlt */
+/* unused harmony export faMoon */
+/* unused harmony export faMotorcycle */
+/* unused harmony export faMousePointer */
+/* unused harmony export faMusic */
+/* unused harmony export faNeuter */
+/* unused harmony export faNewspaper */
+/* unused harmony export faObjectGroup */
+/* unused harmony export faObjectUngroup */
+/* unused harmony export faOctagon */
+/* unused harmony export faOutdent */
+/* unused harmony export faPaintBrush */
+/* unused harmony export faPaperPlane */
+/* unused harmony export faPaperclip */
+/* unused harmony export faParagraph */
+/* unused harmony export faPaste */
+/* unused harmony export faPause */
+/* unused harmony export faPauseCircle */
+/* unused harmony export faPaw */
+/* unused harmony export faPen */
+/* unused harmony export faPenAlt */
+/* unused harmony export faPenSquare */
+/* unused harmony export faPencil */
+/* unused harmony export faPencilAlt */
+/* unused harmony export faPennant */
+/* unused harmony export faPercent */
+/* unused harmony export faPhone */
+/* unused harmony export faPhoneSlash */
+/* unused harmony export faPhoneSquare */
+/* unused harmony export faPhoneVolume */
+/* unused harmony export faPlane */
+/* unused harmony export faPlaneAlt */
+/* unused harmony export faPlay */
+/* unused harmony export faPlayCircle */
+/* unused harmony export faPlug */
+/* unused harmony export faPlus */
+/* unused harmony export faPlusCircle */
+/* unused harmony export faPlusHexagon */
+/* unused harmony export faPlusOctagon */
+/* unused harmony export faPlusSquare */
+/* unused harmony export faPodcast */
+/* unused harmony export faPoo */
+/* unused harmony export faPortrait */
+/* unused harmony export faPoundSign */
+/* unused harmony export faPowerOff */
+/* unused harmony export faPrint */
+/* unused harmony export faPuzzlePiece */
+/* unused harmony export faQrcode */
+/* unused harmony export faQuestion */
+/* unused harmony export faQuestionCircle */
+/* unused harmony export faQuestionSquare */
+/* unused harmony export faQuidditch */
+/* unused harmony export faQuoteLeft */
+/* unused harmony export faQuoteRight */
+/* unused harmony export faRacquet */
+/* unused harmony export faRandom */
+/* unused harmony export faRectangleLandscape */
+/* unused harmony export faRectanglePortrait */
+/* unused harmony export faRectangleWide */
+/* unused harmony export faRecycle */
+/* unused harmony export faRedo */
+/* unused harmony export faRedoAlt */
+/* unused harmony export faRegistered */
+/* unused harmony export faRepeat */
+/* unused harmony export faRepeat1 */
+/* unused harmony export faRepeat1Alt */
+/* unused harmony export faRepeatAlt */
+/* unused harmony export faReply */
+/* unused harmony export faReplyAll */
+/* unused harmony export faRetweet */
+/* unused harmony export faRetweetAlt */
+/* unused harmony export faRoad */
+/* unused harmony export faRocket */
+/* unused harmony export faRss */
+/* unused harmony export faRssSquare */
+/* unused harmony export faRubleSign */
+/* unused harmony export faRupeeSign */
+/* unused harmony export faSave */
+/* unused harmony export faScrubber */
+/* unused harmony export faSearch */
+/* unused harmony export faSearchMinus */
+/* unused harmony export faSearchPlus */
+/* unused harmony export faServer */
+/* unused harmony export faShare */
+/* unused harmony export faShareAll */
+/* unused harmony export faShareAlt */
+/* unused harmony export faShareAltSquare */
+/* unused harmony export faShareSquare */
+/* unused harmony export faShekelSign */
+/* unused harmony export faShield */
+/* unused harmony export faShieldAlt */
+/* unused harmony export faShieldCheck */
+/* unused harmony export faShip */
+/* unused harmony export faShoppingBag */
+/* unused harmony export faShoppingBasket */
+/* unused harmony export faShoppingCart */
+/* unused harmony export faShower */
+/* unused harmony export faShuttlecock */
+/* unused harmony export faSignIn */
+/* unused harmony export faSignInAlt */
+/* unused harmony export faSignLanguage */
+/* unused harmony export faSignOut */
+/* unused harmony export faSignOutAlt */
+/* unused harmony export faSignal */
+/* unused harmony export faSitemap */
+/* unused harmony export faSlidersH */
+/* unused harmony export faSlidersHSquare */
+/* unused harmony export faSlidersV */
+/* unused harmony export faSlidersVSquare */
+/* unused harmony export faSmile */
+/* unused harmony export faSnowflake */
+/* unused harmony export faSort */
+/* unused harmony export faSortAlphaDown */
+/* unused harmony export faSortAlphaUp */
+/* unused harmony export faSortAmountDown */
+/* unused harmony export faSortAmountUp */
+/* unused harmony export faSortDown */
+/* unused harmony export faSortNumericDown */
+/* unused harmony export faSortNumericUp */
+/* unused harmony export faSortUp */
+/* unused harmony export faSpaceShuttle */
+/* unused harmony export faSpade */
+/* unused harmony export faSpinner */
+/* unused harmony export faSpinnerThird */
+/* unused harmony export faSquare */
+/* unused harmony export faSquareFull */
+/* unused harmony export faStar */
+/* unused harmony export faStarExclamation */
+/* unused harmony export faStarHalf */
+/* unused harmony export faStepBackward */
+/* unused harmony export faStepForward */
+/* unused harmony export faStethoscope */
+/* unused harmony export faStickyNote */
+/* unused harmony export faStop */
+/* unused harmony export faStopCircle */
+/* unused harmony export faStopwatch */
+/* unused harmony export faStreetView */
+/* unused harmony export faStrikethrough */
+/* unused harmony export faSubscript */
+/* unused harmony export faSubway */
+/* unused harmony export faSuitcase */
+/* unused harmony export faSun */
+/* unused harmony export faSuperscript */
+/* unused harmony export faSync */
+/* unused harmony export faSyncAlt */
+/* unused harmony export faTable */
+/* unused harmony export faTableTennis */
+/* unused harmony export faTablet */
+/* unused harmony export faTabletAlt */
+/* unused harmony export faTabletAndroid */
+/* unused harmony export faTabletAndroidAlt */
+/* unused harmony export faTachometer */
+/* unused harmony export faTachometerAlt */
+/* unused harmony export faTag */
+/* unused harmony export faTags */
+/* unused harmony export faTasks */
+/* unused harmony export faTaxi */
+/* unused harmony export faTennisBall */
+/* unused harmony export faTerminal */
+/* unused harmony export faTextHeight */
+/* unused harmony export faTextWidth */
+/* unused harmony export faTh */
+/* unused harmony export faThLarge */
+/* unused harmony export faThList */
+/* unused harmony export faThermometerEmpty */
+/* unused harmony export faThermometerFull */
+/* unused harmony export faThermometerHalf */
+/* unused harmony export faThermometerQuarter */
+/* unused harmony export faThermometerThreeQuarters */
+/* unused harmony export faThumbsDown */
+/* unused harmony export faThumbsUp */
+/* unused harmony export faThumbtack */
+/* unused harmony export faTicket */
+/* unused harmony export faTicketAlt */
+/* unused harmony export faTimes */
+/* unused harmony export faTimesCircle */
+/* unused harmony export faTimesHexagon */
+/* unused harmony export faTimesOctagon */
+/* unused harmony export faTimesSquare */
+/* unused harmony export faTint */
+/* unused harmony export faToggleOff */
+/* unused harmony export faToggleOn */
+/* unused harmony export faTrademark */
+/* unused harmony export faTrain */
+/* unused harmony export faTransgender */
+/* unused harmony export faTransgenderAlt */
+/* unused harmony export faTrash */
+/* unused harmony export faTrashAlt */
+/* unused harmony export faTree */
+/* unused harmony export faTreeAlt */
+/* unused harmony export faTriangle */
+/* unused harmony export faTrophy */
+/* unused harmony export faTrophyAlt */
+/* unused harmony export faTruck */
+/* unused harmony export faTty */
+/* unused harmony export faTv */
+/* unused harmony export faTvRetro */
+/* unused harmony export faUmbrella */
+/* unused harmony export faUnderline */
+/* unused harmony export faUndo */
+/* unused harmony export faUndoAlt */
+/* unused harmony export faUniversalAccess */
+/* unused harmony export faUniversity */
+/* unused harmony export faUnlink */
+/* unused harmony export faUnlock */
+/* unused harmony export faUnlockAlt */
+/* unused harmony export faUpload */
+/* unused harmony export faUsdCircle */
+/* unused harmony export faUsdSquare */
+/* unused harmony export faUser */
+/* unused harmony export faUserAlt */
+/* unused harmony export faUserCircle */
+/* unused harmony export faUserMd */
+/* unused harmony export faUserPlus */
+/* unused harmony export faUserSecret */
+/* unused harmony export faUserTimes */
+/* unused harmony export faUsers */
+/* unused harmony export faUtensilFork */
+/* unused harmony export faUtensilKnife */
+/* unused harmony export faUtensilSpoon */
+/* unused harmony export faUtensils */
+/* unused harmony export faUtensilsAlt */
+/* unused harmony export faVenus */
+/* unused harmony export faVenusDouble */
+/* unused harmony export faVenusMars */
+/* unused harmony export faVideo */
+/* unused harmony export faVolleyballBall */
+/* unused harmony export faVolumeDown */
+/* unused harmony export faVolumeMute */
+/* unused harmony export faVolumeOff */
+/* unused harmony export faVolumeUp */
+/* unused harmony export faWatch */
+/* unused harmony export faWheelchair */
+/* unused harmony export faWhistle */
+/* unused harmony export faWifi */
+/* unused harmony export faWindow */
+/* unused harmony export faWindowAlt */
+/* unused harmony export faWindowClose */
+/* unused harmony export faWindowMaximize */
+/* unused harmony export faWindowMinimize */
+/* unused harmony export faWindowRestore */
+/* unused harmony export faWonSign */
+/* unused harmony export faWrench */
+/* unused harmony export faYenSign */
 /*!
  * Font Awesome Pro 5.0.6 by @fontawesome - http://fontawesome.com
  * License - http://fontawesome.com/license (Commercial License)
@@ -1864,7 +1860,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var _WINDOW = {};
 try {
   if (typeof window !== 'undefined') _WINDOW = window;
-
+  
 } catch (e) {}
 
 var _ref = _WINDOW.navigator || {};
@@ -1942,14 +1938,12 @@ var _extends = Object.assign || function (target) {
 function define(prefix, icons) {
   var normalized = Object.keys(icons).reduce(function (acc, iconName) {
     var icon = icons[iconName];
-    if (icon) {
-      var expanded = !!icon.icon;
+    var expanded = !!icon.icon;
 
-      if (expanded) {
-        acc[icon.iconName] = icon.icon;
-      } else {
-        acc[iconName] = icon;
-      }
+    if (expanded) {
+      acc[icon.iconName] = icon.icon;
+    } else {
+      acc[iconName] = icon;
     }
     return acc;
   }, {});
@@ -3304,7 +3298,7 @@ bunker(function () {
 });
 
 
-/* harmony default export */ __webpack_exports__["default"] = (icons$1);
+/* harmony default export */ __webpack_exports__["a"] = (icons$1);
 
 
 /***/ }),
@@ -4011,23 +4005,19 @@ var build = function build() {
   };
 
   _byUnicode = lookup(function (acc, icon, iconName) {
-    if (icon) {
-      acc[icon[3]] = iconName;
-    }
+    acc[icon[3]] = iconName;
 
     return acc;
   });
 
   _byLigature = lookup(function (acc, icon, iconName) {
-    if (icon) {
-      var ligatures = icon[2];
+    var ligatures = icon[2];
 
-      acc[iconName] = iconName;
+    acc[iconName] = iconName;
 
-      ligatures.forEach(function (ligature) {
-        acc[ligature] = iconName;
-      });
-    }
+    ligatures.forEach(function (ligature) {
+      acc[ligature] = iconName;
+    });
 
     return acc;
   });
@@ -4747,14 +4737,12 @@ var css = function () {
 function define(prefix, icons) {
   var normalized = Object.keys(icons).reduce(function (acc, iconName) {
     var icon = icons[iconName];
-    if (icon) {
-      var expanded = !!icon.icon;
+    var expanded = !!icon.icon;
 
-      if (expanded) {
-        acc[icon.iconName] = icon.icon;
-      } else {
-        acc[iconName] = icon;
-      }
+    if (expanded) {
+      acc[icon.iconName] = icon.icon;
+    } else {
+      acc[iconName] = icon;
     }
     return acc;
   }, {});
@@ -7390,6 +7378,71 @@ module.exports = {
   trim: trim
 };
 
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Carousel.vue":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        images: {
+            type: Array,
+            required: true
+        }
+    },
+    data: function data() {
+        return {
+            owl: undefined
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        $(document).ready(function () {
+            _this.owl = $(".owl-carousel").owlCarousel({
+                animateIn: "fadeIn",
+                animateOut: "fadeOut",
+                autoplay: true,
+                autoplayHoverPause: true,
+                autoplaySpeed: 5000,
+                autoplayTimeout: 5000,
+                items: 1,
+                lazyLoad: true,
+                loop: true,
+                mouseDrag: false
+            });
+        });
+    },
+
+    methods: {
+        nextImage: function nextImage() {
+            this.owl.trigger("next.owl.carousel");
+        },
+        backgroundImageStyle: function backgroundImageStyle(path) {
+            return "background-image: url(\"" + path + "\");";
+        }
+    }
+});
 
 /***/ }),
 
@@ -11290,6 +11343,104 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 //# sourceMappingURL=bootstrap.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-50092a97\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Carousel.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.embed-responsive-item[data-v-50092a97] {\n    background-position: center;\n    background-repeat: no-repeat;\n    background-size: cover;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/lib/css-base.js":
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
 
 
 /***/ }),
@@ -41700,6 +41851,448 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/component-normalizer.js":
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-50092a97\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Carousel.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.images
+    ? _c(
+        "div",
+        { staticClass: "owl-carousel", on: { click: _vm.nextImage } },
+        _vm._l(_vm.images, function(path, index) {
+          return _c(
+            "div",
+            {
+              key: index,
+              staticClass: "embed-responsive embed-responsive-4by3"
+            },
+            [
+              _c("div", {
+                staticClass: "embed-responsive-item",
+                style: _vm.backgroundImageStyle(path),
+                attrs: { alt: index }
+              })
+            ]
+          )
+        })
+      )
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-50092a97", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-50092a97\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Carousel.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-50092a97\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Carousel.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("4829f78a", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-50092a97\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Carousel.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-50092a97\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Carousel.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/lib/addStylesClient.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+  Modified by Evan You @yyx990803
+*/
+
+var hasDocument = typeof document !== 'undefined'
+
+if (typeof DEBUG !== 'undefined' && DEBUG) {
+  if (!hasDocument) {
+    throw new Error(
+    'vue-style-loader cannot be used in a non-browser environment. ' +
+    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
+  ) }
+}
+
+var listToStyles = __webpack_require__("./node_modules/vue-style-loader/lib/listToStyles.js")
+
+/*
+type StyleObject = {
+  id: number;
+  parts: Array<StyleObjectPart>
+}
+
+type StyleObjectPart = {
+  css: string;
+  media: string;
+  sourceMap: ?string
+}
+*/
+
+var stylesInDom = {/*
+  [id: number]: {
+    id: number,
+    refs: number,
+    parts: Array<(obj?: StyleObjectPart) => void>
+  }
+*/}
+
+var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
+var singletonElement = null
+var singletonCounter = 0
+var isProduction = false
+var noop = function () {}
+var options = null
+var ssrIdKey = 'data-vue-ssr-id'
+
+// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+// tags it will allow on a page
+var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
+
+module.exports = function (parentId, list, _isProduction, _options) {
+  isProduction = _isProduction
+
+  options = _options || {}
+
+  var styles = listToStyles(parentId, list)
+  addStylesToDom(styles)
+
+  return function update (newList) {
+    var mayRemove = []
+    for (var i = 0; i < styles.length; i++) {
+      var item = styles[i]
+      var domStyle = stylesInDom[item.id]
+      domStyle.refs--
+      mayRemove.push(domStyle)
+    }
+    if (newList) {
+      styles = listToStyles(parentId, newList)
+      addStylesToDom(styles)
+    } else {
+      styles = []
+    }
+    for (var i = 0; i < mayRemove.length; i++) {
+      var domStyle = mayRemove[i]
+      if (domStyle.refs === 0) {
+        for (var j = 0; j < domStyle.parts.length; j++) {
+          domStyle.parts[j]()
+        }
+        delete stylesInDom[domStyle.id]
+      }
+    }
+  }
+}
+
+function addStylesToDom (styles /* Array<StyleObject> */) {
+  for (var i = 0; i < styles.length; i++) {
+    var item = styles[i]
+    var domStyle = stylesInDom[item.id]
+    if (domStyle) {
+      domStyle.refs++
+      for (var j = 0; j < domStyle.parts.length; j++) {
+        domStyle.parts[j](item.parts[j])
+      }
+      for (; j < item.parts.length; j++) {
+        domStyle.parts.push(addStyle(item.parts[j]))
+      }
+      if (domStyle.parts.length > item.parts.length) {
+        domStyle.parts.length = item.parts.length
+      }
+    } else {
+      var parts = []
+      for (var j = 0; j < item.parts.length; j++) {
+        parts.push(addStyle(item.parts[j]))
+      }
+      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
+    }
+  }
+}
+
+function createStyleElement () {
+  var styleElement = document.createElement('style')
+  styleElement.type = 'text/css'
+  head.appendChild(styleElement)
+  return styleElement
+}
+
+function addStyle (obj /* StyleObjectPart */) {
+  var update, remove
+  var styleElement = document.querySelector('style[' + ssrIdKey + '~="' + obj.id + '"]')
+
+  if (styleElement) {
+    if (isProduction) {
+      // has SSR styles and in production mode.
+      // simply do nothing.
+      return noop
+    } else {
+      // has SSR styles but in dev mode.
+      // for some reason Chrome can't handle source map in server-rendered
+      // style tags - source maps in <style> only works if the style tag is
+      // created and inserted dynamically. So we remove the server rendered
+      // styles and inject new ones.
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  if (isOldIE) {
+    // use singleton mode for IE9.
+    var styleIndex = singletonCounter++
+    styleElement = singletonElement || (singletonElement = createStyleElement())
+    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
+    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
+  } else {
+    // use multi-style-tag mode in all other cases
+    styleElement = createStyleElement()
+    update = applyToTag.bind(null, styleElement)
+    remove = function () {
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  update(obj)
+
+  return function updateStyle (newObj /* StyleObjectPart */) {
+    if (newObj) {
+      if (newObj.css === obj.css &&
+          newObj.media === obj.media &&
+          newObj.sourceMap === obj.sourceMap) {
+        return
+      }
+      update(obj = newObj)
+    } else {
+      remove()
+    }
+  }
+}
+
+var replaceText = (function () {
+  var textStore = []
+
+  return function (index, replacement) {
+    textStore[index] = replacement
+    return textStore.filter(Boolean).join('\n')
+  }
+})()
+
+function applyToSingletonTag (styleElement, index, remove, obj) {
+  var css = remove ? '' : obj.css
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = replaceText(index, css)
+  } else {
+    var cssNode = document.createTextNode(css)
+    var childNodes = styleElement.childNodes
+    if (childNodes[index]) styleElement.removeChild(childNodes[index])
+    if (childNodes.length) {
+      styleElement.insertBefore(cssNode, childNodes[index])
+    } else {
+      styleElement.appendChild(cssNode)
+    }
+  }
+}
+
+function applyToTag (styleElement, obj) {
+  var css = obj.css
+  var media = obj.media
+  var sourceMap = obj.sourceMap
+
+  if (media) {
+    styleElement.setAttribute('media', media)
+  }
+  if (options.ssrId) {
+    styleElement.setAttribute(ssrIdKey, obj.id)
+  }
+
+  if (sourceMap) {
+    // https://developer.chrome.com/devtools/docs/javascript-debugging
+    // this makes source maps inside style tags work properly in Chrome
+    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
+    // http://stackoverflow.com/a/26603875
+    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
+  }
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = css
+  } else {
+    while (styleElement.firstChild) {
+      styleElement.removeChild(styleElement.firstChild)
+    }
+    styleElement.appendChild(document.createTextNode(css))
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/lib/listToStyles.js":
+/***/ (function(module, exports) {
+
+/**
+ * Translates the list format produced by css-loader into something
+ * easier to manipulate.
+ */
+module.exports = function listToStyles (parentId, list) {
+  var styles = []
+  var newStyles = {}
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i]
+    var id = item[0]
+    var css = item[1]
+    var media = item[2]
+    var sourceMap = item[3]
+    var part = {
+      id: parentId + ':' + i,
+      css: css,
+      media: media,
+      sourceMap: sourceMap
+    }
+    if (!newStyles[id]) {
+      styles.push(newStyles[id] = { id: id, parts: [part] })
+    } else {
+      newStyles[id].parts.push(part)
+    }
+  }
+  return styles
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/vue/dist/vue.common.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -52591,13 +53184,7 @@ window.Vue = __webpack_require__("./node_modules/vue/dist/vue.common.js");
 
 __webpack_require__("./resources/assets/js/fontawesome.js");
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('carousel', __webpack_require__("./resources/assets/js/components/Carousel.vue"));
 
 var app = new Vue({
   el: '#app'
@@ -52666,27 +53253,93 @@ if (token) {
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/Carousel.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-50092a97\",\"scoped\":true,\"hasInlineConfig\":true}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Carousel.vue")
+}
+var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
+/* script */
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Carousel.vue")
+/* template */
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-50092a97\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/Carousel.vue")
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-50092a97"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Carousel.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-50092a97", Component.options)
+  } else {
+    hotAPI.reload("data-v-50092a97", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/fontawesome.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fortawesome_vue_fontawesome__ = __webpack_require__("./node_modules/@fortawesome/vue-fontawesome/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__fortawesome_vue_fontawesome__);
-var fontawesome = __webpack_require__("./node_modules/@fortawesome/fontawesome/index.es.js");
-// const FontAwesomeIcon = require('@fortawesome/vue-fontawesome');
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fortawesome_fontawesome__ = __webpack_require__("./node_modules/@fortawesome/fontawesome/index.es.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__ = __webpack_require__("./node_modules/@fortawesome/vue-fontawesome/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fortawesome_fontawesome_pro_light__ = __webpack_require__("./node_modules/@fortawesome/fontawesome-pro-light/index.es.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fortawesome_fontawesome_free_brands__ = __webpack_require__("./node_modules/@fortawesome/fontawesome-free-brands/index.es.js");
 
-var fontawesomeProLight = __webpack_require__("./node_modules/@fortawesome/fontawesome-pro-light/index.es.js");
-// const fontawesomeProRegular = require('@fortawesome/fontawesome-pro-regular');
-// const fontawesomeProSolid = require('@fortawesome/fontawesome-pro-solid');
-var fontawesomeFreeBrands = __webpack_require__("./node_modules/@fortawesome/fontawesome-free-brands/index.es.js");
 
-fontawesome.library.add(fontawesomeProLight);
+
+// import fontawesomeProRegular from "@fortawesome/fontawesome-pro-regular";
+// import fontawesomeProSolid from "@fortawesome/fontawesome-pro-solid";
+
+
+__WEBPACK_IMPORTED_MODULE_0__fortawesome_fontawesome__["default"].library.add(__WEBPACK_IMPORTED_MODULE_2__fortawesome_fontawesome_pro_light__["a" /* default */]);
 // fontawesome.library.add(fontawesomeProRegular);
 // fontawesome.library.add(fontawesomeProSolid);
-fontawesome.library.add(fontawesomeFreeBrands);
+__WEBPACK_IMPORTED_MODULE_0__fortawesome_fontawesome__["default"].library.add(__WEBPACK_IMPORTED_MODULE_3__fortawesome_fontawesome_free_brands__["a" /* default */]);
 
-Vue.component('font-awesome-icon', __WEBPACK_IMPORTED_MODULE_0__fortawesome_vue_fontawesome___default.a);
+// let fontawesome = require("@fortawesome/fontawesome");
+// import FontAwesomeIcon from "@fortawesome/vue-fontawesome";
+// let fontawesomeProLight = require("@fortawesome/fontawesome-pro-light");
+// // let fontawesomeProRegular = require("@fortawesome/fontawesome-pro-regular");
+// // let fontawesomeProSolid = require("@fortawesome/fontawesome-pro-solid");
+// let fontawesomeFreeBrands = require("@fortawesome/fontawesome-free-brands");
+
+// fontawesome.library.add(fontawesomeProLight);
+// // fontawesome.library.add(fontawesomeProRegular);
+// // fontawesome.library.add(fontawesomeProSolid);
+// fontawesome.library.add(fontawesomeFreeBrands);
+
+Vue.component("font-awesome-icon", __WEBPACK_IMPORTED_MODULE_1__fortawesome_vue_fontawesome___default.a);
 
 /***/ }),
 

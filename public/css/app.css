@@ -86,7 +86,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #6c757d;
   text-align: left;
   background-color: #fff;
 }
@@ -3602,7 +3602,7 @@ tbody.collapse.show {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
-  color: #212529;
+  color: #6c757d;
   text-align: left;
   list-style: none;
   background-color: #fff;
@@ -5703,7 +5703,7 @@ tbody.collapse.show {
 }
 
 .list-group-item-action:active {
-  color: #212529;
+  color: #6c757d;
   background-color: #e9ecef;
 }
 
@@ -6417,7 +6417,7 @@ button.close {
 
 .popover-body {
   padding: 0.5rem 0.75rem;
-  color: #212529;
+  color: #6c757d;
 }
 
 .carousel {
@@ -10005,11 +10005,33 @@ a.text-dark:focus {
 }
 
 @media (min-width: 992px) {
-  #app {
-    border-style: solid;
-    border-color: #f8f9fa;
-    border-width: 1rem 1rem 0 1rem;
+  body {
+    border: 1rem solid #e9ecef;
   }
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body #app {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+#bottom {
+  border-top: 1px solid #e9ecef;
+  line-height: 3rem;
+  font-size: .9375rem;
+  color: #ced4da;
 }
 
 #top {
@@ -10018,7 +10040,7 @@ a.text-dark:focus {
 
 #top .icon-link,
 #top .nav-link {
-  color: #adb5bd;
+  color: #c9cfd4;
 }
 
 #top .icon-link:hover,
@@ -10029,7 +10051,7 @@ a.text-dark:focus {
 }
 
 #top .navbar {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 @media (max-width: 991.98px) {
@@ -10052,9 +10074,39 @@ a.text-dark:focus {
 
 @media (min-width: 992px) {
   #top .navbar {
+    margin-top: 3rem;
     font-size: 0.9rem;
-    border-top: 1px solid #f8f9fa;
-    border-bottom: 2px solid #e9ecef;
+    border-top: 1px solid #e9ecef;
+    border-bottom: 2px solid #dee2e6;
+  }
+}
+
+body {
+  font-size: 16px;
+  font-size: .875rem;
+}
+
+@media (min-width: 576px) {
+  body {
+    font-size: .9375rem;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 1.0625rem;
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    font-size: 1.1875rem;
   }
 }
 
