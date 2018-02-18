@@ -10006,7 +10006,7 @@ a.text-dark:focus {
 
 @media (min-width: 992px) {
   body {
-    border: 1rem solid #e9ecef;
+    border: 1rem solid #f5f5f5;
   }
 }
 
@@ -10108,5 +10108,19 @@ body {
   body {
     font-size: 1.1875rem;
   }
+}
+
+[role=button] {
+  cursor: pointer;
+}
+
+::-moz-selection {
+  background: #804398;
+  color: #f8f9fa;
+}
+
+::selection {
+  background: #804398;
+  color: #f8f9fa;
 }
 

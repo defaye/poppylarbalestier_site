@@ -26,7 +26,7 @@
                         <div class="collapse navbar-collapse" id="headerNavigation">
                             <ul class="navbar-nav mx-auto">
                                 <li class="nav-item active">
-                                    <a href="#" class="nav-link text-uppercase">About</a>
+                                    <a href="/about" class="nav-link text-uppercase">About</a>
                                 </li>
                                 <li class="nav-item active">
                                     <a href="#" class="nav-link text-uppercase">Weddings</a>
@@ -58,7 +58,7 @@
                     </nav>
                 </div>
                 <div class="col-12 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
-                    <div class="text-center">
+                    <div role="button" class="text-center" onclick="window.open('/', '_self')">
                             <h1 class="text-uppercase">{{ config('app.name') }}</h1>
                             <div class="lead text-uppercase">***REMOVED***</div>
                     </div>

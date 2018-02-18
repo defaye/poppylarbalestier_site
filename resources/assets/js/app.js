@@ -11,6 +11,7 @@ window.Vue = require('vue');
 
 require('./fontawesome');
 
+Vue.component('responsive-image', require('./components/ResponsiveImage.vue'));
 Vue.component('carousel', require('./components/Carousel.vue'));
 
 const app = new Vue({

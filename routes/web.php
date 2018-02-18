@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome', compact('images'));
 });
 
+Route::get('about', function () {
+    return view('about');
+});
+
 Route::get('carousel', function () {
     $images = array_map(function ($file) {
         return Storage::url($file);
