@@ -14,11 +14,11 @@
                 required: true
             },
             ratioX: {
-                type: Number,
+                type: String|Number,
                 required: true
             },
             ratioY: {
-                type: Number,
+                type: String|Number,
                 required: true
             },
             src: {

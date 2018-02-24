@@ -407,7 +407,7 @@
 var _WINDOW = {};
 try {
   if (typeof window !== 'undefined') _WINDOW = window;
-
+  
 } catch (e) {}
 
 var _ref = _WINDOW.navigator || {};
@@ -7391,6 +7391,70 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -7399,18 +7463,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         images: {
             type: Array,
             required: true
-        }
+        },
+        ratioX: {
+            type: String | Number,
+            required: true
+        },
+        ratioY: {
+            type: String | Number,
+            required: true
+        },
+        paginator: Boolean
     },
     data: function data() {
         return {
-            owl: undefined
+            main: undefined,
+            mainId: undefined,
+            secondary: undefined,
+            secondaryId: undefined
         };
     },
     mounted: function mounted() {
         var _this = this;
 
+        this.mainId = btoa(Math.random()).substring(0, 12);
+        this.secondaryId = btoa(Math.random()).substring(0, 12);
+
         $(document).ready(function () {
-            _this.owl = $(".owl-carousel").owlCarousel({
+            if (_this.paginator) {
+                _this.secondary = $("#" + _this.secondaryId).owlCarousel({
+                    center: true,
+                    autoplay: false,
+                    responsiveClass: true,
+                    responsive: {
+                        0: {
+                            items: 0
+                        },
+                        600: {
+                            items: 3
+                        },
+                        1000: {
+                            items: 5
+                        }
+                    },
+                    margin: 1,
+                    lazyLoad: true,
+                    loop: true,
+                    mouseDrag: false
+                });
+            }
+
+            _this.main = $("#" + _this.mainId).owlCarousel({
                 animateIn: "fadeIn",
                 animateOut: "fadeOut",
                 autoplay: true,
@@ -7422,12 +7524,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 loop: true,
                 mouseDrag: false
             });
+
+            if (_this.paginator) {
+                _this.main.on("changed.owl.carousel", function (event) {
+                    _this.secondary.trigger("to.owl.carousel", event.page.index, 3000);
+                    _this.attachNavigationEvents();
+                });
+                _this.attachNavigationEvents();
+            }
+
+            $("#" + _this.mainId).on("click", function () {
+                _this.main.trigger("next.owl.carousel");
+            });
         });
     },
 
     methods: {
-        nextImage: function nextImage() {
-            this.owl.trigger("next.owl.carousel");
+        attachNavigationEvents: function attachNavigationEvents() {
+            var t = this;
+            $("#" + this.secondaryId + " .owl-item").one("click", function () {
+                t.main.trigger("to.owl.carousel", this.childNodes[0].dataset.index, 3000);
+            });
         }
     }
 });
@@ -7456,11 +7573,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             required: true
         },
         ratioX: {
-            type: Number,
+            type: String | Number,
             required: true
         },
         ratioY: {
-            type: Number,
+            type: String | Number,
             required: true
         },
         src: {
@@ -11389,6 +11506,21 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 //# sourceMappingURL=bootstrap.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-50092a97\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/sass-loader/lib/loader.js!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Carousel.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.paginator-carousel .owl-item.active:not(.center) .embed-responsive .embed-responsive-item::after {\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  opacity: 0;\n  background: none;\n}\n.paginator-carousel .owl-item.active.center .embed-responsive .embed-responsive-item::after {\n  -webkit-transition: background .25s ease-in-out, opacity .2s ease-in-out;\n  transition: background .25s ease-in-out, opacity .2s ease-in-out;\n  content: \"\";\n  display: block;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  opacity: 1;\n  background: linear-gradient(135deg, white 0%, rgba(255, 255, 255, 0) 75%);\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 );\n}\n.paginator-carousel .owl-stage-outer {\n  padding-top: 1rem;\n}\n.paginator-carousel .owl-stage-outer::before, .paginator-carousel .owl-stage-outer::after {\n    content: \"\";\n    display: block;\n    position: absolute;\n    text-decoration: none;\n    top: 0;\n    bottom: 0;\n    width: .8rem;\n    height: auto;\n    z-index: 10;\n    pointer-events: none;\n    background-repeat: no-repeat;\n    background-size: 1px 100%, .5rem 100%;\n}\n.paginator-carousel .owl-stage-outer::before {\n    left: 0;\n    background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(25%, rgba(0, 0, 0, 0.2)), color-stop(75%, rgba(0, 0, 0, 0.3)), to(transparent)), radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.4), transparent);\n    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.2) 25%, rgba(0, 0, 0, 0.3) 75%, transparent), radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.4), transparent);\n    background-position: 0 0, 0 0;\n}\n.paginator-carousel .owl-stage-outer::after {\n    right: 0;\n    background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(25%, rgba(0, 0, 0, 0.2)), color-stop(75%, rgba(0, 0, 0, 0.3)), to(transparent)), radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.4), transparent);\n    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.2) 25%, rgba(0, 0, 0, 0.3) 75%, transparent), radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.4), transparent);\n    background-position: 100% 0, 100% 0;\n}\n", ""]);
+
+// exports
 
 
 /***/ }),
@@ -42015,20 +42147,49 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.images
-    ? _c(
-        "div",
-        {
-          staticClass: "owl-carousel",
-          attrs: { role: "button" },
-          on: { click: _vm.nextImage }
-        },
-        _vm._l(_vm.images, function(path, index) {
-          return _c("responsive-image", {
-            key: index,
-            attrs: { src: path, alt: index, "ratio-x": 4, "ratio-y": 3 }
+    ? _c("div", [
+        _c(
+          "div",
+          {
+            staticClass: "owl-carousel",
+            attrs: { id: _vm.mainId, role: "button" }
+          },
+          _vm._l(_vm.images, function(path, index) {
+            return _c("responsive-image", {
+              key: path,
+              attrs: {
+                src: path,
+                alt: index,
+                "ratio-x": _vm.ratioX,
+                "ratio-y": _vm.ratioY,
+                "data-index": index
+              }
+            })
           })
-        })
-      )
+        ),
+        _vm._v(" "),
+        _vm.paginator
+          ? _c(
+              "div",
+              {
+                staticClass: "owl-carousel mt-5 paginator-carousel",
+                attrs: { id: _vm.secondaryId, role: "button" }
+              },
+              _vm._l(_vm.images, function(path, index) {
+                return _c("responsive-image", {
+                  key: path,
+                  attrs: {
+                    src: path,
+                    alt: index,
+                    "ratio-x": _vm.ratioX,
+                    "ratio-y": _vm.ratioY,
+                    "data-index": index
+                  }
+                })
+              })
+            )
+          : _vm._e()
+      ])
     : _vm._e()
 }
 var staticRenderFns = []
@@ -42039,6 +42200,33 @@ if (false) {
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-50092a97", module.exports)
   }
+}
+
+/***/ }),
+
+/***/ "./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-50092a97\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/sass-loader/lib/loader.js!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Carousel.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-50092a97\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/sass-loader/lib/loader.js!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Carousel.vue");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__("./node_modules/vue-style-loader/lib/addStylesClient.js")("39a9806f", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-50092a97\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Carousel.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-50092a97\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Carousel.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
 }
 
 /***/ }),
@@ -53298,6 +53486,10 @@ if (token) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__("./node_modules/vue-style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-50092a97\",\"scoped\":false,\"hasInlineConfig\":true}!./node_modules/sass-loader/lib/loader.js!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/Carousel.vue")
+}
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
 var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/Carousel.vue")
@@ -53306,7 +53498,7 @@ var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/templa
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */

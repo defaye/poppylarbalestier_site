@@ -25,6 +25,7 @@
         "@fortawesome/fontawesome-pro-light": "^5.0.6",
         "@fortawesome/fontawesome-pro-regular": "^5.0.6",
         "@fortawesome/fontawesome-pro-solid": "^5.0.6",
-        "@fortawesome/vue-fontawesome": "^0.0.22"
+        "@fortawesome/vue-fontawesome": "^0.0.22",
+        "sass-loader": "^6.0.6"
     }
 }
