@@ -39154,10 +39154,11 @@ var render = function() {
                       alt: index,
                       "data-index": index,
                       "ratio-x": _vm.calculateRatioX,
-                      "ratio-y": _vm.isFullscreen
-                        ? _vm.calculateRatioY -
-                          _vm.calculateRatioY / _vm.paginatorItemCount
-                        : _vm.calculateRatioY,
+                      "ratio-y":
+                        _vm.isFullscreen && _vm.showPagination
+                          ? _vm.calculateRatioY -
+                            _vm.calculateRatioY / _vm.paginatorItemCount
+                          : _vm.calculateRatioY,
                       src: path
                     }
                   })

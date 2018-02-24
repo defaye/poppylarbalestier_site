@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <carousel :images="{{ json_encode($images) }}" :ratio-x="826" :ratio-y="551" :show-pagination="true"></carousel>
+        <carousel :images="{{ json_encode($images) }}" :ratio-x="826" :ratio-y="551"></carousel>
     </div>
     <div class="container my-4">
         <p>***REMOVED*** preserves the most precious memories of our lives forever, whether it's our wedding days, engagements, or all those special times with our families.</p>

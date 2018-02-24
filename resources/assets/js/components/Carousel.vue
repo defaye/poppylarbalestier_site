@@ -9,7 +9,7 @@
                                  :data-index="index"
                                  :key="path"
                                  :ratio-x="calculateRatioX"
-                                 :ratio-y="isFullscreen ? calculateRatioY - (calculateRatioY / paginatorItemCount) : calculateRatioY"
+                                 :ratio-y="isFullscreen && showPagination ? calculateRatioY - (calculateRatioY / paginatorItemCount) : calculateRatioY"
                                  :src="path"
                 >
                 </responsive-image>
