@@ -1,74 +1,36 @@
-<style lang="scss">
-    .paginator-carousel {
-        .owl-item.active:not(.center) .embed-responsive .embed-responsive-item::after {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            background: none;
-        }
-        .owl-item.active.center .embed-responsive .embed-responsive-item::after {
-            -webkit-transition: background .25s ease-in-out, opacity .2s ease-in-out;
-            transition: background .25s ease-in-out, opacity .2s ease-in-out;
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 1;
-            background: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 75%);
-            background: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 75%);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 75%);
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 );
-        }
-        .owl-stage-outer {
-            padding-top: 1rem;
-            &::before,
-            &::after {
-                content: "";
-                display: block;
-                position: absolute;
-                text-decoration: none;
-                top: 0;
-                bottom: 0;
-                width: .8rem;
-                height: auto;
-                z-index: 10;
-                pointer-events: none;
-                background-repeat: no-repeat;
-                background-size: 1px 100%, .5rem 100%;
-            }
-            &::before {
-                left: 0;
-                background-image: linear-gradient(transparent, rgba(0, 0, 0, .2) 25%, rgba(0, 0, 0, .3) 75%, transparent), radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, .4), transparent);
-                background-position: 0 0, 0 0;
-            }
-            &::after {
-                right: 0;
-                background-image: linear-gradient(transparent, rgba(0, 0, 0, .2) 25%, rgba(0, 0, 0, .3) 75%, transparent), radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, .4), transparent);
-                background-position: 100% 0, 100% 0;
-            }
-        }
-    }
-</style>
 <template>
-    <div v-if="images">
-        <div :id="mainId" class="owl-carousel" role="button">
-            <responsive-image v-for="(path, index) in images" :key="path" :src="path" :alt="index" :ratio-x="ratioX" :ratio-y="ratioY" :data-index="index"></responsive-image>
+    <div v-if="images" @keyup.escape="exitFullscreen" :id="componentID" :class="{ 'carousel-fullscreen': isFullscreen }" class="carousel">
+        <div class="carousel-primary">
+            <font-awesome-icon v-if="isFullscreen" class="arrows-icon" :icon="['far', 'compress-alt']" @click="exitFullscreen"></font-awesome-icon>
+            <font-awesome-icon v-else class="arrows-icon" :icon="['far', 'expand-alt']" @click="activateFullscreen(`#${componentID}`)"></font-awesome-icon>
+            <div :id="owlID" class="owl-carousel" role="button">
+                <responsive-image v-for="(path, index) in images"
+                                 :alt="index"
+                                 :data-index="index"
+                                 :key="path"
+                                 :ratio-x="calculateRatioX"
+                                 :ratio-y="isFullscreen ? calculateRatioY - (calculateRatioY / paginatorItemCount) : calculateRatioY"
+                                 :src="path"
+                >
+                </responsive-image>
+            </div>
         </div>
-        <div :id="secondaryId" class="owl-carousel mt-5 paginator-carousel" role="button" v-if="paginator">
-            <responsive-image v-for="(path, index) in images" :key="path" :src="path" :alt="index" :ratio-x="ratioX" :ratio-y="ratioY" :data-index="index"></responsive-image>
+        <div :id="paginatorOwlID" class="owl-carousel mt-5 carousel-paginator" role="button" v-if="showPagination">
+            <responsive-image v-for="(path, index) in images"
+                             :key="path"
+                             :src="path"
+                             :alt="index"
+                             :ratio-x="calculateRatioX"
+                             :ratio-y="calculateRatioY"
+                             :data-index="index"
+            >
+            </responsive-image>
         </div>
     </div>
 </template>
 <script>
     "use strict";
+    import * as screenfull from "screenfull";
     export default {
         props: {
             images: {
@@ -83,23 +45,39 @@
                 type: String|Number,
                 required: true
             },
-            paginator: Boolean
+            showPagination: Boolean
         },
         data() {
             return {
-                main: undefined,
-                mainId: undefined,
-                secondary: undefined,
-                secondaryId: undefined
+                owl: undefined,
+                owlID: undefined,
+                componentID: undefined,
+                paginatorOwlID: undefined,
+                paginatorCarousel: undefined,
+                isFullscreen: false,
+                paginatorItemCount: 0
             };
         },
+        computed: {
+            calculateRatioX() {
+                return this.isFullscreen ? window.outerWidth : this.ratioX;
+            },
+            calculateRatioY() {
+                return this.isFullscreen ? window.outerHeight : this.ratioY;
+            }
+        },
         mounted() {
-            this.mainId = btoa(Math.random()).substring(0, 12);
-            this.secondaryId = btoa(Math.random()).substring(0, 12);
+            screenfull.on("change", () => {
+                this.isFullscreen = screenfull.isFullscreen;
+            });
+
+            this.componentID = btoa(Math.random()).substring(0, 12);
+            this.owlID = btoa(Math.random()).substring(0, 12);
+            this.paginatorOwlID = btoa(Math.random()).substring(0, 12);
 
             $(document).ready(() => {
-                if (this.paginator) {
-                    this.secondary = $(`#${this.secondaryId}`).owlCarousel({
+                if (this.showPagination) {
+                    this.paginatorCarousel = $(`#${this.paginatorOwlID}`).owlCarousel({
                         center: true,
                         autoplay: false,
                         responsiveClass: true,
@@ -107,21 +85,33 @@
                             0: {
                                 items: 0
                             },
-                            600: {
+                            768: {
                                 items: 3
                             },
-                            1000: {
+                            992: {
                                 items: 5
+                            },
+                            1200: {
+                                items: 7
+                            },
+                            1600: {
+                                items: 9
+                            },
+                            1920: {
+                                items: 11
+                            },
+                            2560: {
+                                items: 15
                             }
                         },
-                        margin: 1,
+                        margin: 5,
                         lazyLoad: true,
                         loop: true,
                         mouseDrag: false,
                     });
                 }
 
-                this.main = $(`#${this.mainId}`).owlCarousel({
+                this.owl = $(`#${this.owlID}`).owlCarousel({
                     animateIn: "fadeIn",
                     animateOut: "fadeOut",
                     autoplay: true,
@@ -134,24 +124,38 @@
                     mouseDrag: false,
                 });
 
-                if (this.paginator) {
-                    this.main.on("changed.owl.carousel", event => {
-                        this.secondary.trigger("to.owl.carousel", event.page.index, 3000);
+                if (this.showPagination) {
+                    this.owl.on("changed.owl.carousel", event => {
+                        this.paginatorCarousel.trigger("to.owl.carousel", event.page.index, 3000);
                         this.attachNavigationEvents();
                     });
+                    this.owl.on("resize.owl.carousel", event => {
+                        this.paginatorItemCount = this.$el.querySelectorAll(".carousel-paginator .owl-item.active").length;
+                    });
                     this.attachNavigationEvents();
+                    this.owl.on("initialized.owl.carousel", event => {
+                        this.paginatorItemCount = this.$el.querySelectorAll(".carousel-paginator .owl-item.active").length;
+                    });
                 }
 
-                $(`#${this.mainId}`).on("click", () => {
-                    this.main.trigger("next.owl.carousel");
+                $(`#${this.owlID}`).on("click", () => {
+                    this.owl.trigger("next.owl.carousel");
                 });
             });
         },
         methods: {
+            activateFullscreen(selector) {
+                screenfull.request(
+                    selector ? document.querySelector(selector) : document.documentElement
+                );
+            },
+            exitFullscreen() {
+                screenfull.exit();
+            },
             attachNavigationEvents() {
                 let t = this;
-                $(`#${this.secondaryId} .owl-item`).one("click", function () {
-                    t.main.trigger("to.owl.carousel", this.childNodes[0].dataset.index, 3000);
+                $(`#${this.paginatorOwlID} .owl-item`).one("click", function () {
+                    t.owl.trigger("to.owl.carousel", this.childNodes[0].dataset.index, 3000);
                 });
             }
         }

@@ -39,6 +39,8 @@
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/print";
 
+@import "components/Carousel";
+
 body {
     // border: .25rem solid $gray-200;
 
@@ -54,7 +56,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    #app {
+    #content {
         flex: 1;
     }
 }
