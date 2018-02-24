@@ -15,7 +15,7 @@
                 </responsive-image>
             </div>
         </div>
-        <div :id="paginatorOwlID" class="owl-carousel mt-5 carousel-paginator" role="button" v-if="showPagination">
+        <div :id="paginatorOwlID" class="owl-carousel mt-5 carousel-paginator d-none d-md-block" role="button" v-if="showPagination">
             <responsive-image v-for="(path, index) in images"
                              :key="path"
                              :src="path"
