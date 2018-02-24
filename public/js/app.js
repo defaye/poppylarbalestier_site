@@ -39171,7 +39171,8 @@ var render = function() {
             ? _c(
                 "div",
                 {
-                  staticClass: "owl-carousel mt-5 carousel-paginator",
+                  staticClass:
+                    "owl-carousel mt-5 carousel-paginator d-none d-md-block",
                   attrs: { id: _vm.paginatorOwlID, role: "button" }
                 },
                 _vm._l(_vm.images, function(path, index) {

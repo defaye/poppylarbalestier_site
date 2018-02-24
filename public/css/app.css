@@ -10189,14 +10189,104 @@ body {
   font-size: .875rem;
 }
 
+body h1,
+body .h1 {
+  font-size: 2.1875rem;
+}
+
+body h2,
+body .h2 {
+  font-size: 1.75rem;
+}
+
+body h3,
+body .h3 {
+  font-size: 1.53125rem;
+}
+
+body h4,
+body .h4 {
+  font-size: 1.3125rem;
+}
+
+body h5,
+body .h5 {
+  font-size: 1.09375rem;
+}
+
+body h6,
+body .h6 {
+  font-size: 0.875rem;
+}
+
 @media (min-width: 576px) {
   body {
     font-size: .9375rem;
+  }
+
+  body h1,
+  body .h1 {
+    font-size: 2.34375rem;
+  }
+
+  body h2,
+  body .h2 {
+    font-size: 1.875rem;
+  }
+
+  body h3,
+  body .h3 {
+    font-size: 1.640625rem;
+  }
+
+  body h4,
+  body .h4 {
+    font-size: 1.40625rem;
+  }
+
+  body h5,
+  body .h5 {
+    font-size: 1.171875rem;
+  }
+
+  body h6,
+  body .h6 {
+    font-size: 0.9375rem;
   }
 }
 
 @media (min-width: 768px) {
   body {
+    font-size: 1.0625rem;
+  }
+
+  body h1,
+  body .h1 {
+    font-size: 2.65625rem;
+  }
+
+  body h2,
+  body .h2 {
+    font-size: 2.125rem;
+  }
+
+  body h3,
+  body .h3 {
+    font-size: 1.859375rem;
+  }
+
+  body h4,
+  body .h4 {
+    font-size: 1.59375rem;
+  }
+
+  body h5,
+  body .h5 {
+    font-size: 1.328125rem;
+  }
+
+  body h6,
+  body .h6 {
     font-size: 1.0625rem;
   }
 }
@@ -10205,10 +10295,70 @@ body {
   body {
     font-size: 1.125rem;
   }
+
+  body h1,
+  body .h1 {
+    font-size: 2.8125rem;
+  }
+
+  body h2,
+  body .h2 {
+    font-size: 2.25rem;
+  }
+
+  body h3,
+  body .h3 {
+    font-size: 1.96875rem;
+  }
+
+  body h4,
+  body .h4 {
+    font-size: 1.6875rem;
+  }
+
+  body h5,
+  body .h5 {
+    font-size: 1.40625rem;
+  }
+
+  body h6,
+  body .h6 {
+    font-size: 1.125rem;
+  }
 }
 
 @media (min-width: 1200px) {
   body {
+    font-size: 1.1875rem;
+  }
+
+  body h1,
+  body .h1 {
+    font-size: 2.96875rem;
+  }
+
+  body h2,
+  body .h2 {
+    font-size: 2.375rem;
+  }
+
+  body h3,
+  body .h3 {
+    font-size: 2.078125rem;
+  }
+
+  body h4,
+  body .h4 {
+    font-size: 1.78125rem;
+  }
+
+  body h5,
+  body .h5 {
+    font-size: 1.484375rem;
+  }
+
+  body h6,
+  body .h6 {
     font-size: 1.1875rem;
   }
 }

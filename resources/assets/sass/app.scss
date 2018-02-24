@@ -105,18 +105,48 @@ body {
     font-size: 16px;
     @include media-breakpoint-up(xs) {
         font-size: .875rem;
+        h1, .h1 { font-size: $h1-font-size * 0.875; }
+        h2, .h2 { font-size: $h2-font-size * 0.875; }
+        h3, .h3 { font-size: $h3-font-size * 0.875; }
+        h4, .h4 { font-size: $h4-font-size * 0.875; }
+        h5, .h5 { font-size: $h5-font-size * 0.875; }
+        h6, .h6 { font-size: $h6-font-size * 0.875; }
     }
     @include media-breakpoint-up(sm) {
         font-size: .9375rem;
+        h1, .h1 { font-size: $h1-font-size * 0.9375; }
+        h2, .h2 { font-size: $h2-font-size * 0.9375; }
+        h3, .h3 { font-size: $h3-font-size * 0.9375; }
+        h4, .h4 { font-size: $h4-font-size * 0.9375; }
+        h5, .h5 { font-size: $h5-font-size * 0.9375; }
+        h6, .h6 { font-size: $h6-font-size * 0.9375; }
     }
     @include media-breakpoint-up(md) {
         font-size: 1.0625rem;
+        h1, .h1 { font-size: $h1-font-size * 1.0625; }
+        h2, .h2 { font-size: $h2-font-size * 1.0625; }
+        h3, .h3 { font-size: $h3-font-size * 1.0625; }
+        h4, .h4 { font-size: $h4-font-size * 1.0625; }
+        h5, .h5 { font-size: $h5-font-size * 1.0625; }
+        h6, .h6 { font-size: $h6-font-size * 1.0625; }
     }
     @include media-breakpoint-up(lg) {
         font-size: 1.125rem;
+        h1, .h1 { font-size: $h1-font-size * 1.125; }
+        h2, .h2 { font-size: $h2-font-size * 1.125; }
+        h3, .h3 { font-size: $h3-font-size * 1.125; }
+        h4, .h4 { font-size: $h4-font-size * 1.125; }
+        h5, .h5 { font-size: $h5-font-size * 1.125; }
+        h6, .h6 { font-size: $h6-font-size * 1.125; }
     }
     @include media-breakpoint-up(xl) {
         font-size: 1.1875rem;
+        h1, .h1 { font-size: $h1-font-size * 1.1875; }
+        h2, .h2 { font-size: $h2-font-size * 1.1875; }
+        h3, .h3 { font-size: $h3-font-size * 1.1875; }
+        h4, .h4 { font-size: $h4-font-size * 1.1875; }
+        h5, .h5 { font-size: $h5-font-size * 1.1875; }
+        h6, .h6 { font-size: $h6-font-size * 1.1875; }
     }
 }
 
