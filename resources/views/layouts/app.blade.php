@@ -84,7 +84,7 @@
                             <div class="text-center text-sm-left">&copy; ***REMOVED*** {{ date('Y') }}</div>
                         </div>
                         <div class="col-12 col-sm-6">
-                            <div class="text-center text-sm-right">Site by J. de Faye Feist</div>
+                            <div class="text-center text-sm-right"><a href="https://github.com/defaye" target="_blank">Site by Jono de Faye Feist</a></div>
                         </div>
                     </div>
                 </div>
