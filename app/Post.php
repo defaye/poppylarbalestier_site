@@ -21,7 +21,9 @@ class Post extends Model
      *
      * @var array
      */
-    protected $casts = [];
+    protected $casts = [
+        'published' => 'boolean',
+    ];
 
     /**
      * The relations to eager load on every query.
@@ -37,7 +39,9 @@ class Post extends Model
      *
      * @var array
      */
-    protected $withCount = [];
+    protected $withCount = [
+        'tags',
+    ];
 
     /**
      * Get all of the images for the post.
@@ -48,11 +52,11 @@ class Post extends Model
     }
 
     /**
-     * Get the category of this post.
+     * Get the category this post belongs to.
      */
     public function category()
     {
-        return $this->hasOne('App\Category');
+        return $this->belongsTo('App\Category');
     }
 
     /**
@@ -60,6 +64,14 @@ class Post extends Model
      */
     public function tags()
     {
-        return $this->hasMany('App\Tag');
+        return $this->belongsToMany('App\Tag');
+    }
+
+    /**
+     * Get all of the pages of this post.
+     */
+    public function pages()
+    {
+        return $this->belongsToMany('App\Page');
     }
 }

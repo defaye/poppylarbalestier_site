@@ -12,9 +12,8 @@ class Page extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
+        'name',
         'body',
-        'slug',
     ];
 
     /**
@@ -31,6 +30,7 @@ class Page extends Model
      */
     protected $with = [
         'images',
+        'posts',
     ];
 
     /**
@@ -38,7 +38,9 @@ class Page extends Model
      *
      * @var array
      */
-    protected $withCount = [];
+    protected $withCount = [
+        'posts',
+    ];
 
     /**
      * Get all of the images for this page.
@@ -46,5 +48,13 @@ class Page extends Model
     public function images()
     {
         return $this->morphToMany('App\Image', 'imageable');
+    }
+
+    /**
+     * Get all of the posts of this page.
+     */
+    public function posts()
+    {
+        return $this->belongsToMany('App\Post');
     }
 }

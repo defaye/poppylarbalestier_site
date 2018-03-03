@@ -92,16 +92,16 @@
                                 items: 5
                             },
                             1200: {
-                                items: 7
+                                items: 6
                             },
                             1600: {
-                                items: 9
+                                items: 7
                             },
                             1920: {
-                                items: 11
+                                items: 8
                             },
                             2560: {
-                                items: 15
+                                items: 10
                             }
                         },
                         margin: 5,
