@@ -11,8 +11,17 @@
 |
  */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:api')->group(function () {
 
-Route::get('posts')->uses('PostsController@get');
+    Route::get('categories')->uses('CategoriesController@get');
+    Route::get('images')->uses('ImagesController@get');
+    Route::get('navigation')->uses('NavigationController@get');
+    Route::get('pages')->uses('PagesController@get');
+    Route::get('posts')->uses('PostsController@get');
+    Route::get('tags')->uses('TagsController@get');
+
+    // Route::middleware('auth')->group(function () {
+    //     Route::get('users')->uses('UsersController@get');
+    // });
+
+});

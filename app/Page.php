@@ -21,17 +21,16 @@ class Page extends Model
      *
      * @var array
      */
-    protected $casts = [];
+    protected $casts = [
+        'published' => 'boolean',
+    ];
 
     /**
      * The relations to eager load on every query.
      *
      * @var array
      */
-    protected $with = [
-        'images',
-        'posts',
-    ];
+    protected $with = [];
 
     /**
      * The relationship counts that should be eager loaded on every query.
@@ -56,5 +55,13 @@ class Page extends Model
     public function posts()
     {
         return $this->belongsToMany('App\Post');
+    }
+
+    /**
+     * Get the navigation item this page belongs to.
+     */
+    public function navigation()
+    {
+        return $this->hasOne('App\Navigation');
     }
 }

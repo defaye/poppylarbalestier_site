@@ -15,6 +15,9 @@ class TestDatabaseSeeder extends Seeder
 
         factory(App\Page::class, 1)->create()->each(function ($page) {
             $page->images()->saveMany(factory(App\Image::class, rand(5, 15))->make());
+            $page->navigation()->create([
+                'position' => $page->id,
+            ]);
         });
 
         factory(App\Page::class, 3)->create()->each(function ($page) {
@@ -24,6 +27,9 @@ class TestDatabaseSeeder extends Seeder
                     $post->images()->saveMany(factory(App\Image::class, rand(5, 15))->make());
                 })
             );
+            $page->navigation()->create([
+                'position' => $page->id,
+            ]);
         });
 
         factory(App\Post::class, 3)->create()->each(function ($post) {
