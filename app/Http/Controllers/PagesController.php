@@ -3,12 +3,66 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\PageCollection;
+use App\Http\Resources\PageResource;
+use App\Http\Resources\PostResource;
 use App\Page;
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class PagesController extends Controller
 {
+    public function page(Request $request)
+    {
+        return view('page');
+    }
+
+    public function router(Request $request)
+    {
+        if (!$request->has('path')) {
+            return response()->json(['message' => 'Not found'], 404);
+        }
+
+        if ($request->path === '/') {
+            $page = Page::join('navigations', 'pages.id', '=', 'navigations.page_id')
+                ->orderBy('position')
+                ->select('pages.*')
+                ->where('pages.published', true)
+                ->first();
+
+            return response()->json(new PageResource($page->load('images', 'posts.images')));
+        }
+
+        $segments = explode('/', trim($request->path, '/'));
+
+        $validator = Validator::make(['segments' => $segments], [
+            'segments.0' => 'required|string|max:255|exists:pages,slug',
+            'segments.1' => 'string|max:255|exists:posts,slug',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['message' => 'Invalid request',
+                'errors' => $validator->errors(),
+            ]);
+        }
+
+        if (isset($segments[1])) {
+            $response = Post::with([
+                'category',
+                'images',
+                'pages' => function ($query) use ($segments) {
+                    $query->whereSlug($segments[1]);
+                },
+                'tags',
+            ])->with('category', 'images', 'tags')->whereSlug($segments[1])->first();
+
+            return response()->json(new PostResource($response));
+        }
+        $response = Page::with('images', 'posts.images')->wherePublished(true)->whereSlug($segments[0])->first();
+
+        return response()->json(new PageResource($response));
+    }
+
     public function get(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -31,4 +85,37 @@ class PagesController extends Controller
             new PageCollection($pages->paginate($request->get('per_page', 15)))
         );
     }
+
+    // public function find(Request $request)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'id' => 'required_without_all:position,slug|integer|min:1|exists:pages,id',
+    //         'position' => 'required_without_all:id,slug|integer|min:0|exists:navigations,position',
+    //         'slug' => 'required_without_all:id,position|string|exists:pages,slug',
+    //     ]);
+
+    //     if ($validator->fails()) {
+    //         return response()->json(['message' => 'Invalid request',
+    //             'errors' => $validator->errors(),
+    //         ]);
+    //     }
+
+    //     $page = Page::join('navigations', 'navigations.page_id', '=', 'pages.id')
+    //         ->with('images', 'posts')
+    //         ->selectRaw('pages.*, navigations.position')
+    //         ->wherePublished(true);
+
+    //     foreach ($request->only('id', 'position', 'slug') as $where => $value) {
+    //         $page = $page->where($where, $value);
+    //     }
+
+    //     $resource = new PageResource($page->first());
+
+    //     if ($request->wantsJson()) {
+    //         return response()->json(
+    //             $resource
+    //         );
+    //     }
+    //     return $resource;
+    // }
 }

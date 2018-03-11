@@ -1,28 +1,28 @@
 <template>
-    <div v-if="images" @keyup.escape="exitFullscreen" :id="componentID" :class="{ 'carousel-fullscreen': isFullscreen }" class="carousel">
-        <div class="carousel-primary">
+    <div v-if="images" @keyup.escape="exitFullscreen" :id="componentID" class="carousel">
+        <div class="carousel-primary" :class="{ 'carousel-fullscreen': isFullscreen }">
             <font-awesome-icon v-if="isFullscreen" class="arrows-icon" :icon="['far', 'compress-alt']" @click="exitFullscreen"></font-awesome-icon>
-            <font-awesome-icon v-else class="arrows-icon" :icon="['far', 'expand-alt']" @click="activateFullscreen(`#${componentID}`)"></font-awesome-icon>
+            <font-awesome-icon v-else class="arrows-icon" :icon="['far', 'expand-alt']" @click="activateFullscreen(`#${componentID} .carousel-primary`)"></font-awesome-icon>
             <div :id="owlID" class="owl-carousel" role="button">
-                <responsive-image v-for="(path, index) in images"
-                                 :alt="index"
+                <responsive-image v-for="(image, index) in images"
+                                 :alt="image.reference"
                                  :data-index="index"
-                                 :key="path"
+                                 :key="image.reference"
                                  :ratio-x="calculateRatioX"
-                                 :ratio-y="isFullscreen && showPagination ? calculateRatioY - (calculateRatioY / paginatorItemCount) : calculateRatioY"
-                                 :src="path"
+                                 :ratio-y="calculateRatioY"
+                                 :src="image.path"
                 >
                 </responsive-image>
             </div>
         </div>
         <div :id="paginatorOwlID" class="owl-carousel mt-5 carousel-paginator d-none d-md-block" role="button" v-if="showPagination">
-            <responsive-image v-for="(path, index) in images"
-                             :key="path"
-                             :src="path"
-                             :alt="index"
+            <responsive-image v-for="(image, index) in images"
+                             :alt="image.reference"
+                             :data-index="index"
+                             :key="image.reference"
                              :ratio-x="calculateRatioX"
                              :ratio-y="calculateRatioY"
-                             :data-index="index"
+                             :src="image.path"
             >
             </responsive-image>
         </div>

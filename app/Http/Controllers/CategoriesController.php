@@ -28,7 +28,7 @@ class CategoriesController extends Controller
         }
 
         return response()->json(
-            new CategoryCollection::($categories->paginate($request->get('per_page', 15)))
+            new CategoryCollection($categories->paginate($request->get('per_page', 15)))
         );
     }
 }

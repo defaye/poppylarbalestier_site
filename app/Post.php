@@ -38,7 +38,7 @@ class Post extends Model
      * @var array
      */
     protected $withCount = [
-        'tags',
+        // 'tags',
     ];
 
     /**

@@ -11,12 +11,12 @@
 |
  */
 
-Route::get('/', function () {
-    $images = array_map(function ($file) {
-        return Storage::url($file);
-    }, Storage::files('public/images/content/home'));
-    return view('welcome', compact('images'));
-});
+// Route::get('/', function () {
+//     $images = array_map(function ($file) {
+//         return Storage::url($file);
+//     }, Storage::files('public/images/content/home'));
+//     return view('welcome', compact('images'));
+// });
 
 Route::get('about', function () {
     return view('about');
@@ -37,3 +37,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::post('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 });
+
+Route::get('/')->uses('PagesController@page');
+Route::get('{wildcard}')->uses('PagesController@page')->where('wildcard', '.+');

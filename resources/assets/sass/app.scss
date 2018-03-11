@@ -52,14 +52,26 @@ body {
     }
 }
 
-body {
+#app {
+    height: 100%;
     display: flex;
-    min-height: 100vh;
     flex-direction: column;
-    #content {
-        flex: 1;
-    }
 }
+#top-wrapper {
+    flex: 1 0 auto;
+}
+#bottom {
+    flex-shrink: 0;
+}
+
+// body {
+//     display: flex;
+//     min-height: 100vh;
+//     flex-direction: column;
+//     #content {
+//         flex: 1;
+//     }
+// }
 
 #bottom {
     border-top: 1px solid $gray-200;
