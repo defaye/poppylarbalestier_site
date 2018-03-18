@@ -21,7 +21,7 @@ class PageResource extends Resource
             'id' => $this->id,
             'title' => $this->title,
             'name' => $this->name,
-            'body' => nl2br($this->body),
+            'body' => $this->body,
             'images' => ImageResource::collection($this->whenLoaded('images')),
             'navigation' => new NavigationResource($this->whenLoaded('navigation')),
             'posts' => PostResource::collection($this->whenLoaded('posts')),

@@ -22,7 +22,7 @@ class PostResource extends Resource
             'id' => $this->id,
             'title' => $this->title,
             'name' => $this->name,
-            'body' => nl2br($this->body),
+            'body' => $this->body,
             'images' => ImageResource::collection($this->whenLoaded('images')),
             'category' => new CategoryResource($this->whenLoaded('category')),
             'tags' => TagResource::collection($this->whenLoaded('tags')),

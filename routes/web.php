@@ -36,6 +36,11 @@ Route::group(['middleware' => 'guest', 'prefix' => 'admin'], function () {
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::post('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
+
+    Route::resource('posts', 'Admin\PostsController');
+    // Route::get('posts', 'Admin\PostsController@index');
+    // Route::get('posts/{post}', 'Admin\PostsController@edit');
+    // Route::get('posts/new', 'Admin\PostsController@create');
 });
 
 Route::get('/')->uses('PagesController@page');
