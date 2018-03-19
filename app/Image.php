@@ -14,7 +14,12 @@ class Image extends Model
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'extension',
+        'size',
+        'reference',
+    ];
 
     /**
      * The attributes that should be cast to native types.
@@ -78,16 +83,22 @@ class Image extends Model
         return Storage::url("images/$this->filename");
     }
 
-    public static function create(UploadedFile $file)
+    public function delete()
+    {
+        Storage::delete("public/images/$this->filename");
+        return parent::delete();
+    }
+
+    public static function createFromUploadedFile(UploadedFile $file)
     {
         $reference = str_replace('-', '', Uuid::uuid4()->toString());
 
         $extension = $file->guessClientExtension() ?: $file->getClientOriginalExtension();
         $filename = $extension ? "$reference.$extension" : $reference;
 
-        $file->storeAs('images', $filename);
+        $file->storeAs('public/images', $filename);
 
-        return parent::create([
+        return static::create([
             'name' => $file->getClientOriginalName(),
             'extension' => $extension,
             'size' => $file->getClientSize(),

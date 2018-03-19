@@ -33,6 +33,8 @@ Route::group(['middleware' => 'throttle:60,1'], function () {
         Route::get('posts/{post}', 'Admin\API\PostsController@get');
         Route::post('posts', 'Admin\API\PostsController@store');
         Route::patch('posts/{post}', 'Admin\API\PostsController@update');
+        Route::post('posts/{post}/images', 'Admin\API\ImagePostsController@create');
+        Route::delete('images/{image}', 'Admin\API\ImagesController@delete');
         // Route::get('posts')->uses('Admin\PostsController@get');
         // Route::get('posts/new')->uses('Admin\PostsController@instantiate');
         // Route::patch('posts/{id}')->uses('Admin\PostsController@save');

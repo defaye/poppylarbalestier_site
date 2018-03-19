@@ -20,6 +20,7 @@ class ImageResource extends Resource
             'id' => $this->id,
             'extension' => $this->extension,
             'size' => $this->size,
+            'name' => $this->name,
             'filename' => $this->filename,
             'path' => $this->path,
             'pages' => PageResource::collection($this->whenLoaded('pages')),

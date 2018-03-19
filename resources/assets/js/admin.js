@@ -15,7 +15,7 @@ import autosize from "autosize";
 Vue.directive('autosize', el => {
     autosize(el);
 });
-Vue.component('image-handler', require('./admin/components/ImageHandler.vue'));
+Vue.component('image-uploader', require('./admin/components/ImageUploader.vue'));
 Vue.component('errors', require('./admin/components/Errors.vue'));
 Vue.component('post', require('./admin/components/Post.vue'));
 // Vue.component('posts', require('./admin/components/Posts.vue'));

@@ -21,7 +21,27 @@
             </div>
             <div class="form-group" v-if="post.id">
                 <label for="images">Images</label>
-                <image-handler :multiple="true" @change="handleChosenImages"></image-handler>
+                <image-uploader :multiple="true" @change="assignImages" :url="`/api/admin/posts/${post.id}/images`" class="form-group"></image-uploader>
+                <div v-if="post.hasOwnProperty('images') && post.images.length" class="form-group">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-1" v-for="(image, index) in post.images">
+                            <div class="card">
+                                <div class="card-header">
+                                    <span>Delete</span>
+                                    <button type="button" class="close" aria-label="Unstage image">
+                                        <span aria-hidden="true" @click.prevent="deleteImage(image, index)">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="card-block">
+                                    <div class="embed-responsive embed-responsive-4by3 rounded">
+                                        <div class="embed-responsive-item" :style="`background-image: url(${image.path}); background-position: center; background-size: cover; background-repeat: no-repeat;`" :title="image.name"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <image-handler :multiple="true" @change="handleChosenImages" :url="`/api/admin/posts/${post.id}/images`"></image-handler> -->
             </div>
             <div class="form-group" v-if="post.id">
                 <div class="custom-control custom-checkbox">
@@ -29,7 +49,7 @@
                     <label class="custom-control-label" for="published">Published</label>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary" @click="submit" :disabled="processing">
+            <button type="submit" class="btn btn-primary w-100" @click="submit" :disabled="processing">
                 <span v-if="post.id">Update</span>
                 <span v-else>Create</span>
             </button>
@@ -109,12 +129,6 @@
                 try {
                     this.processing = true;
                     if (this.post.id) {
-                        let formData = new FormData();
-                        formData.append("title", this.post.title);
-                        formData.append("body", this.post.body);
-                        formData.append("category", this.post.category);
-                        formData.append("published", this.post.published);
-                        formData.append("images[]", this.post.images);
                         const response = await axios.patch(`/api/admin/posts/${this.post.id}`, this.post);
                         this.post = response.data;
                     } else {
@@ -134,9 +148,21 @@
                 }
                 this.processing = false;
             },
-            async handleChosenImages(files) {
-                console.log("files")
-                console.log(files)
+            assignImages(images) {
+                console.log(images);
+                images.forEach(image => {
+                    this.post.images.push(Object.assign({}, image));
+                });
+            },
+            async deleteImage(image, index) {
+                try {
+                    const response = await axios.delete(`/api/admin/images/${image.id}`);
+                    if (response.data) {
+                        this.$delete(this.post.images, index);
+                    }
+                } catch (e) {
+                    console.error(e.response.data);
+                }
             }
         }
 

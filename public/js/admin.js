@@ -4521,13 +4521,57 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/admin/components/ImageHandler.vue":
+/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/admin/components/ImageUploader.vue":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__("./node_modules/babel-runtime/regenerator/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4562,22 +4606,35 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
-        multiple: Boolean
+        multiple: Boolean,
+        url: {
+            type: String,
+            required: true
+        }
     },
     data: function data() {
         return {
+            processing: false,
             images: []
         };
     },
 
-    watch: {
-        images: function images(_images) {
-            this.$emit("change", _images.map(function (image) {
-                return image.file;
-            }));
-        }
+    // watch: {
+    //     images(images) {
+    //         this.$emit("change", images);
+    //         // this.$emit("change", images.map(image => image.file));
+    //     }
+    // },
+    mounted: function mounted() {
+        $("#staged-files").on("hidden.bs.modal", function (e) {
+            // console.log(e);
+        });
     },
+
     methods: {
+        modal: function modal(options) {
+            $("#staged-files").modal(options);
+        },
         readFile: function readFile(file) {
             return new Promise(function (resolve, reject) {
                 var fr = new FileReader();
@@ -4590,6 +4647,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
         handleChange: function handleChange(e) {
             var _this = this;
 
+            this.modal("show");
             Array.prototype.forEach.call(e.currentTarget.files, function () {
                 var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(file) {
                     var src;
@@ -4598,7 +4656,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                             switch (_context.prev = _context.next) {
                                 case 0:
                                     if (!/^image\//.test(file.type)) {
-                                        _context.next = 8;
+                                        _context.next = 7;
                                         break;
                                     }
 
@@ -4608,20 +4666,23 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                 case 3:
                                     src = _context.sent;
 
-                                    console.log(file);
                                     _this.images.push({
                                         file: file,
-                                        lastModified: file.lastModified,
-                                        lastModifiedDate: file.lastModifiedDate,
-                                        name: file.name,
-                                        size: file.size,
-                                        src: src,
-                                        type: file.type
+                                        src: src
                                     });
-                                    _context.next = 8;
+                                    // this.images.push({
+                                    //     file,
+                                    //     lastModified: file.lastModified,
+                                    //     lastModifiedDate: file.lastModifiedDate,
+                                    //     name: file.name,
+                                    //     size: file.size,
+                                    //     src,
+                                    //     type: file.type,
+                                    // });
+                                    _context.next = 7;
                                     break;
 
-                                case 8:
+                                case 7:
                                 case "end":
                                     return _context.stop();
                             }
@@ -4635,7 +4696,87 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             }()
             // console.error("Invalid format", file);
             );
-        }
+        },
+        upload: function () {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+                var formData, response;
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                this.processing = true;
+                                formData = new FormData();
+
+                                this.images.forEach(function (image) {
+                                    formData.append("images[]", image.file);
+                                });
+                                _context2.prev = 3;
+                                _context2.next = 6;
+                                return axios.post(this.url, formData);
+
+                            case 6:
+                                response = _context2.sent;
+
+                                this.images = [];
+                                this.$emit("change", response.data);
+                                this.modal("hide");
+                                _context2.next = 16;
+                                break;
+
+                            case 12:
+                                _context2.prev = 12;
+                                _context2.t0 = _context2["catch"](3);
+
+                                this.errors = _context2.t0.response.data;
+                                return _context2.abrupt("return");
+
+                            case 16:
+                                this.processing = false;
+
+                            case 17:
+                            case "end":
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee2, this, [[3, 12]]);
+            }));
+
+            function upload() {
+                return _ref2.apply(this, arguments);
+            }
+
+            return upload;
+        }(),
+
+        // handleChange(e) {
+        //     Array.prototype.forEach.call(e.currentTarget.files, async file => {
+        //         if (/^image\//.test(file.type)) {
+        //             // let src = await this.readFile(file);
+        //             let formData = new FormData();
+        //             formData.append("image", file);
+        //             try {
+        //                 let response = await axios.post(this.url, formData);
+        //                 this.images.push(response.data);
+        //             } catch (e) {
+        //                 this.errors = e.response.data;
+        //                 return;
+        //             }
+        //             console.log(file)
+        //             // this.images.push({
+        //             //     file,
+        //             //     lastModified: file.lastModified,
+        //             //     lastModifiedDate: file.lastModifiedDate,
+        //             //     name: file.name,
+        //             //     size: file.size,
+        //             //     src,
+        //             //     type: file.type,
+        //             // });
+        //         } else {
+        //             // console.error("Invalid format", file);
+        //         }
+        //     })
+        // },
+        cancelUpload: function cancelUpload() {}
     }
 });
 
@@ -4781,6 +4922,26 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__("./node_modules/babel-runtime/regenerator/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4969,7 +5130,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
         }(),
         submit: function () {
             var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3() {
-                var formData, response, _response;
+                var response, _response;
 
                 return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
                     while (1) {
@@ -4980,44 +5141,37 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                 this.processing = true;
 
                                 if (!this.post.id) {
-                                    _context3.next = 15;
+                                    _context3.next = 9;
                                     break;
                                 }
 
-                                formData = new FormData();
-
-                                formData.append("title", this.post.title);
-                                formData.append("body", this.post.body);
-                                formData.append("category", this.post.category);
-                                formData.append("published", this.post.published);
-                                formData.append("images[]", this.post.images);
-                                _context3.next = 11;
+                                _context3.next = 5;
                                 return axios.patch("/api/admin/posts/" + this.post.id, this.post);
 
-                            case 11:
+                            case 5:
                                 response = _context3.sent;
 
                                 this.post = response.data;
-                                _context3.next = 20;
+                                _context3.next = 14;
                                 break;
 
-                            case 15:
-                                _context3.next = 17;
+                            case 9:
+                                _context3.next = 11;
                                 return axios.post("/api/admin/posts", this.post);
 
-                            case 17:
+                            case 11:
                                 _response = _context3.sent;
 
                                 window.history.pushState(Object.assign({}, _response.data), "Edit post", "/admin/posts/" + _response.data.id);
                                 this.post = _response.data;
 
-                            case 20:
+                            case 14:
                                 this.errors = undefined;
-                                _context3.next = 26;
+                                _context3.next = 20;
                                 break;
 
-                            case 23:
-                                _context3.prev = 23;
+                            case 17:
+                                _context3.prev = 17;
                                 _context3.t0 = _context3["catch"](0);
 
                                 try {
@@ -5027,15 +5181,15 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                                     console.error(e);
                                 }
 
-                            case 26:
+                            case 20:
                                 this.processing = false;
 
-                            case 27:
+                            case 21:
                             case "end":
                                 return _context3.stop();
                         }
                     }
-                }, _callee3, this, [[0, 23]]);
+                }, _callee3, this, [[0, 17]]);
             }));
 
             function submit() {
@@ -5044,28 +5198,53 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
             return submit;
         }(),
-        handleChosenImages: function () {
-            var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee4(files) {
+        assignImages: function assignImages(images) {
+            var _this2 = this;
+
+            console.log(images);
+            images.forEach(function (image) {
+                _this2.post.images.push(Object.assign({}, image));
+            });
+        },
+        deleteImage: function () {
+            var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee4(image, index) {
+                var response;
                 return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
                     while (1) {
                         switch (_context4.prev = _context4.next) {
                             case 0:
-                                console.log("files");
-                                console.log(files);
+                                _context4.prev = 0;
+                                _context4.next = 3;
+                                return axios.delete("/api/admin/images/" + image.id);
 
-                            case 2:
+                            case 3:
+                                response = _context4.sent;
+
+                                if (response.data) {
+                                    this.$delete(this.post.images, index);
+                                }
+                                _context4.next = 10;
+                                break;
+
+                            case 7:
+                                _context4.prev = 7;
+                                _context4.t0 = _context4["catch"](0);
+
+                                console.error(_context4.t0.response.data);
+
+                            case 10:
                             case "end":
                                 return _context4.stop();
                         }
                     }
-                }, _callee4, this);
+                }, _callee4, this, [[0, 7]]);
             }));
 
-            function handleChosenImages(_x2) {
+            function deleteImage(_x2, _x3) {
                 return _ref4.apply(this, arguments);
             }
 
-            return handleChosenImages;
+            return deleteImage;
         }()
     }
 
@@ -40274,6 +40453,204 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-286431fc\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/admin/components/ImageUploader.vue":
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-primary w-100",
+        attrs: { type: "button" },
+        on: {
+          click: function($event) {
+            _vm.modal("show")
+          }
+        }
+      },
+      [_vm._v("Upload Images")]
+    ),
+    _vm._v(" "),
+    _c("input", {
+      staticStyle: { display: "none" },
+      attrs: {
+        type: "file",
+        id: "input",
+        multiple: _vm.multiple,
+        accept: "image/*"
+      },
+      on: { change: _vm.handleChange }
+    }),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal",
+        attrs: { id: "staged-files", tabindex: "-1", role: "dialog" }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "btn btn-primary w-100 mb-3",
+                    attrs: { for: "input" }
+                  },
+                  [_vm._v("Choose images")]
+                ),
+                _vm._v(" "),
+                _vm.images.length
+                  ? _c("div", [
+                      _c(
+                        "div",
+                        { staticClass: "row" },
+                        _vm._l(_vm.images, function(image, index) {
+                          return _c(
+                            "div",
+                            {
+                              staticClass:
+                                "col-12 col-md-6 col-lg-4 col-xl-3 mb-1"
+                            },
+                            [
+                              _c("div", { staticClass: "card" }, [
+                                _c("div", { staticClass: "card-header" }, [
+                                  _c("span", [_vm._v(_vm._s(image.file.name))]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "close",
+                                      attrs: {
+                                        type: "button",
+                                        "aria-label": "Unstage image",
+                                        disabled: _vm.processing
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "span",
+                                        {
+                                          attrs: { "aria-hidden": "true" },
+                                          on: {
+                                            click: function($event) {
+                                              $event.preventDefault()
+                                              _vm.$delete(_vm.images, index)
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("×")]
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "card-block" }, [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "embed-responsive embed-responsive-4by3 rounded"
+                                    },
+                                    [
+                                      _c("div", {
+                                        staticClass: "embed-responsive-item",
+                                        style:
+                                          "background-image: url(" +
+                                          image.src +
+                                          "); background-position: center; background-size: cover; background-repeat: no-repeat;",
+                                        attrs: { title: image.name }
+                                      })
+                                    ]
+                                  )
+                                ])
+                              ])
+                            ]
+                          )
+                        })
+                      )
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _vm.images.length
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary w-100 mt-2",
+                        attrs: { type: "button", disabled: _vm.processing },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.upload($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Upload")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary mt-2",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Cancel")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title" }, [_vm._v("Upload Images")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-286431fc", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-59991617\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/admin/components/Post.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -40402,10 +40779,85 @@ var render = function() {
               [
                 _c("label", { attrs: { for: "images" } }, [_vm._v("Images")]),
                 _vm._v(" "),
-                _c("image-handler", {
-                  attrs: { multiple: true },
-                  on: { change: _vm.handleChosenImages }
-                })
+                _c("image-uploader", {
+                  staticClass: "form-group",
+                  attrs: {
+                    multiple: true,
+                    url: "/api/admin/posts/" + _vm.post.id + "/images"
+                  },
+                  on: { change: _vm.assignImages }
+                }),
+                _vm._v(" "),
+                _vm.post.hasOwnProperty("images") && _vm.post.images.length
+                  ? _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "div",
+                        { staticClass: "row" },
+                        _vm._l(_vm.post.images, function(image, index) {
+                          return _c(
+                            "div",
+                            {
+                              staticClass:
+                                "col-12 col-md-6 col-lg-4 col-xl-3 mb-1"
+                            },
+                            [
+                              _c("div", { staticClass: "card" }, [
+                                _c("div", { staticClass: "card-header" }, [
+                                  _c("span", [_vm._v("Delete")]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "close",
+                                      attrs: {
+                                        type: "button",
+                                        "aria-label": "Unstage image"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "span",
+                                        {
+                                          attrs: { "aria-hidden": "true" },
+                                          on: {
+                                            click: function($event) {
+                                              $event.preventDefault()
+                                              _vm.deleteImage(image, index)
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("×")]
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "card-block" }, [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "embed-responsive embed-responsive-4by3 rounded"
+                                    },
+                                    [
+                                      _c("div", {
+                                        staticClass: "embed-responsive-item",
+                                        style:
+                                          "background-image: url(" +
+                                          image.path +
+                                          "); background-position: center; background-size: cover; background-repeat: no-repeat;",
+                                        attrs: { title: image.name }
+                                      })
+                                    ]
+                                  )
+                                ])
+                              ])
+                            ]
+                          )
+                        })
+                      )
+                    ])
+                  : _vm._e()
               ],
               1
             )
@@ -40473,7 +40925,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-primary",
+            staticClass: "btn btn-primary w-100",
             attrs: { type: "submit", disabled: _vm.processing },
             on: { click: _vm.submit }
           },
@@ -40614,112 +41066,6 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-5fb45086", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-b43f6f34\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/admin/components/ImageHandler.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "label",
-      { staticClass: "btn btn-primary w-100", attrs: { for: "input" } },
-      [_vm._v("Choose images")]
-    ),
-    _vm._v(" "),
-    _c("input", {
-      staticStyle: { display: "none" },
-      attrs: {
-        type: "file",
-        id: "input",
-        multiple: _vm.multiple,
-        accept: "image/*"
-      },
-      on: { change: _vm.handleChange }
-    }),
-    _vm._v(" "),
-    _vm.images.length
-      ? _c("div", [
-          _c(
-            "div",
-            { staticClass: "row" },
-            _vm._l(_vm.images, function(image, index) {
-              return _c(
-                "div",
-                { staticClass: "col-12 col-md-6 col-lg-4 col-xl-3 mb-1" },
-                [
-                  _c("div", { staticClass: "card" }, [
-                    _c("div", { staticClass: "card-header" }, [
-                      _c("span", [_vm._v(_vm._s(image.name))]),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "close",
-                          attrs: {
-                            type: "button",
-                            "aria-label": "Unstage image"
-                          }
-                        },
-                        [
-                          _c(
-                            "span",
-                            {
-                              attrs: { "aria-hidden": "true" },
-                              on: {
-                                click: function($event) {
-                                  $event.preventDefault()
-                                  _vm.$delete(_vm.images, index)
-                                }
-                              }
-                            },
-                            [_vm._v("×")]
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card-block" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "embed-responsive embed-responsive-4by3 rounded"
-                        },
-                        [
-                          _c("div", {
-                            staticClass: "embed-responsive-item",
-                            style:
-                              "background-image: url(" +
-                              image.src +
-                              "); background-position: center; background-size: cover; background-repeat: no-repeat;",
-                            attrs: { title: image.name }
-                          })
-                        ]
-                      )
-                    ])
-                  ])
-                ]
-              )
-            })
-          )
-        ])
-      : _vm._e()
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-b43f6f34", module.exports)
   }
 }
 
@@ -51772,7 +52118,7 @@ __webpack_require__("./resources/assets/js/admin/fontawesome.js");
 Vue.directive('autosize', function (el) {
     __WEBPACK_IMPORTED_MODULE_0_autosize___default()(el);
 });
-Vue.component('image-handler', __webpack_require__("./resources/assets/js/admin/components/ImageHandler.vue"));
+Vue.component('image-uploader', __webpack_require__("./resources/assets/js/admin/components/ImageUploader.vue"));
 Vue.component('errors', __webpack_require__("./resources/assets/js/admin/components/Errors.vue"));
 Vue.component('post', __webpack_require__("./resources/assets/js/admin/components/Post.vue"));
 // Vue.component('posts', require('./admin/components/Posts.vue'));
@@ -51897,15 +52243,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/admin/components/ImageHandler.vue":
+/***/ "./resources/assets/js/admin/components/ImageUploader.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")
 /* script */
-var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/admin/components/ImageHandler.vue")
+var __vue_script__ = __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]],\"plugins\":[\"transform-object-rest-spread\",[\"transform-runtime\",{\"polyfill\":false,\"helpers\":false}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/admin/components/ImageUploader.vue")
 /* template */
-var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-b43f6f34\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/admin/components/ImageHandler.vue")
+var __vue_template__ = __webpack_require__("./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-286431fc\",\"hasScoped\":false,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/admin/components/ImageUploader.vue")
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -51922,7 +52268,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/admin/components/ImageHandler.vue"
+Component.options.__file = "resources/assets/js/admin/components/ImageUploader.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -51931,9 +52277,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b43f6f34", Component.options)
+    hotAPI.createRecord("data-v-286431fc", Component.options)
   } else {
-    hotAPI.reload("data-v-b43f6f34", Component.options)
+    hotAPI.reload("data-v-286431fc", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
