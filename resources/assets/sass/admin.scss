@@ -42,6 +42,49 @@
     cursor: pointer;
 }
 
-.card-block {
-    padding: 1.25rem;
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+#content, #app {
+    display: flex;
+    flex: 1;
+}
+
+body,
+.layout-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.layout-nav {
+    order: -1;
+    background-color: $gray-900;
+}
+
+@include media-breakpoint-up(md) {
+    .layout-container {
+        flex-direction: row;
+        flex: 1;
+    }
+    .layout-content {
+        flex: 1;
+    }
+    .layout-nav {
+        flex: 0 0 4rem;
+    }
+    .layout-sidebar {
+        /* 12em is the width of the columns */
+        flex: 0 0 12rem;
+    }
+}
+
+.layout-nav {
+    .link {
+        display: block;
+        margin: 1rem 0;
+        color: $gray-100;
+        text-align: center;
+    }
 }

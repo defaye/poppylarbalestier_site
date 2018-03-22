@@ -24,7 +24,7 @@
                                         <span aria-hidden="true" @click.prevent="deleteImage(image, index)">&times;</span>
                                     </button>
                                 </div>
-                                <div class="card-block">
+                                <div class="card-body">
                                     <div class="embed-responsive embed-responsive-4by3 rounded">
                                         <div class="embed-responsive-item" :style="`background-image: url(${image.path}); background-position: center; background-size: cover; background-repeat: no-repeat;`" :name="image.name"></div>
                                     </div>

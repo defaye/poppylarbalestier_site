@@ -16,7 +16,7 @@
 <body>
     @stack('body')
     <div id="app">
-        <nav class="navbar navbar-light navbar-static-top navbar-toggleable-lg">
+        {{-- <nav class="navbar navbar-light navbar-static-top navbar-toggleable-lg">
             @auth
                 <ul class="dropdown-menu">
                     <li>
@@ -32,10 +32,40 @@
                     </li>
                 </ul>
             @endauth
-        </nav>
-
-        <div id="content">
-            @yield('content')
+        </nav> --}}
+        <div id="content" class="layout-container">
+            <main class="layout-content mt-3">
+                @yield('content')
+            </main>
+            @auth
+                <nav class="layout-nav">
+                    <a class="link" href="/admin">
+                        <font-awesome-icon class="fa-2x" :icon="['fal', 'home']"></font-awesome-icon>
+                    </a>
+                    <a class="link" href="/admin/navigation">
+                        <font-awesome-icon class="fa-2x" :icon="['fal', 'anchor']"></font-awesome-icon>
+                    </a>
+                    <a class="link" href="/admin/pages">
+                        <font-awesome-icon class="fa-2x" :icon="['fal', 'file']"></font-awesome-icon>
+                    </a>
+                    <a class="link" href="/admin/posts">
+                        <font-awesome-icon class="fa-2x" :icon="['fal', 'newspaper']"></font-awesome-icon>
+                    </a>
+                    <a class="link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                        <font-awesome-icon class="fa-2x" :icon="['fal', 'power-off']"></font-awesome-icon>
+                    </a>
+                </nav>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+                @stack('aside')
+            @endauth
+            @hasSection('aside')
+                <aside class="layout-sidebar">
+                    @yield('aside')
+                </aside>
+            @endif
         </div>
     </div>
     <script src="{{ mix('js/admin.js') }}"></script>
