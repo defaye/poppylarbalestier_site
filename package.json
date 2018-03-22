@@ -28,6 +28,7 @@
         "@fortawesome/vue-fontawesome": "^0.0.22",
         "autosize": "^4.0.0",
         "sass-loader": "^6.0.6",
-        "screenfull": "^3.3.2"
+        "screenfull": "^3.3.2",
+        "vuedraggable": "^2.16.0"
     }
 }

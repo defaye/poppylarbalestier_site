@@ -18,7 +18,6 @@ class CreateNavigationsTable extends Migration
             $table->integer('page_id')->unsigned();
             $table->foreign('page_id')->unsigned()->references('id')->on('pages')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('position')->unsigned()->nullable();
-            $table->boolean('no_router')->default(false);
             $table->timestamps();
         });
     }

@@ -71,7 +71,8 @@
                         name: undefined,
                         description: undefined
                     },
-                    published: undefined
+                    published: undefined,
+                    images: []
                 },
                 categories: undefined,
             }

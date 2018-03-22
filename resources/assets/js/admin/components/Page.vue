@@ -1,23 +1,51 @@
 <template>
     <div>
+        <h1>{{ page.id ? "Edit" : "New" }} page</h1>
         <errors v-model="errors"></errors>
-        <form>
+        <div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" v-model="page.name" class="form-control" placeholder="Enter a name..." :disabled="processing">
+            </div>
             <div class="form-group">
                 <label for="body">Body</label>
-                <textarea class="form-control" name="body" id="body" aria-describedby="Body" placeholder="Write your post..." v-model="post.body"></textarea>
+                <textarea v-autosize class="form-control" name="body" id="body" aria-describedby="Body" placeholder="Write your page..." v-model="page.body" :disabled="processing"></textarea>
             </div>
-            <div class="form-group">
-                <label for="category">Category</label>
-                <select name="category" id="category" v-model="post.category">
-                    <option v-for="option in categories" :value="option.value">{{ option.label }}</option>
-                </select>
+            <div class="form-group" v-if="page.id">
+                <label for="images">Images</label>
+                <image-uploader :multiple="true" @change="assignImages" :url="`/api/admin/pages/${page.id}/images`" class="form-group"></image-uploader>
+                <div v-if="page.hasOwnProperty('images') && page.images.length" class="form-group">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-1" v-for="(image, index) in page.images">
+                            <div class="card">
+                                <div class="card-header">
+                                    <span>Delete</span>
+                                    <button type="button" class="close" aria-label="Unstage image">
+                                        <span aria-hidden="true" @click.prevent="deleteImage(image, index)">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="card-block">
+                                    <div class="embed-responsive embed-responsive-4by3 rounded">
+                                        <div class="embed-responsive-item" :style="`background-image: url(${image.path}); background-position: center; background-size: cover; background-repeat: no-repeat;`" :name="image.name"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <image-handler :multiple="true" @change="handleChosenImages" :url="`/api/admin/pages/${page.id}/images`"></image-handler> -->
             </div>
-            <!-- <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div> -->
-            <button type="submit" class="btn btn-primary" @click="submit">Submit</button>
-        </form>
+            <div class="form-group" v-if="page.id">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="published" name="published" v-model="page.published" :disabled="processing">
+                    <label class="custom-control-label" for="published">Published</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 form-group" @click="submit" :disabled="processing">
+                <span v-if="page.id">Update</span>
+                <span v-else>Create</span>
+            </button>
+        </div>
     </div>
 </template>
 <script>
@@ -26,37 +54,87 @@
     export default {
         data() {
             return {
-                post: undefined,
-                categories: undefined,
+                processing: false,
+                errors: undefined,
+                page: {
+                    name: undefined,
+                    body: undefined,
+                    published: undefined,
+                    images: []
+                }
             }
         },
         mounted() {
-            let url = new URL(window.location.href);
-            let matches = /^\/admin\/posts\/(\d+)$/.exec(url.pathname);
-            if (1 in matches) {
-                this.retrievePost({ id: matches[1] });
+            window.onpopstate = event => {
+                document.title = event.state.title;
+                this.page = event.state;
+            };
+            const url = new URL(window.location.href);
+            const regex = /^\/admin\/pages\/(\d+)$/;
+            if (regex.test(url.pathname)) {
+                const matches = regex.exec(url.pathname);
+                this.retrievePage(matches[1]);
+            } else {
+                this.retrievePage();
             }
-            this.retrieveCategories();
         },
         methods: {
-            async retrievePost(params) {
+            async retrievePage(id) {
                 try {
-                    this.post = await axios.get("/api/posts", {
-                        params
-                    });
+                    if (id) {
+                        this.processing = true;
+                        const response = await axios.get(`/api/admin/pages/${id}`);
+                        console.log(response.data);
+                        this.page = response.data;
+                    }
                 } catch (e) {
-                    this.errors = e.response.data;
+                    try {
+                        console.error(e.response.data);
+                        this.errors = e.response.data;
+                    } catch (e) {
+                        console.error(e);
+                    }
                 }
+                this.processing = false;
             },
-            async retrieveCategories() {
+            async submit() {
                 try {
-                    this.categories = await axios.get("/api/categories");
-                } catch (e) {
-                    this.errors = e.response.data;
-                }
-            },
-            submit() {
+                    this.processing = true;
+                    if (this.page.id) {
+                        const response = await axios.patch(`/api/admin/pages/${this.page.id}`, this.page);
+                        this.page = response.data;
+                    } else {
+                        const response = await axios.post("/api/admin/pages", this.page);
+                        window.history.pushState(Object.assign({}, response.data), "Edit page", `/admin/pages/${response.data.id}`);
+                        this.page = response.data;
 
+                    }
+                    this.errors = undefined;
+                } catch (e) {
+                    try {
+                        console.error(e.response.data);
+                        this.errors = e.response.data;
+                    } catch (e) {
+                        console.error(e);
+                    }
+                }
+                this.processing = false;
+            },
+            assignImages(images) {
+                console.log(images);
+                images.forEach(image => {
+                    this.page.images.push(Object.assign({}, image));
+                });
+            },
+            async deleteImage(image, index) {
+                try {
+                    const response = await axios.delete(`/api/admin/images/${image.id}`);
+                    if (response.data) {
+                        this.$delete(this.page.images, index);
+                    }
+                } catch (e) {
+                    console.error(e.response.data);
+                }
             }
         }
 

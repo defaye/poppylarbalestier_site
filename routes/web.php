@@ -38,6 +38,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::post('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
     Route::resource('posts', 'Admin\PostsController');
+    Route::resource('pages', 'Admin\PagesController');
+
+    Route::group(['prefix' => 'navigation'], function () {
+        Route::get('', 'Admin\NavigationsController@index');
+
+    });
     // Route::get('posts', 'Admin\PostsController@index');
     // Route::get('posts/{post}', 'Admin\PostsController@edit');
     // Route::get('posts/new', 'Admin\PostsController@create');

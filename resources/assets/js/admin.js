@@ -21,6 +21,7 @@ Vue.component('post', require('./admin/components/Post.vue'));
 // Vue.component('posts', require('./admin/components/Posts.vue'));
 Vue.component('page', require('./admin/components/Page.vue'));
 Vue.component('pages', require('./admin/components/Pages.vue'));
+Vue.component('navigation', require('./admin/components/Navigation.vue'));
 
 // Vue.component('responsive-image', require('./components/ResponsiveImage.vue'));
 // Vue.component('carousel', require('./components/Carousel.vue'));

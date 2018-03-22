@@ -30,7 +30,14 @@ class PagesController extends Controller
                 ->where('pages.published', true)
                 ->first();
 
-            return response()->json(new PageResource($page->load('images', 'posts.images')));
+            if ($page) {
+                return response()->json(new PageResource($page->load('images', 'posts.images')));
+            }
+            return response()->json(new PageResource(new Page([
+                'name' => 'Whoops!',
+                'body' => 'Sorry, I could not find the page you were looking for.',
+            ])));
+
         }
 
         $segments = explode('/', trim($request->path, '/'));
