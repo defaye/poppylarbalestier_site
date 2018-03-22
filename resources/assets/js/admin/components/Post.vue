@@ -49,7 +49,7 @@
                     <label class="custom-control-label" for="published">Published</label>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary w-100" @click="submit" :disabled="processing">
+            <button type="submit" class="btn btn-primary w-100 form-group" @click="submit" :disabled="processing">
                 <span v-if="post.id">Update</span>
                 <span v-else>Create</span>
             </button>

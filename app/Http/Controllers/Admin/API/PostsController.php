@@ -72,7 +72,7 @@ class PostsController extends Controller
             ], 422);
         }
 
-        $post = Post::find($request->id);
+        $post = Post::with('images')->find($request->id);
         $post->fill($request->only([
             'title',
             'body',
