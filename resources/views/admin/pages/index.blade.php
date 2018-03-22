@@ -28,5 +28,6 @@
             {{ $pages->links('vendor.pagination.bootstrap-4') }}
         </div>
     </div>
+    <a class="btn btn-primary w-100 mt-3" href="/admin/pages/new">New</a>
 </div>
 @stop
