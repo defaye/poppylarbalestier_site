@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>{{ page.id ? "Edit" : "New" }} page</h1>
+        <alert></alert>
         <errors v-model="errors"></errors>
         <div>
             <div class="form-group">
@@ -103,11 +104,18 @@
                     if (this.page.id) {
                         const response = await axios.patch(`/api/admin/pages/${this.page.id}`, this.page);
                         this.page = response.data;
+                        this.$store.commit("status", {
+                            type: "success",
+                            message: "Page updated"
+                        });
                     } else {
                         const response = await axios.post("/api/admin/pages", this.page);
                         window.history.pushState(Object.assign({}, response.data), "Edit page", `/admin/pages/${response.data.id}`);
                         this.page = response.data;
-
+                        this.$store.commit("status", {
+                            type: "success",
+                            message: "Page created"
+                        });
                     }
                     this.errors = undefined;
                 } catch (e) {
@@ -122,6 +130,10 @@
             },
             assignImages(images) {
                 console.log(images);
+                this.$store.commit("status", {
+                    type: "success",
+                    message: "Images uploaded"
+                });
                 images.forEach(image => {
                     this.page.images.push(Object.assign({}, image));
                 });
@@ -130,6 +142,10 @@
                 try {
                     const response = await axios.delete(`/api/admin/images/${image.id}`);
                     if (response.data) {
+                        this.$store.commit("status", {
+                            type: "success",
+                            message: "Image deleted"
+                        });
                         this.$delete(this.page.images, index);
                     }
                 } catch (e) {

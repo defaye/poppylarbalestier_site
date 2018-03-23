@@ -5,6 +5,7 @@
 </style>
 <template>
     <div>
+        <alert></alert>
         <errors v-model="errors"></errors>
         <div class="row mb-3">
             <div class="col mb-1">
@@ -76,6 +77,10 @@
                     const response = await axios.post("/api/admin/navigation", { items: this.enabled });
                     this.enabled = _.filter(response.data, item => item.id);
                     this.disabled = _.filter(response.data, item => !item.id);
+                    this.$store.commit("status", {
+                        type: "success",
+                        message: "Navigation updated"
+                    });
                 } catch (e) {
                     try {
                         console.error(e.response.data);

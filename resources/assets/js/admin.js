@@ -7,7 +7,12 @@
 
 require('./admin/bootstrap');
 
-window.Vue = require('vue');
+import Vue from 'vue';
+window.Vue = Vue;
+
+import Vuex from 'vuex';
+
+Vue.use(Vuex)
 
 require('./admin/fontawesome');
 
@@ -15,8 +20,10 @@ import autosize from "autosize";
 Vue.directive('autosize', el => {
     autosize(el);
 });
-Vue.component('image-uploader', require('./admin/components/ImageUploader.vue'));
+Vue.component('alert', require('./admin/components/Alert.vue'));
 Vue.component('errors', require('./admin/components/Errors.vue'));
+
+Vue.component('image-uploader', require('./admin/components/ImageUploader.vue'));
 Vue.component('post', require('./admin/components/Post.vue'));
 // Vue.component('posts', require('./admin/components/Posts.vue'));
 Vue.component('page', require('./admin/components/Page.vue'));
@@ -25,7 +32,26 @@ Vue.component('navigation', require('./admin/components/Navigation.vue'));
 
 // Vue.component('responsive-image', require('./components/ResponsiveImage.vue'));
 // Vue.component('carousel', require('./components/Carousel.vue'));
+const store = new Vuex.Store({
+    state: {
+        errors: undefined,
+        processing: false,
+        status: undefined,
+    },
+    mutations: {
+        errors(state, errors) {
+            state.errors = errors
+        },
+        processing(state, mode) {
+            state.processing = mode === true
+        },
+        status(state, status) {
+            state.status = status
+        },
+    }
+});
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    store
 });

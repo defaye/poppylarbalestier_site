@@ -22,20 +22,20 @@
             </main>
             @auth
                 <nav class="layout-nav">
-                    <a class="link" href="/admin">
+                    <a class="link" href="/admin" title="Home">
                         <font-awesome-icon class="fa-2x" :icon="['fal', 'home']"></font-awesome-icon>
                     </a>
-                    <a class="link" href="/admin/navigation">
+                    <a class="link" href="/admin/navigation" title="Navigation">
                         <font-awesome-icon class="fa-2x" :icon="['fal', 'anchor']"></font-awesome-icon>
                     </a>
-                    <a class="link" href="/admin/pages">
+                    <a class="link" href="/admin/pages" title="Pages">
                         <font-awesome-icon class="fa-2x" :icon="['fal', 'file']"></font-awesome-icon>
                     </a>
-                    <a class="link" href="/admin/posts">
+                    <a class="link" href="/admin/posts" title="Posts">
                         <font-awesome-icon class="fa-2x" :icon="['fal', 'newspaper']"></font-awesome-icon>
                     </a>
                     <a class="link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
+                                    document.getElementById('logout-form').submit();" title="Logout">
                         <font-awesome-icon class="fa-2x" :icon="['fal', 'power-off']"></font-awesome-icon>
                     </a>
                 </nav>
