@@ -3,45 +3,66 @@
         <h1>{{ page.id ? "Edit" : "New" }} page</h1>
         <alert></alert>
         <errors v-model="errors"></errors>
-        <div>
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" v-model="page.name" class="form-control" placeholder="Enter a name..." :disabled="processing">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" :class="{ active: tab === 'main' }" href="#" @click.prevent="changeTabTo('main')">Main</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" :class="{ active: tab === 'images' }" href="#" @click.prevent="changeTabTo('images')">Images</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" :class="{ active: tab === 'posts' }" href="#" @click.prevent="changeTabTo('posts')">Posts</a>
+                    </li>
+                </ul>
             </div>
-            <div class="form-group">
-                <label for="body">Body</label>
-                <textarea v-autosize class="form-control" name="body" id="body" aria-describedby="Body" placeholder="Write your page..." v-model="page.body" :disabled="processing"></textarea>
+            <div class="card-body" v-if="tab === 'main'">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" v-model="page.name" class="form-control" placeholder="Enter a name..." :disabled="processing">
+                </div>
+                <div class="form-group">
+                    <label for="body">Body</label>
+                    <textarea v-autosize class="form-control" name="body" id="body" aria-describedby="Body" placeholder="Write your page..." v-model="page.body" :disabled="processing"></textarea>
+                </div>
+                <div class="form-group" v-if="page.id">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="published" name="published" v-model="page.published" :disabled="processing">
+                        <label class="custom-control-label" for="published">Published</label>
+                    </div>
+                </div>
             </div>
-            <div class="form-group" v-if="page.id">
-                <label for="images">Images</label>
-                <image-uploader :multiple="true" @change="assignImages" :url="`/api/admin/pages/${page.id}/images`" class="form-group"></image-uploader>
-                <div v-if="page.hasOwnProperty('images') && page.images.length" class="form-group">
-                    <div class="row">
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-1" v-for="(image, index) in page.images">
-                            <div class="card">
-                                <div class="card-header">
-                                    <span>Delete</span>
-                                    <button type="button" class="close" aria-label="Unstage image">
-                                        <span aria-hidden="true" @click.prevent="deleteImage(image, index)">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="card-body">
-                                    <div class="embed-responsive embed-responsive-4by3 rounded">
-                                        <div class="embed-responsive-item" :style="`background-image: url(${image.path}); background-position: center; background-size: cover; background-repeat: no-repeat;`" :name="image.name"></div>
+            <div class="card-body" v-else-if="page.id && tab === 'images'">
+                <div class="form-group" v-if="page.id">
+                    <label for="images">Images</label>
+                    <image-uploader :multiple="true" @change="assignImages" :url="`/api/admin/pages/${page.id}/images`" class="form-group"></image-uploader>
+                    <div v-if="page.hasOwnProperty('images') && page.images.length" class="form-group">
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-1" v-for="(image, index) in page.images">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span>Delete</span>
+                                        <button type="button" class="close" aria-label="Unstage image">
+                                            <span aria-hidden="true" @click.prevent="deleteImage(image, index)">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="embed-responsive embed-responsive-4by3 rounded">
+                                            <div class="embed-responsive-item" :style="`background-image: url(${image.path}); background-position: center; background-size: cover; background-repeat: no-repeat;`" :name="image.name"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- <image-handler :multiple="true" @change="handleChosenImages" :url="`/api/admin/pages/${page.id}/images`"></image-handler> -->
-            </div>
-            <div class="form-group" v-if="page.id">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="published" name="published" v-model="page.published" :disabled="processing">
-                    <label class="custom-control-label" for="published">Published</label>
+                    <!-- <image-handler :multiple="true" @change="handleChosenImages" :url="`/api/admin/pages/${page.id}/images`"></image-handler> -->
                 </div>
             </div>
+            <div class="card-body" v-else-if="page.id && tab === 'posts'">
+            </div>
+        </div>
+        <div class="mt-3">
             <button type="submit" class="btn btn-primary w-100 form-group" @click="submit" :disabled="processing">
                 <span v-if="page.id">Update</span>
                 <span v-else>Create</span>
@@ -62,7 +83,8 @@
                     body: undefined,
                     published: undefined,
                     images: []
-                }
+                },
+                tab: undefined
             }
         },
         mounted() {
@@ -78,6 +100,9 @@
             } else {
                 this.retrievePage();
             }
+            const params = url.searchParams;
+            let  tab = url.searchParams.get("tab");
+            this.tab = tab ? tab : "main";
         },
         methods: {
             async retrievePage(id) {
@@ -151,6 +176,13 @@
                 } catch (e) {
                     console.error(e.response.data);
                 }
+            },
+            changeTabTo(tab) {
+                const url = new URL(window.location);
+                let params = url.searchParams;
+                params.set("tab", tab);
+                this.tab = tab;
+                window.history.pushState({ tab }, null, url.toString());
             }
         }
 
