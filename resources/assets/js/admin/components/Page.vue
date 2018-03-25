@@ -9,10 +9,10 @@
                     <li class="nav-item">
                         <a class="nav-link" :class="{ active: tab === 'main' }" href="#" @click.prevent="changeTabTo('main')">Main</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" v-if="page.id">
                         <a class="nav-link" :class="{ active: tab === 'images' }" href="#" @click.prevent="changeTabTo('images')">Images</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" v-if="page.id">
                         <a class="nav-link" :class="{ active: tab === 'posts' }" href="#" @click.prevent="changeTabTo('posts')">Posts</a>
                     </li>
                 </ul>
