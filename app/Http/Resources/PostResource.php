@@ -23,6 +23,9 @@ class PostResource extends Resource
             'title' => $this->title,
             'name' => $this->name,
             'body' => $this->body,
+            'component' => [
+                'element_name' => 'page',
+            ],
             'images' => ImageResource::collection($this->whenLoaded('images')),
             'category' => new CategoryResource($this->whenLoaded('category')),
             'tags' => TagResource::collection($this->whenLoaded('tags')),

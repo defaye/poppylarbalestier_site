@@ -15,8 +15,9 @@ class CreatePagePostTable extends Migration
     {
         Schema::create('page_post', function (Blueprint $table) {
             $table->integer('page_id')->unsigned();
-            $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('post_id')->unsigned();
+
+            $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade')->onUpdate('cascade');
         });
     }

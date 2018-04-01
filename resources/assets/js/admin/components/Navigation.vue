@@ -14,7 +14,7 @@
                         Navigation
                     </div>
                     <draggable v-model="enabled" class="list-group list-group-flush dragarea" element="ul" :options="{ group: 'navigation' }">
-                        <li class="list-group-item" v-for="page in enabled">{{ page.name }}</li>
+                        <li class="list-group-item" v-for="page in enabled">{{ page.title }}</li>
                     </draggable>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                         Available Pages
                     </div>
                     <draggable v-model="disabled" class="list-group list-group-flush dragarea" element="ul" :options="{ group: 'navigation' }">
-                        <li class="list-group-item" v-for="page in disabled">{{ page.name }}</li>
+                        <li class="list-group-item" v-for="page in disabled">{{ page.title }}</li>
                     </draggable>
                 </div>
             </div>

@@ -9,39 +9,67 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import Vuex from 'vuex';
+
+Vue.use(Vuex);
+
 require('./fontawesome');
 
-Vue.component('page', require('./components/Page.vue'));
-Vue.component('post', require('./components/Post.vue'));
+require('./components');
+
 Vue.component('navigation', require('./components/Navigation.vue'));
 Vue.component('responsive-image', require('./components/ResponsiveImage.vue'));
 Vue.component('carousel', require('./components/Carousel.vue'));
 
-const app = new Vue({
-    el: '#app',
-    data: {
+const store = new Vuex.Store({
+    state: {
+        errors: undefined,
+        processing: false,
+        status: undefined,
         page: undefined
     },
-    mounted() {
-        this.load(new URL(window.location.href).pathname);
-
-        window.onpopstate = event => {
-            document.title = event.state.title;
-            this.page = event.state;
-        };
+    mutations: {
+        errors(state, errors) {
+            state.errors = errors
+        },
+        page(state, page) {
+            state.page = page
+        },
+        processing(state, mode) {
+            state.processing = mode === true
+        },
+        status(state, status) {
+            state.status = status
+        },
     },
-    methods: {
-        async load(path) {
+    actions: {
+        async load(context, path) {
             try {
                 const response = await axios.post("/api/router", {
                     path
                 });
-                window.history.pushState(Object.assign({}, response.data), response.data.title, path);
-                document.title = response.data.title;
-                this.page = response.data;
+                let title = response.data.hasOwnProperty("title") ? response.data.title + " — ***REMOVED*** ***REMOVED***" : (
+                    response.data.hasOwnProperty("name") ? response.data.name + " — ***REMOVED*** ***REMOVED***" : "***REMOVED*** ***REMOVED***"
+                );
+                window.history.pushState(Object.assign({}, response.data), title, path);
+                document.title = title;
+                context.commit("page", response.data);
             } catch (e) {
                 console.error(e.response.data);
             }
         }
+    }
+});
+
+const app = new Vue({
+    el: "#app",
+    store,
+    mounted() {
+        store.dispatch("load", new URL(window.location.href).pathname);
+
+        window.onpopstate = event => {
+            document.title = event.state.title;
+            store.commit("page", event.state);
+        };
     }
 });

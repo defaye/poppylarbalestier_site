@@ -19,6 +19,9 @@ import file from "@fortawesome/fontawesome-pro-light/faFile";
 import newspaper from "@fortawesome/fontawesome-pro-light/faNewspaper";
 import home from "@fortawesome/fontawesome-pro-light/faHome";
 import powerOff from "@fortawesome/fontawesome-pro-light/faPowerOff";
+import magic from "@fortawesome/fontawesome-pro-light/faMagic";
+import plusOctagon from "@fortawesome/fontawesome-pro-light/faPlusOctagon";
+import minusOctagon from "@fortawesome/fontawesome-pro-light/faMinusOctagon";
 
 fontawesome.library.add(facebookSquare);
 fontawesome.library.add(twitterSquare);
@@ -29,6 +32,9 @@ fontawesome.library.add(file);
 fontawesome.library.add(newspaper);
 fontawesome.library.add(home);
 fontawesome.library.add(powerOff);
+fontawesome.library.add(magic);
+fontawesome.library.add(plusOctagon);
+fontawesome.library.add(minusOctagon);
 
 fontawesome.icon({ prefix: "fab", iconName: "facebook-square" });
 fontawesome.icon({ prefix: "fab", iconName: "twitter-square" });
@@ -39,5 +45,8 @@ fontawesome.icon({ prefix: "fal", iconName: "file" });
 fontawesome.icon({ prefix: "fal", iconName: "newspaper" });
 fontawesome.icon({ prefix: "fal", iconName: "home" });
 fontawesome.icon({ prefix: "fal", iconName: "power-off" });
+fontawesome.icon({ prefix: "fal", iconName: "magic" });
+fontawesome.icon({ prefix: "fal", iconName: "plus-octagon" });
+fontawesome.icon({ prefix: "fal", iconName: "minus-octagon" });
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

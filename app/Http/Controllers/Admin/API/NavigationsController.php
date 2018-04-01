@@ -13,7 +13,7 @@ class NavigationsController extends Controller
     public function get()
     {
         $navigation = Page::leftJoin('navigations', 'pages.id', '=', 'navigations.page_id')
-            ->select('navigations.id', 'navigations.position', 'pages.name', 'pages.id as page_id')->orderBy('navigations.position')->get();
+            ->select('navigations.id', 'navigations.position', 'pages.title', 'pages.id as page_id')->orderBy('navigations.position')->get();
 
         return response()->json($navigation);
     }

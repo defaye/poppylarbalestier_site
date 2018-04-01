@@ -18,9 +18,25 @@
 //     return view('welcome', compact('images'));
 // });
 
-Route::get('about', function () {
-    return view('about');
-});
+// Route::get("process", function () {
+//     $executable = config('app.yarn_executable');
+//     $process = new \Symfony\Component\Process\Process("/home/defaye/.nvm/versions/node/v6.9.5/bin/npm --scripts-prepend-node-path=true run production");
+//     // $process->setCommandLine([
+//     //     "/home/defaye/.nvm/versions/node/v6.9.5/bin/npm config set scripts-prepend-node-path true;",
+//     //     "/home/defaye/.nvm/versions/node/v6.9.5/bin/npm run production;",
+//     // ]);
+//     $process->setWorkingDirectory(base_path());
+//     // $process = new \Symfony\Component\Process\Process(config('app.yarn_executable') . ' production');
+//     $process->run();
+//     if (!$process->isSuccessful()) {
+//         throw new \Symfony\Component\Process\Exception\ProcessFailedException($process);
+//     }
+//     return $process->getOutput();
+// });
+
+// Route::get('about', function () {
+//     return view('about');
+// });
 
 Route::group(['middleware' => 'guest', 'prefix' => 'admin'], function () {
     Route::get('login', ['middleware' => 'guest', 'as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
@@ -39,6 +55,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 
     Route::resource('posts', 'Admin\PostsController');
     Route::resource('pages', 'Admin\PagesController');
+    Route::resource('components', 'Admin\ComponentsController');
 
     Route::group(['prefix' => 'navigation'], function () {
         Route::get('', 'Admin\NavigationsController@index');

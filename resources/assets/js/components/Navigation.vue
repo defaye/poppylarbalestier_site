@@ -5,8 +5,8 @@
         </button>
         <div class="collapse navbar-collapse" id="headerNavigation">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item" v-for="item in items" :key="item.id" v-if="item.position > 1">
-                    <a :href="`/${item.slug}`" class="nav-link text-uppercase" :title="item.title" @click.prevent="$emit('change', `/${item.slug}`)">{{ item.name }}</a>
+                <li class="nav-item" v-for="item in items" :key="item.id" v-if="item.position > 0">
+                    <a :href="`/${item.slug}`" class="nav-link text-uppercase" :title="item.name" @click.prevent="navigateTo(`/${item.slug}`)">{{ item.title }}</a>
                 </li>
             </ul>
             <!-- <form class="form-inline my-2 my-lg-0">
@@ -30,6 +30,12 @@
                 this.items = response.data;
             } catch (e) {
                 console.error(e);
+            }
+        },
+        methods: {
+            navigateTo(path) {
+                $(".navbar-collapse").collapse("hide");
+                this.$store.dispatch('load', path);
             }
         }
     }

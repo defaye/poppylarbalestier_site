@@ -21,10 +21,10 @@
                 <header id="top" class="my-4">
                     <div class="row">
                         <div class="col-12 order-lg-last">
-                            <navigation @change="load"></navigation>
+                            <navigation></navigation>
                         </div>
                         <div class="col-12 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
-                            <div role="button" class="text-center" @click.prevent="load('/')" {{-- onclick="window.open('/', '_self')" --}}>
+                            <div role="button" class="text-center" @click.prevent="$store.dispatch('load', '/')">
                                     <h1 class="text-uppercase">{{ config('app.name') }}</h1>
                                     <div class="lead text-uppercase">***REMOVED***</div>
                             </div>

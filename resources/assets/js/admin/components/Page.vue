@@ -19,8 +19,14 @@
             </div>
             <div class="card-body" v-if="tab === 'main'">
                 <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" v-model="page.title" class="form-control" placeholder="Enter a title..." :disabled="processing">
+                    <small class="form-text">This is the text that will appear in the title bar of the page only.</small>
+                </div>
+                <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name" v-model="page.name" class="form-control" placeholder="Enter a name..." :disabled="processing">
+                    <small class="form-text">If the page name is used in the component template, it will be used.</small>
                 </div>
                 <div class="form-group">
                     <label for="body">Body</label>
@@ -32,11 +38,17 @@
                         <label class="custom-control-label" for="published">Published</label>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="component">Component</label>
+                    <select name="component" id="component" v-model="page.component_id" class="form-control" :disabled="processing">
+                        <option v-for="component in components" :value="component.id">{{ component.name }}</option>
+                    </select>
+                </div>
             </div>
             <div class="card-body" v-else-if="page.id && tab === 'images'">
                 <div class="form-group" v-if="page.id">
                     <label for="images">Images</label>
-                    <image-uploader :multiple="true" @change="assignImages" :url="`/api/admin/pages/${page.id}/images`" class="form-group"></image-uploader>
+                    <image-uploader :multiple="true" @change="assignImages(page, $event)" :url="`/api/admin/pages/${page.id}/images`" class="form-group"></image-uploader>
                     <div v-if="page.hasOwnProperty('images') && page.images.length" class="form-group">
                         <div class="row">
                             <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-1" v-for="(image, index) in page.images">
@@ -44,7 +56,7 @@
                                     <div class="card-header">
                                         <span>Delete</span>
                                         <button type="button" class="close" aria-label="Unstage image">
-                                            <span aria-hidden="true" @click.prevent="deleteImage(image, index)">&times;</span>
+                                            <span aria-hidden="true" @click.prevent="deleteImage(page, image, index)">&times;</span>
                                         </button>
                                     </div>
                                     <div class="card-body">
@@ -60,6 +72,7 @@
                 </div>
             </div>
             <div class="card-body" v-else-if="page.id && tab === 'posts'">
+                <page-posts v-model="page.posts"></page-posts>
             </div>
         </div>
         <div class="mt-3">
@@ -72,26 +85,51 @@
 </template>
 <script>
     "use strict";
-    // import autosize from "autosize";
+    import ManageImages from "../mixins/ManageImages.js";
+    import Tabs from "../mixins/Tabs.js";
+
     export default {
+        mixins: [
+            ManageImages,
+            Tabs
+        ],
         data() {
             return {
                 processing: false,
                 errors: undefined,
                 page: {
+                    title: undefined,
                     name: undefined,
                     body: undefined,
                     published: undefined,
-                    images: []
+                    component_id: undefined,
+                    images: [],
+                    posts: []
                 },
-                tab: undefined
+                components: []
             }
         },
-        mounted() {
+        async mounted() {
             window.onpopstate = event => {
                 document.title = event.state.title;
                 this.page = event.state;
             };
+            try {
+                const response = await axios.get("/api/admin/components");
+                if (response.data.length) {
+                    this.components = response.data;
+                    this.page.component_id = this.components[0].id;
+                } else {
+                    this.errors = { message: "You need to create a component template before you create a page." };
+                }
+            } catch (e) {
+                try {
+                    console.error(e.response.data);
+                    this.errors = e.response.data;
+                } catch (e) {
+                    console.error(e);
+                }
+            }
             const url = new URL(window.location.href);
             const regex = /^\/admin\/pages\/(\d+)$/;
             if (regex.test(url.pathname)) {
@@ -100,9 +138,6 @@
             } else {
                 this.retrievePage();
             }
-            const params = url.searchParams;
-            let  tab = url.searchParams.get("tab");
-            this.tab = tab ? tab : "main";
         },
         methods: {
             async retrievePage(id) {
@@ -152,37 +187,6 @@
                     }
                 }
                 this.processing = false;
-            },
-            assignImages(images) {
-                console.log(images);
-                this.$store.commit("status", {
-                    type: "success",
-                    message: "Images uploaded"
-                });
-                images.forEach(image => {
-                    this.page.images.push(Object.assign({}, image));
-                });
-            },
-            async deleteImage(image, index) {
-                try {
-                    const response = await axios.delete(`/api/admin/images/${image.id}`);
-                    if (response.data) {
-                        this.$store.commit("status", {
-                            type: "success",
-                            message: "Image deleted"
-                        });
-                        this.$delete(this.page.images, index);
-                    }
-                } catch (e) {
-                    console.error(e.response.data);
-                }
-            },
-            changeTabTo(tab) {
-                const url = new URL(window.location);
-                let params = url.searchParams;
-                params.set("tab", tab);
-                this.tab = tab;
-                window.history.pushState({ tab }, null, url.toString());
             }
         }
 

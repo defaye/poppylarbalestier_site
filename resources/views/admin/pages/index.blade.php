@@ -9,7 +9,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
+                        <th>Title</th>
                         <th>Published?</th>
                     </tr>
                 </thead>
@@ -17,7 +17,7 @@
                     @forelse($pages as $page)
                         <tr ondblclick="window.location.href='/admin/pages/{{ $page->id }}'">
                             <td><a href="/admin/pages/{{ $page->id }}">{{ $page->id }}</a></td>
-                            <td>{{ $page->name }}</td>
+                            <td>{{ $page->title }}</td>
                             <td>{{ $page->published ? 'Published' : 'Un-published' }}</td>
                         </tr>
                     @empty

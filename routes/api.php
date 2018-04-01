@@ -41,10 +41,19 @@ Route::group(['middleware' => 'throttle:60,1'], function () {
         Route::patch('pages/{page}', 'Admin\API\PagesController@update');
         Route::post('pages/{page}/images', 'Admin\API\ImagePagesController@create');
 
+        Route::get('components', 'Admin\API\ComponentsController@all');
+        Route::get('components/{component}', 'Admin\API\ComponentsController@get');
+        Route::post('components', 'Admin\API\ComponentsController@store');
+        Route::patch('components/{component}', 'Admin\API\ComponentsController@update');
+
         Route::group(['prefix' => 'navigation'], function () {
             Route::get('', 'Admin\API\NavigationsController@get');
             Route::post('', 'Admin\API\NavigationsController@update');
 
+        });
+
+        Route::group(['prefix' => 'search'], function () {
+            Route::get('posts', 'Admin\API\SearchController@posts');
         });
 
         // Route::get('posts')->uses('Admin\PostsController@get');

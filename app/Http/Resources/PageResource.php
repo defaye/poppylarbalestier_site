@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\ComponentResource;
 use App\Http\Resources\ImageResource;
 use App\Http\Resources\NavigationResource;
 use App\Http\Resources\PostResource;
@@ -25,6 +26,8 @@ class PageResource extends Resource
             'images' => ImageResource::collection($this->whenLoaded('images')),
             'navigation' => new NavigationResource($this->whenLoaded('navigation')),
             'posts' => PostResource::collection($this->whenLoaded('posts')),
+            'component' => new ComponentResource($this->whenLoaded('component')),
+            'component_id' => $this->component_id,
             'published' => $this->published,
             'slug' => $this->slug,
             'created_at' => (string) $this->created_at,

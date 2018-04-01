@@ -11,6 +11,7 @@ return [
      */
 
     'faker_locale' => 'en_GB',
+    'yarn_executable' => env('YARN_EXECUTABLE', 'yarn'),
 
     /*
     |--------------------------------------------------------------------------

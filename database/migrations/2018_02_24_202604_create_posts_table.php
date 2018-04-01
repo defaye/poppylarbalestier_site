@@ -19,9 +19,10 @@ class CreatePostsTable extends Migration
             $table->text('body')->nullable();
             $table->string('slug')->nullable();
             $table->integer('category_id')->unsigned()->nullable();
-            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('set null');
             $table->boolean('published')->default(false);
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('set null');
         });
     }
 

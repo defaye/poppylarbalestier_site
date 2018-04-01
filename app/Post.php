@@ -43,6 +43,20 @@ class Post extends Model
     ];
 
     /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        static::saving(function ($model) {
+            $model->slug = kebab_case($model->title);
+        });
+
+        parent::boot();
+    }
+
+    /**
      * Get all of the images for the post.
      */
     public function images()

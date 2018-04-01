@@ -12,6 +12,7 @@ class Page extends Model
      * @var array
      */
     protected $fillable = [
+        'title',
         'name',
         'body',
     ];
@@ -22,6 +23,7 @@ class Page extends Model
      * @var array
      */
     protected $casts = [
+        'component_id' => 'integer',
         'published' => 'boolean',
     ];
 
@@ -30,7 +32,9 @@ class Page extends Model
      *
      * @var array
      */
-    protected $with = [];
+    protected $with = [
+        'component',
+    ];
 
     /**
      * The relationship counts that should be eager loaded on every query.
@@ -40,6 +44,23 @@ class Page extends Model
     protected $withCount = [
         // 'posts',
     ];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        static::saving(function ($model) {
+            if (!isset($model->title)) {
+                $model->title = $model->name;
+            }
+            $model->slug = kebab_case($model->title);
+        });
+
+        parent::boot();
+    }
 
     /**
      * Get all of the images for this page.
@@ -63,5 +84,13 @@ class Page extends Model
     public function navigation()
     {
         return $this->hasOne('App\Navigation');
+    }
+
+    /**
+     * Get the component this page belongs to.
+     */
+    public function component()
+    {
+        return $this->belongsTo('App\Component');
     }
 }
