@@ -30,12 +30,14 @@ Route::group(['middleware' => 'throttle:60,1'], function () {
 
     Route::group(['prefix' => 'admin', 'name' => 'admin.', 'middleware' => 'auth:api'], function () {
 
+        Route::get('posts', 'Admin\API\PostsController@paginate');
         Route::get('posts/{post}', 'Admin\API\PostsController@get');
         Route::post('posts', 'Admin\API\PostsController@store');
         Route::patch('posts/{post}', 'Admin\API\PostsController@update');
         Route::post('posts/{post}/images', 'Admin\API\ImagePostsController@create');
         Route::delete('images/{image}', 'Admin\API\ImagesController@delete');
 
+        Route::get('pages', 'Admin\API\PagesController@paginate');
         Route::get('pages/{page}', 'Admin\API\PagesController@get');
         Route::post('pages', 'Admin\API\PagesController@store');
         Route::patch('pages/{page}', 'Admin\API\PagesController@update');

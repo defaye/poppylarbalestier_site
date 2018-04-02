@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\API;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PostCollection;
 use App\Http\Resources\PostResource;
 use App\Post;
 use Illuminate\Http\Request;
@@ -12,14 +13,30 @@ use Illuminate\Support\Facades\Validator;
 class PostsController extends Controller
 {
 
-    // public function instantiate()
-    // {
-    //     $post = new Post;
-    //     $post->published = false;
-    //     $post->save();
+    public function paginate(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'with' => 'array|in:category,images,tags,pages',
+            'per_page' => 'integer|min:1',
+            'page' => 'integer|min:1',
+        ]);
 
-    //     return response()->json(new PostResource($post));
-    // }
+        if ($validator->fails()) {
+            return response()->json(['message' => 'Invalid request',
+                'errors' => $validator->errors(),
+            ]);
+        }
+
+        $perPage = $request->get('per_page', 15);
+        $posts = Post::skip($request->get('page', 1 * $perPage - $perPage));
+        if ($request->has('with')) {
+            $posts = $posts->with($request->with);
+        }
+
+        return response()->json(
+            new PostCollection($posts->paginate($perPage))
+        );
+    }
 
     public function get($post)
     {

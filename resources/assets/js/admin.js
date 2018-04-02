@@ -23,9 +23,11 @@ Vue.directive('autosize', el => {
 Vue.component('alert', require('./admin/components/Alert.vue'));
 Vue.component('errors', require('./admin/components/Errors.vue'));
 
+Vue.component('pagination', require('./admin/components/Pagination.vue'));
+
 Vue.component('image-uploader', require('./admin/components/ImageUploader.vue'));
 Vue.component('post', require('./admin/components/Post.vue'));
-// Vue.component('posts', require('./admin/components/Posts.vue'));
+Vue.component('posts', require('./admin/components/Posts.vue'));
 Vue.component('page', require('./admin/components/Page.vue'));
 Vue.component('pages', require('./admin/components/Pages.vue'));
 Vue.component('page-posts', require('./admin/components/PagePosts.vue'));

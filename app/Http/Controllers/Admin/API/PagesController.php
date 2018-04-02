@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PageCollection;
 use App\Http\Resources\PageResource;
 use App\Page;
 use App\Post;
@@ -11,6 +12,31 @@ use Illuminate\Support\Facades\Validator;
 
 class PagesController extends Controller
 {
+    public function paginate(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'with' => 'array|in:component,images,posts',
+            'per_page' => 'integer|min:1',
+            'page' => 'integer|min:1',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['message' => 'Invalid request',
+                'errors' => $validator->errors(),
+            ]);
+        }
+
+        $perPage = $request->get('per_page', 15);
+        $pages = Page::skip($request->get('page', 1 * $perPage - $perPage));
+        if ($request->has('with')) {
+            $pages = $pages->with($request->with);
+        }
+
+        return response()->json(
+            new PageCollection($pages->paginate($perPage))
+        );
+    }
+
     public function get($page)
     {
         $page = Page::with('component', 'images', 'posts.category')->find($page);
