@@ -54,7 +54,9 @@
             @endif
         </div>
     </div>
-    <script src="{{ mix('js/admin.js') }}"></script>
-    @stack('script')
+    @auth
+        <script src="{{ mix('js/admin.js') }}"></script>
+        @stack('script')
+    @endauth
 </body>
 </html>
