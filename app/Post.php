@@ -50,7 +50,7 @@ class Post extends Model
     protected static function boot()
     {
         static::saving(function ($model) {
-            $model->slug = kebab_case($model->title);
+            $model->slug = str_slug($model->title);
         });
 
         parent::boot();

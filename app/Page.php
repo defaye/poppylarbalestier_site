@@ -56,7 +56,7 @@ class Page extends Model
             if (!isset($model->title)) {
                 $model->title = $model->name;
             }
-            $model->slug = kebab_case($model->title);
+            $model->slug = str_slug($model->title);
         });
 
         parent::boot();
