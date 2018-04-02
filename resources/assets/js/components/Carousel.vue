@@ -182,44 +182,85 @@
                             },
                             [
                                 (
-                                    t.isFullScreen ?
+                                    screenfull.isFullscreen ?
                                     h(
-                                        "font-awesome-icon",
+                                        "font-awesome-layers",
                                         {
+                                            attrs: {
+                                                role: "button"
+                                            },
                                             class: {
+                                                "fa-3x": true,
                                                 "arrows-icon": true
                                             },
                                             on: {
                                                 click: t.exitFullscreen
-                                            },
-                                            props: {
-                                                icon: [
-                                                    "far",
-                                                    "compress-alt"
-                                                ]
                                             }
-                                        }
+                                        },
+                                        [
+                                            h(
+                                                "font-awesome-icon",
+                                                {
+                                                    attrs: {
+                                                        icon: "circle",
+                                                        style: "color: rgba(128, 67, 152, 0.25);"
+                                                    }
+                                                }
+                                            ),
+                                            h(
+                                                "font-awesome-icon",
+                                                {
+                                                    attrs: {
+                                                        transform: "shrink-6",
+                                                        style: "color: white;"
+                                                    },
+                                                    props: {
+                                                        icon: ['far', 'compress-alt'],
+                                                    }
+                                                }
+                                            )
+                                        ]
                                     )
                                     :
                                     h(
-                                        "font-awesome-icon",
+                                        "font-awesome-layers",
                                         {
+                                            attrs: {
+                                                role: "button"
+                                            },
                                             class: {
+                                                "fa-3x": true,
                                                 "arrows-icon": true
                                             },
                                             on: {
                                                 click(e) {
-                                                    e.preventDefault();
                                                     t.activateFullscreen(`#${t.componentID} .carousel-primary`);
                                                 }
                                             },
-                                            props: {
-                                                icon: [
-                                                    "far",
-                                                    "expand-alt"
-                                                ]
-                                            }
-                                        }
+                                        },
+                                        [
+                                            h(
+                                                "font-awesome-icon",
+                                                {
+                                                    attrs: {
+                                                        icon: "circle",
+                                                        style: "color: rgba(128, 67, 152, 0.25);"
+                                                    }
+                                                }
+                                            ),
+                                            h(
+                                                "font-awesome-icon",
+                                                {
+                                                    attrs: {
+                                                        transform: "shrink-6",
+                                                        style: "color: white;"
+                                                    },
+                                                    props: {
+                                                        icon: ['far', 'expand-alt'],
+                                                    }
+                                                }
+                                            )
+                                        ]
                                     )
                                 ),
                                 h(
