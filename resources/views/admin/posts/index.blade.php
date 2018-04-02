@@ -10,8 +10,8 @@
                     <tr>
                         <th>#</th>
                         <th>Title</th>
-                        <th>Published?</th>
                         <th>Category</th>
+                        <th>Published?</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,6 +19,7 @@
                         <tr ondblclick="window.location.href='/admin/posts/{{ $post->id }}'">
                             <td><a href="/admin/posts/{{ $post->id }}">{{ $post->id }}</a></td>
                             <td>{{ $post->title }}</td>
+                            <td>{{ optional($post->category)->name }}</td>
                             <td>
                                 @if($post->published)
                                     <font-awesome-icon class="text-warning" :icon="['fas', 'lightbulb']" title="Published"></font-awesome-icon>
@@ -26,7 +27,6 @@
                                     <font-awesome-icon class="text-warning" :icon="['fal', 'lightbulb']" title="Un-published"></font-awesome-icon>
                                 @endif
                             </td>
-                            <td>{{ optional($post->category)->name }}</td>
                         </tr>
                     @empty
                         <tr><td colspan="4">There are no posts to show.</td></tr>
