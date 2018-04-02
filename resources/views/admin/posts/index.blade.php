@@ -19,7 +19,13 @@
                         <tr ondblclick="window.location.href='/admin/posts/{{ $post->id }}'">
                             <td><a href="/admin/posts/{{ $post->id }}">{{ $post->id }}</a></td>
                             <td>{{ $post->title }}</td>
-                            <td>{{ $post->published ? 'Published' : 'Un-published' }}</td>
+                            <td>
+                                @if($post->published)
+                                    <font-awesome-icon class="text-warning" :icon="['fas', 'lightbulb']" title="Published"></font-awesome-icon>
+                                @else
+                                    <font-awesome-icon class="text-warning" :icon="['fal', 'lightbulb']" title="Un-published"></font-awesome-icon>
+                                @endif
+                            </td>
                             <td>{{ optional($post->category)->name }}</td>
                         </tr>
                     @empty

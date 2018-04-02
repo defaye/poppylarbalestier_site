@@ -18,7 +18,13 @@
                         <tr ondblclick="window.location.href='/admin/pages/{{ $page->id }}'">
                             <td><a href="/admin/pages/{{ $page->id }}">{{ $page->id }}</a></td>
                             <td>{{ $page->title }}</td>
-                            <td>{{ $page->published ? 'Published' : 'Un-published' }}</td>
+                            <td>
+                                @if($page->published)
+                                    <font-awesome-icon class="text-warning" :icon="['fas', 'lightbulb']" title="Published"></font-awesome-icon>
+                                @else
+                                    <font-awesome-icon class="text-warning" :icon="['fal', 'lightbulb']" title="Un-published"></font-awesome-icon>
+                                @endif
+                            </td>
                         </tr>
                     @empty
                         <tr><td colspan="4">There are no pages to show.</td></tr>

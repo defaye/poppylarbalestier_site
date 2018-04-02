@@ -16,7 +16,7 @@
             <div class="container">
                 <div class="row">
                     <div class="d-flex align-content-stretch flex-wrap col-12 col-lg-4" role="button" v-for="post in page.posts" :key="post.id" @click.prevent="emitLoadEvent(`/${page.slug}/${post.slug}`)">
-                        <a :href="`/${page.slug}/${post.slug}`" @click.prevent="emitLoadEvent(`/${page.slug}/${post.slug}`)"><small>{{ startCase(post.title) }}</small></a>
+                        <a :href="`/${page.slug}/${post.slug}`" @click.prevent="emitLoadEvent(`/${page.slug}/${post.slug}`)"><small>{{ post.title }}</small></a>
                         <responsive-image :src="post.images[0].path" :alt="post.title" :ratio-x="4" :ratio-y="3"></responsive-image>
                     </div>
                 </div>

@@ -22,6 +22,8 @@ import powerOff from "@fortawesome/fontawesome-pro-light/faPowerOff";
 import magic from "@fortawesome/fontawesome-pro-light/faMagic";
 import plusOctagon from "@fortawesome/fontawesome-pro-light/faPlusOctagon";
 import minusOctagon from "@fortawesome/fontawesome-pro-light/faMinusOctagon";
+import solidLightbulb from "@fortawesome/fontawesome-pro-solid/faLightbulb";
+import lightLightbulb from "@fortawesome/fontawesome-pro-light/faLightbulb";
 
 fontawesome.library.add(facebookSquare);
 fontawesome.library.add(twitterSquare);
@@ -35,6 +37,8 @@ fontawesome.library.add(powerOff);
 fontawesome.library.add(magic);
 fontawesome.library.add(plusOctagon);
 fontawesome.library.add(minusOctagon);
+fontawesome.library.add(solidLightbulb);
+fontawesome.library.add(lightLightbulb);
 
 fontawesome.icon({ prefix: "fab", iconName: "facebook-square" });
 fontawesome.icon({ prefix: "fab", iconName: "twitter-square" });
@@ -48,5 +52,7 @@ fontawesome.icon({ prefix: "fal", iconName: "power-off" });
 fontawesome.icon({ prefix: "fal", iconName: "magic" });
 fontawesome.icon({ prefix: "fal", iconName: "plus-octagon" });
 fontawesome.icon({ prefix: "fal", iconName: "minus-octagon" });
+fontawesome.icon({ prefix: "fas", iconName: "lightbulb" });
+fontawesome.icon({ prefix: "fal", iconName: "lightbulb" });
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
