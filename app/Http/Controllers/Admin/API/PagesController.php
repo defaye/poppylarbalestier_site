@@ -49,7 +49,7 @@ class PagesController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required_without:name|nullable|max:255',
             'name' => 'required_without:title|nullable|max:255',
-            'body' => 'required|string',
+            'body' => 'nullable|string',
             'component_id' => 'required|exists:components,id',
         ]);
 
@@ -74,7 +74,7 @@ class PagesController extends Controller
             'id' => 'required|exists:pages',
             'title' => 'required_without:name|nullable|max:255',
             'name' => 'required_without:title|nullable|max:255',
-            'body' => 'required|string',
+            'body' => 'nullable|string',
             'component_id' => 'required|exists:components,id',
             'posts' => 'array',
             'posts.*.id' => 'required|exists:posts,id',

@@ -24,6 +24,8 @@ Route::group(['middleware' => 'throttle:60,1'], function () {
     Route::get('tags')->uses('TagsController@get');
     Route::post('router')->uses('PagesController@router');
 
+    Route::post('contact')->uses('ContactController@sendMessage')->middleware('throttle:60,1');
+
     // Route::middleware('auth')->group(function () {
     //     Route::get('users')->uses('UsersController@get');
     // });

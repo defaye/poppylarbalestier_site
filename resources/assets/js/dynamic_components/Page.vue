@@ -1,6 +1,7 @@
 <template>
     <div v-if="page" class="container">
-        <h1 v-if="page.name">{{ startCase(page.name) }}</h1>
+        <h1 v-if="page.name">{{ page.name }}</h1>
+        <h1 v-else-if="page.hasOwnProperty('category') && page.title">{{ page.title }}</h1>
         <carousel class="my-4"
                   v-if="page.images && page.images.length"
                  :images="page.images"

@@ -17,6 +17,13 @@ require('./fontawesome');
 
 require('./components');
 
+
+import autosize from "autosize";
+Vue.directive('autosize', el => {
+    autosize(el);
+});
+
+Vue.component('alert', require('./admin/components/Alert.vue'));
 Vue.component('navigation', require('./components/Navigation.vue'));
 Vue.component('responsive-image', require('./components/ResponsiveImage.vue'));
 Vue.component('carousel', require('./components/Carousel.vue'));
