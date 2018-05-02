@@ -28,7 +28,7 @@ class PostsController extends Controller
         }
 
         $perPage = $request->get('per_page', 15);
-        $posts = Post::skip($request->get('page', 1 * $perPage - $perPage));
+        $posts = Post::skip($request->get('page', 1) * $perPage - $perPage);
         if ($request->has('with')) {
             $posts = $posts->with($request->with);
         }

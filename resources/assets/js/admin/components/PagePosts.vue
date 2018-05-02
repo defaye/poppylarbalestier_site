@@ -110,6 +110,7 @@
                 }
                 try {
                     this.processing = true;
+                    this.errors = undefined;
                     const response = await axios.get("/api/admin/search/posts", {
                         params: this.search
                     });

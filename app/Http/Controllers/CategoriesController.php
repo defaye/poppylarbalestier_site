@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Http\Resources\CategoryCollection;
+use App\Http\Resources\PostCollection;
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,7 +12,11 @@ class CategoriesController extends Controller
     public function get(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'with' => 'array|in:posts',
+            'with' => 'array|in:category,images,pages,tags',
+            'name' => 'required_without:category_id|string|max:255',
+            'category_id' => 'required_without:name|integer|min:1',
+            // 'category_id' => 'required_without:name|integer|exists:categories,id',
+            'page' => 'integer|min:1',
             'per_page' => 'integer|min:1',
         ]);
 
@@ -22,13 +26,28 @@ class CategoriesController extends Controller
             ]);
         }
 
-        $categories = Category::query();
+        $posts = Post::query();
+
+        if ($request->has('name')) {
+            $posts = $posts->join('categories', 'categories.id', '=', 'posts.category_id')
+                ->where('categories.name', $request->name)
+                ->select('posts.*');
+        } elseif ($request->has('category_id')) {
+            $posts = $posts->whereCategoryId($request->category_id);
+        }
         if ($request->has('with')) {
-            $categories = $categories->with($request->with);
+            $posts = $posts->with($request->with);
+        }
+        if ($request->has('page')) {
+            $perPage = $request->get('per_page', 1);
+            $posts = $posts->skip($request->page * $perPage - $perPage)
+                ->paginate($perPage);
+        } else {
+            $posts = $posts->get();
         }
 
         return response()->json(
-            new CategoryCollection($categories->paginate($request->get('per_page', 15)))
+            new PostCollection($posts)
         );
     }
 }

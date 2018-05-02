@@ -20,6 +20,7 @@ Route::group(['middleware' => 'throttle:60,1'], function () {
     // Route::post('pages')->uses('PagesController@find');
 
     Route::get('posts')->uses('PostsController@get');
+    Route::post('posts')->uses('PostsController@search');
 
     Route::get('tags')->uses('TagsController@get');
     Route::post('router')->uses('PagesController@router');

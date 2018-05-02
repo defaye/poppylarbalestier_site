@@ -27,7 +27,7 @@ class PagesController extends Controller
         }
 
         $perPage = $request->get('per_page', 15);
-        $pages = Page::skip($request->get('page', 1 * $perPage - $perPage));
+        $pages = Page::skip($request->get('page', 1) * $perPage - $perPage);
         if ($request->has('with')) {
             $pages = $pages->with($request->with);
         }

@@ -2,14 +2,17 @@
     <div v-if="page" class="container">
         <h1 v-if="page.name">{{ page.name }}</h1>
         <h1 v-else-if="page.hasOwnProperty('category') && page.title">{{ page.title }}</h1>
-        <carousel class="my-4"
-                  v-if="page.images && page.images.length"
-                 :images="page.images"
-                 :ratio-x="826"
-                 :ratio-y="551"
-                 :show-pagination="true"
-        >
-        </carousel>
+        <div v-if="page.images && page.images.length">
+            <carousel class="my-4"
+                      v-if="page.images.length > 1"
+                     :images="page.images"
+                     :ratio-x="826"
+                     :ratio-y="551"
+                     :show-pagination="true"
+            >
+            </carousel>
+            <responsive-image v-else :src="page.images[0].path" :alt="page.name || page.title || false" :ratio-x="826" :ratio-y="551"></responsive-image>
+        </div>
         <div class="my-4" v-if="page.body && page.body.length">
             <p v-for="line in page.body.split('\n')">{{ line }}</p>
         </div>

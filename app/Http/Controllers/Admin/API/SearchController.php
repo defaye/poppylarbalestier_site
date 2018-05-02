@@ -13,9 +13,9 @@ class SearchController extends Controller
     public function posts(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required_without_all:body,category|nullable|max:255',
-            'body' => 'required_without_all:title,category|nullable|max:255',
-            'category' => 'required_without_all:title,body|nullable|max:255',
+            'title' => 'required_without_all:body,category|max:255',
+            'body' => 'required_without_all:title,category|max:255',
+            'category' => 'required_without_all:title,body|max:255',
         ]);
 
         $posts = Post::with('category')->orderBy('updated_at', 'desc');
@@ -29,7 +29,10 @@ class SearchController extends Controller
         }
 
         if ($request->get('category') != false) {
-            $posts = $posts->where('category', 'like', $request->category);
+            $posts = $posts
+                ->join('categories', 'categories.id', '=', 'posts.category_id')
+                ->where('categories.name', 'like', $request->category)
+                ->select('posts.*');
         }
 
         return response()->json(PostResource::collection($posts->get()));
