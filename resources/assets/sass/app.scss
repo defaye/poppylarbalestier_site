@@ -55,7 +55,7 @@ body {
 html,
 body,
 #app {
-    min-height: 100%;
+    min-height: 100vh;
 }
 #app {
     display: flex;
@@ -173,4 +173,53 @@ body {
 ::selection {
     background: $purple;
     color: $gray-100;
+}
+
+.btn {
+    line-height: 2em;
+}
+
+.form-control {
+    line-height: 3em;
+}
+
+footer#bottom {
+    a {
+        color: $gray-400;
+    }
+}
+
+.fa-facebook-square {
+    color: #4267b2;
+    &:hover {
+        color: $purple;
+    }
+}
+
+.fa-twitter-square {
+    color: rgb(29, 161, 242);
+    &:hover {
+        color: $purple;
+    }
+}
+
+.fa-phone-square {
+    color: $yellow;
+    &:hover {
+        color: $purple;
+    }
+}
+
+.fa-envelope-square {
+    color: $red;
+    &:hover {
+        color: $purple;
+    }
+}
+
+.fa-pen-square {
+    color: $green;
+    &:hover {
+        color: $purple;
+    }
 }

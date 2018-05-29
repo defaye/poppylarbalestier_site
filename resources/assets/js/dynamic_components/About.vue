@@ -8,11 +8,21 @@
             <div class="col-12 col-lg-3">
                 <h2>Get In Touch</h2>
                 <hr>
-                <div><a href="https://www.facebook.com/pages/***REMOVED***-***REMOVED***-***REMOVED***/261844107286000" target="_blank">Like me on Facebook</a></div>
-                <div><a href="https://twitter.com/poppyplp" target="_blank">Follow me on Twitter</a></div>
-                <hr>
-                <div><strong>Phone:</strong> <a href="tel:00447700832331">+44 (0) 7700 832 331</a></div>
-                <div>Or <strong><a href="mailto:***REMOVED***">Email Me</a></strong></div>
+                <a class="ml-auto" href="https://www.facebook.com/pages/***REMOVED***-***REMOVED***-***REMOVED***/261844107286000" target="_blank">
+                    <font-awesome-icon class="fa-2x" :icon="['fab', 'facebook-square']"></font-awesome-icon>
+                </a>
+                <a class="ml-1" href="https://twitter.com/poppyplp" target="_blank">
+                    <font-awesome-icon class="fa-2x" :icon="['fab', 'twitter-square']"></font-awesome-icon>
+                </a>
+                <a class="ml-1" href="tel:00447700832331">
+                    <font-awesome-icon class="fa-2x" :icon="['fas', 'phone-square']"></font-awesome-icon>
+                </a>
+                <a class="ml-1" href="mailto:***REMOVED***">
+                    <font-awesome-icon class="fa-2x" :icon="['fas', 'envelope-square']"></font-awesome-icon>
+                </a>
+                <a class="ml-1 mr-auto" href="/contact" @click.prevent="$store.dispatch('load', '/contact')">
+                    <font-awesome-icon class="fa-2x" :icon="['fas', 'pen-square']"></font-awesome-icon>
+                </a>
             </div>
         </div>
         <responsive-image :src="page.images[0].path" alt="Me and my husband" :ratio-x="4" :ratio-y="3"></responsive-image>

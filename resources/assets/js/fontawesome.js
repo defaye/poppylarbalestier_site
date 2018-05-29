@@ -17,6 +17,9 @@ import compressAlt from "@fortawesome/fontawesome-pro-regular/faCompressAlt";
 import circle from "@fortawesome/fontawesome-pro-solid/faCircle";
 import spinner from "@fortawesome/fontawesome-pro-solid/faSpinner";
 import eye from "@fortawesome/fontawesome-pro-solid/faEye";
+import phoneSquare from "@fortawesome/fontawesome-pro-solid/faPhoneSquare";
+import envelopeSquare from "@fortawesome/fontawesome-pro-solid/faEnvelopeSquare";
+import penSquare from "@fortawesome/fontawesome-pro-solid/faPenSquare";
 
 fontawesome.library.add(facebookSquare);
 fontawesome.library.add(twitterSquare);
@@ -25,6 +28,9 @@ fontawesome.library.add(compressAlt);
 fontawesome.library.add(circle);
 fontawesome.library.add(spinner);
 fontawesome.library.add(eye);
+fontawesome.library.add(phoneSquare);
+fontawesome.library.add(envelopeSquare);
+fontawesome.library.add(penSquare);
 
 fontawesome.icon({ prefix: "fab", iconName: "facebook-square" });
 fontawesome.icon({ prefix: "fab", iconName: "twitter-square" });
@@ -33,6 +39,9 @@ fontawesome.icon({ prefix: "far", iconName: "compress-alt" });
 fontawesome.icon({ prefix: "fas", iconName: "circle" });
 fontawesome.icon({ prefix: "fas", iconName: "spinner" });
 fontawesome.icon({ prefix: "fas", iconName: "eye" });
+fontawesome.icon({ prefix: "fas", iconName: "phone-square" });
+fontawesome.icon({ prefix: "fas", iconName: "envelope-square" });
+fontawesome.icon({ prefix: "fas", iconName: "pen-square" });
 
 Vue.component("font-awesome-layers", FontAwesomeLayers);
 Vue.component("font-awesome-icon", FontAwesomeIcon);

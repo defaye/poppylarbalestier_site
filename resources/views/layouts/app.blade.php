@@ -51,7 +51,7 @@
                                 <div class="text-center text-sm-left">&copy; ***REMOVED*** {{ date('Y') }}</div>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <div class="text-center text-sm-right text-muted"><a href="https://defaye.co.uk" target="_blank">Jono de Faye</a></div>
+                                <div class="text-center text-sm-right">Website by <a href="https://defaye.co.uk" target="_blank">Jono de Faye</a></div>
                             </div>
                         </div>
                     </div>
