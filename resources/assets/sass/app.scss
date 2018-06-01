@@ -41,6 +41,14 @@
 
 @import "components/Carousel";
 
+html {
+    font-size: 13px;
+}
+
+#headerNavigation {
+    font-size: 14px;
+}
+
 body {
     // border: .25rem solid $gray-200;
 
@@ -87,7 +95,8 @@ body,
 #top {
     .icon-link,
     .nav-link {
-        color: lighten($gray-500, 10%);
+        // color: lighten($gray-500, 10%);
+        color: #777;
         &:hover,
         &:active {
             color: $purple;
@@ -117,8 +126,15 @@ body,
     }
 }
 
+#site-title {
+    color: #111;
+    h1 ~ div {
+        letter-spacing: .5rem;
+    }
+}
+
 body {
-    font-size: 16px;
+    font-size: 13px;
     @include media-breakpoint-up(xs) {
         font-size: .875rem;
         h1, .h1 { font-size: $h1-font-size * 0.875; }

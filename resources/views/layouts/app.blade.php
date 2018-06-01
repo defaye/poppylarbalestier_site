@@ -24,7 +24,7 @@
                             <navigation></navigation>
                         </div>
                         <div class="col-12 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
-                            <div role="button" class="text-center" @click.prevent="$store.dispatch('load', '/')">
+                            <div id="site-title" role="button" class="text-center" @click.prevent="$store.dispatch('load', '/')">
                                     <h1 class="text-uppercase">{{ config('app.name') }}</h1>
                                     <div class="lead text-uppercase">***REMOVED***</div>
                             </div>
