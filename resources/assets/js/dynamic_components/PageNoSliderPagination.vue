@@ -8,7 +8,7 @@
                      :images="page.images"
                      :ratio-x="826"
                      :ratio-y="551"
-                     :show-pagination="true"
+                     :show-pagination="false"
             >
             </carousel>
             <responsive-image v-else :src="page.images[0].path" :alt="page.name || page.title || false" :ratio-x="826" :ratio-y="551"></responsive-image>

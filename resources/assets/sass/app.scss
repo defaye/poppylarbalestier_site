@@ -128,8 +128,13 @@ body,
 
 #site-title {
     color: #111;
+    text-transform: uppercase;
     h1 ~ div {
+        font-size: 1.5em;
         letter-spacing: .5rem;
+    }
+    img {
+        max-width: 100%;
     }
 }
 
@@ -237,5 +242,22 @@ footer#bottom {
     color: $green;
     &:hover {
         color: $purple;
+    }
+}
+
+.ImageTabs {
+    .ImageTabs--header {
+        width: 100%;
+        text-align: center;
+        color: $purple;
+        font-weight: bold;
+        margin-bottom: 1.5em;
+        margin-top: 1.5em;
+        letter-spacing: .25em;
+        font-size: .75em;
+        text-decoration: none;
+        &:hover {
+            color: darken($purple, 5%);
+        }
     }
 }
