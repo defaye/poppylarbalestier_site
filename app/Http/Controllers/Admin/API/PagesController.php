@@ -108,8 +108,10 @@ class PagesController extends Controller
             $page->published = $request->published;
             $page->save();
 
-            foreach ($request->images as $index => $image) {
-                $page->images()->updateExistingPivot($image['id'], ['position' => $index]);
+            if ($request->has('images')) {
+                foreach ($request->images as $index => $image) {
+                    $page->images()->updateExistingPivot($image['id'], ['position' => $index]);
+                }
             }
 
             return response()->json(new PageResource($page->load('posts.category')));

@@ -106,8 +106,10 @@ class PostsController extends Controller
             $post->category()->associate($category);
             $post->save();
 
-            foreach ($request->images as $index => $image) {
-                $post->images()->updateExistingPivot($image['id'], ['position' => $index]);
+            if ($request->has('images')) {
+                foreach ($request->images as $index => $image) {
+                    $post->images()->updateExistingPivot($image['id'], ['position' => $index]);
+                }
             }
 
             return response()->json(new PostResource($post));
