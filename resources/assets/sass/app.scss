@@ -50,6 +50,9 @@ html {
 }
 
 body {
+    .container {
+        max-width: 826px;
+    }
     // border: .25rem solid $gray-200;
 
     @include media-breakpoint-up(lg) {

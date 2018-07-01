@@ -91,22 +91,33 @@ class PagesController extends Controller
                 'errors' => $validator->errors(),
             ], 422);
         }
+        try {
 
-        $page = Page::with('component', 'images')->find($request->id);
-        $page->fill($request->only([
-            'title',
-            'name',
-            'body',
-            'published',
-        ]));
-        $page->component()->associate($request->component_id);
-        $posts = Post::whereIn('id', array_map(function ($post) {
-            return (int) $post['id'];
-        }, $request->get('posts', [])))->get();
-        $page->posts()->sync($posts);
-        $page->published = $request->published;
-        $page->save();
+            $page = Page::with('component', 'images')->find($request->id);
+            $page->fill($request->only([
+                'title',
+                'name',
+                'body',
+                'published',
+            ]));
+            $page->component()->associate($request->component_id);
+            $posts = Post::whereIn('id', array_map(function ($post) {
+                return (int) $post['id'];
+            }, $request->get('posts', [])))->get();
+            $page->posts()->sync($posts);
+            $page->published = $request->published;
+            $page->save();
 
-        return response()->json(new PageResource($page->load('posts.category')));
+            foreach ($request->images as $index => $image) {
+                $page->images()->updateExistingPivot($image['id'], ['position' => $index]);
+            }
+
+            return response()->json(new PageResource($page->load('posts.category')));
+        } catch (\Exception $e) {
+            \Log::error((string) $e);
+            return response()->json([
+                'message' => 'There is something wrong with the system.',
+            ], 500);
+        }
     }
 }

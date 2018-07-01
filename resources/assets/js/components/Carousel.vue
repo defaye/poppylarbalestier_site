@@ -71,16 +71,16 @@
                                     items: 5
                                 },
                                 1200: {
-                                    items: 6
+                                    items: 5
                                 },
                                 1600: {
-                                    items: 7
+                                    items: 5
                                 },
                                 1920: {
-                                    items: 8
+                                    items: 5
                                 },
                                 2560: {
-                                    items: 10
+                                    items: 5
                                 }
                             },
                             margin: 5,

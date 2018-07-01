@@ -43,7 +43,7 @@
                     <label for="images">Images</label>
                     <image-uploader :multiple="true" @change="assignImages(post, $event)" :url="`/api/admin/posts/${post.id}/images`" class="form-group"></image-uploader>
                     <div v-if="post.hasOwnProperty('images') && post.images.length" class="form-group">
-                        <div class="row">
+                        <draggable v-model="post.images" class="row" element="div">
                             <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-1" v-for="(image, index) in post.images">
                                 <div class="card">
                                     <div class="card-header">
@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </draggable>
                     </div>
                     <!-- <image-handler :multiple="true" @change="handleChosenImages" :url="`/api/admin/posts/${post.id}/images`"></image-handler> -->
                 </div>
@@ -75,11 +75,15 @@
 </template>
 <script>
     "use strict";
+    import draggable from "vuedraggable";
     // import autosize from "autosize";
     import ManageImages from "../mixins/ManageImages.js";
     import Tabs from "../mixins/Tabs.js";
 
     export default {
+        components: {
+            draggable
+        },
         mixins: [
             ManageImages,
             Tabs
@@ -155,7 +159,7 @@
                     this.processing = true;
                     if (this.post.id) {
                         const response = await axios.patch(`/api/admin/posts/${this.post.id}`, this.post);
-                        this.post = response.data;
+                        // this.post = response.data;
                         this.$store.commit("status", {
                             type: "success",
                             message: "Post updated"

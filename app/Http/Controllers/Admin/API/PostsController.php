@@ -9,6 +9,7 @@ use App\Http\Resources\PostResource;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class PostsController extends Controller
 {
@@ -81,6 +82,10 @@ class PostsController extends Controller
             'category.name' => 'required|string|max:255',
             // 'category.description' => 'string|max:255',
             'published' => 'boolean',
+            'images' => 'array',
+            'images.*.id' => [
+                Rule::exists('imageables', 'image_id')->where('imageable_type', Post::class),
+            ],
         ]);
 
         if ($validator->fails()) {
@@ -89,17 +94,28 @@ class PostsController extends Controller
             ], 422);
         }
 
-        $post = Post::with('images')->find($request->id);
-        $post->fill($request->only([
-            'title',
-            'body',
-            'published',
-        ]));
-        $post->published = $request->published;
-        $category = Category::firstOrCreate(['name' => $request->input('category.name')]);
-        $post->category()->associate($category);
-        $post->save();
+        try {
+            $post = Post::with('images')->find($request->id);
+            $post->fill($request->only([
+                'title',
+                'body',
+                'published',
+            ]));
+            $post->published = $request->published;
+            $category = Category::firstOrCreate(['name' => $request->input('category.name')]);
+            $post->category()->associate($category);
+            $post->save();
 
-        return response()->json(new PostResource($post));
+            foreach ($request->images as $index => $image) {
+                $post->images()->updateExistingPivot($image['id'], ['position' => $index]);
+            }
+
+            return response()->json(new PostResource($post));
+        } catch (\Exception $e) {
+            \Log::error((string) $e);
+            return response()->json([
+                'message' => 'There is something wrong with the system.',
+            ], 500);
+        }
     }
 }

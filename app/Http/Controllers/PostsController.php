@@ -40,7 +40,6 @@ class PostsController extends Controller
                     $where = json_decode($request->where);
                     if (isset($where->{str_singular($with)})) {
                         $value = $where->{str_singular($with)};
-                        \Log::debug($value);
                         $withs[$with] = function ($query) use ($value) {
                             $query->where('name', $value);
                         };
@@ -50,7 +49,6 @@ class PostsController extends Controller
 
                 }
             }
-            \Log::debug('withs', $withs);
             $posts = $posts->with($withs);
         }
 

@@ -61,7 +61,7 @@ class Post extends Model
      */
     public function images()
     {
-        return $this->morphToMany('App\Image', 'imageable');
+        return $this->morphToMany('App\Image', 'imageable')->withPivot('position')->orderBy('position');
     }
 
     /**

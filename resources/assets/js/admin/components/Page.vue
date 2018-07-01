@@ -50,7 +50,7 @@
                     <label for="images">Images</label>
                     <image-uploader :multiple="true" @change="assignImages(page, $event)" :url="`/api/admin/pages/${page.id}/images`" class="form-group"></image-uploader>
                     <div v-if="page.hasOwnProperty('images') && page.images.length" class="form-group">
-                        <div class="row">
+                        <draggable v-model="page.images" class="row" element="div">
                             <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-1" v-for="(image, index) in page.images">
                                 <div class="card">
                                     <div class="card-header">
@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </draggable>
                     </div>
                     <!-- <image-handler :multiple="true" @change="handleChosenImages" :url="`/api/admin/pages/${page.id}/images`"></image-handler> -->
                 </div>
@@ -85,10 +85,14 @@
 </template>
 <script>
     "use strict";
+    import draggable from "vuedraggable";
     import ManageImages from "../mixins/ManageImages.js";
     import Tabs from "../mixins/Tabs.js";
 
     export default {
+        components: {
+            draggable
+        },
         mixins: [
             ManageImages,
             Tabs
@@ -163,7 +167,7 @@
                     this.processing = true;
                     if (this.page.id) {
                         const response = await axios.patch(`/api/admin/pages/${this.page.id}`, this.page);
-                        this.page = response.data;
+                        // this.page = response.data;
                         this.$store.commit("status", {
                             type: "success",
                             message: "Page updated"

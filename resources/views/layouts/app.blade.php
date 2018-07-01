@@ -25,8 +25,7 @@
                         </div>
                         <div class="col-12 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
                             <div id="site-title" role="button" class="text-center" @click.prevent="$store.dispatch('load', '/')">
-                                    <img class="d-none d-lg-inline" src="{{ url('images/***REMOVED***-LOGO-LARGE.jpg') }}" alt="***REMOVED*** ***REMOVED***">
-                                    <img class="d-inline d-lg-none" src="{{ url('images/***REMOVED***-LOGO-MEDIUM.jpg') }}" alt="***REMOVED*** ***REMOVED***">
+                                    <img src="{{ url('images/***REMOVED***-LOGO.jpg') }}" alt="***REMOVED*** ***REMOVED***">
                                     {{-- <h1>{{ config('app.name') }}</h1>
                                     <div>***REMOVED***</div> --}}
                             </div>

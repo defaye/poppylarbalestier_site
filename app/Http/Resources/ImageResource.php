@@ -25,6 +25,7 @@ class ImageResource extends Resource
             'path' => $this->path,
             'pages' => PageResource::collection($this->whenLoaded('pages')),
             'posts' => PostResource::collection($this->whenLoaded('posts')),
+            'position' => $this->pivot->position,
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
         ];
