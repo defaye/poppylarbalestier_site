@@ -61,6 +61,7 @@ const store = new Vuex.Store({
                 window.history.pushState(Object.assign({}, response.data), title, path);
                 document.title = title;
                 context.commit("page", response.data);
+                document.querySelector("body").scrollIntoView({ behavior: "instant", block: "start" });
             } catch (e) {
                 console.error(e.response.data);
             }
