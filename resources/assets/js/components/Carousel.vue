@@ -46,9 +46,11 @@
         },
         methods: {
             configure() {
-                screenfull.on("change", () => {
-                    this.isFullscreen = screenfull.isFullscreen;
-                });
+                if (screenfull.enabled) {
+                    screenfull.on("change", () => {
+                        this.isFullscreen = screenfull.isFullscreen;
+                    });
+                }
 
                 this.componentID = btoa(Math.random()).substring(0, 12);
                 this.owlID = btoa(Math.random()).substring(0, 12);
@@ -182,86 +184,88 @@
                             },
                             [
                                 (
-                                    screenfull.isFullscreen ?
-                                    h(
-                                        "font-awesome-layers",
-                                        {
-                                            attrs: {
-                                                role: "button"
+                                    screenfull.enabled ?
+                                        screenfull.isFullscreen ?
+                                        h(
+                                            "font-awesome-layers",
+                                            {
+                                                attrs: {
+                                                    role: "button"
+                                                },
+                                                class: {
+                                                    "fa-3x": true,
+                                                    "arrows-icon": true
+                                                },
+                                                on: {
+                                                    click: t.exitFullscreen
+                                                }
                                             },
-                                            class: {
-                                                "fa-3x": true,
-                                                "arrows-icon": true
-                                            },
-                                            on: {
-                                                click: t.exitFullscreen
-                                            }
-                                        },
-                                        [
-                                            h(
-                                                "font-awesome-icon",
-                                                {
-                                                    attrs: {
-                                                        icon: "circle",
-                                                        style: "color: rgba(128, 67, 152, 0.25);"
+                                            [
+                                                h(
+                                                    "font-awesome-icon",
+                                                    {
+                                                        attrs: {
+                                                            icon: "circle",
+                                                            style: "color: rgba(128, 67, 152, 0.25);"
+                                                        }
                                                     }
-                                                }
-                                            ),
-                                            h(
-                                                "font-awesome-icon",
-                                                {
-                                                    attrs: {
-                                                        transform: "shrink-6",
-                                                        style: "color: white;"
-                                                    },
-                                                    props: {
-                                                        icon: ['far', 'compress-alt'],
+                                                ),
+                                                h(
+                                                    "font-awesome-icon",
+                                                    {
+                                                        attrs: {
+                                                            transform: "shrink-6",
+                                                            style: "color: white;"
+                                                        },
+                                                        props: {
+                                                            icon: ['far', 'compress-alt'],
+                                                        }
                                                     }
-                                                }
-                                            )
-                                        ]
-                                    )
-                                    :
-                                    h(
-                                        "font-awesome-layers",
-                                        {
-                                            attrs: {
-                                                role: "button"
-                                            },
-                                            class: {
-                                                "fa-3x": true,
-                                                "arrows-icon": true
-                                            },
-                                            on: {
-                                                click(e) {
-                                                    t.activateFullscreen(`#${t.componentID} .carousel-primary`);
-                                                }
-                                            },
-                                        },
-                                        [
-                                            h(
-                                                "font-awesome-icon",
-                                                {
-                                                    attrs: {
-                                                        icon: "circle",
-                                                        style: "color: rgba(128, 67, 152, 0.25);"
+                                                )
+                                            ]
+                                        )
+                                        :
+                                        h(
+                                            "font-awesome-layers",
+                                            {
+                                                attrs: {
+                                                    role: "button"
+                                                },
+                                                class: {
+                                                    "fa-3x": true,
+                                                    "arrows-icon": true
+                                                },
+                                                on: {
+                                                    click(e) {
+                                                        t.activateFullscreen(`#${t.componentID} .carousel-primary`);
                                                     }
-                                                }
-                                            ),
-                                            h(
-                                                "font-awesome-icon",
-                                                {
-                                                    attrs: {
-                                                        transform: "shrink-6",
-                                                        style: "color: white;"
-                                                    },
-                                                    props: {
-                                                        icon: ['far', 'expand-alt'],
+                                                },
+                                            },
+                                            [
+                                                h(
+                                                    "font-awesome-icon",
+                                                    {
+                                                        attrs: {
+                                                            icon: "circle",
+                                                            style: "color: rgba(128, 67, 152, 0.25);"
+                                                        }
                                                     }
-                                                }
-                                            )
-                                        ]
-                                    )
+                                                ),
+                                                h(
+                                                    "font-awesome-icon",
+                                                    {
+                                                        attrs: {
+                                                            transform: "shrink-6",
+                                                            style: "color: white;"
+                                                        },
+                                                        props: {
+                                                            icon: ['far', 'expand-alt'],
+                                                        }
+                                                    }
+                                                )
+                                            ]
+                                        )
+                                    : undefined
                                 ),
                                 h(
                                     "div",

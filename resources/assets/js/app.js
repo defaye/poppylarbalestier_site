@@ -76,7 +76,7 @@ const app = new Vue({
         store.dispatch("load", new URL(window.location.href).pathname);
 
         window.onpopstate = event => {
-            document.title = event.state.title;
+            document.title = event.state && event.state.title;
             store.commit("page", event.state);
         };
     }
