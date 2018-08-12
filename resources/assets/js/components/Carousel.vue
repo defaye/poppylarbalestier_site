@@ -42,7 +42,9 @@
             }
         },
         mounted() {
-            this.configure();
+            window.addEventListener('load', () => {
+                this.configure();
+            });
         },
         methods: {
             configure() {
