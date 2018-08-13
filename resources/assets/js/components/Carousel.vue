@@ -42,9 +42,10 @@
             }
         },
         mounted() {
-            window.addEventListener('load', () => {
-                this.configure();
-            });
+            window.addEventListener('load', this.configure, true);
+        },
+        beforeDestroy() {
+            window.removeEventListener('load', this.configure, true);
         },
         methods: {
             configure() {
@@ -127,7 +128,7 @@
                 });
             },
             reconfigure() {
-                this.owl.off();
+                this.owl && this.owl.off();
                 $(`#${this.owlID}`).off();
                 $(`#${this.paginatorOwlID}`).off();
                 $(".owl-carousel").owlCarousel("destroy");
