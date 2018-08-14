@@ -42,10 +42,10 @@
             }
         },
         mounted() {
-            window.addEventListener('load', this.configure, true);
+            window.addEventListener('load', this.configure, false);
         },
         beforeDestroy() {
-            window.removeEventListener('load', this.configure, true);
+            window.removeEventListener('load', this.configure, false);
         },
         methods: {
             configure() {
@@ -100,8 +100,8 @@
                         animateOut: "fadeOut",
                         autoplay: true,
                         autoplayHoverPause: true,
-                        autoplaySpeed: 5000,
-                        autoplayTimeout: 5000,
+                        autoplaySpeed: 2500,
+                        autoplayTimeout: 2000,
                         items: 1,
                         lazyLoad: true,
                         loop: true,
@@ -128,17 +128,21 @@
                 });
             },
             reconfigure() {
-                this.owl && this.owl.off();
-                $(`#${this.owlID}`).off();
-                $(`#${this.paginatorOwlID}`).off();
-                $(".owl-carousel").owlCarousel("destroy");
-                this.owl = undefined;
-                this.owlID = undefined;
-                this.componentID = undefined;
-                this.paginatorOwlID = undefined;
-                this.paginatorCarousel = undefined;
-                this.isFullscreen = false;
-                this.paginatorItemCount = 0;
+                if (this.owl) {
+                    this.owl.off();
+                    $(`#${this.owlID}`).off();
+                    $(`#${this.paginatorOwlID}`).off();
+                    $(".owl-carousel").owlCarousel("destroy");
+                    this.owl = undefined;
+                    this.owlID = undefined;
+                    this.componentID = undefined;
+                    this.paginatorOwlID = undefined;
+                    this.paginatorCarousel = undefined;
+                    this.isFullscreen = false;
+                    this.paginatorItemCount = 0;
+                } else {
+                    console.warn("this.owl", this.owl)
+                }
                 this.configure();
             },
             activateFullscreen(selector) {

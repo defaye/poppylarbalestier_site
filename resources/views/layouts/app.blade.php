@@ -19,24 +19,26 @@
         <div id="app">
             <div id="top-wrapper">
                 <header id="top" class="my-4">
-                    <div class="row">
-                        <div class="col-12 order-lg-last">
-                            <navigation></navigation>
-                        </div>
-                        <div class="col-12 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
-                            <div id="site-title" role="button" class="text-center" @click.prevent="$store.dispatch('load', '/')">
-                                    <img src="{{ url('images/***REMOVED***-LOGO.jpg') }}" alt="***REMOVED*** ***REMOVED***">
-                                    {{-- <h1>{{ config('app.name') }}</h1>
-                                    <div>***REMOVED***</div> --}}
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 order-lg-last">
+                                <navigation></navigation>
                             </div>
-                        </div>
-                        <div class="col-12 col-lg-2 col-xl-3 d-flex align-items-center" style="font-size: 2rem;">
-                            <a class="ml-auto" href="https://www.facebook.com/pages/***REMOVED***-***REMOVED***-***REMOVED***/261844107286000" target="_blank">
-                                <font-awesome-icon class="icon-link" :icon="['fab', 'facebook-square']"></font-awesome-icon>
-                            </a>
-                            <a class="link ml-1 mr-auto" href="https://twitter.com/poppyplp" target="_blank">
-                                <font-awesome-icon class="icon-link" :icon="['fab', 'twitter-square']"></font-awesome-icon>
-                            </a>
+                            <div class="col-12 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+                                <div id="site-title" role="button" class="text-center" @click.prevent="$store.dispatch('load', '/')">
+                                        <img src="{{ url('images/***REMOVED***-LOGO.jpg') }}" alt="***REMOVED*** ***REMOVED***">
+                                        {{-- <h1>{{ config('app.name') }}</h1>
+                                        <div>***REMOVED***</div> --}}
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-2 col-xl-3 d-flex align-items-center" style="font-size: 2rem;">
+                                <a class="ml-auto" href="https://www.facebook.com/pages/***REMOVED***-***REMOVED***-***REMOVED***/261844107286000" target="_blank">
+                                    <font-awesome-icon class="icon-link" :icon="['fab', 'facebook-square']"></font-awesome-icon>
+                                </a>
+                                <a class="link ml-1 mr-auto" href="https://twitter.com/poppyplp" target="_blank">
+                                    <font-awesome-icon class="icon-link" :icon="['fab', 'twitter-square']"></font-awesome-icon>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </header>
