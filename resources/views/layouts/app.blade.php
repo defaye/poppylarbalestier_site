@@ -19,16 +19,12 @@
         <div id="app">
             <div id="top-wrapper">
                 <header id="top" class="my-4">
+                    <navigation class="d-block d-lg-none"></navigation>
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-12 order-lg-last">
-                                <navigation></navigation>
-                            </div>
                             <div class="col-12 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
                                 <div id="site-title" role="button" class="text-center" @click.prevent="$store.dispatch('load', '/')">
                                         <img src="{{ url('images/***REMOVED***-LOGO.jpg') }}" alt="***REMOVED*** ***REMOVED***">
-                                        {{-- <h1>{{ config('app.name') }}</h1>
-                                        <div>***REMOVED***</div> --}}
                                 </div>
                             </div>
                             <div class="col-12 col-lg-2 col-xl-3 d-flex align-items-center" style="font-size: 2rem;">
@@ -41,6 +37,7 @@
                             </div>
                         </div>
                     </div>
+                    <navigation class="d-none d-lg-block"></navigation>
                 </header>
                 <div id="content">
                     @yield('content')
@@ -54,7 +51,7 @@
                                 <div class="text-center text-sm-left">&copy; ***REMOVED*** {{ date('Y') }}</div>
                             </div>
                             <div class="col-12 col-sm-6">
-                                <div class="text-center text-sm-right">Website by <a href="https://defaye.co.uk" target="_blank">Jono de Faye</a></div>
+                                <div class="text-center text-sm-right">Website by <a href="https://github.com/defaye" target="_blank">Jono de Faye</a></div>
                             </div>
                         </div>
                     </div>

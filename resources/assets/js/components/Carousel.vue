@@ -1,6 +1,6 @@
 <script>
-    "use strict";
-    import * as screenfull from "screenfull";
+    'use strict'
+    import * as screenfull from 'screenfull'
     export default {
         props: {
             images: {
@@ -19,7 +19,7 @@
         },
         watch: {
             images(images) {
-                this.reconfigure();
+                this.reconfigure()
             }
         },
         data() {
@@ -31,33 +31,34 @@
                 paginatorCarousel: undefined,
                 isFullscreen: false,
                 paginatorItemCount: 0
-            };
+            }
         },
         computed: {
             calculateRatioX() {
-                return this.isFullscreen ? window.outerWidth : this.ratioX;
+                return this.isFullscreen ? window.outerWidth : this.ratioX
             },
             calculateRatioY() {
-                return this.isFullscreen ? window.outerHeight : this.ratioY;
+                return this.isFullscreen ? window.outerHeight : this.ratioY
             }
         },
         mounted() {
-            window.addEventListener('load', this.configure, false);
+            // window.addEventListener('load', this.configure, false)
+            this.configure()
         },
         beforeDestroy() {
-            window.removeEventListener('load', this.configure, false);
+            this.deconfigure()
         },
         methods: {
             configure() {
-                if (screenfull.enabled) {
-                    screenfull.on("change", () => {
-                        this.isFullscreen = screenfull.isFullscreen;
-                    });
-                }
+                    if (screenfull.enabled) {
+                        screenfull.on('change', () => {
+                            this.isFullscreen = screenfull.isFullscreen
+                        })
+                    }
 
-                this.componentID = btoa(Math.random()).substring(0, 12);
-                this.owlID = btoa(Math.random()).substring(0, 12);
-                this.paginatorOwlID = btoa(Math.random()).substring(0, 12);
+                this.componentID = btoa(Math.random()).substring(0, 12)
+                this.owlID = btoa(Math.random()).substring(0, 12)
+                this.paginatorOwlID = btoa(Math.random()).substring(0, 12)
 
                 this.$nextTick(() => {
                     if (this.showPagination) {
@@ -92,12 +93,12 @@
                             lazyLoad: true,
                             loop: true,
                             mouseDrag: false,
-                        });
+                        })
                     }
 
                     this.owl = $(`#${this.owlID}`).owlCarousel({
-                        animateIn: "fadeIn",
-                        animateOut: "fadeOut",
+                        animateIn: 'fadeIn',
+                        animateOut: 'fadeOut',
                         autoplay: true,
                         autoplayHoverPause: true,
                         autoplaySpeed: 2500,
@@ -106,65 +107,67 @@
                         lazyLoad: true,
                         loop: true,
                         mouseDrag: false,
-                    });
+                    })
 
                     if (this.showPagination) {
-                        this.owl.on("changed.owl.carousel", event => {
-                            this.paginatorCarousel.trigger("to.owl.carousel", event.page.index, 3000);
-                            this.attachNavigationEvents();
-                        });
-                        this.owl.on("resize.owl.carousel", event => {
-                            this.paginatorItemCount = this.$el.querySelectorAll(".carousel-paginator .owl-item.active").length;
-                        });
-                        this.attachNavigationEvents();
-                        this.owl.on("initialized.owl.carousel", event => {
-                            this.paginatorItemCount = this.$el.querySelectorAll(".carousel-paginator .owl-item.active").length;
-                        });
+                        this.owl.on('changed.owl.carousel', event => {
+                            this.paginatorCarousel.trigger('to.owl.carousel', event.page.index, 3000)
+                            this.attachNavigationEvents()
+                        })
+                        this.owl.on('resize.owl.carousel', event => {
+                            this.paginatorItemCount = this.$el.querySelectorAll('.carousel-paginator .owl-item.active').length
+                        })
+                        this.attachNavigationEvents()
+                        this.owl.on('initialized.owl.carousel', event => {
+                            this.paginatorItemCount = this.$el.querySelectorAll('.carousel-paginator .owl-item.active').length
+                        })
                     }
 
-                    $(`#${this.owlID}`).on("click", () => {
-                        this.owl.trigger("next.owl.carousel");
-                    });
-                });
+                    $(`#${this.owlID}`).on('click', () => {
+                        this.owl.trigger('next.owl.carousel')
+                    })
+                })
+            },
+            deconfigure() {
+                // window.removeEventListener('load', this.configure, false)
+                if (this.owl) {
+                    this.owl.off()
+                }
+                $(`#${this.owlID}`).off()
+                $(`#${this.paginatorOwlID}`).off()
+                $('.owl-carousel').owlCarousel('destroy')
+                this.owl = undefined
+                this.owlID = undefined
+                this.componentID = undefined
+                this.paginatorOwlID = undefined
+                this.paginatorCarousel = undefined
+                this.isFullscreen = false
+                this.paginatorItemCount = 0
             },
             reconfigure() {
-                if (this.owl) {
-                    this.owl.off();
-                    $(`#${this.owlID}`).off();
-                    $(`#${this.paginatorOwlID}`).off();
-                    $(".owl-carousel").owlCarousel("destroy");
-                    this.owl = undefined;
-                    this.owlID = undefined;
-                    this.componentID = undefined;
-                    this.paginatorOwlID = undefined;
-                    this.paginatorCarousel = undefined;
-                    this.isFullscreen = false;
-                    this.paginatorItemCount = 0;
-                } else {
-                    console.warn("this.owl", this.owl)
-                }
-                this.configure();
+                this.deconfigure()
+                this.configure()
             },
             activateFullscreen(selector) {
                 screenfull.request(
                     selector ? document.querySelector(selector) : document.documentElement
-                );
+                )
             },
             exitFullscreen() {
-                screenfull.exit();
+                screenfull.exit()
             },
             attachNavigationEvents() {
-                let t = this;
-                $(`#${this.paginatorOwlID} .owl-item`).on("click", function () {
-                    t.owl.trigger("to.owl.carousel", this.childNodes[0].dataset.index, 3000);
-                });
+                let t = this
+                $(`#${this.paginatorOwlID} .owl-item`).on('click', function () {
+                    t.owl.trigger('to.owl.carousel', this.childNodes[0].dataset.index, 3000)
+                })
             }
         },
         render(h) {
-            const t = this;
+            const t = this
             if (this.images && this.images.length) {
                 return h(
-                    "div",
+                    'div',
                     {
                         attrs: {
                             id: t.componentID,
@@ -175,18 +178,18 @@
                         on: {
                             keyup(e) {
                                 if (e.keyCode === 27) {
-                                    return t.exitFullscreen();
+                                    return t.exitFullscreen()
                                 }
                             }
                         }
                     },
                     [
                         h(
-                            "div",
+                            'div',
                             {
                                 class: {
-                                    "carousel-primary": true,
-                                    "carousel-fullscreen": t.isFullscreen
+                                    'carousel-primary': true,
+                                    'carousel-fullscreen': t.isFullscreen
                                 }
                             },
                             [
@@ -194,14 +197,14 @@
                                     screenfull.enabled ?
                                         screenfull.isFullscreen ?
                                         h(
-                                            "font-awesome-layers",
+                                            'font-awesome-layers',
                                             {
                                                 attrs: {
-                                                    role: "button"
+                                                    role: 'button'
                                                 },
                                                 class: {
-                                                    "fa-3x": true,
-                                                    "arrows-icon": true
+                                                    'fa-3x': true,
+                                                    'arrows-icon': true
                                                 },
                                                 on: {
                                                     click: t.exitFullscreen
@@ -209,20 +212,20 @@
                                             },
                                             [
                                                 h(
-                                                    "font-awesome-icon",
+                                                    'font-awesome-icon',
                                                     {
                                                         attrs: {
-                                                            icon: "circle",
-                                                            style: "color: rgba(128, 67, 152, 0.25);"
+                                                            icon: 'circle',
+                                                            style: 'color: rgba(128, 67, 152, 0.25);'
                                                         }
                                                     }
                                                 ),
                                                 h(
-                                                    "font-awesome-icon",
+                                                    'font-awesome-icon',
                                                     {
                                                         attrs: {
-                                                            transform: "shrink-6",
-                                                            style: "color: white;"
+                                                            transform: 'shrink-6',
+                                                            style: 'color: white;'
                                                         },
                                                         props: {
                                                             icon: ['far', 'compress-alt'],
@@ -233,37 +236,37 @@
                                         )
                                         :
                                         h(
-                                            "font-awesome-layers",
+                                            'font-awesome-layers',
                                             {
                                                 attrs: {
-                                                    role: "button"
+                                                    role: 'button'
                                                 },
                                                 class: {
-                                                    "fa-3x": true,
-                                                    "arrows-icon": true
+                                                    'fa-3x': true,
+                                                    'arrows-icon': true
                                                 },
                                                 on: {
                                                     click(e) {
-                                                        t.activateFullscreen(`#${t.componentID} .carousel-primary`);
+                                                        t.activateFullscreen(`#${t.componentID} .carousel-primary`)
                                                     }
                                                 },
                                             },
                                             [
                                                 h(
-                                                    "font-awesome-icon",
+                                                    'font-awesome-icon',
                                                     {
                                                         attrs: {
-                                                            icon: "circle",
-                                                            style: "color: rgba(128, 67, 152, 0.25);"
+                                                            icon: 'circle',
+                                                            style: 'color: rgba(128, 67, 152, 0.25);'
                                                         }
                                                     }
                                                 ),
                                                 h(
-                                                    "font-awesome-icon",
+                                                    'font-awesome-icon',
                                                     {
                                                         attrs: {
-                                                            transform: "shrink-6",
-                                                            style: "color: white;"
+                                                            transform: 'shrink-6',
+                                                            style: 'color: white;'
                                                         },
                                                         props: {
                                                             icon: ['far', 'expand-alt'],
@@ -275,29 +278,29 @@
                                     : undefined
                                 ),
                                 h(
-                                    "div",
+                                    'div',
                                     {
                                         attrs: {
                                             id: t.owlID,
-                                            role: "button"
+                                            role: 'button'
                                         },
                                         class: {
-                                            "owl-carousel": true
+                                            'owl-carousel': true
                                         }
                                     },
                                     t.images.map((image, index) =>
                                         h(
-                                            "responsive-image",
+                                            'responsive-image',
                                             {
                                                 attrs: {
-                                                    "data-index": index,
-                                                    "alt": image.reference
+                                                    'data-index': index,
+                                                    'alt': image.reference
                                                 },
                                                 props: {
-                                                    "key": image.reference,
-                                                    "ratio-x": t.calculateRatioX,
-                                                    "ratio-y": t.calculateRatioY,
-                                                    "src": image.path
+                                                    'key': image.reference,
+                                                    'ratio-x': t.calculateRatioX,
+                                                    'ratio-y': t.calculateRatioY,
+                                                    'src': image.path
                                                 }
                                             }
                                         )
@@ -308,33 +311,33 @@
                         (
                             t.showPagination ?
                                 h(
-                                    "div",
+                                    'div',
                                     {
                                         attrs: {
                                             id: t.paginatorOwlID,
-                                            role: "button"
+                                            role: 'button'
                                         },
                                         class: {
-                                            "owl-carousel": true,
-                                            "mt-5": true,
-                                            "carousel-paginator": true,
-                                            "d-none": true,
-                                            "d-md-block": true
+                                            'owl-carousel': true,
+                                            'mt-5': true,
+                                            'carousel-paginator': true,
+                                            'd-none': true,
+                                            'd-md-block': true
                                         }
                                     },
                                     t.images.map((image, index) =>
                                         h(
-                                            "responsive-image",
+                                            'responsive-image',
                                             {
                                                 attrs: {
-                                                    "data-index": index,
-                                                    "alt": image.reference
+                                                    'data-index': index,
+                                                    'alt': image.reference
                                                 },
                                                 props: {
-                                                    "key": image.reference,
-                                                    "ratio-x": t.calculateRatioX,
-                                                    "ratio-y": t.calculateRatioY,
-                                                    "src": image.path
+                                                    'key': image.reference,
+                                                    'ratio-x': t.calculateRatioX,
+                                                    'ratio-y': t.calculateRatioY,
+                                                    'src': image.path
                                                 }
                                             }
                                         )
