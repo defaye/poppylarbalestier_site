@@ -5,28 +5,28 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require('./bootstrap')
 
-window.Vue = require('vue');
+window.Vue = require('vue')
 
-import Vuex from 'vuex';
+import Vuex from 'vuex'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
-require('./fontawesome');
+require('./fontawesome')
 
-require('./components');
+require('./components')
 
 
-import autosize from "autosize";
+import autosize from 'autosize'
 Vue.directive('autosize', el => {
-    autosize(el);
-});
+    autosize(el)
+})
 
-Vue.component('alert', require('./admin/components/Alert.vue'));
-Vue.component('navigation', require('./components/Navigation.vue'));
-Vue.component('responsive-image', require('./components/ResponsiveImage.vue'));
-Vue.component('carousel', require('./components/Carousel.vue'));
+Vue.component('notification', require('./components/Notification.vue'))
+Vue.component('navigation', require('./components/Navigation.vue'))
+Vue.component('responsive-image', require('./components/ResponsiveImage.vue'))
+Vue.component('carousel', require('./components/Carousel.vue'))
 
 const store = new Vuex.Store({
     state: {
@@ -52,32 +52,32 @@ const store = new Vuex.Store({
     actions: {
         async load(context, path) {
             try {
-                const response = await axios.post("/api/router", {
+                const response = await axios.post('/api/router', {
                     path
-                });
-                let title = response.data.hasOwnProperty("title") ? response.data.title + " — ***REMOVED*** ***REMOVED***" : (
-                    response.data.hasOwnProperty("name") ? response.data.name + " — ***REMOVED*** ***REMOVED***" : "***REMOVED*** ***REMOVED***"
-                );
-                window.history.pushState(Object.assign({}, response.data), title, path);
-                document.title = title;
-                context.commit("page", response.data);
-                document.querySelector("body").scrollIntoView({ behavior: "instant", block: "start" });
+                })
+                let title = response.data.hasOwnProperty('title') ? response.data.title + ' — ***REMOVED*** ***REMOVED***' : (
+                    response.data.hasOwnProperty('name') ? response.data.name + ' — ***REMOVED*** ***REMOVED***' : '***REMOVED*** ***REMOVED***'
+                )
+                window.history.pushState(Object.assign({}, response.data), title, path)
+                document.title = title
+                context.commit('page', response.data)
+                document.querySelector('body').scrollIntoView({ behavior: 'instant', block: 'start' })
             } catch (e) {
-                console.error(e.response.data);
+                console.error(e.response.data)
             }
         }
     }
-});
+})
 
 const app = new Vue({
-    el: "#app",
+    el: '#app',
     store,
     mounted() {
-        store.dispatch("load", new URL(window.location.href).pathname);
+        store.dispatch('load', new URL(window.location.href).pathname)
 
         window.onpopstate = event => {
-            document.title = event.state && event.state.title;
-            store.commit("page", event.state);
-        };
+            document.title = event.state && event.state.title
+            store.commit('page', event.state)
+        }
     }
-});
+})

@@ -9,7 +9,7 @@
         <title>{{ config('app.name') }}</title>
 
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" integrity="sha256-j+P6EZJVrbXgwSR5Mx+eCS6FvP9Wq27MBRC/ogVriY0=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" integrity="sha256-HtCCUh9Hkh//8U1OwcbD8epVEUdBvuI8wj1KtqMhNkI=" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.css" integrity="sha256-h7NPLBxMMPcEeO/BDGwCb5MRAZ8CgVcxRxfm3fpMH0s=" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.css" integrity="sha256-7eFGZ5XrQEKmIngaS18OjhKpMle23F3q596q9NKzOl4=" crossorigin="anonymous" />
         @stack('head')
@@ -17,6 +17,7 @@
     <body>
         @stack('body')
         <div id="app">
+            <notification></notification>
             <div id="top-wrapper">
                 <header id="top" class="my-4">
                     <navigation class="d-block d-lg-none"></navigation>

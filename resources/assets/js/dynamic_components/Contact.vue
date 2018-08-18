@@ -87,18 +87,18 @@
     </div>
 </template>
 <script>
-    "use strict";
-    import gRecaptcha from "@finpo/vue2-recaptcha-invisible";
-    import formErrorsMixin from "../mixins/FormErrors.js";
+    'use strict'
+    import gRecaptcha from '@finpo/vue2-recaptcha-invisible'
+    import formErrorsMixin from '../mixins/FormErrors.js'
 
     export default {
         mixins: [ formErrorsMixin ],
         components: {
-            "g-recaptcha": gRecaptcha
+            'g-recaptcha': gRecaptcha
         },
         model: {
-            prop: "page",
-            event: "change"
+            prop: 'page',
+            event: 'change'
         },
         data() {
             return {
@@ -118,41 +118,53 @@
         },
         computed: {
             isFormFilled() {
-                return this.form.name && this.form.email && this.form.phone && this.form.message;
+                return this.form.name && this.form.email && this.form.phone && this.form.message
             }
         },
         methods: {
+            reset() {
+                this.formErrors = undefined,
+                this.form = {
+                    name: undefined,
+                    email: undefined,
+                    phone: undefined,
+                    message: undefined,
+                    recaptcha: undefined
+                },
+                this.processing = false
+            },
             startCase(name) {
                 return _.startCase(name)
             },
             emitLoadEvent(path) {
-                this.$store.dispatch('load', path);
+                this.$store.dispatch('load', path)
             },
             validateForm() {
-                return true;
+                return true
             },
             onRecaptchaVerified(response) {
-                this.form.recaptcha = response;
-                this.submit();
+                this.form.recaptcha = response
+                this.submit()
             },
             async submit() {
                 try {
-                    this.processing = true;
-                    this.formErrors = undefined;
-                    const response = await axios.post("/api/contact", this.form);
-                    this.$store.commit("status", {
-                        type: "success",
-                        message: "Thank you, your message has been sent. Please check your e-mail to verify your message."
-                    });
+                    this.processing = true
+                    this.formErrors = undefined
+                    const response = await axios.post('/api/contact', this.form)
+                    this.$store.commit('status', {
+                        type: 'success',
+                        message: 'Thank you, your message has been sent!'
+                    })
+                    this.reset()
                 } catch (e) {
                     try {
-                        console.error(e.response.data);
-                        this.formErrors = e.response.data;
+                        console.error(e.response.data)
+                        this.formErrors = e.response.data
                     } catch (e) {
-                        console.error(e);
+                        console.error(e)
                     }
                 }
-                this.processing = false;
+                this.processing = false
             }
         }
     }

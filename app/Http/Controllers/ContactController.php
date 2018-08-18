@@ -43,7 +43,7 @@ class ContactController extends Controller
         // if ($validator->fails()) {
         //     return response()->json($validator->errors(), 422);
         // }
-        (new User(['name' => '***REMOVED***', 'email' => '***REMOVED***']))->notify(
+        (new User(['name' => '***REMOVED***', 'email' => config('mail.to.address')]))->notify(
             (
                 new ContactNotification((object) $request->all())
             )->delay(now()->addSeconds(10))
