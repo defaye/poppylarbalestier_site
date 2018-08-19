@@ -46,7 +46,7 @@ class ContactController extends Controller
         (new User(['name' => '***REMOVED***', 'email' => config('mail.to.address')]))->notify(
             (
                 new ContactNotification((object) $request->all())
-            )->delay(now()->addSeconds(10))
+            ) //->delay(now()->addSeconds(10))
         );
         return response()->json(true);
     }
