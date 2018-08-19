@@ -27,7 +27,7 @@
         },
         methods: {
             onKeyup(e) {
-                if (e.key.toLowerCase() === 'escape') {
+                if (e.keyCode && e.keyCode === 27) { // escape
                     this.$store.commit('status', undefined)
                 }
             }
