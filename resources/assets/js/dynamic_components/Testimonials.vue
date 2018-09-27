@@ -10,7 +10,7 @@
                 <div class="col-12">
                     <h2>
                         <a :href="`/${page.slug}/${t.slug}`" @click.prevent="emitLoadEvent(`/${page.slug}/${t.slug}`)">{{ t.title }}</a><br>
-                        <small>{{ formatDate(t.created_at) }}</small>
+                        <!-- <small>{{ formatDate(t.created_at) }}</small> -->
                     </h2>
                     <div v-if="t.images.length">
                         <responsive-image :src="t.images[0].path" :alt="t.title" :ratio-x="4" :ratio-y="3"></responsive-image>

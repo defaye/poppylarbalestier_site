@@ -58,11 +58,14 @@ class PagesController extends Controller
                 'images' => function ($query) {
                     $query->orderBy('name');
                 },
-                'pages' => function ($query) use ($segments) {
-                    $query->whereSlug($segments[1]);
-                },
+                'pages',
+                // 'pages' => function ($query) use ($segments) {
+                //     $query->whereSlug($segments[1]);
+                // },
                 'tags',
-            ])->with('category', 'images', 'tags')->whereSlug($segments[1])->first();
+            ])
+            // ->with('category', 'images', 'tags')
+                ->whereSlug($segments[1])->first();
             // $response = Post::with([
             //     'category',
             //     'images',
