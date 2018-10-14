@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            <mugen-scroll :handler="getTestimonialsDebounced" :should-handle="!processing">
+            <mugen-scroll :handler="getTestimonialsDebounced" :should-handle="!processing" :threshold="0">
                 <div :style="!processing ? 'display: none' : ''">
                     <font-awesome-icon class="w-100" icon="spinner" pulse></font-awesome-icon>
                 </div>
@@ -66,25 +66,25 @@
             emitLoadEvent(path) {
                 this.$store.dispatch('load', path);
             },
-            async getTestimonials() {
+            getTestimonials() {
                 if (typeof this.testimonialsResponse !== "undefined" && this.testimonialsResponse.meta.has_more_pages === false) {
                     return;
                 }
-                try {
-                    this.processing = true;
-                    const response = await axios.get("api/categories", { params: {
-                            with: ["images", "tags"],
-                            name: "testimonial",
-                            page: this.testimonialsResponse ? (this.testimonialsResponse.meta.current_page + 1) : 1,
-                            per_page: 1
-                        }
-                    });
+                this.processing = true;
+                axios.get("api/categories", { params: {
+                        with: ["images", "tags"],
+                        name: "testimonial",
+                        page: this.testimonialsResponse ? (this.testimonialsResponse.meta.current_page + 1) : 1,
+                        per_page: 1
+                    }
+                }).then(response => {
                     this.testimonialsResponse = response.data;
                     this.testimonials = this.testimonials.concat(response.data.data);
-                } catch (e) {
+                }).catch(e => {
                     console.error(e.response.data);
-                }
-                this.processing = false;
+                }).then(response => {
+                    this.processing = false;
+                });
             },
             getTestimonialsDebounced: _.debounce(function () {
                 this.getTestimonials();

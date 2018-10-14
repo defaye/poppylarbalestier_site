@@ -53,17 +53,19 @@ class PagesController extends Controller
         }
 
         if (isset($segments[1])) {
-            $response = Page::wherePublished(true)->whereSlug($segments[0])->first()->posts()->with([
-                'category',
-                'images' => function ($query) {
-                    $query->orderBy('name');
-                },
-                'pages',
-                // 'pages' => function ($query) use ($segments) {
-                //     $query->whereSlug($segments[1]);
-                // },
-                'tags',
-            ])
+            $response = Page::wherePublished(true)->whereSlug($segments[0])->first()->posts()
+                ->where('published', true)
+                ->with([
+                    'category',
+                    'images' => function ($query) {
+                        $query->orderBy('name');
+                    },
+                    'pages',
+                    // 'pages' => function ($query) use ($segments) {
+                    //     $query->whereSlug($segments[1]);
+                    // },
+                    'tags',
+                ])
             // ->with('category', 'images', 'tags')
                 ->whereSlug($segments[1])->first();
             // $response = Post::with([

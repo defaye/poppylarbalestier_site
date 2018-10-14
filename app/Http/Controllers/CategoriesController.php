@@ -26,7 +26,7 @@ class CategoriesController extends Controller
             ]);
         }
 
-        $posts = Post::orderBy('created_at', 'desc');
+        $posts = Post::wherePublished(true)->orderBy('created_at', 'desc');
 
         if ($request->has('name')) {
             $posts = $posts->join('categories', 'categories.id', '=', 'posts.category_id')
