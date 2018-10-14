@@ -9,19 +9,16 @@
                 <h2>Get In Touch</h2>
                 <hr>
                 <a class="ml-auto" href="https://www.facebook.com/pages/***REMOVED***-***REMOVED***-***REMOVED***/261844107286000" target="_blank">
-                    <font-awesome-icon class="fa-2x" :icon="['fab', 'facebook-square']"></font-awesome-icon>
-                </a>
-                <a class="ml-1" href="https://twitter.com/poppyplp" target="_blank">
-                    <font-awesome-icon class="fa-2x" :icon="['fab', 'twitter-square']"></font-awesome-icon>
+                    <font-awesome-icon class="fa-2x" :icon="['fab', 'facebook-square']" size="lg"></font-awesome-icon>
                 </a>
                 <a class="ml-1" href="tel:00447700832331">
-                    <font-awesome-icon class="fa-2x" :icon="['fas', 'phone-square']"></font-awesome-icon>
+                    <font-awesome-icon class="fa-2x" :icon="['fas', 'phone-square']" size="lg"></font-awesome-icon>
                 </a>
                 <a class="ml-1" href="mailto:***REMOVED***">
-                    <font-awesome-icon class="fa-2x" :icon="['fas', 'envelope-square']"></font-awesome-icon>
+                    <font-awesome-icon class="fa-2x" :icon="['fas', 'envelope-square']" size="lg"></font-awesome-icon>
                 </a>
                 <a class="ml-1 mr-auto" href="/contact" @click.prevent="$store.dispatch('load', '/contact')">
-                    <font-awesome-icon class="fa-2x" :icon="['fas', 'pen-square']"></font-awesome-icon>
+                    <font-awesome-icon class="fa-2x" :icon="['fas', 'pen-square']" size="lg"></font-awesome-icon>
                 </a>
             </div>
         </div>

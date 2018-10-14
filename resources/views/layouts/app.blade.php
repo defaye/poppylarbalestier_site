@@ -30,10 +30,7 @@
                             </div>
                             <div class="col-12 col-lg-2 col-xl-3 d-flex align-items-center" style="font-size: 2rem;">
                                 <a class="ml-auto" href="https://www.facebook.com/pages/***REMOVED***-***REMOVED***-***REMOVED***/261844107286000" target="_blank">
-                                    <font-awesome-icon class="icon-link" :icon="['fab', 'facebook-square']"></font-awesome-icon>
-                                </a>
-                                <a class="link ml-1 mr-auto" href="https://twitter.com/poppyplp" target="_blank">
-                                    <font-awesome-icon class="icon-link" :icon="['fab', 'twitter-square']"></font-awesome-icon>
+                                    <font-awesome-icon class="icon-link" :icon="['fab', 'facebook-square']" size="lg"></font-awesome-icon>
                                 </a>
                             </div>
                         </div>
