@@ -18,7 +18,7 @@
                     <div class="my-4" v-if="t.body && t.body.length">
                         <p v-for="line in truncatedBody(t.body).split('\n')">{{ line }}</p>
                         <a v-if="truncatedBody(t.body).length !== t.body.length" :href="`/${page.slug}/${t.slug}`" @click.prevent="emitLoadEvent(`/${page.slug}/${t.slug}`)">
-                            Read more&hellip
+                            Read more...
                         </a>
                     </div>
                 </div>
@@ -32,12 +32,13 @@
     </div>
 </template>
 <script>
-    "use strict"
-    import MugenScroll from "vue-mugen-scroll"
+    'use strict'
+    import MugenScroll from 'vue-mugen-scroll'
+
     export default {
         model: {
-            prop: "page",
-            event: "change"
+            prop: 'page',
+            event: 'change'
         },
         props: {
             page: Object
@@ -49,16 +50,19 @@
                 testimonialsResponse: undefined
             }
         },
+        beforeMount() {
+            this.getTestimonials()
+        },
         methods: {
             truncatedBody(text) {
                 return _.truncate(text, {
                   length: 512,
                   separator: /\n+/,
-                  omission: ""
+                  omission: ''
                 })
             },
             formatDate(date) {
-                return moment(date).format("dddd, MMMM Do YYYY")
+                return moment(date).format('dddd, MMMM Do YYYY')
             },
             startCase(name) {
                 return _.startCase(name)
@@ -67,13 +71,13 @@
                 this.$store.dispatch('load', path)
             },
             getTestimonials() {
-                if (typeof this.testimonialsResponse !== "undefined" && this.testimonialsResponse.meta.has_more_pages === false) {
+                if (typeof this.testimonialsResponse !== 'undefined' && this.testimonialsResponse.meta.has_more_pages === false) {
                     return
                 }
                 this.processing = true
-                axios.get("api/categories", { params: {
-                        with: ["images", "tags"],
-                        name: "testimonial",
+                axios.get('api/categories', { params: {
+                        with: ['images', 'tags'],
+                        name: 'testimonial',
                         page: this.testimonialsResponse ? (this.testimonialsResponse.meta.current_page + 1) : 1,
                         per_page: 1
                     }
@@ -89,9 +93,6 @@
             getTestimonialsDebounced: _.debounce(function () {
                 this.getTestimonials()
             }, 100),
-        },
-        mounted() {
-            this.getTestimonials()
         }
     }
 </script>
