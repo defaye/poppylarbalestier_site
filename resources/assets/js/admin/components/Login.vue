@@ -10,15 +10,15 @@
                 label-for="email"
             >
                 <b-form-input
-                    id="email"
-                    type="email"
                     :disabled="processing"
-                    :state="errors.has('email') ? false : null"
-                    v-model.trim="form.email"
-                    :required="true"
-                    autofocus
-                    tabindex="1"
                     :formatter="v => v ? v.toLowerCase() : v"
+                    :required="true"
+                    :state="errors.has('email') ? false : null"
+                    autofocus
+                    id="email"
+                    tabindex="1"
+                    type="email"
+                    v-model.trim="form.email"
                 >
                 </b-form-input>
                 <b-form-invalid-feedback v-if="errors.has('email')">
@@ -34,11 +34,13 @@
                 label-for="password"
             >
                 <b-form-input
-                    type="password"
-                    id="password"
-                    :state="errors.has('password') ? false : null"
-                    v-model="form.password"
+                    :disabled="processing"
                     :required="true"
+                    :state="errors.has('password') ? false : null"
+                    id="password"
+                    tabindex="1"
+                    type="password"
+                    v-model="form.password"
                 >
                 </b-form-input>
                 <b-form-invalid-feedback v-if="errors.has('password')">
