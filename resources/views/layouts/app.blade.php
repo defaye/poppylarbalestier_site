@@ -23,12 +23,12 @@
                     <navigation class="d-block d-lg-none"></navigation>
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-12 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+                            <div class="col-12 col-lg-8 col-xl-6 ml-auto">
                                 <div id="site-title" role="button" class="text-center" @click.prevent="$store.dispatch('load', '/')">
                                         <img src="{{ url('images/***REMOVED***-LOGO.jpg') }}" alt="***REMOVED*** ***REMOVED***">
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-2 col-xl-3 d-flex align-items-center" style="font-size: 2rem;">
+                            <div class="d-none d-lg-flex col-lg-2 col-xl-3 align-items-center" style="font-size: 2rem;">
                                 <a class="ml-auto" href="https://www.facebook.com/pages/***REMOVED***-***REMOVED***-***REMOVED***/261844107286000" target="_blank">
                                     <font-awesome-icon class="icon-link" :icon="['fab', 'facebook-square']" size="lg"></font-awesome-icon>
                                 </a>
