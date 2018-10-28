@@ -9,9 +9,11 @@
                      :ratio-x="826"
                      :ratio-y="551"
                      :show-pagination="true"
+                     :auto-height="true"
             >
             </carousel>
-            <responsive-image v-else :src="page.images[0].path" :alt="page.name || page.title || false" :ratio-x="826" :ratio-y="551"></responsive-image>
+            <img v-else :src="page.images[0].path" :alt="page.name || page.title || false" class="w-100">
+            <!-- <responsive-image v-else :src="page.images[0].path" :alt="page.name || page.title || false" :ratio-x="826" :ratio-y="551"></responsive-image> -->
         </div>
         <div class="my-4" v-if="page.body && page.body.length">
             <p v-for="line in page.body.split('\n')">{{ line }}</p>
@@ -21,7 +23,7 @@
                 <div class="row">
                     <div class="d-flex align-content-stretch flex-wrap col-12 col-lg-4" role="button" v-for="post in page.posts" :key="post.id" @click.prevent="emitLoadEvent(`/${page.slug}/${post.slug}`)">
                         <a class="ImageTabs--header" :href="`/${page.slug}/${post.slug}`" @click.prevent="emitLoadEvent(`/${page.slug}/${post.slug}`)">{{ post.title }}</a>
-                        <responsive-image :src="post.images[0].path" :alt="post.title" :ratio-x="4" :ratio-y="3"></responsive-image>
+                        <responsive-image :src="post.images[0].path" :alt="post.title" :ratio-x="826" :ratio-y="551"></responsive-image>
                     </div>
                 </div>
             </div>

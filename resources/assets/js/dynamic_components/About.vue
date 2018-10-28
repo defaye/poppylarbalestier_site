@@ -22,14 +22,15 @@
                 </a>
             </div>
         </div>
-        <responsive-image :src="page.images[0].path" alt="Me and my husband" :ratio-x="4" :ratio-y="3"></responsive-image>
+        <img :src="page.images[0].path" alt="Me and my partner" class="w-100">
+        <!-- <responsive-image :src="page.images[0].path" alt="Me and my husband" :ratio-x="4" :ratio-y="3"></responsive-image> -->
     </div>
 </template>
 <script>
-    "use strict"
+    'use strict'
     export default {
         model: {
-            prop: "page"
+            prop: 'page'
         },
         props: {
             page: Object

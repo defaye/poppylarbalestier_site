@@ -63,6 +63,11 @@ body {
     }
 }
 
+img,
+.responsive-image {
+    pointer-events: none;
+}
+
 html,
 body,
 #app {

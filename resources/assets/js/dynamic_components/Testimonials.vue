@@ -13,7 +13,8 @@
                         <!-- <small>{{ formatDate(t.created_at) }}</small> -->
                     </h2>
                     <div v-if="t.images.length">
-                        <responsive-image :src="t.images[0].path" :alt="t.title" :ratio-x="4" :ratio-y="3"></responsive-image>
+                        <img :src="t.images[0].path" :alt="t.title" class="w-100">
+                        <!-- <responsive-image :src="t.images[0].path" :alt="t.title" :ratio-x="4" :ratio-y="3"></responsive-image> -->
                     </div>
                     <div class="my-4" v-if="t.body && t.body.length">
                         <p v-for="line in truncatedBody(t.body).split('\n')">{{ line }}</p>

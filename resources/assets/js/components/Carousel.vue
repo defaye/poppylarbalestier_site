@@ -3,6 +3,7 @@
     import * as screenfull from 'screenfull'
     export default {
         props: {
+            autoHeight: Boolean,
             images: {
                 type: Array,
                 required: true
@@ -99,6 +100,7 @@
                     this.owl = $(`#${this.owlID}`).owlCarousel({
                         animateIn: 'fadeIn',
                         animateOut: 'fadeOut',
+                        autoHeight: this.autoHeight,
                         autoplay: true,
                         autoplayHoverPause: true,
                         autoplaySpeed: 3000,
@@ -290,17 +292,18 @@
                                     },
                                     t.images.map((image, index) =>
                                         h(
-                                            'responsive-image',
+                                            'img',
                                             {
                                                 attrs: {
                                                     'data-index': index,
-                                                    'alt': image.reference
+                                                    'alt': image.reference,
+                                                    'src': image.path
                                                 },
                                                 props: {
                                                     'key': image.reference,
-                                                    'ratio-x': t.calculateRatioX,
-                                                    'ratio-y': t.calculateRatioY,
-                                                    'src': image.path
+                                                    // 'ratio-x': t.calculateRatioX,
+                                                    // 'ratio-y': t.calculateRatioY,
+                                                    // 'src': image.path
                                                 }
                                             }
                                         )
