@@ -96,7 +96,7 @@
             ErrorsAndProcessing
         ],
         components: {
-            'g-recaptcha': gRecaptcha
+            gRecaptcha
         },
         model: {
             prop: 'page',
@@ -139,32 +139,30 @@
             emitLoadEvent(path) {
                 this.$store.dispatch('load', path)
             },
-            validateForm() {
-                return true
-            },
+            validateForm: () => true,
             onRecaptchaVerified(response) {
                 this.form.recaptcha = response
                 this.submit()
             },
-            async submit() {
-                try {
-                    this.processing = true
-                    this.errors.clear()
-                    const response = await axios.post('/api/contact', this.form)
+            submit() {
+                if (this.processing) {
+                    return
+                }
+                this.processing = true
+                this.errors.clear()
+                axios.post('/api/contact', this.form).then(response => {
                     this.$store.state.notifications = [{
                         type: 'success',
                         message: 'Thank you, your message has been sent!'
                     }]
                     this.reset()
-                } catch (e) {
-                    try {
-                        console.error(e.response.data)
-                        this.errors = e.response.data
-                    } catch (e) {
-                        console.error(e)
-                    }
-                }
-                this.processing = false
+                })
+                .catch(error => {
+                    this.errors = error.response.data
+                })
+                .then(() => {
+                    this.processing = false
+                })
             }
         }
     }

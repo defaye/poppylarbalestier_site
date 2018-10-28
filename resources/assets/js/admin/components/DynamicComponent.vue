@@ -7,10 +7,18 @@
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" v-model="component.name" class="form-control" placeholder="Enter a name..." :disabled="processing">
             </div>
-            <div class="form-group">
-                <label for="body">Body</label>
-                <textarea v-autosize class="form-control" name="body" id="body" aria-describedby="Body" placeholder="Write your component..." v-model="component.body" :disabled="processing"></textarea>
-            </div>
+
+            <prism-editor
+                :code="component.body"
+                :disabled="processing"
+                :line-numbers="true"
+                aria-describedby="Body"
+                class="mb-3"
+                id="body"
+                language="vue"
+                name="body"
+            >
+            </prism-editor>
             <button type="submit" class="btn btn-primary w-100 form-group" @click="submit" :disabled="processing">
                 <span v-if="component.id">Update</span>
                 <span v-else>Create</span>
@@ -19,10 +27,17 @@
     </div>
 </template>
 <script>
-    "use strict"
+    'use strict'
     import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
+    import 'prismjs'
+    import 'prismjs/themes/prism.css'
+    import PrismEditor from 'vue-prism-editor'
+    import 'vue-prism-editor/dist/VuePrismEditor.css'
 
     export default {
+        components: {
+            PrismEditor
+        },
         mixins: [
             ErrorsAndProcessing
         ],
@@ -74,16 +89,16 @@
                         const response = await axios.patch(`/api/admin/components/${this.component.id}`, this.component)
                         this.component = response.data
                         this.$store.state.notifications = [{
-                            type: "success",
-                            message: "Component updated"
+                            type: 'success',
+                            message: 'Component updated'
                         }]
                     } else {
-                        const response = await axios.post("/api/admin/components", this.component)
-                        window.history.pushState(Object.assign({}, response.data), "Edit component", `/admin/components/${response.data.id}`)
+                        const response = await axios.post('/api/admin/components', this.component)
+                        window.history.pushState(Object.assign({}, response.data), 'Edit component', `/admin/components/${response.data.id}`)
                         this.component = response.data
                         this.$store.state.notifications = [{
-                            type: "success",
-                            message: "Component created"
+                            type: 'success',
+                            message: 'Component created'
                         }]
                     }
                     this.errors.clear()
