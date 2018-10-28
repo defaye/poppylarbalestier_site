@@ -6,8 +6,9 @@
             <div class="row d-none d-md-flex py-3 bg-dark text-white">
                 <div class="col-md-2"><strong>#</strong></div>
                 <div class="col-md-4"><strong>Title</strong></div>
-                <div class="col-md-4"><strong>Category</strong></div>
+                <div class="col-md-3"><strong>Category</strong></div>
                 <div class="col-md-2"><strong>Published?</strong></div>
+                <div class="col-md-1"></div>
             </div>
             <div class="highlight-children">
                 <div v-if="posts.length" v-for="(post, index) in posts" @dblclick="open(`/admin/posts/${post.id}`)"
@@ -17,7 +18,7 @@
                         <a :href="`/admin/posts/${post.id}`">{{ post.id }}</a>
                     </div>
                     <div class="col-12 col-md-4"><a :href="`/admin/posts/${post.id}`">{{ post.title }}</a></div>
-                    <div class="col-12 col-md-4"><em><small class="text-dark">{{ post.category && post.category.name }}</small></em></div>
+                    <div class="col-12 col-md-3"><em><small class="text-dark">{{ post.category && post.category.name }}</small></em></div>
                     <div class="col-12 col-md-2">
                         <div role="button" @click="togglePublished(post)">
                         <!-- <font-awesome-layers role="button" @click="togglePublished(post)"> -->
@@ -26,6 +27,12 @@
                             <font-awesome-icon v-else class="text-warning" :icon="['fal', 'lightbulb']" title="Un-published"></font-awesome-icon>
                         <!-- </font-awesome-layers> -->
                         </div>
+                    </div>
+                    <div class="col-12 col-md-1">
+                        <font-awesome-icon class="text-danger" :icon="['fal', 'times-square']" title="Delete" v-b-modal="'delete-' + post.id"></font-awesome-icon>
+                        <b-modal :id="'delete-' + post.id" variant="danger" @ok="remove(post)" ok-title="Confirm">
+                            Are you sure?
+                        </b-modal>
                     </div>
                 </div>
                 <div v-else class="row"><div class="col">There are no posts to show.</div></div>
@@ -37,8 +44,16 @@
 </template>
 <script>
     import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
+    import bModal from 'bootstrap-vue/es/components/modal/modal'
+    import vBModal from 'bootstrap-vue/es/directives/modal/modal'
 
     export default {
+        components: {
+            bModal
+        },
+        directives: {
+            'b-modal': vBModal
+        },
         mixins: [
             ErrorsAndProcessing
         ],
@@ -103,6 +118,17 @@
                     }
                 }
                 this.processing = false
+            },
+            remove(post) {
+                if (this.processing) {
+                    return
+                }
+                this.processing = true
+                axios.delete('/api/admin/posts/' + post.id).then(response => {
+                    this.$delete(this.posts, _.findIndex(this.posts, { id: post.id }))
+                })
+                .catch(error => this.errors = error.response.data)
+                .then(() => this.processing = false)
             }
         }
     }

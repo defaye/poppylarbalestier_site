@@ -122,4 +122,14 @@ class PagesController extends Controller
             ], 500);
         }
     }
+
+    /**
+     * Delete a page.
+     * @param  integer $page ID
+     * @return string       JSON response
+     */
+    public function delete($page)
+    {
+        return response()->json(Page::whereId($page)->delete());
+    }
 }

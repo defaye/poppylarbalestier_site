@@ -6,8 +6,9 @@
             <div class="row d-none d-md-flex py-3 bg-dark text-white">
                 <div class="col-md-2"><strong>#</strong></div>
                 <div class="col-md-4"><strong>Title</strong></div>
-                <div class="col-md-4"><strong>Component</strong></div>
+                <div class="col-md-3"><strong>Component</strong></div>
                 <div class="col-md-2"><strong>Published?</strong></div>
+                <div class="col-md-1"></div>
             </div>
             <div class="highlight-children">
                 <div v-if="pages.length" v-for="(page, index) in pages" @dblclick="open(`/admin/pages/${page.id}`)"
@@ -17,15 +18,21 @@
                         <a :href="`/admin/pages/${page.id}`">{{ page.id }}</a>
                     </div>
                     <div class="col-12 col-md-4"><a :href="`/admin/pages/${page.id}`">{{ page.title }}</a></div>
-                    <div class="col-12 col-md-4"><em><small class="text-dark">{{ page.component && page.component.name }}</small></em></div>
+                    <div class="col-12 col-md-3"><em><small class="text-dark">{{ page.component && page.component.name }}</small></em></div>
                     <div class="col-12 col-md-2">
-                        <div role="button" @click="togglePublished(page)">
+                        <span role="button" @click="togglePublished(page)">
                         <!-- <font-awesome-layers role="button" @click="togglePublished(page)"> -->
                             <!-- <font-awesome-icon class="text-light" icon="circle"></font-awesome-icon> -->
                             <font-awesome-icon v-if="page.published" class="text-warning" :icon="['fas', 'lightbulb']" title="Published"></font-awesome-icon>
                             <font-awesome-icon v-else class="text-warning" :icon="['fal', 'lightbulb']" title="Un-published"></font-awesome-icon>
                         <!-- </font-awesome-layers> -->
-                        </div>
+                        </span>
+                    </div>
+                    <div class="col-12 col-md-1">
+                        <font-awesome-icon class="text-danger" :icon="['fal', 'times-square']" title="Delete" v-b-modal="'delete-' + page.id"></font-awesome-icon>
+                        <b-modal :id="'delete-' + page.id" variant="danger" @ok="remove(page)" ok-title="Confirm">
+                            Are you sure?
+                        </b-modal>
                     </div>
                 </div>
                 <div v-else class="row"><div class="col">There are no pages to show.</div></div>
@@ -38,8 +45,16 @@
 <script>
     'use strict'
     import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
+    import bModal from 'bootstrap-vue/es/components/modal/modal'
+    import vBModal from 'bootstrap-vue/es/directives/modal/modal'
 
     export default {
+        components: {
+            bModal
+        },
+        directives: {
+            'b-modal': vBModal
+        },
         mixins: [
             ErrorsAndProcessing
         ],
@@ -104,6 +119,17 @@
                     }
                 }
                 this.processing = false
+            },
+            remove(page) {
+                if (this.processing) {
+                    return
+                }
+                this.processing = true
+                axios.delete('/api/admin/pages/' + page.id).then(response => {
+                    this.$delete(this.pages, _.findIndex(this.pages, { id: page.id }))
+                })
+                .catch(error => this.errors = error.response.data)
+                .then(() => this.processing = false)
             }
         }
     }

@@ -120,4 +120,14 @@ class PostsController extends Controller
             ], 500);
         }
     }
+
+    /**
+     * Delete a post.
+     * @param  integer $post ID
+     * @return string       JSON response
+     */
+    public function delete($post)
+    {
+        return response()->json(Post::whereId($post)->delete());
+    }
 }

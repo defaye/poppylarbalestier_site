@@ -40,11 +40,15 @@ Route::group(['middleware' => 'throttle:60,1'], function () {
         Route::post('posts/{post}/images', 'Admin\API\ImagePostsController@create');
         Route::delete('images/{image}', 'Admin\API\ImagesController@delete');
 
+        Route::delete('posts/{post}', 'Admin\API\PostsController@delete');
+
         Route::get('pages', 'Admin\API\PagesController@paginate');
         Route::get('pages/{page}', 'Admin\API\PagesController@get');
         Route::post('pages', 'Admin\API\PagesController@store');
         Route::patch('pages/{page}', 'Admin\API\PagesController@update');
         Route::post('pages/{page}/images', 'Admin\API\ImagePagesController@create');
+
+        Route::delete('pages/{page}', 'Admin\API\PagesController@delete');
 
         Route::get('components', 'Admin\API\ComponentsController@all');
         Route::get('components/{component}', 'Admin\API\ComponentsController@get');

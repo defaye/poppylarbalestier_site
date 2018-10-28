@@ -27,6 +27,7 @@ import lightLightbulb from "@fortawesome/fontawesome-pro-light/faLightbulb"
 import chevronDoubleLeft from "@fortawesome/fontawesome-pro-light/faChevronDoubleLeft"
 import chevronDoubleRight from "@fortawesome/fontawesome-pro-light/faChevronDoubleRight"
 import circle from "@fortawesome/fontawesome-pro-solid/faCircle"
+import timesSquare from "@fortawesome/fontawesome-pro-light/faTimesSquare"
 
 fontawesome.library.add(facebookSquare)
 fontawesome.library.add(twitterSquare)
@@ -45,6 +46,7 @@ fontawesome.library.add(lightLightbulb)
 fontawesome.library.add(chevronDoubleLeft)
 fontawesome.library.add(chevronDoubleRight)
 fontawesome.library.add(circle)
+fontawesome.library.add(timesSquare)
 
 fontawesome.icon({ prefix: "fab", iconName: "facebook-square" })
 fontawesome.icon({ prefix: "fab", iconName: "twitter-square" })
@@ -63,6 +65,7 @@ fontawesome.icon({ prefix: "fal", iconName: "lightbulb" })
 fontawesome.icon({ prefix: "fal", iconName: "chevron-double-left" })
 fontawesome.icon({ prefix: "fal", iconName: "chevron-double-right" })
 fontawesome.icon({ prefix: "fas", iconName: "circle" })
+fontawesome.icon({ prefix: "fal", iconName: "times-square" })
 
 Vue.component("font-awesome-layers", FontAwesomeLayers)
 Vue.component("font-awesome-icon", FontAwesomeIcon)
