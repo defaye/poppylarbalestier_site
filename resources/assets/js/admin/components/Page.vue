@@ -1,7 +1,6 @@
 <template>
     <div>
         <h1>{{ page.id ? "Edit" : "New" }} page</h1>
-        <alert></alert>
         <errors v-model="errors"></errors>
         <div class="card">
             <div class="card-header">
@@ -18,20 +17,68 @@
                 </ul>
             </div>
             <div class="card-body" v-if="tab === 'main'">
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" name="title" id="title" v-model="page.title" class="form-control" placeholder="Enter a title..." :disabled="processing">
+                <b-form-group
+                    label="Title"
+                    label-for="title"
+                >
+                    <b-form-input
+                        id="title"
+                        type="text"
+                        :disabled="processing"
+                        :state="errors.has('title') ? false : null"
+                        v-model.trim="page.title"
+                        :required="true"
+                        autofocus
+                        tabindex="1"
+                        placeholder="Enter a title..."
+                    >
+                    </b-form-input>
+                    <b-form-invalid-feedback v-if="errors.has('title')">
+                        {{ errors.get('title').join(' ').trim() }}
+                    </b-form-invalid-feedback>
                     <small class="form-text">This is the text that will appear in the title bar of the page only.</small>
-                </div>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" v-model="page.name" class="form-control" placeholder="Enter a name..." :disabled="processing">
+                </b-form-group>
+                <b-form-group
+                    label="Name"
+                    label-for="name"
+                >
+                    <b-form-input
+                        id="name"
+                        type="text"
+                        :disabled="processing"
+                        :state="errors.has('name') ? false : null"
+                        v-model.trim="page.name"
+                        :required="true"
+                        autofocus
+                        tabindex="1"
+                        placeholder="Enter a name..."
+                    >
+                    </b-form-input>
+                    <b-form-invalid-feedback v-if="errors.has('name')">
+                        {{ errors.get('name').join(' ').trim() }}
+                    </b-form-invalid-feedback>
                     <small class="form-text">If the page name is used in the component template, it will be used.</small>
-                </div>
-                <div class="form-group">
-                    <label for="body">Body</label>
-                    <textarea v-autosize class="form-control" name="body" id="body" aria-describedby="Body" placeholder="Write your page..." v-model="page.body" :disabled="processing"></textarea>
-                </div>
+                </b-form-group>
+                <b-form-group
+                    label="Body"
+                    label-for="body"
+                >
+                    <b-form-textarea
+                        id="body"
+                        :disabled="processing"
+                        :state="errors.has('body') ? false : null"
+                        v-model="page.body"
+                        v-autosize
+                        :required="true"
+                        autofocus
+                        tabindex="1"
+                        placeholder="Write your page content..."
+                    >
+                    </b-form-textarea>
+                    <b-form-invalid-feedback v-if="errors.has('body')">
+                        {{ errors.get('body').join(' ').trim() }}
+                    </b-form-invalid-feedback>
+                </b-form-group>
                 <div class="form-group" v-if="page.id">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="published" name="published" v-model="page.published" :disabled="processing">
@@ -84,23 +131,37 @@
     </div>
 </template>
 <script>
-    "use strict";
-    import draggable from "vuedraggable";
-    import ManageImages from "../mixins/ManageImages.js";
-    import Tabs from "../mixins/Tabs.js";
+    "use strict"
+    import draggable from "vuedraggable"
+    import ManageImages from "../mixins/ManageImages.js"
+    import Tabs from "../mixins/Tabs.js"
+
+    import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
+
+    // import bButton from 'bootstrap-vue/es/components/button/button'
+    // import bFormCheckbox from 'bootstrap-vue/es/components/form-checkbox/form-checkbox'
+    import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group'
+    import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
+    import bFormInvalidFeedback from 'bootstrap-vue/es/components/form/form-invalid-feedback'
+    import bFormTextarea from 'bootstrap-vue/es/components/form-textarea/form-textarea'
 
     export default {
         components: {
+            // bButton,
+            // bFormCheckbox,
+            bFormGroup,
+            bFormInput,
+            bFormInvalidFeedback,
+            bFormTextarea,
             draggable
         },
         mixins: [
+            ErrorsAndProcessing,
             ManageImages,
             Tabs
         ],
         data() {
             return {
-                processing: false,
-                errors: undefined,
                 page: {
                     title: undefined,
                     name: undefined,
@@ -115,82 +176,82 @@
         },
         async mounted() {
             window.onpopstate = event => {
-                document.title = event.state.title;
-                this.page = event.state;
-            };
+                document.title = event.state.title
+                this.page = event.state
+            }
             try {
-                const response = await axios.get("/api/admin/components");
+                const response = await axios.get("/api/admin/components")
                 if (response.data.length) {
-                    this.components = response.data;
-                    this.page.component_id = this.components[0].id;
+                    this.components = response.data
+                    this.page.component_id = this.components[0].id
                 } else {
-                    this.errors = { message: "You need to create a component template before you create a page." };
+                    this.errors = { message: "You need to create a component template before you create a page." }
                 }
             } catch (e) {
                 try {
-                    console.error(e.response.data);
-                    this.errors = e.response.data;
+                    console.error(e.response.data)
+                    this.errors = e.response.data
                 } catch (e) {
-                    console.error(e);
+                    console.error(e)
                 }
             }
-            const url = new URL(window.location.href);
-            const regex = /^\/admin\/pages\/(\d+)$/;
+            const url = new URL(window.location.href)
+            const regex = /^\/admin\/pages\/(\d+)$/
             if (regex.test(url.pathname)) {
-                const matches = regex.exec(url.pathname);
-                this.retrievePage(matches[1]);
+                const matches = regex.exec(url.pathname)
+                this.retrievePage(matches[1])
             } else {
-                this.retrievePage();
+                this.retrievePage()
             }
         },
         methods: {
             async retrievePage(id) {
                 try {
                     if (id) {
-                        this.processing = true;
-                        const response = await axios.get(`/api/admin/pages/${id}`);
-                        console.log(response.data);
-                        this.page = response.data;
+                        this.processing = true
+                        const response = await axios.get(`/api/admin/pages/${id}`)
+                        console.log(response.data)
+                        this.page = response.data
                     }
                 } catch (e) {
                     try {
-                        console.error(e.response.data);
-                        this.errors = e.response.data;
+                        console.error(e.response.data)
+                        this.errors = e.response.data
                     } catch (e) {
-                        console.error(e);
+                        console.error(e)
                     }
                 }
-                this.processing = false;
+                this.processing = false
             },
             async submit() {
                 try {
-                    this.processing = true;
+                    this.processing = true
                     if (this.page.id) {
-                        const response = await axios.patch(`/api/admin/pages/${this.page.id}`, this.page);
-                        // this.page = response.data;
-                        this.$store.commit("status", {
+                        const response = await axios.patch(`/api/admin/pages/${this.page.id}`, this.page)
+                        // this.page = response.data
+                        this.$store.state.notifications = [{
                             type: "success",
                             message: "Page updated"
-                        });
+                        }]
                     } else {
-                        const response = await axios.post("/api/admin/pages", this.page);
-                        window.history.pushState(Object.assign({}, response.data), "Edit page", `/admin/pages/${response.data.id}`);
-                        this.page = response.data;
-                        this.$store.commit("status", {
+                        const response = await axios.post("/api/admin/pages", this.page)
+                        window.history.pushState(Object.assign({}, response.data), "Edit page", `/admin/pages/${response.data.id}`)
+                        this.page = response.data
+                        this.$store.state.notifications = [{
                             type: "success",
                             message: "Page created"
-                        });
+                        }]
                     }
-                    this.errors = undefined;
+                    this.errors.clear()
                 } catch (e) {
                     try {
-                        console.error(e.response.data);
-                        this.errors = e.response.data;
+                        console.error(e.response.data)
+                        this.errors = e.response.data
                     } catch (e) {
-                        console.error(e);
+                        console.error(e)
                     }
                 }
-                this.processing = false;
+                this.processing = false
             }
         }
 

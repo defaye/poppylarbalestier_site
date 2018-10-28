@@ -17,7 +17,7 @@
     </nav>
 </template>
 <script>
-    "use strict";
+    "use strict"
     export default {
         data() {
             return {
@@ -26,16 +26,16 @@
         },
         async mounted() {
             try {
-                const response = await axios.get("/api/navigation");
-                this.items = response.data;
+                const response = await axios.get("/api/navigation")
+                this.items = response.data
             } catch (e) {
-                console.error(e);
+                console.error(e)
             }
         },
         methods: {
             navigateTo(path) {
-                $(".navbar-collapse").collapse("hide");
-                this.$store.dispatch('load', path);
+                $(".navbar-collapse").collapse("hide")
+                this.$store.dispatch('load', path)
             }
         }
     }

@@ -37,18 +37,18 @@
         },
         computed: {
             pages() {
-                return Math.ceil(this.pagination.total / this.pagination.per_page);
+                return Math.ceil(this.pagination.total / this.pagination.per_page)
             }
         },
         methods: {
             range() {
-                return _.range(...arguments);
+                return _.range(...arguments)
             },
             urlWithPage(number) {
-                const url = new URL(window.location);
-                const params = url.searchParams;
-                params.set("page", number);
-                return url.toString();
+                const url = new URL(window.location)
+                const params = url.searchParams
+                params.set("page", number)
+                return url.toString()
             }
         }
     }

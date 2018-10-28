@@ -4,13 +4,13 @@
         leave-active-class="animated slideOutUp"
     >
         <div
-            v-if="status && status.message"
+            v-if="notifications && 0 in notifications && notifications[0].message"
             class="fixed-top p-5 w-100 alert text-center"
-            :class="status.type && `alert-${status.type}` || 'alert-info'"
+            :class="notifications[0].type && `alert-${notifications[0].type}` || 'alert-info'"
             role="alert"
-            @click.prevent="$store.commit('status', undefined)"
+            @click.prevent="$delete(notifications, 0)"
         >
-            {{ status.message }}
+            {{ notifications[0].message }}
         </div>
     </transition>
 </template>
@@ -21,14 +21,19 @@
             window.addEventListener('keyup', this.onKeyup)
         },
         computed: {
-            status() {
-                return this.$store.state.status
+            notifications: {
+                get() {
+                    return this.$store.state.notifications
+                },
+                set(notifications) {
+                    this.$store.state.notifications = notifications
+                }
             }
         },
         methods: {
             onKeyup(e) {
                 if (e.keyCode && e.keyCode === 27) { // escape
-                    this.$store.commit('status', undefined)
+                    this.$delete(this.notifications, 0)
                 }
             }
         },

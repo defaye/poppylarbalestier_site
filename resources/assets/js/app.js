@@ -23,51 +23,36 @@ Vue.directive('autosize', el => {
     autosize(el)
 })
 
-Vue.component('notification', require('./components/Notification.vue'))
+Vue.component('notifications', require('./components/Notifications.vue'))
 Vue.component('navigation', require('./components/Navigation.vue'))
 Vue.component('responsive-image', require('./components/ResponsiveImage.vue'))
 Vue.component('carousel', require('./components/Carousel.vue'))
 
-const store = new Vuex.Store({
-    state: {
-        errors: undefined,
-        processing: false,
-        status: undefined,
-        page: undefined
-    },
-    mutations: {
-        errors(state, errors) {
-            state.errors = errors
-        },
-        page(state, page) {
-            state.page = page
-        },
-        processing(state, mode) {
-            state.processing = mode === true
-        },
-        status(state, status) {
-            state.status = status
-        },
-    },
-    actions: {
-        async load(context, path) {
-            try {
-                const response = await axios.post('/api/router', {
-                    path
-                })
-                let title = response.data.hasOwnProperty('title') ? response.data.title + ' — ***REMOVED*** ***REMOVED***' : (
-                    response.data.hasOwnProperty('name') ? response.data.name + ' — ***REMOVED*** ***REMOVED***' : '***REMOVED*** ***REMOVED***'
-                )
-                window.history.pushState(Object.assign({}, response.data), title, path)
-                document.title = title
-                context.commit('page', response.data)
-                document.querySelector('body').scrollIntoView({ behavior: 'instant', block: 'start' })
-            } catch (e) {
-                console.error(e.response.data)
-            }
-        }
-    }
+import storeConfiguration from './store/configuration'
+
+storeConfiguration.state = Object.assign(storeConfiguration.state, {
+    page: undefined
 })
+
+storeConfiguration.actions = {
+    load(context, path) {
+        axios.post('/api/router', {
+            path
+        }).then(response => {
+            let title = response.data.hasOwnProperty('title') ? response.data.title + ' — ***REMOVED*** ***REMOVED***' : (
+                response.data.hasOwnProperty('name') ? response.data.name + ' — ***REMOVED*** ***REMOVED***' : '***REMOVED*** ***REMOVED***'
+            )
+            window.history.pushState(Object.assign({}, response.data), title, path)
+            document.title = title
+            context.state.page = response.data
+            document.querySelector('body').scrollIntoView({ behavior: 'instant', block: 'start' })
+        }).catch(error => {
+            console.error(e.response.data)
+        })
+    }
+}
+
+const store = new Vuex.Store(storeConfiguration)
 
 const app = new Vue({
     el: '#app',
@@ -77,7 +62,7 @@ const app = new Vue({
 
         window.onpopstate = event => {
             document.title = event.state && event.state.title
-            store.commit('page', event.state)
+            store.state.page = event.state
         }
     }
 })

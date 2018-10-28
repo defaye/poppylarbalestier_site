@@ -18,7 +18,7 @@
                     <div class="my-4" v-if="t.body && t.body.length">
                         <p v-for="line in truncatedBody(t.body).split('\n')">{{ line }}</p>
                         <a v-if="truncatedBody(t.body).length !== t.body.length" :href="`/${page.slug}/${t.slug}`" @click.prevent="emitLoadEvent(`/${page.slug}/${t.slug}`)">
-                            Read more&hellip;
+                            Read more&hellip
                         </a>
                     </div>
                 </div>
@@ -32,8 +32,8 @@
     </div>
 </template>
 <script>
-    "use strict";
-    import MugenScroll from "vue-mugen-scroll";
+    "use strict"
+    import MugenScroll from "vue-mugen-scroll"
     export default {
         model: {
             prop: "page",
@@ -55,22 +55,22 @@
                   length: 512,
                   separator: /\n+/,
                   omission: ""
-                });
+                })
             },
             formatDate(date) {
-                return moment(date).format("dddd, MMMM Do YYYY");
+                return moment(date).format("dddd, MMMM Do YYYY")
             },
             startCase(name) {
                 return _.startCase(name)
             },
             emitLoadEvent(path) {
-                this.$store.dispatch('load', path);
+                this.$store.dispatch('load', path)
             },
             getTestimonials() {
                 if (typeof this.testimonialsResponse !== "undefined" && this.testimonialsResponse.meta.has_more_pages === false) {
-                    return;
+                    return
                 }
-                this.processing = true;
+                this.processing = true
                 axios.get("api/categories", { params: {
                         with: ["images", "tags"],
                         name: "testimonial",
@@ -78,20 +78,20 @@
                         per_page: 1
                     }
                 }).then(response => {
-                    this.testimonialsResponse = response.data;
-                    this.testimonials = this.testimonials.concat(response.data.data);
+                    this.testimonialsResponse = response.data
+                    this.testimonials = this.testimonials.concat(response.data.data)
                 }).catch(e => {
-                    console.error(e.response.data);
+                    console.error(e.response.data)
                 }).then(response => {
-                    this.processing = false;
-                });
+                    this.processing = false
+                })
             },
             getTestimonialsDebounced: _.debounce(function () {
-                this.getTestimonials();
+                this.getTestimonials()
             }, 100),
         },
         mounted() {
-            this.getTestimonials();
+            this.getTestimonials()
         }
     }
 </script>

@@ -17,7 +17,7 @@
     <body>
         @stack('body')
         <div id="app">
-            <notification></notification>
+            <notifications></notifications>
             <div id="top-wrapper">
                 <header id="top" class="my-4">
                     <navigation class="d-block d-lg-none"></navigation>

@@ -89,10 +89,12 @@
 <script>
     'use strict'
     import gRecaptcha from '@finpo/vue2-recaptcha-invisible'
-    import formErrorsMixin from '../mixins/FormErrors.js'
+    import ErrorsAndProcessing from '../mixins/ErrorsAndProcessing'
 
     export default {
-        mixins: [ formErrorsMixin ],
+        mixins: [
+            ErrorsAndProcessing
+        ],
         components: {
             'g-recaptcha': gRecaptcha
         },
@@ -102,15 +104,13 @@
         },
         data() {
             return {
-                formErrors: undefined,
                 form: {
                     name: undefined,
                     email: undefined,
                     phone: undefined,
                     message: undefined,
                     recaptcha: undefined
-                },
-                processing: false
+                }
             }
         },
         props: {
@@ -123,7 +123,7 @@
         },
         methods: {
             reset() {
-                this.formErrors = undefined,
+                this.errors.clear()
                 this.form = {
                     name: undefined,
                     email: undefined,
@@ -149,17 +149,17 @@
             async submit() {
                 try {
                     this.processing = true
-                    this.formErrors = undefined
+                    this.errors.clear()
                     const response = await axios.post('/api/contact', this.form)
-                    this.$store.commit('status', {
+                    this.$store.state.notifications = [{
                         type: 'success',
                         message: 'Thank you, your message has been sent!'
-                    })
+                    }]
                     this.reset()
                 } catch (e) {
                     try {
                         console.error(e.response.data)
-                        this.formErrors = e.response.data
+                        this.errors = e.response.data
                     } catch (e) {
                         console.error(e)
                     }

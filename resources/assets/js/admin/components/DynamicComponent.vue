@@ -1,7 +1,6 @@
 <template>
     <div>
         <h1>{{ component.id ? "Edit" : "New" }} component</h1>
-        <alert></alert>
         <errors v-model="errors"></errors>
         <div>
             <div class="form-group">
@@ -20,12 +19,15 @@
     </div>
 </template>
 <script>
-    "use strict";
+    "use strict"
+    import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
+
     export default {
+        mixins: [
+            ErrorsAndProcessing
+        ],
         data() {
             return {
-                processing: false,
-                errors: undefined,
                 component: {
                     name: undefined,
                     body: undefined,
@@ -34,66 +36,66 @@
         },
         mounted() {
             window.onpopstate = event => {
-                document.title = event.state.title;
-                this.component = event.state;
-            };
-            const url = new URL(window.location.href);
-            const regex = /^\/admin\/components\/(\d+)$/;
+                document.title = event.state.title
+                this.component = event.state
+            }
+            const url = new URL(window.location.href)
+            const regex = /^\/admin\/components\/(\d+)$/
             if (regex.test(url.pathname)) {
-                const matches = regex.exec(url.pathname);
-                this.retrieveComponent(matches[1]);
+                const matches = regex.exec(url.pathname)
+                this.retrieveComponent(matches[1])
             } else {
-                this.retrieveComponent();
+                this.retrieveComponent()
             }
         },
         methods: {
             async retrieveComponent(id) {
                 try {
                     if (id) {
-                        this.processing = true;
-                        const response = await axios.get(`/api/admin/components/${id}`);
-                        console.log(response.data);
-                        this.component = response.data;
+                        this.processing = true
+                        const response = await axios.get(`/api/admin/components/${id}`)
+                        console.log(response.data)
+                        this.component = response.data
                     }
                 } catch (e) {
                     try {
-                        console.error(e.response.data);
-                        this.errors = e.response.data;
+                        console.error(e.response.data)
+                        this.errors = e.response.data
                     } catch (e) {
-                        console.error(e);
+                        console.error(e)
                     }
                 }
-                this.processing = false;
+                this.processing = false
             },
             async submit() {
                 try {
-                    this.processing = true;
+                    this.processing = true
                     if (this.component.id) {
-                        const response = await axios.patch(`/api/admin/components/${this.component.id}`, this.component);
-                        this.component = response.data;
-                        this.$store.commit("status", {
+                        const response = await axios.patch(`/api/admin/components/${this.component.id}`, this.component)
+                        this.component = response.data
+                        this.$store.state.notifications = [{
                             type: "success",
                             message: "Component updated"
-                        });
+                        }]
                     } else {
-                        const response = await axios.post("/api/admin/components", this.component);
-                        window.history.pushState(Object.assign({}, response.data), "Edit component", `/admin/components/${response.data.id}`);
-                        this.component = response.data;
-                        this.$store.commit("status", {
+                        const response = await axios.post("/api/admin/components", this.component)
+                        window.history.pushState(Object.assign({}, response.data), "Edit component", `/admin/components/${response.data.id}`)
+                        this.component = response.data
+                        this.$store.state.notifications = [{
                             type: "success",
                             message: "Component created"
-                        });
+                        }]
                     }
-                    this.errors = undefined;
+                    this.errors.clear()
                 } catch (e) {
                     try {
-                        console.error(e.response.data);
-                        this.errors = e.response.data;
+                        console.error(e.response.data)
+                        this.errors = e.response.data
                     } catch (e) {
-                        console.error(e);
+                        console.error(e)
                     }
                 }
-                this.processing = false;
+                this.processing = false
             },
         }
 

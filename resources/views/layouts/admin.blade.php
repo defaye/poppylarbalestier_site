@@ -16,6 +16,7 @@
 <body>
     @stack('body')
     <div id="app">
+        <notifications></notifications>
         <div id="content" class="layout-container">
             <main class="layout-content mt-3">
                 @yield('content')
@@ -54,9 +55,7 @@
             @endif
         </div>
     </div>
-    @auth
-        <script src="{{ mix('js/admin.js') }}"></script>
-        @stack('script')
-    @endauth
+    <script src="{{ mix('js/admin.js') }}"></script>
+    @stack('script')
 </body>
 </html>

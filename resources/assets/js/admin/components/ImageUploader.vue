@@ -68,7 +68,7 @@
     </div>
 </template>
 <script>
-    "use strict";
+    "use strict"
     export default {
         props: {
             multiple: Boolean,
@@ -85,37 +85,37 @@
         },
         // watch: {
         //     images(images) {
-        //         this.$emit("change", images);
-        //         // this.$emit("change", images.map(image => image.file));
+        //         this.$emit("change", images)
+        //         // this.$emit("change", images.map(image => image.file))
         //     }
         // },
         mounted() {
             $("#staged-files").on("hidden.bs.modal", e => {
-                // console.log(e);
-            });
+                // console.log(e)
+            })
         },
         methods: {
             modal(options) {
-                $("#staged-files").modal(options);
+                $("#staged-files").modal(options)
             },
             readFile(file) {
                 return new Promise((resolve, reject) => {
-                    let fr = new FileReader();
+                    let fr = new FileReader()
                     fr.onload = () => {
-                        resolve(fr.result);
-                    };
-                    fr.readAsDataURL(file);
-                });
+                        resolve(fr.result)
+                    }
+                    fr.readAsDataURL(file)
+                })
             },
             handleChange(e) {
-                this.modal("show");
+                this.modal("show")
                 Array.prototype.forEach.call(e.currentTarget.files, async file => {
                     if (/^image\//.test(file.type)) {
-                        let src = await this.readFile(file);
+                        let src = await this.readFile(file)
                         this.images.push({
                             file,
                             src
-                        });
+                        })
                         // this.images.push({
                         //     file,
                         //     lastModified: file.lastModified,
@@ -124,41 +124,41 @@
                         //     size: file.size,
                         //     src,
                         //     type: file.type,
-                        // });
+                        // })
                     } else {
-                        // console.error("Invalid format", file);
+                        // console.error("Invalid format", file)
                     }
                 })
             },
             async upload() {
-                this.processing = true;
-                let formData = new FormData();
+                this.processing = true
+                let formData = new FormData()
                 this.images.forEach(image => {
-                    formData.append("images[]", image.file);
-                });
+                    formData.append("images[]", image.file)
+                })
                 try {
-                    let response = await axios.post(this.url, formData);
-                    this.images = [];
-                    this.$emit("change", response.data);
-                    this.modal("hide");
+                    let response = await axios.post(this.url, formData)
+                    this.images = []
+                    this.$emit("change", response.data)
+                    this.modal("hide")
                 } catch (e) {
-                    this.errors = e.response.data;
-                    return;
+                    this.errors = e.response.data
+                    return
                 }
-                this.processing = false;
+                this.processing = false
             },
             // handleChange(e) {
             //     Array.prototype.forEach.call(e.currentTarget.files, async file => {
             //         if (/^image\//.test(file.type)) {
-            //             // let src = await this.readFile(file);
-            //             let formData = new FormData();
-            //             formData.append("image", file);
+            //             // let src = await this.readFile(file)
+            //             let formData = new FormData()
+            //             formData.append("image", file)
             //             try {
-            //                 let response = await axios.post(this.url, formData);
-            //                 this.images.push(response.data);
+            //                 let response = await axios.post(this.url, formData)
+            //                 this.images.push(response.data)
             //             } catch (e) {
-            //                 this.errors = e.response.data;
-            //                 return;
+            //                 this.errors = e.response.data
+            //                 return
             //             }
             //             console.log(file)
             //             // this.images.push({
@@ -169,9 +169,9 @@
             //             //     size: file.size,
             //             //     src,
             //             //     type: file.type,
-            //             // });
+            //             // })
             //         } else {
-            //             // console.error("Invalid format", file);
+            //             // console.error("Invalid format", file)
             //         }
             //     })
             // },

@@ -29,7 +29,7 @@
     </div>
 </template>
 <script>
-    "use strict";
+    "use strict"
 
     export default {
         model: {
@@ -44,7 +44,7 @@
                 return _.startCase(name)
             },
             emitLoadEvent(path) {
-                this.$store.dispatch('load', path);
+                this.$store.dispatch('load', path)
             }
         }
     }

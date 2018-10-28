@@ -1,10 +1,6 @@
-<style scoped>
-
-</style>
 <template>
     <div class="container-fluid">
         <h1>Pages</h1>
-        <alert></alert>
         <errors v-model="errors"></errors>
         <div class="container-fluid mb-3">
             <div class="row d-none d-md-flex py-3 bg-dark text-white">
@@ -40,70 +36,74 @@
     </div>
 </template>
 <script>
+    'use strict'
+    import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
+
     export default {
+        mixins: [
+            ErrorsAndProcessing
+        ],
         data() {
             return {
-                errors: undefined,
-                processing: false,
                 pages: [],
                 pagination: undefined
-            };
+            }
         },
         async mounted() {
             try {
-                this.processing = true;
+                this.processing = true
                 const response = await axios.get("/api/admin/pages", {
                     params: {
                         page: this.getPage(),
                         per_page: this.getPerPage(15),
                         with: ["component"]
                     }
-                });
-                this.pages = response.data.data;
-                this.pagination = response.data.meta;
+                })
+                this.pages = response.data.data
+                this.pagination = response.data.meta
             } catch (e) {
                 try {
-                    console.error(e.response.data);
-                    this.errors = e.response.data;
+                    console.error(e.response.data)
+                    this.errors = e.response.data
                 } catch (e) {
-                    console.error(e);
+                    console.error(e)
                 }
             }
-            this.processing = false;
+            this.processing = false
         },
         methods: {
             open(link) {
-                window.location.href = link;
+                window.location.href = link
             },
             getPage() {
-                const url = new URL(window.location.href);
-                const params = url.searchParams;
-                return url.searchParams.get("page");
+                const url = new URL(window.location.href)
+                const params = url.searchParams
+                return url.searchParams.get("page")
             },
             getPerPage(def = 15) {
-                const url = new URL(window.location.href);
-                const params = url.searchParams;
-                return url.searchParams.get("per_page") || def;
+                const url = new URL(window.location.href)
+                const params = url.searchParams
+                return url.searchParams.get("per_page") || def
             },
             async togglePublished(page) {
                 try {
-                    this.processing = true;
-                    const response = await axios.patch(`/api/admin/pages/${page.id}`, Object.assign(page, { published: !page.published }));
-                    page = response.data;
-                    this.$store.commit("status", {
+                    this.processing = true
+                    const response = await axios.patch(`/api/admin/pages/${page.id}`, Object.assign(page, { published: !page.published }))
+                    page = response.data
+                    this.$store.state.notifications = [{
                         type: "success",
                         message: "Page " + (page.published ? "published" : "un-published")
-                    });
-                    this.errors = undefined;
+                    }]
+                    this.errors.clear()
                 } catch (e) {
                     try {
-                        console.error(e.response.data);
-                        this.errors = e.response.data;
+                        console.error(e.response.data)
+                        this.errors = e.response.data
                     } catch (e) {
-                        console.error(e);
+                        console.error(e)
                     }
                 }
-                this.processing = false;
+                this.processing = false
             }
         }
     }

@@ -35,7 +35,7 @@
         props: {
             errors: Object,
             validator: value => {
-                return "message" in value;
+                return "message" in value
             }
         }
     }

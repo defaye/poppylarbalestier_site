@@ -5,7 +5,6 @@
 </style>
 <template>
     <div>
-        <alert></alert>
         <errors v-model="errors"></errors>
         <div class="row mb-3">
             <div class="col mb-1">
@@ -37,59 +36,61 @@
     </div>
 </template>
 <script>
-    "use strict";
-    import draggable from "vuedraggable";
+    "use strict"
+    import draggable from "vuedraggable"
+    import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
 
     export default {
+        mixins: [
+            ErrorsAndProcessing
+        ],
         components: {
             draggable,
         },
         data() {
             return {
-                processing: false,
-                errors: undefined,
                 enabled: [],
                 disabled: []
             }
         },
         async mounted() {
             try {
-                this.processing = true;
-                this.errors = undefined;
-                const response = await axios.get("/api/admin/navigation");
-                this.enabled = _.filter(response.data, item => item.id);
-                this.disabled = _.filter(response.data, item => !item.id);
+                this.processing = true
+                this.errors.clear()
+                const response = await axios.get("/api/admin/navigation")
+                this.enabled = _.filter(response.data, item => item.id)
+                this.disabled = _.filter(response.data, item => !item.id)
             } catch (e) {
                 try {
-                    console.error(e.response.data);
-                    this.errors = e.response.data;
+                    console.error(e.response.data)
+                    this.errors = e.response.data
                 } catch (e) {
-                    console.error(e);
+                    console.error(e)
                 }
             }
-            this.processing = false;
+            this.processing = false
         },
         methods: {
             async submit() {
                 try {
-                    this.processing = true;
-                    this.errors = undefined;
-                    const response = await axios.post("/api/admin/navigation", { items: this.enabled });
-                    this.enabled = _.filter(response.data, item => item.id);
-                    this.disabled = _.filter(response.data, item => !item.id);
-                    this.$store.commit("status", {
+                    this.processing = true
+                    this.errors.clear()
+                    const response = await axios.post("/api/admin/navigation", { items: this.enabled })
+                    this.enabled = _.filter(response.data, item => item.id)
+                    this.disabled = _.filter(response.data, item => !item.id)
+                    this.$store.state.notifications = [{
                         type: "success",
                         message: "Navigation updated"
-                    });
+                    }]
                 } catch (e) {
                     try {
-                        console.error(e.response.data);
-                        this.errors = e.response.data;
+                        console.error(e.response.data)
+                        this.errors = e.response.data
                     } catch (e) {
-                        console.error(e);
+                        console.error(e)
                     }
                 }
-                this.processing = false;
+                this.processing = false
             },
         }
 

@@ -1,7 +1,6 @@
 <template>
     <div>
         <h1>{{ post.id ? "Edit" : "New" }} post</h1>
-        <alert></alert>
         <errors v-model="errors"></errors>
         <div class="card">
             <div class="card-header">
@@ -15,14 +14,46 @@
                 </ul>
             </div>
             <div class="card-body" v-if="tab === 'main'">
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" name="title" id="title" v-model="post.title" class="form-control" placeholder="Enter a title..." :disabled="processing">
-                </div>
-                <div class="form-group">
-                    <label for="body">Body</label>
-                    <textarea v-autosize class="form-control" name="body" id="body" aria-describedby="Body" placeholder="Write your post..." v-model="post.body" :disabled="processing"></textarea>
-                </div>
+                <b-form-group
+                    label="Title"
+                    label-for="title"
+                >
+                    <b-form-input
+                        id="title"
+                        type="text"
+                        :disabled="processing"
+                        :state="errors.has('title') ? false : null"
+                        v-model.trim="post.title"
+                        :required="true"
+                        autofocus
+                        tabindex="1"
+                        placeholder="Enter a title..."
+                    >
+                    </b-form-input>
+                    <b-form-invalid-feedback v-if="errors.has('title')">
+                        {{ errors.get('title').join(' ').trim() }}
+                    </b-form-invalid-feedback>
+                </b-form-group>
+                <b-form-group
+                    label="Body"
+                    label-for="body"
+                >
+                    <b-form-textarea
+                        id="body"
+                        :disabled="processing"
+                        :state="errors.has('body') ? false : null"
+                        v-model="post.body"
+                        v-autosize
+                        :required="true"
+                        autofocus
+                        tabindex="1"
+                        placeholder="Write your post content..."
+                    >
+                    </b-form-textarea>
+                    <b-form-invalid-feedback v-if="errors.has('body')">
+                        {{ errors.get('body').join(' ').trim() }}
+                    </b-form-invalid-feedback>
+                </b-form-group>
                 <div class="form-group">
                     <label for="category">Category</label>
                     <input type="text" name="category" id="category" v-model="post.category.name" class="form-control" placeholder="Enter a category name..." max="255" :disabled="processing">
@@ -74,24 +105,38 @@
     </div>
 </template>
 <script>
-    "use strict";
-    import draggable from "vuedraggable";
-    // import autosize from "autosize";
-    import ManageImages from "../mixins/ManageImages.js";
-    import Tabs from "../mixins/Tabs.js";
+    "use strict"
+    import draggable from "vuedraggable"
+    // import autosize from "autosize"
+    import ManageImages from "../mixins/ManageImages.js"
+    import Tabs from "../mixins/Tabs.js"
+
+    import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
+
+    // import bButton from 'bootstrap-vue/es/components/button/button'
+    // import bFormCheckbox from 'bootstrap-vue/es/components/form-checkbox/form-checkbox'
+    import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group'
+    import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
+    import bFormInvalidFeedback from 'bootstrap-vue/es/components/form/form-invalid-feedback'
+    import bFormTextarea from 'bootstrap-vue/es/components/form-textarea/form-textarea'
 
     export default {
         components: {
+            // bButton,
+            // bFormCheckbox,
+            bFormGroup,
+            bFormInput,
+            bFormInvalidFeedback,
+            bFormTextarea,
             draggable
         },
         mixins: [
+            ErrorsAndProcessing,
             ManageImages,
             Tabs
         ],
         data() {
             return {
-                processing: false,
-                errors: undefined,
                 post: {
                     title: undefined,
                     body: undefined,
@@ -107,82 +152,82 @@
         },
         mounted() {
             window.onpopstate = event => {
-                document.title = event.state.title;
-                this.post = event.state;
-            };
-            const url = new URL(window.location.href);
-            const regex = /^\/admin\/posts\/(\d+)$/;
-            if (regex.test(url.pathname)) {
-                const matches = regex.exec(url.pathname);
-                this.retrievePost(matches[1]);
-            } else {
-                this.retrievePost();
+                document.title = event.state.title
+                this.post = event.state
             }
-            this.retrieveCategories();
+            const url = new URL(window.location.href)
+            const regex = /^\/admin\/posts\/(\d+)$/
+            if (regex.test(url.pathname)) {
+                const matches = regex.exec(url.pathname)
+                this.retrievePost(matches[1])
+            } else {
+                this.retrievePost()
+            }
+            this.retrieveCategories()
         },
         methods: {
             async retrievePost(id) {
                 try {
                     if (id) {
-                        this.processing = true;
-                        const response = await axios.get(`/api/admin/posts/${id}`);
-                        console.log(response.data);
-                        this.post = response.data;
+                        this.processing = true
+                        const response = await axios.get(`/api/admin/posts/${id}`)
+                        console.log(response.data)
+                        this.post = response.data
                     }
                 } catch (e) {
                     try {
-                        console.error(e.response.data);
-                        this.errors = e.response.data;
+                        console.error(e.response.data)
+                        this.errors = e.response.data
                     } catch (e) {
-                        console.error(e);
+                        console.error(e)
                     }
                 }
-                this.processing = false;
+                this.processing = false
             },
             async retrieveCategories() {
                 try {
-                    this.processing = true;
-                    const response = await axios.get("/api/admin/categories");
-                    this.categories = response.data;
+                    this.processing = true
+                    const response = await axios.get("/api/admin/categories")
+                    this.categories = response.data
                 } catch (e) {
                     try {
-                        console.error(e.response.data);
-                        this.errors = e.response.data;
+                        console.error(e.response.data)
+                        this.errors = e.response.data
                     } catch (e) {
-                        console.error(e);
+                        console.error(e)
                     }
                 }
-                this.processing = false;
+                this.processing = false
             },
             async submit() {
                 try {
-                    this.processing = true;
+                    this.processing = true
                     if (this.post.id) {
-                        const response = await axios.patch(`/api/admin/posts/${this.post.id}`, this.post);
-                        // this.post = response.data;
-                        this.$store.commit("status", {
+                        const response = await axios.patch(`/api/admin/posts/${this.post.id}`, this.post)
+                        // this.post = response.data
+                        this.$store.state.notifications = [{
                             type: "success",
                             message: "Post updated"
-                        });
+                        }]
                     } else {
-                        const response = await axios.post("/api/admin/posts", this.post);
-                        window.history.pushState(Object.assign({}, response.data), "Edit post", `/admin/posts/${response.data.id}`);
-                        this.post = response.data;
-                        this.$store.commit("status", {
+                        const response = await axios.post("/api/admin/posts", this.post)
+                        window.history.pushState(Object.assign({}, response.data), "Edit post", `/admin/posts/${response.data.id}`)
+                        this.post = response.data
+                        this.$store.state.notifications = [{
                             type: "success",
                             message: "Post created"
-                        });
+                        }]
                     }
-                    this.errors = undefined;
+                    this.errors.clear()
                 } catch (e) {
                     try {
-                        console.error(e.response.data);
-                        this.errors = e.response.data;
+                        console.error(e.response.data)
+                        this.errors = e.response.data
                     } catch (e) {
-                        console.error(e);
+                        console.error(e)
                     }
                 }
-                this.processing = false;
+                this.processing = false
             }
         }
 

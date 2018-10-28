@@ -6,7 +6,7 @@
     }
 </style>
 <script>
-    "use strict";
+    "use strict"
     export default {
         props: {
             alt: {
@@ -53,7 +53,7 @@
                         }
                     )
                 ]
-            );
+            )
         }
     }
 </script>

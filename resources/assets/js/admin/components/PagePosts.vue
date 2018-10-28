@@ -74,8 +74,13 @@
     </div>
 </template>
 <script>
-    "use strict";
+    "use strict"
+    import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
+
     export default {
+        mixins: [
+            ErrorsAndProcessing
+        ],
         model: {
             prop: "posts",
             event: "change"
@@ -84,14 +89,12 @@
             posts: {
                 type: Array,
                 default() {
-                    return [];
+                    return []
                 }
             }
         },
         data() {
             return {
-                errors: undefined,
-                processing: false,
                 search: {
                     title: undefined,
                     category: undefined,
@@ -106,74 +109,74 @@
         methods: {
             async submit() {
                 if (this.processing) {
-                    return;
+                    return
                 }
                 try {
-                    this.processing = true;
-                    this.errors = undefined;
+                    this.processing = true
+                    this.errors.clear()
                     const response = await axios.get("/api/admin/search/posts", {
                         params: this.search
-                    });
-                    this.results = response.data;
+                    })
+                    this.results = response.data
                 } catch (e) {
                     try {
-                        console.error(e.response.data);
-                        this.errors = e.response.data;
+                        console.error(e.response.data)
+                        this.errors = e.response.data
                     } catch (e) {
-                        console.error(e);
+                        console.error(e)
                     }
                 }
-                this.processing = false;
+                this.processing = false
             },
             addPost(post) {
                 if (this.processing) {
-                    return;
+                    return
                 }
                 try {
-                    this.processing = true;
-                    let posts = this.posts;
+                    this.processing = true
+                    let posts = this.posts
                     if (!_.find(posts, { id: post.id })) {
-                        posts.push(Object.assign({}, post));
-                        this.$emit("change", posts);
-                        this.$store.commit("status", {
+                        posts.push(Object.assign({}, post))
+                        this.$emit("change", posts)
+                        this.$store.state.notifications = [{
                             type: "warning",
                             message: "Post staged for assignment; update to commit changes"
-                        });
+                        }]
                     } else {
                         this.errors = { message: "Post already assigned." }
                     }
                 } catch (e) {
                     try {
-                        console.error(e.response.data);
-                        this.errors = e.response.data;
+                        console.error(e.response.data)
+                        this.errors = e.response.data
                     } catch (e) {
-                        console.error(e);
+                        console.error(e)
                     }
                 }
-                this.processing = false;
+                this.processing = false
             },
             removePost(post) {
                 if (this.processing) {
-                    return;
+                    return
                 }
                 try {
-                    this.processing = true;
-                    let posts = this.posts;
-                    this.$delete(posts, _.findIndex(posts, { id: post.id }));
-                    this.$emit("change", posts);
-                    this.$store.commit("status", {
+                    this.processing = true
+                    let posts = this.posts
+                    this.$delete(posts, _.findIndex(posts, { id: post.id }))
+                    this.$emit("change", posts)
+                    this.$store.state.notifications = [{
                         type: "warning",
                         message: "Post staged for un-assignment; update to commit changes"
-                    });
+                    }]
                 } catch (e) {
                     try {
-                        console.error(e.response.data);
-                        this.errors = e.response.data;
+                        console.error(e.response.data)
+                        this.errors = e.response.data
                     } catch (e) {
-                        console.error(e);
+                        console.error(e)
                     }
                 }
-                this.processing = false;
+                this.processing = false
             }
         }
     }
