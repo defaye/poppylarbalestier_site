@@ -21,7 +21,7 @@
         <div class="ImageTabs my-4" v-if="page.posts && page.posts.length">
             <div class="container">
                 <div class="row">
-                    <div class="d-flex align-content-stretch flex-wrap col-12 col-lg-4" role="button" v-for="post in page.posts" :key="post.id" @click.prevent="emitLoadEvent(`/${page.slug}/${post.slug}`)">
+                    <div class="d-flex align-content-stretch flex-wrap col-12 col-lg-4" role="button" v-for="post in pagePosts" :key="post.id" @click.prevent="emitLoadEvent(`/${page.slug}/${post.slug}`)">
                         <a class="ImageTabs--header" :href="`/${page.slug}/${post.slug}`" @click.prevent="emitLoadEvent(`/${page.slug}/${post.slug}`)">{{ post.title }}</a>
                         <responsive-image :src="post.images[0].path" :alt="post.title" :ratio-x="826" :ratio-y="551"></responsive-image>
                     </div>
@@ -47,6 +47,11 @@
             },
             emitLoadEvent(path) {
                 this.$store.dispatch('load', path)
+            }
+        },
+        computed: {
+            pagePosts() {
+                return this.page.posts.sort((a, b) => a.order < b.order ? -1 : a.order > b.order ? 1 : 0)
             }
         }
     }
