@@ -85,6 +85,6 @@ class Post extends Model
      */
     public function pages()
     {
-        return $this->belongsToMany('App\Page');
+        return $this->belongsToMany('App\Page')->withPivot('order');
     }
 }

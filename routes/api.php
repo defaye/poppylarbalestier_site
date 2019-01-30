@@ -42,6 +42,8 @@ Route::group(['middleware' => 'throttle:60,1'], function () {
 
         Route::delete('posts/{post}', 'Admin\API\PostsController@delete');
 
+        // Route::patch('sort/posts', 'Admin\API\PostsController@sort');
+
         Route::get('pages', 'Admin\API\PagesController@paginate');
         Route::get('pages/{page}', 'Admin\API\PagesController@get');
         Route::post('pages', 'Admin\API\PagesController@store');
@@ -49,6 +51,8 @@ Route::group(['middleware' => 'throttle:60,1'], function () {
         Route::post('pages/{page}/images', 'Admin\API\ImagePagesController@create');
 
         Route::delete('pages/{page}', 'Admin\API\PagesController@delete');
+
+        Route::patch('page_post/sort', 'Admin\API\PagePostController@sort');
 
         Route::get('components', 'Admin\API\ComponentsController@all');
         Route::get('components/{component}', 'Admin\API\ComponentsController@get');

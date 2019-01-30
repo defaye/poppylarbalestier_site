@@ -30,6 +30,9 @@ class PageResource extends Resource
             'component_id' => $this->component_id,
             'published' => $this->published,
             'slug' => $this->slug,
+            'order' => $this->whenPivotLoaded('page_post', function () {
+                return $this->pivot->order;
+            }),
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
         ];

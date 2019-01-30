@@ -10,8 +10,8 @@
                 <div class="col-md-2"><strong>Published?</strong></div>
                 <div class="col-md-1"></div>
             </div>
-            <div class="highlight-children">
-                <div v-if="pages.length" v-for="(page, index) in pages" @dblclick="open(`/admin/pages/${page.id}`)"
+            <draggable v-model="editablePages" element="div" class="highlight-children" @change="onDragChange" :options="{ disabled: true }">
+                <div v-if="editablePages.length" v-for="(page, index) in editablePages" @dblclick="open(`/admin/pages/${page.id}`)"
                     class="row text-center text-md-left py-3 border-top" :style="index % 2 ? 'background-color: #f3f3f3' : false">
                     <div class="col-12 col-md-2">
                         <span class="d-md-none">#</span>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div v-else class="row"><div class="col">There are no pages to show.</div></div>
-            </div>
+            </draggable>
         </div>
         <pagination v-model="pagination"></pagination>
         <a class="btn btn-primary w-100 mt-3" href="/admin/pages/new">New</a>
@@ -44,12 +44,14 @@
 </template>
 <script>
     'use strict'
+    import draggable from "vuedraggable"
     import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
     import bModal from 'bootstrap-vue/es/components/modal/modal'
     import vBModal from 'bootstrap-vue/es/directives/modal/modal'
 
     export default {
         components: {
+            draggable,
             bModal
         },
         directives: {
@@ -60,31 +62,36 @@
         ],
         data() {
             return {
+                editablePages: [],
                 pages: [],
                 pagination: undefined
             }
         },
-        async mounted() {
-            try {
-                this.processing = true
-                const response = await axios.get("/api/admin/pages", {
+        beforeMount() {
+            this.processing = true
+            axios.get('/api/admin/pages', {
                     params: {
                         page: this.getPage(),
                         per_page: this.getPerPage(15),
-                        with: ["component"]
+                        with: ['component']
                     }
                 })
+            .then(response => {
                 this.pages = response.data.data
+                this.editablePages = this.pages.sort(p => p.order)
                 this.pagination = response.data.meta
-            } catch (e) {
+            })
+            .catch(e => {
                 try {
                     console.error(e.response.data)
                     this.errors = e.response.data
                 } catch (e) {
                     console.error(e)
                 }
-            }
-            this.processing = false
+            })
+            .then(response => {
+                this.processing = false
+            })
         },
         methods: {
             open(link) {
@@ -100,25 +107,28 @@
                 const params = url.searchParams
                 return url.searchParams.get("per_page") || def
             },
-            async togglePublished(page) {
-                try {
-                    this.processing = true
-                    const response = await axios.patch(`/api/admin/pages/${page.id}`, Object.assign(page, { published: !page.published }))
-                    page = response.data
-                    this.$store.state.notifications = [{
-                        type: "success",
-                        message: "Page " + (page.published ? "published" : "un-published")
-                    }]
-                    this.errors.clear()
-                } catch (e) {
-                    try {
-                        console.error(e.response.data)
-                        this.errors = e.response.data
-                    } catch (e) {
-                        console.error(e)
-                    }
-                }
-                this.processing = false
+            togglePublished(page) {
+                this.processing = true
+                axios.patch(`/api/admin/pages/${page.id}`, Object.assign(page, { published: !page.published }))
+                    .then(response => {
+                        page = response.data
+                        this.$store.state.notifications = [{
+                            type: "success",
+                            message: "Page " + (page.published ? "published" : "un-published")
+                        }]
+                        this.errors.clear()
+                    })
+                    .catch(e => {
+                        try {
+                            console.error(e.response.data)
+                            this.errors = e.response.data
+                        } catch (e) {
+                            console.error(e)
+                        }
+                    })
+                    .then(response => {
+                        this.processing = false
+                    })
             },
             remove(page) {
                 if (this.processing) {
@@ -130,6 +140,29 @@
                 })
                 .catch(error => this.errors = error.response.data)
                 .then(() => this.processing = false)
+            },
+            onDragChange(e) {
+
+                console.log('onDragChange(e)')
+                console.log(e)
+
+                // if (this.processing) {
+                //     return
+                // }
+                // this.processing = true
+                // axios.patch('/api/admin/sort/pages', {
+                //     page: e.moved.element.id,
+                //     newOrder: this.pages[e.moved.newIndex].order
+                // }).then(response => {
+                //     this.$store.state.notifications = [{
+                //         type: "success",
+                //         message: "Page re-ordered."
+                //     }]
+                // }).catch(error => {
+                //     console.error(error.response.data)
+                // }).then(() => {
+                //     this.processing = false
+                // })
             }
         }
     }

@@ -11,7 +11,19 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <draggable v-model="editablePosts" element="tbody" @change="onDragChange">
+                    <tr v-for="post in editablePosts">
+                        <td><a :href="`/admin/posts/${post.id}`" target="_blank">{{ post.id }}</a></td>
+                        <td>{{ post.title }}</td>
+                        <td>{{ post.category.name }}</td>
+                        <td>
+                            <button class="btn btn-danger w-100" :disabled="processing" @click.prevent="removePost(post)">
+                                <font-awesome-icon class="icon-link" :icon="['fal', 'minus-octagon']"></font-awesome-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </draggable>
+                <!-- <tbody>
                     <tr v-for="post in posts">
                         <td><a :href="`/admin/posts/${post.id}`" target="_blank">{{ post.id }}</a></td>
                         <td>{{ post.title }}</td>
@@ -22,7 +34,7 @@
                             </button>
                         </td>
                     </tr>
-                </tbody>
+                </tbody> -->
             </table>
         </div>
         <div class="card mt-3">
@@ -75,12 +87,16 @@
 </template>
 <script>
     "use strict"
+    import draggable from "vuedraggable"
     import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
 
     export default {
         mixins: [
             ErrorsAndProcessing
         ],
+        components: {
+            draggable,
+        },
         model: {
             prop: "posts",
             event: "change"
@@ -100,33 +116,37 @@
                     category: undefined,
                     body: undefined,
                 },
-                results: []
+                results: [],
+                editablePosts: []
             }
         },
-        mounted() {
-
+        beforeMount() {
+            this.editablePosts = _.sortBy(this.posts, 'order')
         },
         methods: {
-            async submit() {
+            submit() {
                 if (this.processing) {
                     return
                 }
-                try {
-                    this.processing = true
-                    this.errors.clear()
-                    const response = await axios.get("/api/admin/search/posts", {
-                        params: this.search
-                    })
+                this.processing = true
+                this.errors.clear()
+                axios.get('/api/admin/search/posts', {
+                    params: this.search
+                })
+                .then(response => {
                     this.results = response.data
-                } catch (e) {
+                })
+                .catch(e => {
                     try {
                         console.error(e.response.data)
                         this.errors = e.response.data
                     } catch (e) {
                         console.error(e)
                     }
-                }
-                this.processing = false
+                })
+                .then(response => {
+                    this.processing = false
+                })
             },
             addPost(post) {
                 if (this.processing) {
@@ -177,6 +197,29 @@
                     }
                 }
                 this.processing = false
+            },
+            onDragChange(e) {
+
+                console.log('onDragChange(e)')
+                console.log(e)
+
+                if (this.processing) {
+                    return
+                }
+                this.processing = true
+                axios.patch(`/api/admin/page_post/sort`, {
+                    page: this.$parent.page.id,
+                    posts: this.editablePosts.map(p => p.id)
+                }).then(response => {
+                    this.$store.state.notifications = [{
+                        type: "success",
+                        message: "Post re-ordered."
+                    }]
+                }).catch(error => {
+                    console.error(error.response.data)
+                }).then(() => {
+                    this.processing = false
+                })
             }
         }
     }
