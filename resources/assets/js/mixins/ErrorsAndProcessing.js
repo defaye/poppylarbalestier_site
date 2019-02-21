@@ -7,7 +7,7 @@ export default {
                 return this.$store.getters.errors
             },
             set(errors) {
-                this.$store.commit('errors', errors)
+                this.$set(this.$store.state, 'errors', errors)
             }
         },
         processing: {

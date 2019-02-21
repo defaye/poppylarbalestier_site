@@ -54,14 +54,27 @@
                         {{ errors.get('body').join(' ').trim() }}
                     </b-form-invalid-feedback>
                 </b-form-group>
-                <div class="form-group">
-                    <label for="category">Category</label>
-                    <input type="text" name="category" id="category" v-model="post.category.name" class="form-control" placeholder="Enter a category name..." max="255" :disabled="processing">
-
-                    <!-- <select name="category" id="category" v-model="post.category">
-                        <option v-for="option in categories" :value="option.value">{{ option.label }}</option>
-                    </select> -->
-                </div>
+                <b-form-group
+                    label="Category"
+                    label-for="category"
+                >
+                    <b-form-input
+                        :disabled="processing"
+                        :max="255"
+                        :required="true"
+                        :state="errors.has('category') ? false : null"
+                        autofocus
+                        id="category"
+                        placeholder="Enter a category name..."
+                        tabindex="1"
+                        type="text"
+                        v-model.trim="post.category.name"
+                    >
+                    </b-form-input>
+                    <b-form-invalid-feedback v-if="errors.has('category')">
+                        {{ errors.get('category').join(' ').trim() }}
+                    </b-form-invalid-feedback>
+                </b-form-group>
                 <div class="form-group" v-if="post.id">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="published" name="published" v-model="post.published" :disabled="processing">
@@ -84,7 +97,7 @@
                                         </button>
                                     </div>
                                     <div class="card-body">
-                                        <div class="embed-responsive embed-responsive-4by3 rounded">
+                                        <div class="embed-responsive embed-responsive-4by3 rounded" @dblclick="download(image)">
                                             <div class="embed-responsive-item" :style="`background-image: url(${image.path}); background-position: center; background-size: cover; background-repeat: no-repeat;`" :title="image.name"></div>
                                         </div>
                                     </div>
@@ -112,6 +125,7 @@
     import Tabs from "../mixins/Tabs.js"
 
     import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
+    import ProcessIfNotProcessing from '../../mixins/ProcessIfNotProcessing'
 
     // import bButton from 'bootstrap-vue/es/components/button/button'
     // import bFormCheckbox from 'bootstrap-vue/es/components/form-checkbox/form-checkbox'
@@ -132,6 +146,7 @@
         },
         mixins: [
             ErrorsAndProcessing,
+            ProcessIfNotProcessing,
             ManageImages,
             Tabs
         ],
@@ -163,73 +178,62 @@
             } else {
                 this.retrievePost()
             }
-            this.retrieveCategories()
+            // this.retrieveCategories()
         },
         methods: {
-            async retrievePost(id) {
-                try {
-                    if (id) {
-                        this.processing = true
-                        const response = await axios.get(`/api/admin/posts/${id}`)
-                        console.log(response.data)
-                        this.post = response.data
-                    }
-                } catch (e) {
-                    try {
-                        console.error(e.response.data)
-                        this.errors = e.response.data
-                    } catch (e) {
-                        console.error(e)
-                    }
+            retrievePost(id) {
+                if (id) {
+                    this.processIfNotProcessing(
+                        axios.get(`/api/admin/posts/${id}`).then(response => {
+                            console.log(response.data)
+                            this.post = response.data
+                        }).catch(e => {
+                            console.error(e.response.data)
+                            this.errors = e.response.data
+                        })
+                    )
                 }
-                this.processing = false
             },
-            async retrieveCategories() {
-                try {
-                    this.processing = true
-                    const response = await axios.get("/api/admin/categories")
-                    this.categories = response.data
-                } catch (e) {
-                    try {
+            /**
+             * READ ME: THIS IS NOT CURRENTLY IMPLEMENTED. A DROPDOWN IS REQUIRED WITH NEW INPUT SUPPORT AS WELL.
+             */
+            retrieveCategories() {
+                this.processIfNotProcessing(
+                    axios.get("/api/admin/categories").then(response => {
+                        this.categories = response.data
+                    }).catch(e => {
                         console.error(e.response.data)
                         this.errors = e.response.data
-                    } catch (e) {
-                        console.error(e)
-                    }
-                }
-                this.processing = false
+                    })
+                )
             },
-            async submit() {
-                try {
-                    this.processing = true
-                    if (this.post.id) {
-                        const response = await axios.patch(`/api/admin/posts/${this.post.id}`, this.post)
-                        // this.post = response.data
+            submit() {
+                this.processIfNotProcessing(
+                    axios({
+                        method: this.post.id ? 'PATCH' : 'POST',
+                        url: '/api/admin/posts' + (this.post.id ? `/${this.post.id}` : ''),
+                        data: this.post
+                    }).then(response => {
+                        if (this.post.id) {
+                            // this.post = response.data
+                        } else {
+                            window.history.pushState(response.data, 'Edit post', `/admin/posts/${response.data.id}`)
+                            this.post = response.data
+                        }
                         this.$store.state.notifications = [{
-                            type: "success",
-                            message: "Post updated"
+                            type: 'success',
+                            message: 'Post ' + (this.post.id ? 'updated' : 'created')
                         }]
-                    } else {
-                        const response = await axios.post("/api/admin/posts", this.post)
-                        window.history.pushState(Object.assign({}, response.data), "Edit post", `/admin/posts/${response.data.id}`)
-                        this.post = response.data
-                        this.$store.state.notifications = [{
-                            type: "success",
-                            message: "Post created"
-                        }]
-                    }
-                    this.errors.clear()
-                } catch (e) {
-                    try {
+                        this.errors.clear()
+                    }).catch(e => {
                         console.error(e.response.data)
                         this.errors = e.response.data
-                    } catch (e) {
-                        console.error(e)
-                    }
-                }
-                this.processing = false
+                    })
+                )
+            },
+            download(image) {
+                window.open(image.path, '_blank')
             }
         }
-
     }
 </script>

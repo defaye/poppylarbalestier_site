@@ -24,7 +24,7 @@
                                             </button>
                                         </div>
                                         <div class="card-body">
-                                            <div class="embed-responsive embed-responsive-4by3 rounded">
+                                            <div class="embed-responsive embed-responsive-4by3 rounded" @dblclick="download(image)">
                                                 <div class="embed-responsive-item" :style="`background-image: url(${image.src}); background-position: center; background-size: cover; background-repeat: no-repeat;`" :title="image.name"></div>
                                             </div>
                                         </div>
@@ -177,6 +177,9 @@
             // },
             cancelUpload() {
 
+            },
+            download(image) {
+                window.open(image.src, '_blank')
             }
         }
     }
