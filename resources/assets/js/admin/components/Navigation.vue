@@ -36,9 +36,9 @@
     </div>
 </template>
 <script>
-    "use strict"
-    import draggable from "vuedraggable"
-    import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
+    'use strict'
+    import draggable from 'vuedraggable'
+    import ErrorsAndProcessing from '~/js/mixins/ErrorsAndProcessing'
 
     export default {
         mixins: [
@@ -57,7 +57,7 @@
             try {
                 this.processing = true
                 this.errors.clear()
-                const response = await axios.get("/api/admin/navigation")
+                const response = await axios.get('/api/admin/navigation')
                 this.enabled = _.filter(response.data, item => item.id)
                 this.disabled = _.filter(response.data, item => !item.id)
             } catch (e) {
@@ -75,12 +75,12 @@
                 try {
                     this.processing = true
                     this.errors.clear()
-                    const response = await axios.post("/api/admin/navigation", { items: this.enabled })
+                    const response = await axios.post('/api/admin/navigation', { items: this.enabled })
                     this.enabled = _.filter(response.data, item => item.id)
                     this.disabled = _.filter(response.data, item => !item.id)
                     this.$store.state.notifications = [{
-                        type: "success",
-                        message: "Navigation updated"
+                        type: 'success',
+                        message: 'Navigation updated'
                     }]
                 } catch (e) {
                     try {

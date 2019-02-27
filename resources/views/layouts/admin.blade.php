@@ -22,30 +22,7 @@
                 @yield('content')
             </main>
             @auth
-                <nav class="layout-nav">
-                    <a class="link" href="/admin" title="Home">
-                        <font-awesome-icon class="fa-2x" :icon="['fal', 'home']"></font-awesome-icon>
-                    </a>
-                    <a class="link" href="/admin/navigation" title="Navigation">
-                        <font-awesome-icon class="fa-2x" :icon="['fal', 'anchor']"></font-awesome-icon>
-                    </a>
-                    <a class="link" href="/admin/pages" title="Pages">
-                        <font-awesome-icon class="fa-2x" :icon="['fal', 'file']"></font-awesome-icon>
-                    </a>
-                    <a class="link" href="/admin/posts" title="Posts">
-                        <font-awesome-icon class="fa-2x" :icon="['fal', 'newspaper']"></font-awesome-icon>
-                    </a>
-                    <a class="link" href="/admin/components" title="Components">
-                        <font-awesome-icon class="fa-2x" :icon="['fal', 'magic']"></font-awesome-icon>
-                    </a>
-                    <a class="link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();" title="Logout">
-                        <font-awesome-icon class="fa-2x" :icon="['fal', 'power-off']"></font-awesome-icon>
-                    </a>
-                </nav>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
+                <side-navigation/>
                 @stack('aside')
             @endauth
             @hasSection('aside')

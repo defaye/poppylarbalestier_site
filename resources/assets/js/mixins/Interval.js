@@ -2,7 +2,7 @@ export default {
     methods: {
         interval: function (func, wait, times) {
             const interv = ((w, t) => () => {
-                if (typeof t === "undefined" || t-- > 0) {
+                if (typeof t === 'undefined' || t-- > 0) {
                     setTimeout(interv, w)
                     try {
                         func.call(null)

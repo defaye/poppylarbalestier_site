@@ -46,9 +46,13 @@
         },
         data() {
             return {
-                processing: false,
                 testimonials: [],
                 testimonialsResponse: undefined
+            }
+        },
+        computed: {
+            processing() {
+                return this.$store.state.processing
             }
         },
         beforeMount() {
@@ -72,7 +76,9 @@
                 this.$store.dispatch('load', path)
             },
             getTestimonials() {
-                if (typeof this.testimonialsResponse !== 'undefined' && this.testimonialsResponse.meta.has_more_pages === false) {
+                if (typeof this.testimonialsResponse !== 'undefined' 
+                    && this.testimonialsResponse.meta.has_more_pages === false
+                    ) {
                     return
                 }
                 this.processing = true

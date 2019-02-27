@@ -118,14 +118,14 @@
     </div>
 </template>
 <script>
-    "use strict"
-    import draggable from "vuedraggable"
-    // import autosize from "autosize"
-    import ManageImages from "../mixins/ManageImages.js"
-    import Tabs from "../mixins/Tabs.js"
+    'use strict'
+    import draggable from 'vuedraggable'
+    // import autosize from 'autosize'
+    import ManageImages from '~/js/admin/mixins/ManageImages.js'
+    import Tabs from '~/js/admin/mixins/Tabs.js'
 
-    import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
-    import ProcessIfNotProcessing from '../../mixins/ProcessIfNotProcessing'
+    import ErrorsAndProcessing from '~/js/mixins/ErrorsAndProcessing'
+    import ProcessIfNotProcessing from '~/js/mixins/ProcessIfNotProcessing'
 
     // import bButton from 'bootstrap-vue/es/components/button/button'
     // import bFormCheckbox from 'bootstrap-vue/es/components/form-checkbox/form-checkbox'

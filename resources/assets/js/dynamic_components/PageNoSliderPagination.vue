@@ -29,12 +29,12 @@
     </div>
 </template>
 <script>
-    "use strict"
+    'use strict'
 
     export default {
         model: {
-            prop: "page",
-            event: "change"
+            prop: 'page',
+            event: 'change'
         },
         props: {
             page: Object

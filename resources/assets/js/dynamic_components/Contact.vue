@@ -89,7 +89,7 @@
 <script>
     'use strict'
     import gRecaptcha from '@finpo/vue2-recaptcha-invisible'
-    import ErrorsAndProcessing from '../mixins/ErrorsAndProcessing'
+    import ErrorsAndProcessing from '~/js/mixins/ErrorsAndProcessing'
 
     export default {
         mixins: [

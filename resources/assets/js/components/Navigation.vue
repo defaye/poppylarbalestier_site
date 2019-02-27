@@ -1,12 +1,31 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <button class="navbar-toggler mb-1" type="button" data-toggle="collapse" data-target="#headerNavigation" aria-controls="headerNavigation" aria-expanded="false" aria-label="Toggle navigation">
+        <button 
+            aria-controls="headerNavigation"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            class="navbar-toggler mb-1"
+            data-target="#headerNavigation"
+            data-toggle="collapse"
+            type="button"
+        >
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="headerNavigation">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item" v-for="item in items" :key="item.id" v-if="item.position > 0">
-                    <a :href="`/${item.slug}`" class="nav-link text-uppercase" :title="item.name" @click.prevent="navigateTo(`/${item.slug}`)">{{ item.title }}</a>
+                <li
+                    :key="item.id"
+                    class="nav-item"
+                    v-for="item in items"
+                    v-if="item.position > 0"
+                >
+                    <a
+                        :href="`/${item.slug}`"
+                        :title="item.name"
+                        @click.prevent="navigateTo(`/${item.slug}`)"
+                        class="nav-link text-uppercase"
+                        v-html="item.title"
+                    />
                 </li>
             </ul>
             <!-- <form class="form-inline my-2 my-lg-0">
@@ -17,24 +36,23 @@
     </nav>
 </template>
 <script>
-    "use strict"
+    'use strict'
     export default {
         data() {
             return {
                 items: []
             }
         },
-        async mounted() {
-            try {
-                const response = await axios.get("/api/navigation")
+        beforeMount() {
+            axios.get('/api/navigation').then(response => {
                 this.items = response.data
-            } catch (e) {
+            }).catch(e => {
                 console.error(e)
-            }
+            })
         },
         methods: {
             navigateTo(path) {
-                $(".navbar-collapse").collapse("hide")
+                $('.navbar-collapse').collapse('hide')
                 this.$store.dispatch('load', path)
             }
         }

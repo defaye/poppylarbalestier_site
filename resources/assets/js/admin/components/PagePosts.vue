@@ -86,9 +86,9 @@
     </div>
 </template>
 <script>
-    "use strict"
-    import draggable from "vuedraggable"
-    import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
+    'use strict'
+    import draggable from 'vuedraggable'
+    import ErrorsAndProcessing from '~/js/mixins/ErrorsAndProcessing'
 
     export default {
         mixins: [
@@ -98,8 +98,8 @@
             draggable,
         },
         model: {
-            prop: "posts",
-            event: "change"
+            prop: 'posts',
+            event: 'change'
         },
         props: {
             posts: {
@@ -157,13 +157,13 @@
                     let posts = this.posts
                     if (!_.find(posts, { id: post.id })) {
                         posts.push(Object.assign({}, post))
-                        this.$emit("change", posts)
+                        this.$emit('change', posts)
                         this.$store.state.notifications = [{
-                            type: "warning",
-                            message: "Post staged for assignment; update to commit changes"
+                            type: 'warning',
+                            message: 'Post staged for assignment; update to commit changes'
                         }]
                     } else {
-                        this.errors = { message: "Post already assigned." }
+                        this.errors = { message: 'Post already assigned.' }
                     }
                 } catch (e) {
                     try {
@@ -183,10 +183,10 @@
                     this.processing = true
                     let posts = this.posts
                     this.$delete(posts, _.findIndex(posts, { id: post.id }))
-                    this.$emit("change", posts)
+                    this.$emit('change', posts)
                     this.$store.state.notifications = [{
-                        type: "warning",
-                        message: "Post staged for un-assignment; update to commit changes"
+                        type: 'warning',
+                        message: 'Post staged for un-assignment; update to commit changes'
                     }]
                 } catch (e) {
                     try {
@@ -212,8 +212,8 @@
                     posts: this.editablePosts.map(p => p.id)
                 }).then(response => {
                     this.$store.state.notifications = [{
-                        type: "success",
-                        message: "Post re-ordered."
+                        type: 'success',
+                        message: 'Post re-ordered.'
                     }]
                 }).catch(error => {
                     console.error(error.response.data)

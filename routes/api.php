@@ -73,6 +73,8 @@ Route::group(['middleware' => 'throttle:60,1'], function () {
         // Route::get('posts/new')->uses('Admin\PostsController@instantiate');
         // Route::patch('posts/{id}')->uses('Admin\PostsController@save');
         // Route::post('posts/{id}/images')->uses('Admin\ImagePostsController@create');
+        // 
+        Route::get('profile', 'Admin\API\ProfileController@get');
 
     });
 });

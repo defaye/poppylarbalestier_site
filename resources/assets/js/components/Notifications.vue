@@ -4,11 +4,11 @@
         leave-active-class="animated slideOutUp"
     >
         <div
-            v-if="notifications && 0 in notifications && notifications[0].message"
-            class="fixed-top p-5 w-100 alert text-center"
             :class="notifications[0].type && `alert-${notifications[0].type}` || 'alert-info'"
-            role="alert"
             @click.prevent="$delete(notifications, 0)"
+            class="fixed-top p-5 w-100 alert text-center"
+            role="alert"
+            v-if="notifications && 0 in notifications && notifications[0].message"
         >
             {{ notifications[0].message }}
         </div>

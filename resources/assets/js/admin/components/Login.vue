@@ -84,7 +84,7 @@
     import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group'
     import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
     import bFormInvalidFeedback from 'bootstrap-vue/es/components/form/form-invalid-feedback'
-    import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
+    import ErrorsAndProcessing from '~/js/mixins/ErrorsAndProcessing'
 
     export default {
         mixins: [

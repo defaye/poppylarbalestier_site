@@ -27,15 +27,16 @@
     </div>
 </template>
 <script>
+    'use strict'
     export default {
         model: {
-            prop: "errors",
-            event: "change",
+            prop: 'errors',
+            event: 'change',
         },
         props: {
             errors: Object,
             validator: value => {
-                return "message" in value
+                return 'message' in value
             }
         }
     }

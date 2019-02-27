@@ -45,6 +45,7 @@ Route::group(['middleware' => 'guest', 'prefix' => 'admin'], function () {
     Route::get('password/reset', ['middleware' => 'guest', 'as' => 'password.request', 'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm']);
     Route::post('password/reset', ['middleware' => 'guest', 'uses' => 'Auth\ResetPasswordController@reset']);
     Route::get('password/reset/{token}', ['middleware' => 'guest', 'as' => 'password.reset', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
+
     // Route::get('register', ['middleware' => 'guest', 'as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
     // Route::post('register', ['middleware' => 'guest', 'uses' => 'Auth\RegisterController@register']);
 });
@@ -64,6 +65,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     // Route::get('posts', 'Admin\PostsController@index');
     // Route::get('posts/{post}', 'Admin\PostsController@edit');
     // Route::get('posts/new', 'Admin\PostsController@create');
+    Route::get('profile', ['as' => 'profile', 'uses' => 'Admin\ProfileController@show']);
 });
 
 Route::get('/')->uses('PagesController@page');

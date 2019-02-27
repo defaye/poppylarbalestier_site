@@ -1,4 +1,4 @@
-<style type="scss" scoped>
+<style type='scss' scoped>
     .embed-responsive-item {
         background-position: center;
         background-repeat: no-repeat;
@@ -6,7 +6,7 @@
     }
 </style>
 <script>
-    "use strict"
+    'use strict'
     export default {
         props: {
             alt: {
@@ -28,27 +28,27 @@
         },
         render(createElement) {
             return createElement(
-                "div",
+                'div',
                 {
                     class: {
-                        "embed-responsive": true
+                        'embed-responsive': true
                     },
                     style: {
-                        "paddingTop": ((this.ratioY / this.ratioX) * 100) + "%"
+                        'paddingTop': ((this.ratioY / this.ratioX) * 100) + '%'
                     }
                 },
                 [
                     createElement(
-                        "div",
+                        'div',
                         {
                             attrs: {
                                 alt: this.alt
                             },
                             class: {
-                                "embed-responsive-item": true
+                                'embed-responsive-item': true
                             },
                             style: {
-                                backgroundImage: `url("${this.src}")`
+                                backgroundImage: `url('${this.src}')`
                             }
                         }
                     )

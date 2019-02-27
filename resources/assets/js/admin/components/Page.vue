@@ -131,10 +131,10 @@
     </div>
 </template>
 <script>
-    "use strict"
-    import draggable from "vuedraggable"
-    import ManageImages from "../mixins/ManageImages.js"
-    import Tabs from "../mixins/Tabs.js"
+    'use strict'
+    import draggable from 'vuedraggable'
+    import ManageImages from '~/js/admin/mixins/ManageImages.js'
+    import Tabs from '~/js/admin/mixins/Tabs.js'
 
     import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
 
@@ -180,12 +180,12 @@
                 this.page = event.state
             }
             try {
-                const response = await axios.get("/api/admin/components")
+                const response = await axios.get('/api/admin/components')
                 if (response.data.length) {
                     this.components = response.data
                     this.page.component_id = this.components[0].id
                 } else {
-                    this.errors = { message: "You need to create a component template before you create a page." }
+                    this.errors = { message: 'You need to create a component template before you create a page.' }
                 }
             } catch (e) {
                 try {
@@ -230,16 +230,16 @@
                         const response = await axios.patch(`/api/admin/pages/${this.page.id}`, this.page)
                         // this.page = response.data
                         this.$store.state.notifications = [{
-                            type: "success",
-                            message: "Page updated"
+                            type: 'success',
+                            message: 'Page updated'
                         }]
                     } else {
-                        const response = await axios.post("/api/admin/pages", this.page)
-                        window.history.pushState(Object.assign({}, response.data), "Edit page", `/admin/pages/${response.data.id}`)
+                        const response = await axios.post('/api/admin/pages', this.page)
+                        window.history.pushState(Object.assign({}, response.data), 'Edit page', `/admin/pages/${response.data.id}`)
                         this.page = response.data
                         this.$store.state.notifications = [{
-                            type: "success",
-                            message: "Page created"
+                            type: 'success',
+                            message: 'Page created'
                         }]
                     }
                     this.errors.clear()

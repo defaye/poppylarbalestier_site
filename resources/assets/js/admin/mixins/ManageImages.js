@@ -1,5 +1,5 @@
 'use strict'
-import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
+import ErrorsAndProcessing from '~/js/mixins/ErrorsAndProcessing'
 
 export default {
     mixins: [
@@ -9,8 +9,8 @@ export default {
             assignImages(object, images) {
                 console.log(images)
                 this.$store.state.notifications = [{
-                    type: "success",
-                    message: "Images uploaded"
+                    type: 'success',
+                    message: 'Images uploaded'
                 }]
                 images.forEach(image => {
                     object.images.push(Object.assign({}, image))
@@ -21,8 +21,8 @@ export default {
                     const response = await axios.delete(`/api/admin/images/${image.id}`)
                     if (response.data) {
                         this.$store.state.notifications = [{
-                            type: "success",
-                            message: "Image deleted"
+                            type: 'success',
+                            message: 'Image deleted'
                         }]
                         this.$delete(object.images, index)
                     }

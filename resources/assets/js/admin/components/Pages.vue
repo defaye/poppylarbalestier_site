@@ -44,7 +44,7 @@
 </template>
 <script>
     'use strict'
-    import draggable from "vuedraggable"
+    import draggable from 'vuedraggable'
     import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
     import bModal from 'bootstrap-vue/es/components/modal/modal'
     import vBModal from 'bootstrap-vue/es/directives/modal/modal'

@@ -28,7 +28,8 @@
 </template>
 <script>
     'use strict'
-    import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
+    import ErrorsAndProcessing from '~/js/mixins/ErrorsAndProcessing'
+    import ProcessIfNotProcessing from '~/js/mixins/ProcessIfNotProcessing'
     import 'prismjs'
     import 'prismjs/themes/prism.css'
     import PrismEditor from 'vue-prism-editor'
@@ -39,7 +40,8 @@
             PrismEditor
         },
         mixins: [
-            ErrorsAndProcessing
+            ErrorsAndProcessing,
+            ProcessIfNotProcessing
         ],
         data() {
             return {
@@ -64,54 +66,45 @@
             }
         },
         methods: {
-            async retrieveComponent(id) {
-                try {
-                    if (id) {
-                        this.processing = true
-                        const response = await axios.get(`/api/admin/components/${id}`)
-                        console.log(response.data)
-                        this.component = response.data
-                    }
-                } catch (e) {
-                    try {
-                        console.error(e.response.data)
-                        this.errors = e.response.data
-                    } catch (e) {
-                        console.error(e)
-                    }
+            retrieveComponent(id) {
+                if (id) {
+                    this.processIfNotProcessing(
+                        axios.get(`/api/admin/components/${id}`).then(response => {
+                            console.log(response.data)
+                            this.component = response.data
+                        }).catch(e => {
+                            console.error(e)
+                            this.errors = e.response.data
+                        })
+                    )
                 }
-                this.processing = false
             },
-            async submit() {
-                try {
-                    this.processing = true
-                    if (this.component.id) {
-                        const response = await axios.patch(`/api/admin/components/${this.component.id}`, this.component)
+            submit() {
+                this.processIfNotProcessing(
+                    axios({
+                        method: this.component.id ? 'PATCH' : 'POST',
+                        url: `/api/admin/components` + (this.component.id ? `/${this.component.id}` : ''),
+                        data: this.component
+                    }).then(response => {
+                        if (this.component.id) {
+                            window.history.pushState(
+                                response.data, 
+                                'Edit component', 
+                                `/admin/components/${response.data.id}`
+                            )
+                        }
                         this.component = response.data
                         this.$store.state.notifications = [{
                             type: 'success',
-                            message: 'Component updated'
+                            message: `Component ${this.component.id ? 'updated' : 'created'}`
                         }]
-                    } else {
-                        const response = await axios.post('/api/admin/components', this.component)
-                        window.history.pushState(Object.assign({}, response.data), 'Edit component', `/admin/components/${response.data.id}`)
-                        this.component = response.data
-                        this.$store.state.notifications = [{
-                            type: 'success',
-                            message: 'Component created'
-                        }]
-                    }
-                    this.errors.clear()
-                } catch (e) {
-                    try {
-                        console.error(e.response.data)
-                        this.errors = e.response.data
-                    } catch (e) {
+                        this.errors.clear()
+                    }).catch(e => {
                         console.error(e)
-                    }
-                }
-                this.processing = false
-            },
+                        this.errors = e.response.data
+                    })
+                )
+            }
         }
 
     }

@@ -5,7 +5,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap')
+require('~/js/bootstrap')
 
 window.Vue = require('vue')
 
@@ -13,9 +13,9 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-require('./fontawesome')
+require('~/js/fontawesome')
 
-require('./components')
+require('~/js/components')
 
 
 import autosize from 'autosize'
@@ -23,12 +23,12 @@ Vue.directive('autosize', el => {
     autosize(el)
 })
 
-Vue.component('notifications', require('./components/Notifications.vue'))
-Vue.component('navigation', require('./components/Navigation.vue'))
-Vue.component('responsive-image', require('./components/ResponsiveImage.vue'))
-Vue.component('carousel', require('./components/Carousel.vue'))
+Vue.component('notifications', require('~/js/components/Notifications.vue'))
+Vue.component('navigation', require('~/js/components/Navigation.vue'))
+Vue.component('responsive-image', require('~/js/components/ResponsiveImage.vue'))
+Vue.component('carousel', require('~/js/components/Carousel.vue'))
 
-import storeConfiguration from './store/configuration'
+import storeConfiguration from '~/js/store/configuration'
 
 storeConfiguration.state = Object.assign(storeConfiguration.state, {
     page: undefined

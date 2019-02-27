@@ -27,10 +27,11 @@
     </ul>
 </template>
 <script>
+    'use strict'
     export default {
         model: {
-            prop: "pagination",
-            event: "change"
+            prop: 'pagination',
+            event: 'change'
         },
         props: {
             pagination: Object
@@ -47,7 +48,7 @@
             urlWithPage(number) {
                 const url = new URL(window.location)
                 const params = url.searchParams
-                params.set("page", number)
+                params.set('page', number)
                 return url.toString()
             }
         }
