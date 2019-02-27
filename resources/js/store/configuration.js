@@ -1,6 +1,6 @@
 'use strict'
 
-const parseErrors = function(state, errors) {
+const parseErrors = function (state, errors) {
     for (var property in errors) {
         if (!Array.isArray(errors[property])) {
             throw console.warn('PROPERTY: ' + property, errors[property], 'ERROR ASSIGNMENT FAILURE: ERROR IS NOT IN ARRAY FORMAT')

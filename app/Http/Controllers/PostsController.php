@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class PostsController extends Controller
 {
@@ -38,8 +39,8 @@ class PostsController extends Controller
 
                 if ($request->has('where')) {
                     $where = json_decode($request->where);
-                    if (isset($where->{str_singular($with)})) {
-                        $value = $where->{str_singular($with)};
+                    if (isset($where->{Str::singular($with)})) {
+                        $value = $where->{Str::singular($with)};
                         $withs[$with] = function ($query) use ($value) {
                             $query->where('name', $value);
                         };
@@ -84,7 +85,7 @@ class PostsController extends Controller
             foreach ($request->with as $with) {
 
                 if ($request->has('where')) {
-                    if ($value = $request->input("where." . str_singular($with))) {
+                    if ($value = $request->input("where." . Str::singular($with))) {
                         $withs[$with] = function ($query) use ($value) {
                             $query->where('name', $value);
                         };

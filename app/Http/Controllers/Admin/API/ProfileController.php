@@ -14,46 +14,46 @@ class ProfileController extends Controller
 {
     public function get()
     {
-    	return response()->json(
-    		new ProfileResource(auth()->user())
-    	);
+        return response()->json(
+            new ProfileResource(auth()->user())
+        );
     }
 
     public function update(Request $request)
     {
-    	$user = auth()->user();
+        $user = auth()->user();
+        Validator::make($request->all(), [
+            'id' => 'required|exists:users,id',
+            'name' => 'required|string|max:255',
+            'email' => [
+                'required',
+                Rule::unique('users', 'email')->ignore($user->id, 'id'),
+            ],
+            'password' => [
+                sprintf(
+                    'required_with:new_password%s',
+                    ($request->email !== $user->email ? ',email' : null)
+                ),
+                new CheckPassword($user),
+            ],
+            'new_password' => [
+                'confirmed',
+                new StrongPassword,
+            ],
+            'new_password_confirmation' => 'required_with:new_password',
+        ])->validate();
 
-    	Validator::make($request->all(), [
-    		'id' => 'required|exists:users,id',
-    		'name' => 'required|string|max:255',
-    		'email' => [
-    			'required',
-    			Rule::unique('users', 'email')->ignore($user->email),
-    		],
-    		'password' => [
-    			sprintf(
-    				'required_with:new_password%s',
-    				($request->email !== $user->email ? ',email' : null)
-    			),
-    			new CheckPassword($user),
-    		],
-    		'new_password' => [
-    			new StrongPassword($request->input('new_password')),
-    		],
-    		'new_password_confirmation' => 'required_with:new_password',
-    	]);
+        if ($request->new_password) {
+            $user->password = \Hash::make($request->new_password);
+        }
 
-    	if ($request->new_password) {
-    		$user->password = \Hash::make($request->new_password);
-    	}
+        $user->fill([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
 
-    	$user->fill([
-    		'name' => $request->name,
-    		'email' => $request->email,
-    	]);
+        $user->save();
 
-    	$user->save();
-
-    	return response()->json(true);
+        return response()->json($user);
     }
 }

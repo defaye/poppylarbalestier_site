@@ -1,0 +1,137 @@
+$white:    #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black:    #000;
+
+$blue:    #007bff;
+$indigo:  #6610f2;
+$purple:  #6f42c1;
+$pink:    #e83e8c;
+$red:     #dc3545;
+$orange:  #fd7e14;
+$yellow:  #ffc107;
+$green:   #28a745;
+$teal:    #20c997;
+$cyan:    #17a2b8;
+
+$primary:       $gray-600;
+$secondary:     $gray-600;
+$success:       $green;
+$info:          $cyan;
+$warning:       $yellow;
+$danger:        $red;
+$light:         $gray-100;
+$dark:          $gray-800;
+
+$enable-caret:                                true;
+$enable-rounded:                              false;
+$enable-shadows:                              false;
+$enable-gradients:                            false;
+$enable-transitions:                          false;
+$enable-prefers-reduced-motion-media-query:   true;
+$enable-hover-media-query:                    false; // Deprecated, no longer affects any compiled CSS
+$enable-grid-classes:                         true;
+$enable-pointer-cursor-for-buttons:           true;
+$enable-print-styles:                         true;
+$enable-responsive-font-sizes:                false;
+$enable-validation-icons:                     true;
+$enable-deprecation-messages:                 true;
+
+$spacer: 1rem;
+
+$body-bg:                   $white;
+$body-color:                $gray-900;
+
+$link-color:                              $primary;
+$link-decoration:                         none;
+$link-hover-color:                        $primary;
+$link-hover-decoration:                   underline;
+// Darken percentage for links with `.text-*` class (e.g. `.text-success`)
+$emphasized-link-hover-darken-percentage: 15%;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+);
+
+$border-radius:               0;
+$border-radius-lg:            0;
+$border-radius-sm:            0;
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif:      "LarbSansSerif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-family-serif:           "LarbSerif", "Times New Roman", serif;
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base:            $font-family-sans-serif;
+// stylelint-enable value-keyword-case
+
+$font-size-base:              1rem; // Assumes the browser default, typically `16px`
+$font-size-lg:                $font-size-base * 1.25;
+$font-size-sm:                $font-size-base * .875;
+
+$font-weight-lighter:         lighter;
+$font-weight-light:           300;
+$font-weight-normal:          400;
+$font-weight-bold:            700;
+$font-weight-bolder:          bolder;
+
+$font-weight-base:            $font-weight-normal;
+$line-height-base:            1.5;
+
+$h1-font-size:                $font-size-base * 2.5;
+$h2-font-size:                $font-size-base * 2;
+$h3-font-size:                $font-size-base * 1.75;
+$h4-font-size:                $font-size-base * 1.5;
+$h5-font-size:                $font-size-base * 1.25;
+$h6-font-size:                $font-size-base;
+
+$headings-margin-bottom:      $spacer / 2;
+$headings-font-family:        null;
+$headings-font-weight:        500;
+$headings-line-height:        1.2;
+$headings-color:              null;
+
+$display1-size:               6rem;
+$display2-size:               5.5rem;
+$display3-size:               4.5rem;
+$display4-size:               3.5rem;
+
+$display1-weight:             300;
+$display2-weight:             300;
+$display3-weight:             300;
+$display4-weight:             300;
+$display-line-height:         $headings-line-height;
+
+$lead-font-size:              $font-size-base * 1.25;
+$lead-font-weight:            300;
+
+$btn-transition:              none;
+
+$card-spacer-y:                     .75rem;
+$card-spacer-x:                     1.25rem;
+$card-border-color:                 rgba($black, .125);
+$card-cap-bg:                       rgba($black, .01);
+$card-cap-color:                    null;
+$card-color:                        null;
+$card-bg:                           $white;

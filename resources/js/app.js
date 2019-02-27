@@ -7,7 +7,8 @@
 
 require('~/js/bootstrap')
 
-window.Vue = require('vue')
+import Vue from 'vue'
+window.Vue = Vue
 
 import Vuex from 'vuex'
 
@@ -23,10 +24,10 @@ Vue.directive('autosize', el => {
     autosize(el)
 })
 
-Vue.component('notifications', require('~/js/components/Notifications.vue'))
-Vue.component('navigation', require('~/js/components/Navigation.vue'))
-Vue.component('responsive-image', require('~/js/components/ResponsiveImage.vue'))
-Vue.component('carousel', require('~/js/components/Carousel.vue'))
+Vue.component('notifications', require('~/js/components/Notifications.vue').default)
+Vue.component('navigation', require('~/js/components/Navigation.vue').default)
+Vue.component('responsive-image', require('~/js/components/ResponsiveImage.vue').default)
+Vue.component('carousel', require('~/js/components/Carousel.vue').default)
 
 import storeConfiguration from '~/js/store/configuration'
 

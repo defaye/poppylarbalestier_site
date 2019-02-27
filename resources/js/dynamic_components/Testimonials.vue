@@ -36,6 +36,9 @@
     'use strict'
     import MugenScroll from 'vue-mugen-scroll'
 
+    import processIfNotProcessing from '~/js/functions/processIfNotProcessing'
+    import processing from '~/js/computed/processing'
+
     export default {
         model: {
             prop: 'page',
@@ -51,14 +54,13 @@
             }
         },
         computed: {
-            processing() {
-                return this.$store.state.processing
-            }
+            processing,
         },
         beforeMount() {
             this.getTestimonials()
         },
         methods: {
+            processIfNotProcessing,
             truncatedBody(text) {
                 return _.truncate(text, {
                   length: 512,
@@ -76,26 +78,32 @@
                 this.$store.dispatch('load', path)
             },
             getTestimonials() {
-                if (typeof this.testimonialsResponse !== 'undefined' 
+                if (typeof this.testimonialsResponse !== 'undefined'
                     && this.testimonialsResponse.meta.has_more_pages === false
                     ) {
                     return
                 }
-                this.processing = true
-                axios.get('api/categories', { params: {
-                        with: ['images', 'tags'],
-                        name: 'testimonial',
-                        page: this.testimonialsResponse ? (this.testimonialsResponse.meta.current_page + 1) : 1,
-                        per_page: 1
-                    }
-                }).then(response => {
-                    this.testimonialsResponse = response.data
-                    this.testimonials = this.testimonials.concat(response.data.data)
-                }).catch(e => {
-                    console.error(e.response.data)
-                }).then(response => {
-                    this.processing = false
-                })
+                this.processIfNotProcessing(
+                    axios.get(
+                        'api/categories',
+                        {
+                            params: {
+                                with: [
+                                    'images',
+                                    'tags'
+                                ],
+                                name: 'testimonial',
+                                page: this.testimonialsResponse ? (this.testimonialsResponse.meta.current_page + 1) : 1,
+                                per_page: 1
+                            }
+                        }
+                    ).then(response => {
+                        this.testimonialsResponse = response.data
+                        this.testimonials = this.testimonials.concat(response.data.data)
+                    }).catch(e => {
+                        console.error(e.response.data)
+                    })
+                )
             },
             getTestimonialsDebounced: _.debounce(function () {
                 this.getTestimonials()

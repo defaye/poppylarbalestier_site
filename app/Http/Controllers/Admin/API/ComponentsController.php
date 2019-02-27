@@ -6,6 +6,7 @@ use App\Component;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ComponentResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -35,7 +36,7 @@ class ComponentsController extends Controller
                 'unique:components,name',
                 'not_in:' . strtolower(
                     implode(',',
-                        array_map(function ($glob) {
+                        Arr::map(function ($glob) {
                             return basename($glob, '.vue');
                         }, glob(resource_path('assets/js/dynamic_components/*.vue')))
                     )
@@ -79,9 +80,9 @@ class ComponentsController extends Controller
                 Rule::unique('components')->ignore($request->id),
                 'not_in:' . strtolower(
                     implode(',',
-                        array_diff(
+                        Arr::diff(
                             [$request->name],
-                            array_map(function ($glob) {
+                            Arr::map(function ($glob) {
                                 return basename($glob, '.vue');
                             }, glob(resource_path('assets/js/dynamic_components/*.vue')))
                         )

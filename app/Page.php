@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Page extends Model
 {
@@ -56,7 +57,7 @@ class Page extends Model
             if (!isset($model->title)) {
                 $model->title = $model->name;
             }
-            $model->slug = str_slug($model->title);
+            $model->slug = Str::slug($model->title);
         });
 
         parent::boot();

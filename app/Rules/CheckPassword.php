@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use App\User;
 use Illuminate\Contracts\Validation\Rule;
 
 class CheckPassword implements Rule

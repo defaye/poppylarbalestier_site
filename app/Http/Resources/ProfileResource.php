@@ -17,7 +17,7 @@ class ProfileResource extends Resource
         return [
             'id' => (int) $this->id,
             'name' => $this->name,
-            'email' => $this->body,
+            'email' => $this->email,
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
         ];

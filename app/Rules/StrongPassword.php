@@ -32,22 +32,22 @@ class StrongPassword implements Rule
     public function passes($attribute, $value)
     {
         if (gettype($value) === 'string') {
-            if (count($value) > 8) {
+            if (strlen($value) > 8) {
                 if (preg_match('/[A-Z]/', $value)) {
                     if (preg_match('/[a-z]/', $value)) {
                         if (preg_match('/\W/', $value)) {
                             return true;
                         } else {
-                            $this->message = 'The :attribute must have at least one non-word character.'.
+                            $this->message = 'The :attribute must have at least one non-word character.';
                         }
                     } else {
-                        $this->message = 'The :attribute must have at least one lower-case letter.'.
+                        $this->message = 'The :attribute must have at least one lower-case letter.';
                     }
                 } else {
-                    $this->message = 'The :attribute must have at least one upper-case letter.'.
+                    $this->message = 'The :attribute must have at least one upper-case letter.';
                 }
             } else {
-                $this->message = 'The :attribute must be at least 8 characters in length.'.
+                $this->message = 'The :attribute must be at least 8 characters in length.';
             }
         } else {
             $this->message = 'The :attribute is invalid.';
@@ -62,6 +62,6 @@ class StrongPassword implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return $this->message;
     }
 }

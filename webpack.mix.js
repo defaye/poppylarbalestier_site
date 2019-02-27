@@ -11,10 +11,24 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css')
+mix.js('resources/js/app.js', 'public/js')
+   .extract([
+		'@finpo/vue2-recaptcha-invisible',
+		'autosize',
+		'axios',
+		'bootstrap',
+		'jquery',
+		'lodash',
+		'popper.js',
+		'screenfull',
+		'vue',
+		'vue-mugen-scroll',
+		'vue-template-compiler',
+		'vuex'
+   	])
+   .sass('resources/sass/app.scss', 'public/css')
    .version();
 
-mix.js('resources/assets/js/admin.js', 'public/js')
-   .sass('resources/assets/sass/admin.scss', 'public/css')
+mix.js('resources/js/admin.js', 'public/js')
+   .sass('resources/sass/admin.scss', 'public/css')
    .version();

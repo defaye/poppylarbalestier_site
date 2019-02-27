@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Post extends Model
 {
@@ -50,7 +51,7 @@ class Post extends Model
     protected static function boot()
     {
         static::saving(function ($model) {
-            $model->slug = str_slug($model->title);
+            $model->slug = Str::slug($model->title);
         });
 
         parent::boot();

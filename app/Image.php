@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
 
 class Image extends Model
@@ -91,7 +92,7 @@ class Image extends Model
 
     public static function createFromUploadedFile(UploadedFile $file)
     {
-        $reference = str_replace('-', '', Uuid::uuid4()->toString());
+        $reference = Str::replace('-', '', Uuid::uuid4()->toString());
 
         $extension = $file->guessClientExtension() ?: $file->getClientOriginalExtension();
         $filename = $extension ? "$reference.$extension" : $reference;
