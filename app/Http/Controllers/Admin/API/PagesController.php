@@ -12,19 +12,48 @@ use Illuminate\Support\Facades\Validator;
 
 class PagesController extends Controller
 {
+    /**
+     * Get a complete JSON dump of all the Pages.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return string(JSON) 
+     */
+    public function all(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'with' => 'array|in:component,images,posts',
+            'per_page' => 'integer|min:1',
+            'page' => 'integer|min:1',
+        ])->validate();
+
+        $pages = Page::when($request->has('with'), function ($query) use ($request) {
+                return $query->with($request->with);
+            })
+            ->join('navigations', 'navigations.page_id', '=', 'pages.id')
+            ->select('pages.*', 'navigations.position')
+            ->orderBy('navigations.position', 'asc')
+            ->get();
+
+        return response()->json(
+            new PageCollection(
+                $pages
+            )
+        );
+    }
+
     public function paginate(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'with' => 'array|in:component,images,posts',
             'per_page' => 'integer|min:1',
             'page' => 'integer|min:1',
-        ]);
+        ])->validate();
 
-        if ($validator->fails()) {
-            return response()->json(['message' => 'Invalid request',
-                'errors' => $validator->errors(),
-            ]);
-        }
+        // if ($validator->fails()) {
+        //     return response()->json(['message' => 'Invalid request',
+        //         'errors' => $validator->errors(),
+        //     ]);
+        // }
 
         $perPage = $request->get('per_page', 15);
         $pages = Page::skip($request->get('page', 1) * $perPage - $perPage);

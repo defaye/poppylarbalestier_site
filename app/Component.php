@@ -56,13 +56,13 @@ class Component extends Model
     protected static function boot()
     {
         static::saved(function ($model) {
-            if (!is_dir($dir = resource_path('assets/js/dynamic_components'))) {
+            if (!is_dir($dir = resource_path('js/dynamic_components'))) {
                 mkdir($dir);
             }
-            File::put(resource_path("assets/js/dynamic_components/" . studly_case($model->name) . ".vue"), $model->body);
-            File::put(resource_path('assets/js/components.js'), null);
+            File::put(resource_path("js/dynamic_components/" . studly_case($model->name) . ".vue"), $model->body);
+            File::put(resource_path('js/components.js'), null);
             static::each(function ($model) {
-                File::append(resource_path('assets/js/components.js'), "Vue.component('" . snake_case($model->name) . "', require('./dynamic_components/" . studly_case($model->name) . ".vue'));\n");
+                File::append(resource_path('js/components.js'), "Vue.component('" . snake_case($model->name) . "', require('./dynamic_components/" . studly_case($model->name) . ".vue'));\n");
             });
             $current = getcwd();
             chdir(base_path());
@@ -92,6 +92,6 @@ class Component extends Model
     public function getBodyAttribute()
     {
         $filename = studly_case($this->name);
-        return File::get(resource_path("assets/js/dynamic_components/$filename.vue"));
+        return File::get(resource_path("js/dynamic_components/$filename.vue"));
     }
 }

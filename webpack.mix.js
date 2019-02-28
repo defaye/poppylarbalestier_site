@@ -19,6 +19,7 @@ mix.js('resources/js/app.js', 'public/js')
 		'bootstrap',
 		'jquery',
 		'lodash',
+		'moment',
 		'popper.js',
 		'screenfull',
 		'vue',

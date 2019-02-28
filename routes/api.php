@@ -44,7 +44,8 @@ Route::group(['middleware' => 'throttle:60,1'], function () {
 
         // Route::patch('sort/posts', 'Admin\API\PostsController@sort');
 
-        Route::get('pages', 'Admin\API\PagesController@paginate');
+        // Route::get('pages', 'Admin\API\PagesController@paginate');
+        Route::get('pages', 'Admin\API\PagesController@all');
         Route::get('pages/{page}', 'Admin\API\PagesController@get');
         Route::post('pages', 'Admin\API\PagesController@store');
         Route::patch('pages/{page}', 'Admin\API\PagesController@update');

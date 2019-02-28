@@ -38,7 +38,7 @@ class ComponentsController extends Controller
                     implode(',',
                         Arr::map(function ($glob) {
                             return basename($glob, '.vue');
-                        }, glob(resource_path('assets/js/dynamic_components/*.vue')))
+                        }, glob(resource_path('js/dynamic_components/*.vue')))
                     )
                 ),
             ],
@@ -84,7 +84,7 @@ class ComponentsController extends Controller
                             [$request->name],
                             Arr::map(function ($glob) {
                                 return basename($glob, '.vue');
-                            }, glob(resource_path('assets/js/dynamic_components/*.vue')))
+                            }, glob(resource_path('js/dynamic_components/*.vue')))
                         )
                     )
                 ),
