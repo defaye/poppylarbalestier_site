@@ -63,7 +63,7 @@
 		            </b-form-group>
 		            <div>
 		            	<div class="row">
-		            		<div class="col">
+		            		<div class="col-12 col-lg">
 					            <b-form-group label="New Password" label-for="new_password">
 					                <b-form-input
 					                    :disabled="processing"
@@ -82,7 +82,7 @@
 					                </div>
 					            </b-form-group>
 		            		</div>
-		            		<div class="col">
+		            		<div class="col-12 col-lg">
 					            <b-form-group label="New Password Confirmation" label-for="new_password_confirmation">
 					                <b-form-input
 					                    :disabled="processing"
@@ -104,7 +104,13 @@
 		            	</div>
 		            </div>
 		        	<div class="mt-3">
-		        		<b-button type="submit" variant="primary">Update</b-button>
+		        		<b-button
+		        			:disabled="!canUpdate || processing"
+		        			type="submit"
+		        			variant="primary"
+	        			>
+	        				Update
+	        			</b-button>
 		        	</div>
 		        </form>
 	        </div>
@@ -141,6 +147,18 @@
 			}
 		},
 		computed: {
+			canUpdate() {
+				if (this.editableUser.name !== this.user.name) {
+					return true
+				}
+				if (this.editableUser.email !== this.user.email) {
+					return true
+				}
+				if (this.editableUser.new_password !== this.user.new_password) {
+					return true
+				}
+				return false
+			},
 			isCurrentPasswordRequired() {
 				return (this.user.email !== this.editableUser.email)
 					|| (typeof this.editableUser.new_password === 'string' && this.editableUser.new_password !== '')
