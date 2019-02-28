@@ -55,32 +55,36 @@
                     @click="togglePublished(data.item)"
                 >
                     <font-awesome-icon
-                        class="text-warning"
                         :icon="[
                             (data.item.published ? 'fas' : 'fal'), 
                             'lightbulb'
                         ]"
                         :title="data.item.published ? 'Published' : 'Un-Published'"
+                        class="fa-2x text-warning"
                     />
                 </span>  
             </template>
-            <template slot="delete" slot-scope="data">
+            <template 
+                slot="delete" 
+                slot-scope="data"
+            >
                 <font-awesome-icon
-                    :icon="['fal', 'times-square']"
-                    class="text-danger"
+                    :icon="[
+                        'fal',
+                        'times-square'
+                    ]"
+                    @click="setPageForDestroy(data.item)"
+                    class="fa-2x text-danger"
                     title="Delete"
-                    v-b-modal="'delete-' + data.item.id"
                 />
-                <b-modal 
-                    :id="'delete-' + data.item.id" 
-                    @ok="remove(data.item)" 
-                    ok-title="Confirm"
-                    variant="danger" 
-                >
-                    Are you sure?
-                </b-modal>
             </template>
         </b-table>
+
+
+        <confirmation-modal
+            v-model="showPageStagedForDestroyConfirmationModal"
+            @confirmed="remove(pageStagedForDestroy)"
+        />
 
         <b-pagination
             :per-page="perPage"
@@ -89,9 +93,13 @@
             v-model="currentPage"
         />
 
-
-
-        <a class="btn btn-primary w-100 mt-3" href="/admin/pages/new">New</a>
+        <b-button
+            class="w-100 mt-3"
+            href="/admin/pages/new"
+            variant="primary"
+        >
+            New
+        </b-button>
     </div>
 </template>
 <script>
@@ -99,28 +107,26 @@
     /**
      * Import third-party plugins
      */
-    import bModal from 'bootstrap-vue/es/components/modal/modal'
+    import bButton from 'bootstrap-vue/es/components/button/button'
     import bPagination from 'bootstrap-vue/es/components/pagination/pagination'
     import bTable from 'bootstrap-vue/es/components/table/table'
-    import draggable from 'vuedraggable'
+    // import draggable from 'vuedraggable'
     import moment from 'moment'
-    import vBModal from 'bootstrap-vue/es/directives/modal/modal'
 
     /**
      * Import project plugins
      */
+    import confirmationModal from '~/js/components/ConfirmationModal'
     import ErrorsAndProcessing from '~/js/mixins/ErrorsAndProcessing'
     import ProcessIfNotProcessing from '~/js/mixins/ProcessIfNotProcessing'
 
     export default {
         components: {
-            draggable,
-            bModal,
+            confirmationModal,
+            // draggable,
+            bButton,
             bPagination,
             bTable,
-        },
-        directives: {
-            'b-modal': vBModal
         },
         mixins: [
             ErrorsAndProcessing,
@@ -132,6 +138,8 @@
                 perPage: 20,
                 editablePages: [],
                 pages: [],
+                pageStagedForDestroy: undefined,
+                showPageStagedForDestroyConfirmationModal: false,
             }
         },
         beforeMount() {
@@ -145,19 +153,15 @@
                     this.setPages(response.data)
                 })
                 .catch(e => {
-                    try {
-                        console.error(e.response.data)
-                        this.errors = e.response.data
-                    } catch (e) {
-                        console.error(e)
-                    }
+                    console.error(e.response.data)
+                    this.errors = e.response.data
                 })
             )
         },
         methods: {
-            setPages(data) {
-                this.pages = Object.assign([], data)
-                this.editablePages = Object.assign([], data)
+            setPages(page) {
+                this.pages = Object.assign([], page)
+                this.editablePages = Object.assign([], page)
             },
             moment,
             truncate(text, opts) {
@@ -174,27 +178,28 @@
                         : defaultOptions
                 )
             },
-            open(link) {
-                window.location.href = link
-            },
             togglePublished(page) {
                 this.processIfNotProcessing(
-                    axios.patch(`/api/admin/pages/${page.id}`, Object.assign(page, { published: !page.published }))
+                    axios.patch(
+                        `/api/admin/pages/${page.id}`, 
+                        Object.assign(
+                            page, 
+                            {
+                                published: !page.published
+                            }
+                        )
+                    )
                         .then(response => {
-                            page = response.data
+                            this.setPages(response.data)
                             this.$store.state.notifications = [{
-                                type: "success",
-                                message: "Page " + (page.published ? "published" : "un-published")
+                                type: 'success',
+                                message: 'Page ' + (page.published ? 'published' : 'un-published')
                             }]
                             this.errors.clear()
                         })
                         .catch(e => {
-                            try {
-                                console.error(e.response.data)
-                                this.errors = e.response.data
-                            } catch (e) {
-                                console.error(e)
-                            }
+                            console.error(e.response.data)
+                            this.errors = e.response.data
                         })
                 )
             },
@@ -207,6 +212,10 @@
                         })
                         .catch(error => this.errors = error.response.data)
                 )
+            },
+            setPageForDestroy(page) {
+                this.pageStagedForDestroy = page
+                this.showPageStagedForDestroyConfirmationModal = true
             },
             onDragChange(e) {
 
