@@ -2,133 +2,202 @@
     <div class="container-fluid">
         <h1>Posts</h1>
         <errors v-model="errors"></errors>
-        <div class="container-fluid mb-3">
-            <div class="row d-none d-md-flex py-3 bg-dark text-white">
-                <div class="col-md-2"><strong>#</strong></div>
-                <div class="col-md-4"><strong>Title</strong></div>
-                <div class="col-md-3"><strong>Category</strong></div>
-                <div class="col-md-2"><strong>Published?</strong></div>
-                <div class="col-md-1"></div>
-            </div>
-            <div class="highlight-children">
-                <div v-if="posts.length" v-for="(post, index) in posts" @dblclick="open(`/admin/posts/${post.id}`)"
-                    class="row text-center text-md-left py-3 border-top" :style="index % 2 ? 'background-color: #f3f3f3' : false">
-                    <div class="col-12 col-md-2">
-                        <span class="d-md-none">#</span>
-                        <a :href="`/admin/posts/${post.id}`">{{ post.id }}</a>
-                    </div>
-                    <div class="col-12 col-md-4"><a :href="`/admin/posts/${post.id}`">{{ post.title }}</a></div>
-                    <div class="col-12 col-md-3"><em><small class="text-dark">{{ post.category && post.category.name }}</small></em></div>
-                    <div class="col-12 col-md-2">
-                        <div role="button" @click="togglePublished(post)">
-                        <!-- <font-awesome-layers role="button" @click="togglePublished(post)"> -->
-                            <!-- <font-awesome-icon class="text-light" icon="circle"></font-awesome-icon> -->
-                            <font-awesome-icon v-if="post.published" class="text-warning" :icon="['fas', 'lightbulb']" title="Published"></font-awesome-icon>
-                            <font-awesome-icon v-else class="text-warning" :icon="['fal', 'lightbulb']" title="Un-published"></font-awesome-icon>
-                        <!-- </font-awesome-layers> -->
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-1">
-                        <font-awesome-icon class="text-danger" :icon="['fal', 'times-square']" title="Delete" v-b-modal="'delete-' + post.id"></font-awesome-icon>
-                        <b-modal :id="'delete-' + post.id" variant="danger" @ok="remove(post)" ok-title="Confirm">
-                            Are you sure?
-                        </b-modal>
-                    </div>
-                </div>
-                <div v-else class="row"><div class="col">There are no posts to show.</div></div>
-            </div>
-        </div>
-        <pagination v-model="pagination"></pagination>
-        <a class="btn btn-primary w-100 mt-3" href="/admin/posts/new">New</a>
+        <b-table 
+            :fields="[
+                {
+                    key: 'title',
+                    sortable: true,
+                },
+                // {
+                //     key: 'body',
+                //     sortable: false,
+                //     formatter: value => truncate(value, { length: 42, omission: '...' }),
+                // },
+                {
+                    key: 'category',
+                    sortable: true,
+                },
+                {
+                    key: 'published',
+                    sortable: true,
+                },
+                {
+                    key: 'created_at',
+                    label: 'Created',
+                    sortable: true,
+                    formatter: value => moment(value).fromNow(),
+                },
+                {
+                    key: 'updated_at',
+                    label: 'Updated',
+                    sortable: true,
+                    formatter: value => moment(value).fromNow(),
+                },
+                'delete',
+            ]"
+            :current-page="currentPage"
+            :per-page="perPage"
+            :items="editablePosts"
+            hover 
+            sortable
+            stacked="lg"
+        >
+            <template slot="title" slot-scope="data">
+                <a :href="'/admin/pages/' + data.item.id">{{ data.value }}</a>
+            </template>
+            <template slot="category" slot-scope="data">
+                <a :href="'/admin/categories/' + data.value.id">{{ data.value.name }}</a>
+            </template>
+            <template slot="published" slot-scope="data">
+                <span
+                    role="button"
+                    @click="togglePublished(data.item)"
+                >
+                    <font-awesome-icon
+                        :icon="[
+                            (data.item.published ? 'fas' : 'fal'), 
+                            'lightbulb'
+                        ]"
+                        :title="data.item.published ? 'Published' : 'Un-Published'"
+                        class="fa-2x text-warning"
+                    />
+                </span>  
+            </template>
+            <template 
+                slot="delete" 
+                slot-scope="data"
+            >
+                <font-awesome-icon
+                    :icon="[
+                        'fal',
+                        'times-square'
+                    ]"
+                    @click="setPageForDestroy(data.item)"
+                    class="fa-2x text-danger"
+                    title="Delete"
+                />
+            </template>
+        </b-table>
+
+
+        <confirmation-modal
+            v-model="showPostStagedForDestroyConfirmationModal"
+            @confirmed="remove(postStagedForDestroy)"
+        />
+
+        <b-pagination
+            :per-page="perPage"
+            :total-rows="editablePosts.length"
+            v-if="editablePosts && editablePosts.length"
+            v-model="currentPage"
+        />
+
+        <b-button
+            class="w-100 mt-3"
+            href="/admin/posts/new"
+            variant="primary"
+        >
+            New
+        </b-button>
     </div>
 </template>
 <script>
+    'use strict'
+    /**
+     * Import third-party plugins
+     */
+    import bButton from 'bootstrap-vue/es/components/button/button'
+    import bPagination from 'bootstrap-vue/es/components/pagination/pagination'
+    import bTable from 'bootstrap-vue/es/components/table/table'
+    // import draggable from 'vuedraggable'
+    import moment from 'moment'
+
+    /**
+     * Import project plugins
+     */
+    import confirmationModal from '~/js/components/ConfirmationModal'
     import ErrorsAndProcessing from '~/js/mixins/ErrorsAndProcessing'
-    import bModal from 'bootstrap-vue/es/components/modal/modal'
-    import vBModal from 'bootstrap-vue/es/directives/modal/modal'
+    import ProcessIfNotProcessing from '~/js/mixins/ProcessIfNotProcessing'
 
     export default {
         components: {
-            bModal
-        },
-        directives: {
-            'b-modal': vBModal
+            confirmationModal,
+            // draggable,
+            bButton,
+            bPagination,
+            bTable,
         },
         mixins: [
-            ErrorsAndProcessing
+            ErrorsAndProcessing,
+            ProcessIfNotProcessing,
         ],
         data() {
             return {
+                currentPage: 1,
+                perPage: 20,
+                editablePosts: [],
                 posts: [],
-                pagination: undefined
+                postStagedForDestroy: undefined,
+                showPostStagedForDestroyConfirmationModal: false,
             }
         },
-        async mounted() {
-            try {
-                this.processing = true
-                const response = await axios.get("/api/admin/posts", {
-                    params: {
-                        page: this.getPage(),
-                        per_page: this.getPerPage(15),
-                        with: ["category"]
-                    }
+        beforeMount() {
+            this.processIfNotProcessing(
+                axios.get('/api/admin/posts', {
+                        params: {
+                            with: ['category']
+                        }
+                    })
+                .then(response => {
+                    this.setPosts(response.data)
                 })
-                this.posts = response.data.data
-                this.pagination = response.data.meta
-            } catch (e) {
-                try {
+                .catch(e => {
                     console.error(e.response.data)
                     this.errors = e.response.data
-                } catch (e) {
-                    console.error(e)
-                }
-            }
-            this.processing = false
+                })
+            )
         },
         methods: {
-            open(link) {
-                window.location.href = link
+            moment,
+            setPosts(post) {
+                this.posts = Object.assign([], post)
+                this.editablePosts = Object.assign([], post)
             },
-            getPage() {
-                const url = new URL(window.location.href)
-                const params = url.searchParams
-                return url.searchParams.get("page")
-            },
-            getPerPage(def = 15) {
-                const url = new URL(window.location.href)
-                const params = url.searchParams
-                return url.searchParams.get("per_page") || def
-            },
-            async togglePublished(post) {
-                try {
-                    this.processing = true
-                    const response = await axios.patch(`/api/admin/posts/${post.id}`, Object.assign(post, { published: !post.published }))
-                    post = response.data
-                    this.$store.state.notifications = [{
-                        type: "success",
-                        message: "Post " + (post.published ? "published" : "un-published")
-                    }]
-                    this.errors.clear()
-                } catch (e) {
-                    try {
-                        console.error(e.response.data)
-                        this.errors = e.response.data
-                    } catch (e) {
-                        console.error(e)
-                    }
-                }
-                this.processing = false
+            togglePublished(post) {
+                this.processIfNotProcessing(
+                    axios.patch(
+                        `/api/admin/posts/${post.id}`, 
+                        Object.assign(
+                            post, 
+                            {
+                                published: !post.published
+                            }
+                        )
+                    )
+                        .then(response => {
+                            this.setPosts(response.data)
+                            this.$store.state.notifications = [{
+                                type: 'success',
+                                message: 'Post ' + (post.published ? 'published' : 'un-published')
+                            }]
+                            this.errors.clear()
+                        })
+                        .catch(e => {
+                            console.error(e.response.data)
+                            this.errors = e.response.data
+                        })
+                )
             },
             remove(post) {
-                if (this.processing) {
-                    return
-                }
-                this.processing = true
-                axios.delete('/api/admin/posts/' + post.id).then(response => {
-                    this.$delete(this.posts, _.findIndex(this.posts, { id: post.id }))
-                })
-                .catch(error => this.errors = error.response.data)
-                .then(() => this.processing = false)
+
+                this.processIfNotProcessing(
+                    axios.delete('/api/admin/posts/' + post.id)
+                        .then(response => {
+                            this.$delete(this.editablePosts, _.findIndex(this.editablePosts, { id: post.id }))
+                            this.posts = Object.assign([], this.editablePosts)
+                        })
+                        .catch(error => this.errors = error.response.data)
+                )
             }
         }
     }

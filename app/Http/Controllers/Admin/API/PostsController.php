@@ -13,6 +13,31 @@ use Illuminate\Validation\Rule;
 
 class PostsController extends Controller
 {
+    /**
+     * Get a complete JSON dump of all the Posts.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return string(JSON) 
+     */
+    public function all(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'with' => 'array|in:category,images,pages',
+            'per_page' => 'integer|min:1',
+            'page' => 'integer|min:1',
+        ])->validate();
+
+        $pages = Post::when($request->has('with'), function ($query) use ($request) {
+                return $query->with($request->with);
+            })
+            ->get();
+
+        return response()->json(
+            new PostCollection(
+                $pages
+            )
+        );
+    }
 
     public function paginate(Request $request)
     {

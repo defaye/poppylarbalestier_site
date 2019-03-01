@@ -33,7 +33,8 @@ Route::group(['middleware' => 'throttle:60,1'], function () {
 
     Route::group(['prefix' => 'admin', 'name' => 'admin.', 'middleware' => 'auth:api'], function () {
 
-        Route::get('posts', 'Admin\API\PostsController@paginate');
+        // Route::get('posts', 'Admin\API\PostsController@paginate');
+        Route::get('posts', 'Admin\API\PostsController@all');
         Route::get('posts/{post}', 'Admin\API\PostsController@get');
         Route::post('posts', 'Admin\API\PostsController@store');
         Route::patch('posts/{post}', 'Admin\API\PostsController@update');
