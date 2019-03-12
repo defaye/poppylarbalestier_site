@@ -38,12 +38,13 @@
             :current-page="currentPage"
             :per-page="perPage"
             :items="editablePosts"
+            @row-dblclicked="window.open('/admin/posts/' + $event.id, '_self')"
             hover 
             sortable
             stacked="lg"
         >
             <template slot="title" slot-scope="data">
-                <a :href="'/admin/pages/' + data.item.id">{{ data.value }}</a>
+                <a :href="'/admin/posts/' + data.item.id">{{ data.value }}</a>
             </template>
             <template slot="category" slot-scope="data">
                 <a :href="'/admin/categories/' + data.value.id">{{ data.value.name }}</a>
@@ -175,7 +176,6 @@
                         )
                     )
                         .then(response => {
-                            this.setPosts(response.data)
                             this.$store.state.notifications = [{
                                 type: 'success',
                                 message: 'Post ' + (post.published ? 'published' : 'un-published')
@@ -195,6 +195,10 @@
                         .then(response => {
                             this.$delete(this.editablePosts, _.findIndex(this.editablePosts, { id: post.id }))
                             this.posts = Object.assign([], this.editablePosts)
+                            this.$store.state.notifications = [{
+                                type: 'success',
+                                message: 'Post deleted.',
+                            }]
                         })
                         .catch(error => this.errors = error.response.data)
                 )

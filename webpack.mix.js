@@ -11,7 +11,15 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+mix
+  //  .webpackConfig({
+		// resolve: {
+		//     alias: {
+		//         vue: 'vue/dist/vue.js'
+		//     }
+		// }
+  //  })
+   .js('resources/js/app.js', 'public/js')
    .extract([
 		'@finpo/vue2-recaptcha-invisible',
 		'autosize',

@@ -23,12 +23,14 @@ class PageResource extends Resource
             'title' => $this->title,
             'name' => $this->name,
             'body' => $this->body,
+            'body_prefix' => $this->body_prefix,
+            'body_suffix' => $this->body_suffix,
             'images' => ImageResource::collection($this->whenLoaded('images')),
             'navigation' => new NavigationResource($this->whenLoaded('navigation')),
             'posts' => PostResource::collection($this->whenLoaded('posts')),
             'component' => new ComponentResource($this->whenLoaded('component')),
             'component_id' => $this->component_id,
-            'published' => $this->published,
+            'published' => $this->published ? true : false,
             'slug' => $this->slug,
             'order' => $this->whenPivotLoaded('page_post', function () {
                 return $this->pivot->order;

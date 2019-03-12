@@ -16,6 +16,8 @@ class Page extends Model
         'title',
         'name',
         'body',
+        'body_prefix',
+        'body_suffix',
     ];
 
     /**

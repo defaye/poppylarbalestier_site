@@ -1,47 +1,55 @@
-import fontawesome from "@fortawesome/fontawesome"
-import { FontAwesomeIcon, FontAwesomeLayers } from "@fortawesome/vue-fontawesome"
-// import fontawesomeProLight from "@fortawesome/fontawesome-pro-light"
-// import fontawesomeProRegular from "@fortawesome/fontawesome-pro-regular"
-// import fontawesomeProSolid from "@fortawesome/fontawesome-pro-solid"
-// import fontawesomeFreeBrands from "@fortawesome/fontawesome-free-brands"
+import { library } from '@fortawesome/fontawesome-svg-core'
 
-// fontawesome.library.add(fontawesomeProLight)
-// fontawesome.library.add(fontawesomeProRegular)
-// fontawesome.library.add(fontawesomeProSolid)
-// fontawesome.library.add(fontawesomeFreeBrands)
+import {
+    faCircle,
+    faSpinner,
+    faEye,
+    faPhone,
+    faPhoneSquare,
+    faEnvelope,
+    faMailbox,
+    faEnvelopeSquare,
+    faPenSquare,
+} from '@fortawesome/pro-solid-svg-icons'
 
-import facebookSquare from "@fortawesome/fontawesome-free-brands/faFacebookSquare"
-import twitterSquare from "@fortawesome/fontawesome-free-brands/faTwitterSquare"
-import expandAlt from "@fortawesome/fontawesome-pro-regular/faExpandAlt"
-import compressAlt from "@fortawesome/fontawesome-pro-regular/faCompressAlt"
-import circle from "@fortawesome/fontawesome-pro-solid/faCircle"
-import spinner from "@fortawesome/fontawesome-pro-solid/faSpinner"
-import eye from "@fortawesome/fontawesome-pro-solid/faEye"
-import phoneSquare from "@fortawesome/fontawesome-pro-solid/faPhoneSquare"
-import envelopeSquare from "@fortawesome/fontawesome-pro-solid/faEnvelopeSquare"
-import penSquare from "@fortawesome/fontawesome-pro-solid/faPenSquare"
+library.add(
+    faCircle,
+    faSpinner,
+    faEye,
+    faPhone,
+    faPhoneSquare,
+    faEnvelope,
+    faMailbox,
+    faEnvelopeSquare,
+    faPenSquare,
+)
 
-fontawesome.library.add(facebookSquare)
-fontawesome.library.add(twitterSquare)
-fontawesome.library.add(expandAlt)
-fontawesome.library.add(compressAlt)
-fontawesome.library.add(circle)
-fontawesome.library.add(spinner)
-fontawesome.library.add(eye)
-fontawesome.library.add(phoneSquare)
-fontawesome.library.add(envelopeSquare)
-fontawesome.library.add(penSquare)
+import {
+    faCompressAlt,
+    faExpandAlt,
+} from '@fortawesome/pro-regular-svg-icons'
 
-fontawesome.icon({ prefix: "fab", iconName: "facebook-square" })
-fontawesome.icon({ prefix: "fab", iconName: "twitter-square" })
-fontawesome.icon({ prefix: "far", iconName: "expand-alt" })
-fontawesome.icon({ prefix: "far", iconName: "compress-alt" })
-fontawesome.icon({ prefix: "fas", iconName: "circle" })
-fontawesome.icon({ prefix: "fas", iconName: "spinner" })
-fontawesome.icon({ prefix: "fas", iconName: "eye" })
-fontawesome.icon({ prefix: "fas", iconName: "phone-square" })
-fontawesome.icon({ prefix: "fas", iconName: "envelope-square" })
-fontawesome.icon({ prefix: "fas", iconName: "pen-square" })
+library.add(
+    faCompressAlt,
+    faExpandAlt,
+)
 
-Vue.component("font-awesome-layers", FontAwesomeLayers)
-Vue.component("font-awesome-icon", FontAwesomeIcon)
+import { 
+    faFacebookF,
+    faFacebookSquare,
+    faInstagram,
+    faTwitterSquare,
+} from '@fortawesome/free-brands-svg-icons'
+
+library.add(
+    faFacebookF,
+    faFacebookSquare,
+    faInstagram,
+    faTwitterSquare,
+)
+
+import { FontAwesomeIcon, FontAwesomeLayers } from '@fortawesome/vue-fontawesome'
+
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('font-awesome-layers', FontAwesomeLayers)

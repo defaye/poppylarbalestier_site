@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col-12 col-lg-8 col-xl-6 ml-auto">
                                 <div id="site-title" role="button" class="text-center" @click.prevent="$store.dispatch('load', '/')">
-                                        <img src="{{ url('images/***REMOVED***-LOGO.jpg') }}" alt="***REMOVED*** ***REMOVED***">
+                                    <img src="{{ url('images/***REMOVED***-LOGO.jpg') }}" alt="***REMOVED*** ***REMOVED***">
                                 </div>
                             </div>
                             <div class="d-none d-lg-flex col-lg-2 col-xl-3 align-items-center" style="font-size: 2rem;">

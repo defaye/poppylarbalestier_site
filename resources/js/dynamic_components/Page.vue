@@ -19,6 +19,7 @@
             >
             <!-- <responsive-image v-else :src="page.images[0].path" :alt="page.name || page.title || false" :ratio-x="826" :ratio-y="551"></responsive-image> -->
         </div>
+        <v-runtime-template v-if="'body_prefix' in page && typeof page.body_prefix === 'string'" :template="wrapWithDiv(page.body_prefix)"/>
         <div class="d-flex flex-column">
             <div
                 class="my-4 order-2 order-lg-1"
@@ -52,13 +53,18 @@
                 </div>
             </div>
         </div>
+        <v-runtime-template v-if="'body_suffix' in page && typeof page.body_suffix === 'string'" :template="wrapWithDiv(page.body_suffix)"/>
     </div>
 </template>
 <script>
     'use strict'
     import lineBreaksToBr from '~/js/functions/lineBreaksToBr'
+    import VRuntimeTemplate from 'v-runtime-template'
 
     export default {
+        components: {
+            VRuntimeTemplate
+        },
         model: {
             prop: 'page',
             event: 'change'
@@ -70,11 +76,14 @@
             pageHeader() {
                 return this.page.name ||
                     this.page.title ||
-                        typeof this.page.category === 'object' && this.page.category.name ||
-                            ''
+                        typeof this.page.category === 'object' 
+                            && this.page.category.name 
+                            || ''
             },
             pagePosts() {
-                return this.page.posts.sort((a, b) => a.order < b.order ? -1 : a.order > b.order ? 1 : 0)
+                return this.page.posts.sort(
+                    (a, b) => a.order < b.order ? -1 : a.order > b.order ? 1 : 0
+                )
             }
         },
         methods: {
@@ -84,7 +93,10 @@
             },
             emitLoadEvent(path) {
                 this.$store.dispatch('load', path)
-            }
+            },
+            wrapWithDiv(html) {
+                return '<div>' + html + '</div>'
+            },
         }
     }
 </script>

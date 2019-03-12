@@ -39,6 +39,7 @@
             :current-page="currentPage"
             :per-page="perPage"
             :items="editablePages"
+            @row-dblclicked="window.open('/admin/pages/' + $event.id, '_self')"
             hover 
             sortable
             stacked="lg"
@@ -158,6 +159,11 @@
                 })
             )
         },
+        computed: {
+            window() {
+                return window
+            },
+        },
         methods: {
             setPages(page) {
                 this.pages = Object.assign([], page)
@@ -190,7 +196,6 @@
                         )
                     )
                         .then(response => {
-                            this.setPages(response.data)
                             this.$store.state.notifications = [{
                                 type: 'success',
                                 message: 'Page ' + (page.published ? 'published' : 'un-published')
@@ -209,6 +214,10 @@
                         .then(response => {
                             this.$delete(this.editablePages, _.findIndex(this.editablePages, { id: page.id }))
                             this.pages = Object.assign([], this.editablePages)
+                            this.$store.state.notifications = [{
+                                type: 'success',
+                                message: 'Page deleted.',
+                            }]
                         })
                         .catch(error => this.errors = error.response.data)
                 )

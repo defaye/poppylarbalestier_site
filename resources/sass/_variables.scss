@@ -130,8 +130,10 @@ $btn-transition:              none;
 
 $card-spacer-y:                     .75rem;
 $card-spacer-x:                     1.25rem;
-$card-border-color:                 rgba($black, .125);
-$card-cap-bg:                       rgba($black, .01);
+$card-border-color:                 $gray-100;
+// $card-border-color:                 rgba($black, .125);
+$card-cap-bg:                       $gray-100;
+// $card-cap-bg:                       rgba($black, .01);
 $card-cap-color:                    null;
 $card-color:                        null;
-$card-bg:                           $white;
+$card-bg:                           $gray-100;

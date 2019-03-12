@@ -194,40 +194,58 @@ footer#bottom {
     }
 }
 
-.fa-facebook-square {
-    // color: #4267b2;
+// .fa-facebook-square {
+//     color: #4267b2;
+// }
+
+// .fa-twitter-square {
+//     color: rgb(29, 161, 242);
+// }
+
+// .fa-phone-square {
+//     color: $yellow;
+// }
+
+// .fa-envelope-square {
+//     color: $red;
+// }
+
+// .fa-pen-square {
+//     color: $green;
+// }
+
+
+.fa-facebook-square
+.fa-twitter-square
+.fa-phone-square
+.fa-envelope-square
+.fa-pen-square,
+.fa-circle {
     &:hover {
-        color: $purple;
+        color: $gray-300;
     }
 }
 
-.fa-twitter-square {
-    // color: rgb(29, 161, 242);
-    &:hover {
-        color: $purple;
+
+.GetInTouchContactMethod {
+    margin-bottom: 1rem;
+    .fa-circle {
+        color: $gray-900;
     }
+    .fa-layers {
+        svg:last-child {
+            color: $white;
+        }
+    }
+    &:hover {
+        .fa-circle {
+            color: $gray-300;
+        }
+        color: $gray-300;
+    }
+    cursor: pointer;
 }
 
-.fa-phone-square {
-    // color: $yellow;
-    &:hover {
-        color: $purple;
-    }
-}
-
-.fa-envelope-square {
-    // color: $red;
-    &:hover {
-        color: $purple;
-    }
-}
-
-.fa-pen-square {
-    // color: $green;
-    &:hover {
-        color: $purple;
-    }
-}
 
 .ImageTabs {
     .ImageTabs--header {

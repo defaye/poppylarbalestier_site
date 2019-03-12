@@ -29,9 +29,6 @@ class PagesController extends Controller
         $pages = Page::when($request->has('with'), function ($query) use ($request) {
                 return $query->with($request->with);
             })
-            ->join('navigations', 'navigations.page_id', '=', 'pages.id')
-            ->select('pages.*', 'navigations.position')
-            ->orderBy('navigations.position', 'asc')
             ->get();
 
         return response()->json(
@@ -79,6 +76,8 @@ class PagesController extends Controller
             'title' => 'required_without:name|nullable|max:255',
             'name' => 'required_without:title|nullable|max:255',
             'body' => 'nullable|string',
+            'body_prefix' => 'nullable|string',
+            'body_suffix' => 'nullable|string',
             'component_id' => 'required|exists:components,id',
         ]);
 
@@ -89,7 +88,11 @@ class PagesController extends Controller
         }
 
         $page = new Page($request->only([
-            'title', 'name', 'body',
+            'title',
+            'name',
+            'body',
+            'body_suffix',
+            'body_prefix',
         ]));
         $page->component()->associate($request->component_id);
         $page->save();
@@ -104,6 +107,8 @@ class PagesController extends Controller
             'title' => 'required_without:name|nullable|max:255',
             'name' => 'required_without:title|nullable|max:255',
             'body' => 'nullable|string',
+            'body_prefix' => 'nullable|string',
+            'body_suffix' => 'nullable|string',
             'component_id' => 'required|exists:components,id',
             'posts' => 'array',
             'posts.*.id' => 'required|exists:posts,id',
@@ -127,6 +132,8 @@ class PagesController extends Controller
                 'title',
                 'name',
                 'body',
+                'body_suffix',
+                'body_prefix',
                 'published',
             ]));
             $page->component()->associate($request->component_id);

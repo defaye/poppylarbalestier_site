@@ -58,6 +58,11 @@ const store = new Vuex.Store(storeConfiguration)
 const app = new Vue({
     el: '#app',
     store,
+    computed: {
+        window() {
+            return window
+        },
+    },
     mounted() {
         store.dispatch('load', new URL(window.location.href).pathname)
 

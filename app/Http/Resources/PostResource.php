@@ -30,7 +30,7 @@ class PostResource extends Resource
             'category' => new CategoryResource($this->whenLoaded('category')),
             'tags' => TagResource::collection($this->whenLoaded('tags')),
             'pages' => PageResource::collection($this->whenLoaded('pages')),
-            'published' => $this->published,
+            'published' => $this->published ? true : false,
             'slug' => $this->slug,
             'order' => $this->whenPivotLoaded('page_post', function () {
                 return $this->pivot->order;

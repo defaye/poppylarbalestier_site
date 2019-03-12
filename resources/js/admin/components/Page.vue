@@ -49,7 +49,6 @@
                         :state="errors.has('name') ? false : null"
                         v-model.trim="page.name"
                         :required="true"
-                        autofocus
                         tabindex="1"
                         placeholder="Enter a name..."
                     >
@@ -60,7 +59,39 @@
                     <small class="form-text">If the page name is used in the component template, it will be used.</small>
                 </b-form-group>
                 <b-form-group
-                    label="Body"
+                    label="Body Prefix"
+                    label-for="body_prefix"
+                >
+                    <prism-editor
+                        v-model="page.body_prefix"
+                        :disabled="processing"
+                        :line-numbers="true"
+                        aria-describedby="Body Prefix"
+                        class="mb-3"
+                        id="body_prefix"
+                        language="vue"
+                        name="body_prefix"
+                        required
+                        tabindex="1"
+                        v-autosize
+                    />
+                    <!-- <b-form-textarea
+                        id="body_prefix"
+                        :disabled="processing"
+                        :state="errors.has('body_prefix') ? false : null"
+                        v-model="page.body_prefix"
+                        v-autosize
+                        :required="true"
+                        tabindex="1"
+                    > -->
+                    </b-form-textarea>
+                    <small class="form-text">This section is intended for structured data (written in HTML).</small>
+                    <b-form-invalid-feedback v-if="errors.has('body_prefix')">
+                        {{ errors.get('body_prefix').join(' ').trim() }}
+                    </b-form-invalid-feedback>
+                </b-form-group>
+                <b-form-group
+                    label="Body (Text)"
                     label-for="body"
                 >
                     <b-form-textarea
@@ -70,13 +101,45 @@
                         v-model="page.body"
                         v-autosize
                         :required="true"
-                        autofocus
                         tabindex="1"
+                        rows="10"
                         placeholder="Write your page content..."
                     >
                     </b-form-textarea>
                     <b-form-invalid-feedback v-if="errors.has('body')">
                         {{ errors.get('body').join(' ').trim() }}
+                    </b-form-invalid-feedback>
+                </b-form-group>
+                <b-form-group
+                    label="Body Suffix"
+                    label-for="body_suffix"
+                >
+                    <prism-editor
+                        v-model="page.body_suffix"
+                        :disabled="processing"
+                        :line-numbers="true"
+                        aria-describedby="Body Suffix"
+                        class="mb-3"
+                        id="body_suffix"
+                        language="vue"
+                        name="body_suffix"
+                        required
+                        tabindex="1"
+                        v-autosize
+                    />
+                    <!-- <b-form-textarea
+                        id="body_suffix"
+                        :disabled="processing"
+                        :state="errors.has('body_suffix') ? false : null"
+                        v-model="page.body_suffix"
+                        v-autosize
+                        :required="true"
+                        tabindex="1"
+                    > -->
+                    </b-form-textarea>
+                    <small class="form-text">This section is intended for structured data (written in HTML).</small>
+                    <b-form-invalid-feedback v-if="errors.has('body_suffix')">
+                        {{ errors.get('body_suffix').join(' ').trim() }}
                     </b-form-invalid-feedback>
                 </b-form-group>
                 <div class="form-group" v-if="page.id">
@@ -136,7 +199,8 @@
     import ManageImages from '~/js/admin/mixins/ManageImages.js'
     import Tabs from '~/js/admin/mixins/Tabs.js'
 
-    import ErrorsAndProcessing from '../../mixins/ErrorsAndProcessing'
+    import ErrorsAndProcessing from '~/js/mixins/ErrorsAndProcessing'
+    import ProcessIfNotProcessing from '~/js/mixins/ProcessIfNotProcessing'
 
     // import bButton from 'bootstrap-vue/es/components/button/button'
     // import bFormCheckbox from 'bootstrap-vue/es/components/form-checkbox/form-checkbox'
@@ -144,6 +208,11 @@
     import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
     import bFormInvalidFeedback from 'bootstrap-vue/es/components/form/form-invalid-feedback'
     import bFormTextarea from 'bootstrap-vue/es/components/form-textarea/form-textarea'
+
+    import 'prismjs'
+    import 'prismjs/themes/prism.css'
+    import PrismEditor from 'vue-prism-editor'
+    import 'vue-prism-editor/dist/VuePrismEditor.css'
 
     export default {
         components: {
@@ -153,11 +222,13 @@
             bFormInput,
             bFormInvalidFeedback,
             bFormTextarea,
-            draggable
+            draggable,
+            PrismEditor,
         },
         mixins: [
             ErrorsAndProcessing,
             ManageImages,
+            ProcessIfNotProcessing,
             Tabs
         ],
         data() {
@@ -165,7 +236,9 @@
                 page: {
                     title: undefined,
                     name: undefined,
+                    body_prefix: undefined,
                     body: undefined,
+                    body_suffix: undefined,
                     published: undefined,
                     component_id: undefined,
                     images: [],
@@ -174,84 +247,80 @@
                 components: []
             }
         },
-        async mounted() {
+        mounted() {
             window.onpopstate = event => {
                 document.title = event.state.title
                 this.page = event.state
             }
-            try {
-                const response = await axios.get('/api/admin/components')
+        },
+        beforeMount() {
+            axios.get('/api/admin/components').then(response => {
                 if (response.data.length) {
                     this.components = response.data
                     this.page.component_id = this.components[0].id
                 } else {
                     this.errors = { message: 'You need to create a component template before you create a page.' }
                 }
-            } catch (e) {
-                try {
-                    console.error(e.response.data)
-                    this.errors = e.response.data
-                } catch (e) {
-                    console.error(e)
+            }).catch(e => {
+                console.error(e)
+                this.errors = e.response.data
+            }).finally(() => {
+                const url = new URL(window.location.href)
+                const regex = /^\/admin\/pages\/(\d+)$/
+                if (regex.test(url.pathname)) {
+                    const matches = regex.exec(url.pathname)
+                    this.retrievePage(matches[1])
+                } else {
+                    this.retrievePage()
                 }
-            }
-            const url = new URL(window.location.href)
-            const regex = /^\/admin\/pages\/(\d+)$/
-            if (regex.test(url.pathname)) {
-                const matches = regex.exec(url.pathname)
-                this.retrievePage(matches[1])
-            } else {
-                this.retrievePage()
-            }
+            })
         },
         methods: {
-            async retrievePage(id) {
-                try {
-                    if (id) {
-                        this.processing = true
-                        const response = await axios.get(`/api/admin/pages/${id}`)
-                        console.log(response.data)
-                        this.page = response.data
-                    }
-                } catch (e) {
-                    try {
-                        console.error(e.response.data)
-                        this.errors = e.response.data
-                    } catch (e) {
-                        console.error(e)
-                    }
+            retrievePage(id) {
+                if (id) {
+                    this.processIfNotProcessing(
+                        axios.get(`/api/admin/pages/${id}`).then(response => {
+                            console.log(response.data)
+                            this.page = response.data
+                            
+                        }).catch(e => {
+                            console.error(e)
+                            this.errors = e.response.data
+                        })
+                    )
                 }
-                this.processing = false
             },
-            async submit() {
-                try {
-                    this.processing = true
-                    if (this.page.id) {
-                        const response = await axios.patch(`/api/admin/pages/${this.page.id}`, this.page)
-                        // this.page = response.data
+            submit() {
+                const isUpdateMode = 'number' === typeof this.page.id
+                this.processIfNotProcessing(
+                    axios({
+                        data: this.page,
+                        method: isUpdateMode ? 'PATCH' : 'POST',
+                        url: '/api/admin/pages' + (isUpdateMode ? ('/' + this.page.id) : ''),
+                    }).then(response => {
                         this.$store.state.notifications = [{
                             type: 'success',
-                            message: 'Page updated'
+                            message: 'Page ' + (isUpdateMode ? 'updated' : 'created'),
                         }]
-                    } else {
-                        const response = await axios.post('/api/admin/pages', this.page)
-                        window.history.pushState(Object.assign({}, response.data), 'Edit page', `/admin/pages/${response.data.id}`)
-                        this.page = response.data
-                        this.$store.state.notifications = [{
-                            type: 'success',
-                            message: 'Page created'
-                        }]
-                    }
-                    this.errors.clear()
-                } catch (e) {
-                    try {
-                        console.error(e.response.data)
-                        this.errors = e.response.data
-                    } catch (e) {
+                        if (isUpdateMode) {
+                            // this.page = response.data
+                        } else {
+                            this.page = response.data
+                            window.history.pushState(
+                                Object.assign(
+                                    {}, 
+                                    response.data
+                                ), 
+                                'Edit page', 
+                                `/admin/pages/${response.data.id}`
+                            )
+                        }
+                        this.errors.clear()
+                    }).catch(e => {
                         console.error(e)
-                    }
-                }
-                this.processing = false
+                        this.errors = e.response.data
+                    })
+                )
             },
             download(image) {
                 window.open(image.path, '_blank')
