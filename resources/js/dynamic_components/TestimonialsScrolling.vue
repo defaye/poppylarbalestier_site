@@ -1,55 +1,59 @@
-<style>
-    .TestimonialThumbnail {
-        width: 100%;
-        border: 1rem solid #f5f5f5;
-    }
-</style>
 <template>
     <div class="container">
-        <h1 v-if="page.name" v-html="page.name"/>
+        <div class="row">
+            <div class="col">
+                <h1 v-if="page.name">{{ page.name }}</h1>
+            </div>
+        </div>
         <div v-if="testimonials && testimonials.length">
-            <div class="row">
-                <div :key="t.id" class="col-12 col-xl-6 p-5" v-for="(t, index) in testimonials">
-                    <div v-if="t.images.length" @click.prevent="emitLoadEvent(`/${page.slug}/${t.slug}`)" role="button">
-                        <img 
-                            :alt="t.title"
-                            :src="t.images[0].path"
-                            class="TestimonialThumbnail"
-                        >
+            <div v-for="(t, index) in testimonials" :key="t.id" class="row">
+                <div class="col-12">
+                    <h2>
+                        <a :href="`/${page.slug}/${t.slug}`" @click.prevent="emitLoadEvent(`/${page.slug}/${t.slug}`)">{{ t.title }}</a><br>
+                        <!-- <small>{{ formatDate(t.created_at) }}</small> -->
+                    </h2>
+                    <div v-if="t.images.length">
+                        <img :src="t.images[0].path" :alt="t.title" class="w-100">
                         <!-- <responsive-image :src="t.images[0].path" :alt="t.title" :ratio-x="4" :ratio-y="3"></responsive-image> -->
+                    </div>
+                    
+                    <div class="my-4" v-if="'body' in t && typeof t.body === 'string'">
+                        <div v-html="converter.makeHtml(truncate(t.body, 42, { byWords: true }))"/>
+
+                        <a 
+                            :href="`/${page.slug}/${t.slug}`"
+                            @click.prevent="emitLoadEvent(`/${page.slug}/${t.slug}`)"
+                            v-if="truncate(t.body, 42, { byWords: true }).length !== t.body.length"
+                        >
+                            Read more...
+                        </a>
                     </div>
                 </div>
             </div>
-            <b-button 
-                @click="getTestimonialsDebounced"
-                class="w-100 mt-3"
-                v-if="testimonials.length % perPage === 0"
-                variant="primary"
-            >
-                Show More
-            </b-button>
+            <mugen-scroll :handler="getTestimonialsDebounced" :should-handle="!processing" :threshold="0">
+                <div :style="!processing ? 'display: none' : ''">
+                    <font-awesome-icon class="w-100" icon="spinner" pulse></font-awesome-icon>
+                </div>
+            </mugen-scroll>
         </div>
     </div>
 </template>
 <script>
     'use strict'
-    import BButton from 'bootstrap-vue/es/components/button/button'
+    import MugenScroll from 'vue-mugen-scroll'
 
     import processIfNotProcessing from '~/js/functions/processIfNotProcessing'
     import processing from '~/js/computed/processing'
 
-    // import Showdown from '~/js/mixins/Showdown'
-    // import TruncateHTML from '~/js/mixins/TruncateHTML'
+    import Showdown from '~/js/mixins/Showdown'
+    import TruncateHTML from '~/js/mixins/TruncateHTML'
 
 
     export default {
-        components: {
-            BButton,
-        },
-        // mixins: [
-            // Showdown,
-            // TruncateHTML,
-        // ],
+        mixins: [
+            Showdown,
+            TruncateHTML,
+        ],
         model: {
             prop: 'page',
             event: 'change'
@@ -59,7 +63,6 @@
         },
         data() {
             return {
-                perPage: 32,
                 testimonials: [],
                 testimonialsResponse: undefined
             }
@@ -75,9 +78,9 @@
             emitLoadEvent(path) {
                 this.$store.dispatch('load', path)
             },
-            // formatDate(date) {
-            //     return moment(date).format('dddd, MMMM Do YYYY')
-            // },
+            formatDate(date) {
+                return moment(date).format('dddd, MMMM Do YYYY')
+            },
             getTestimonials() {
                 if (typeof this.testimonialsResponse !== 'undefined'
                     && this.testimonialsResponse.meta.has_more_pages === false
@@ -95,7 +98,7 @@
                                 ],
                                 name: 'testimonial',
                                 page: this.testimonialsResponse ? (this.testimonialsResponse.meta.current_page + 1) : 1,
-                                per_page: this.perPage
+                                per_page: 1
                             }
                         }
                     ).then(response => {
@@ -109,12 +112,12 @@
             getTestimonialsDebounced: _.debounce(function () {
                 this.getTestimonials()
             }, 100),
-            // startCase(name) {
-            //     return _.startCase(name)
-            // },
-            // isTruncated(a, b) {
-            //     return this.truncate(a, 42, { byWords: true }).length !== b.length
-            // },
+            startCase(name) {
+                return _.startCase(name)
+            },
+            isTruncated(a, b) {
+                return this.truncate(a, 42, { byWords: true }).length !== b.length
+            },
         }
     }
 </script>

@@ -15,6 +15,11 @@ html {
     font-size: 14px;
 }
 
+img,
+.noselect {
+    user-select: none;
+}
+
 body {
     .container {
         max-width: 826px;
