@@ -7,7 +7,7 @@
                      :images="page.images"
                      :ratio-x="826"
                      :ratio-y="551"
-                     :show-pagination="true"
+                     :show-pagination="showPagination"
                      :auto-height="true"
             >
             </carousel>
@@ -63,6 +63,11 @@
         },
         props: {
             page: Object
+        },
+        data() {
+            return {
+                showPagination: true,
+            }
         },
         computed: {
             pageHeader() {

@@ -13,9 +13,9 @@
             </carousel>
             <responsive-image v-else :src="page.images[0].path" :alt="page.name || page.title || false" :ratio-x="826" :ratio-y="551"></responsive-image>
         </div>
-        <div class="my-4" v-if="page.body && page.body.length">
-            <p v-for="line in page.body.split('\n')">{{ line }}</p>
-        </div>
+        
+        <div class="my-4" v-if="'body' in page && typeof page.body === 'string'" v-html="page.body"/>
+
         <div class="ImageTabs my-4" v-if="page.posts && page.posts.length">
             <div class="container">
                 <div class="row">
