@@ -222,13 +222,13 @@ footer#bottom {
 .fa-pen-square,
 .fa-circle {
     &:hover {
-        color: $gray-400;
+        color: $gray-600;
     }
 }
 
 
 .GetInTouchContactMethod {
-    margin: 1rem inherit;
+    margin-top: 1em;
     .fa-circle {
         color: $gray-900;
     }
@@ -239,9 +239,9 @@ footer#bottom {
     }
     &:hover {
         .fa-circle {
-            color: $gray-400;
+            color: $gray-600;
         }
-        color: $gray-400;
+        color: $gray-600;
     }
     cursor: pointer;
 }
