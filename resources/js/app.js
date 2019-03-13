@@ -47,7 +47,7 @@ storeConfiguration.actions = {
             document.title = title
             context.state.page = response.data
             document.querySelector('body').scrollIntoView({ behavior: 'instant', block: 'start' })
-        }).catch(error => {
+        }).catch(e => {
             console.error(e.response.data)
         })
     }

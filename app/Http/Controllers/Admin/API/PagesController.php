@@ -67,7 +67,9 @@ class PagesController extends Controller
     {
         $page = Page::with('component', 'images', 'posts.category')->find($page);
 
-        return response()->json(new PageResource($page));
+        return response()->json(
+            $page
+        );
     }
 
     public function store(Request $request)

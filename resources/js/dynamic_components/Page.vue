@@ -21,16 +21,9 @@
         </div>
         <v-runtime-template v-if="'body_prefix' in page && typeof page.body_prefix === 'string'" :template="wrapWithDiv(page.body_prefix)"/>
         <div class="d-flex flex-column">
-            <div
-                class="my-4 order-2 order-lg-1"
-                v-if="'body' in page && typeof page.body === 'string'"
-                v-html="lineBreaksToBr(page.body)"
-            >
-                <p v-for="line in page.body.split('\n')">{{ line }}</p>
-            </div>
-            <!-- <div class="my-4" v-if="page.body && page.body.length">
-                <p v-for="line in page.body.split('\n')">{{ line }}</p>
-            </div> -->
+            
+            <div class="my-4 order-2 order-lg-1" v-if="'body' in page && typeof page.body === 'string'" v-html="page.body"/>
+
             <div class="ImageTabs my-4 order-1 order-lg-2" v-if="page.posts && page.posts.length">
                 <div class="container">
                     <div class="row">
@@ -58,7 +51,6 @@
 </template>
 <script>
     'use strict'
-    import lineBreaksToBr from '~/js/functions/lineBreaksToBr'
     import VRuntimeTemplate from 'v-runtime-template'
 
     export default {
@@ -87,7 +79,6 @@
             }
         },
         methods: {
-            lineBreaksToBr,
             startCase(name) {
                 return _.startCase(name)
             },

@@ -22,7 +22,7 @@ class PageResource extends Resource
             'id' => $this->id,
             'title' => $this->title,
             'name' => $this->name,
-            'body' => $this->body,
+            'body' => with(new \Parsedown())->text($this->body),
             'body_prefix' => $this->body_prefix,
             'body_suffix' => $this->body_suffix,
             'images' => ImageResource::collection($this->whenLoaded('images')),

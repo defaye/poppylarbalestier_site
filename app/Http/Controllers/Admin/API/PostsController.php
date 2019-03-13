@@ -68,7 +68,9 @@ class PostsController extends Controller
     {
         $post = Post::with('category', 'images')->find($post);
 
-        return response()->json(new PostResource($post));
+        return response()->json(
+            $post
+        );
     }
 
     public function store(Request $request)

@@ -22,7 +22,7 @@ class PostResource extends Resource
             'id' => $this->id,
             'title' => $this->title,
             'name' => $this->name,
-            'body' => $this->body,
+            'body' => with(new \Parsedown())->text($this->body),
             'component' => [
                 'element_name' => 'page',
             ],
