@@ -3,14 +3,28 @@
         <h1 v-if="page.name" v-html="page.name"/>
         <div v-if="testimonials && testimonials.length">
             <div class="row">
-                <div :key="t.id" class="col-12 col-xl-6 p-5" v-for="(t, index) in testimonials">
-                    <div v-if="t.images.length" @click.prevent="emitLoadEvent(`/${page.slug}/${t.slug}`)" role="button">
+                <div 
+                    :key="testimonial.id"
+                    class="
+                        col-12
+                        col-lg-6
+                        p-lg-5
+                    "
+                    v-for="(testimonial, index) in testimonials"
+                >
+                    <a 
+                        :href="`/${page.slug}/${testimonial.slug}`"
+                        @click.prevent="goToTestimonial(testimonial)"
+                        class="PostsGallery--header d-block text-center"
+                        v-html="testimonial.title.replace(/'s Testimonial$/i, '')"
+                    />
+                    <div v-if="testimonial.images.length" @click.prevent="goToTestimonial(testimonial)" role="button">
                         <img 
-                            :alt="t.title"
-                            :src="t.images[0].path"
-                            class="Frame w-100"
+                            :alt="testimonial.title"
+                            :src="testimonial.images[0].path"
+                            class="w-100"
                         >
-                        <!-- <responsive-image :src="t.images[0].path" :alt="t.title" :ratio-x="4" :ratio-y="3"></responsive-image> -->
+                        <!-- <responsive-image :src="testimonial.images[0].path" :alt="testimonial.title" :ratio-x="4" :ratio-y="3"></responsive-image> -->
                     </div>
                 </div>
             </div>
@@ -109,6 +123,9 @@
             // isTruncated(a, b) {
             //     return this.truncate(a, 42, { byWords: true }).length !== b.length
             // },
+            goToTestimonial(testimonial) {
+                this.emitLoadEvent(`/${this.page.slug}/${testimonial.slug}`)
+            }
         }
     }
 </script>

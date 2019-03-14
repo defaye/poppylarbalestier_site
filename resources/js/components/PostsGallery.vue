@@ -19,14 +19,14 @@
 	                <!-- <img 
 	                	:alt="post.title"
 	                	:src="post.images[0].path" 
-	                	class="w-100 Frame" 
+	                	class="w-100" 
 	                > -->
 	                <responsive-image
 	                    :alt="post.title"
 	                    :ratio-x="826"
 	                    :ratio-y="551"
 	                    :src="post.images[0].path"
-	                	class="w-100 Frame" 
+	                	class="w-100" 
 	                />
 	            </div>
 	        </div>

@@ -259,18 +259,18 @@ footer#bottom {
 
 
 .PostsGallery {
-    .PostsGallery--header {
-        width: 100%;
-        text-align: center;
-        color: $purple;
-        font-weight: bold;
-        margin-bottom: 1.5em;
-        margin-top: 1.5em;
-        letter-spacing: .25em;
-        font-size: .75em;
-        text-decoration: none;
-        &:hover {
-            color: darken($purple, 5%);
-        }
+}
+.PostsGallery--header {
+    width: 100%;
+    text-align: center;
+    color: $purple;
+    font-weight: bold;
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
+    letter-spacing: .25em;
+    font-size: .75em;
+    text-decoration: none;
+    &:hover {
+        color: darken($purple, 5%);
     }
 }
