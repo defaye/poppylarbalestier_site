@@ -1,61 +1,79 @@
 <template>
     <div v-if="page" class="container">
-        <h1 v-html="pageHeader"></h1>
+        <h1 v-html="pageHeader"/>
+
         <div v-if="'images' in page && page.images.length">
             <carousel class="my-4"
                       v-if="page.images.length > 1"
                      :images="page.images"
-                     :ratio-x="826"
-                     :ratio-y="551"
+                     :ratio-x="xRatio"
+                     :ratio-y="yRatio"
                      :show-pagination="showPagination"
                      :auto-height="true"
-            >
-            </carousel>
+            />
             <img
                 :alt="page.name || page.title || false"
                 :src="page.images[0].path"
                 class="w-100"
                 v-else
             >
-            <!-- <responsive-image v-else :src="page.images[0].path" :alt="page.name || page.title || false" :ratio-x="826" :ratio-y="551"></responsive-image> -->
+            <!-- <responsive-image 
+                :alt="page.name || page.title || false"
+                :ratio-x="xRatio"
+                :ratio-y="yRatio"
+                :src="page.images[0].path"
+                v-else
+            /> -->
         </div>
-        <v-runtime-template v-if="'body_prefix' in page && typeof page.body_prefix === 'string'" :template="wrapWithDiv(page.body_prefix)"/>
-        <div class="d-flex flex-column">
-            
-            <div class="my-4 order-2 order-lg-1" v-if="'body' in page && typeof page.body === 'string'" v-html="page.body"/>
 
-            <div class="ImageTabs my-4 order-1 order-lg-2" v-if="page.posts && page.posts.length">
-                <div class="container">
-                    <div class="row">
-                        <div
-                            :key="post.id"
-                            @click.prevent="emitLoadEvent(`/${page.slug}/${post.slug}`)"
-                            class="d-flex align-content-stretch flex-wrap col-12 col-lg-4"
-                            role="button"
-                            v-for="post in pagePosts"
-                        >
-                            <a class="ImageTabs--header" :href="`/${page.slug}/${post.slug}`" @click.prevent="emitLoadEvent(`/${page.slug}/${post.slug}`)">{{ post.title }}</a>
-                            <responsive-image
-                                :alt="post.title"
-                                :ratio-x="826"
-                                :ratio-y="551"
-                                :src="post.images[0].path"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <v-runtime-template 
+            :template="wrapWithDiv(page.body_prefix)"
+            v-if="'body_prefix' in page && typeof page.body_prefix === 'string'" 
+        />
+
+        <div class="d-flex flex-column">
+
+            <div 
+                class="
+                    my-4
+                    order-2
+                    order-lg-1
+                "
+                v-html="page.body"
+                v-if="
+                    'body' in page 
+                    && 'string' === typeof page.body
+                "
+            />
+
+            <posts-gallery
+                :page="page"
+                class="
+                    my-4
+                    order-1
+                    order-lg-2
+                "
+                v-if="page.posts"
+            />
         </div>
-        <v-runtime-template v-if="'body_suffix' in page && typeof page.body_suffix === 'string'" :template="wrapWithDiv(page.body_suffix)"/>
+
+        <v-runtime-template 
+            :template="wrapWithDiv(page.body_suffix)"
+            v-if="'body_suffix' in page && typeof page.body_suffix === 'string'" 
+        />
     </div>
 </template>
 <script>
     'use strict'
+    import PostsGallery from '~/js/components/PostsGallery'
     import VRuntimeTemplate from 'v-runtime-template'
+
+    import emitLoadEvent from '~/js/functions/emitLoadEvent'
 
     export default {
         components: {
-            VRuntimeTemplate
+            PostsGallery,
+            VRuntimeTemplate,
         },
         model: {
             prop: 'page',
@@ -67,6 +85,8 @@
         data() {
             return {
                 showPagination: true,
+                xRatio: 826,
+                yRatio: 551,
             }
         },
         computed: {
@@ -77,18 +97,11 @@
                             && this.page.category.name 
                             || ''
             },
-            pagePosts() {
-                return this.page.posts.sort(
-                    (a, b) => a.order < b.order ? -1 : a.order > b.order ? 1 : 0
-                )
-            }
         },
         methods: {
+            emitLoadEvent,
             startCase(name) {
                 return _.startCase(name)
-            },
-            emitLoadEvent(path) {
-                this.$store.dispatch('load', path)
             },
             wrapWithDiv(html) {
                 return '<div>' + html + '</div>'

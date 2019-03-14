@@ -1,9 +1,3 @@
-<style>
-    .TestimonialThumbnail {
-        width: 100%;
-        border: 1rem solid #f5f5f5;
-    }
-</style>
 <template>
     <div class="container">
         <h1 v-if="page.name" v-html="page.name"/>
@@ -14,7 +8,7 @@
                         <img 
                             :alt="t.title"
                             :src="t.images[0].path"
-                            class="TestimonialThumbnail"
+                            class="Frame w-100"
                         >
                         <!-- <responsive-image :src="t.images[0].path" :alt="t.title" :ratio-x="4" :ratio-y="3"></responsive-image> -->
                     </div>

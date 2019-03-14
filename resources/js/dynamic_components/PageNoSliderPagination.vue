@@ -3,49 +3,58 @@
         <h1 v-if="page.name">{{ page.name }}</h1>
         <h1 v-else-if="page.hasOwnProperty('category') && page.title">{{ page.title }}</h1>
         <div v-if="page.images && page.images.length">
-            <carousel class="my-4"
-                      v-if="page.images.length > 1"
-                     :images="page.images"
-                     :ratio-x="826"
-                     :ratio-y="551"
-                     :show-pagination="false"
-            >
-            </carousel>
-            <responsive-image v-else :src="page.images[0].path" :alt="page.name || page.title || false" :ratio-x="826" :ratio-y="551"></responsive-image>
+            <carousel
+                :images="page.images"
+                :ratio-x="xRatio"
+                :ratio-y="yRatio"
+                :show-pagination="showPagination"
+                class="my-4"
+                v-if="page.images.length > 1"
+            />
+            <responsive-image
+                :alt="page.name || page.title || false"
+                :ratio-x="xRatio"
+                :ratio-y="yRatio"
+                :src="page.images[0].path"
+                v-else
+            />
         </div>
-        
+
         <div class="my-4" v-if="'body' in page && typeof page.body === 'string'" v-html="page.body"/>
 
-        <div class="ImageTabs my-4" v-if="page.posts && page.posts.length">
-            <div class="container">
-                <div class="row">
-                    <div class="d-flex align-content-stretch flex-wrap col-12 col-lg-4" role="button" v-for="post in page.posts" :key="post.id" @click.prevent="emitLoadEvent(`/${page.slug}/${post.slug}`)">
-                        <a class="ImageTabs--header" :href="`/${page.slug}/${post.slug}`" @click.prevent="emitLoadEvent(`/${page.slug}/${post.slug}`)">{{ post.title }}</a>
-                        <responsive-image :src="post.images[0].path" :alt="post.title" :ratio-x="4" :ratio-y="3"></responsive-image>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <posts-gallery
+            :page="page"
+            class="
+                my-4
+            "
+            v-if="page.posts"
+        />
     </div>
 </template>
 <script>
     'use strict'
+    import emitLoadEvent from '~/js/functions/emitLoadEvent'
 
     export default {
         model: {
             prop: 'page',
             event: 'change'
         },
+        data() {
+            return {
+                showPagination: false,
+                xRatio: 826,
+                yRatio: 551,
+            }
+        },
         props: {
             page: Object
         },
         methods: {
+            emitLoadEvent,
             startCase(name) {
                 return _.startCase(name)
             },
-            emitLoadEvent(path) {
-                this.$store.dispatch('load', path)
-            }
         }
     }
 </script>
