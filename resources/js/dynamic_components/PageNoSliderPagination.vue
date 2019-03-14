@@ -33,9 +33,13 @@
 </template>
 <script>
     'use strict'
+    import PostsGallery from '~/js/components/PostsGallery'
     import emitLoadEvent from '~/js/functions/emitLoadEvent'
 
     export default {
+        components: {
+            PostsGallery,
+        },
         model: {
             prop: 'page',
             event: 'change'

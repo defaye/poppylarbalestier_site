@@ -2,26 +2,28 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 
 import {
     faCircle,
-    faSpinner,
+    faEnvelope,
+    faEnvelopeSquare,
     faEye,
+    faMailbox,
+    faPenSquare,
     faPhone,
     faPhoneSquare,
-    faEnvelope,
-    faMailbox,
-    faEnvelopeSquare,
-    faPenSquare,
+    faSpinner,
+    faSquare,
 } from '@fortawesome/pro-solid-svg-icons'
 
 library.add(
     faCircle,
-    faSpinner,
+    faEnvelope,
+    faEnvelopeSquare,
     faEye,
+    faMailbox,
+    faPenSquare,
     faPhone,
     faPhoneSquare,
-    faEnvelope,
-    faMailbox,
-    faEnvelopeSquare,
-    faPenSquare,
+    faSpinner,
+    faSquare,
 )
 
 import {

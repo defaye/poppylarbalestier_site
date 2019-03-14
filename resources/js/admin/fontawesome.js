@@ -12,6 +12,7 @@ import {
 	faNewspaper,
 	faPlusOctagon,
 	faPowerOff,
+	faSquare,
 	faTimesSquare,
 	faUserCircle,
 } from '@fortawesome/pro-light-svg-icons'
@@ -28,6 +29,7 @@ library.add(
 	faNewspaper,
 	faPlusOctagon,
 	faPowerOff,
+	faSquare,
 	faTimesSquare,
 	faUserCircle,
 )

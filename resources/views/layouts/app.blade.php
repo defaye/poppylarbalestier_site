@@ -29,8 +29,31 @@
                                 </div>
                             </div>
                             <div class="d-none d-lg-flex col-lg-2 col-xl-3 align-items-center" style="font-size: 2rem;">
-                                <a class="ml-auto" href="https://www.facebook.com/pages/***REMOVED***-***REMOVED***-***REMOVED***/261844107286000" target="_blank">
-                                    <font-awesome-icon class="icon-link" :icon="['fab', 'facebook-square']" size="lg"></font-awesome-icon>
+                                <a class="ml-auto" href="https://www.instagram.com/***REMOVED***" target="_blank">
+                                    <font-awesome-layers class="icon-link fa-2x">
+                                        <font-awesome-icon icon="square"></font-awesome-icon>
+                                        <font-awesome-icon 
+                                            :icon="[
+                                                'fab',
+                                                'instagram',
+                                            ]" 
+                                            :style="{ color: 'white' }"
+                                            transform="shrink-6" 
+                                        ></font-awesome-icon>
+                                    </font-awesome-layers>
+                                </a>
+                                <a class="ml-3" href="https://www.facebook.com/***REMOVED******REMOVED******REMOVED***" target="_blank">
+                                    <font-awesome-layers class="icon-link fa-2x">
+                                        <font-awesome-icon icon="square"></font-awesome-icon>
+                                        <font-awesome-icon 
+                                            :icon="[
+                                                'fab',
+                                                'facebook-f',
+                                            ]" 
+                                            :style="{ color: 'white' }"
+                                            transform="shrink-6" 
+                                        ></font-awesome-icon>
+                                    </font-awesome-layers>
                                 </a>
                             </div>
                         </div>
