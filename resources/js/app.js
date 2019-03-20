@@ -40,8 +40,8 @@ storeConfiguration.actions = {
         axios.post('/api/router', {
             path
         }).then(response => {
-            let title = response.data.hasOwnProperty('title') ? response.data.title + ' — ***REMOVED*** ***REMOVED***' : (
-                response.data.hasOwnProperty('name') ? response.data.name + ' — ***REMOVED*** ***REMOVED***' : '***REMOVED*** ***REMOVED***'
+            let title = response.data.hasOwnProperty('title') ? response.data.title + ' — Poppy Larbalestier Photography' : (
+                response.data.hasOwnProperty('name') ? response.data.name + ' — Poppy Larbalestier Photography' : 'Poppy Larbalestier Photography'
             )
             window.history.pushState(Object.assign({}, response.data), title, path)
             document.title = title

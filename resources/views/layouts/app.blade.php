@@ -25,33 +25,33 @@
                         <div class="row">
                             <div class="col-12 col-lg-8 col-xl-6 ml-auto">
                                 <div id="site-title" role="button" class="text-center" @click.prevent="$store.dispatch('load', '/')">
-                                    <img src="{{ url('images/***REMOVED***-LOGO.jpg') }}" alt="***REMOVED*** ***REMOVED***">
+                                    <img src="https://via.placeholder.com/754x100/09f/fff.png" alt="Logo">
                                 </div>
                             </div>
                             <div class="d-none d-lg-flex col-lg-2 col-xl-3 align-items-center" style="font-size: 2rem;">
-                                <a class="ml-auto" href="https://www.instagram.com/***REMOVED***" target="_blank">
+                                <a class="ml-auto" href="#" target="_blank">
                                     <font-awesome-layers class="icon-link fa-2x">
                                         <font-awesome-icon icon="square"></font-awesome-icon>
-                                        <font-awesome-icon 
+                                        <font-awesome-icon
                                             :icon="[
                                                 'fab',
                                                 'instagram',
-                                            ]" 
+                                            ]"
                                             :style="{ color: 'white' }"
-                                            transform="shrink-6" 
+                                            transform="shrink-6"
                                         ></font-awesome-icon>
                                     </font-awesome-layers>
                                 </a>
-                                <a class="ml-3" href="https://www.facebook.com/***REMOVED******REMOVED******REMOVED***" target="_blank">
+                                <a class="ml-3" href="#" target="_blank">
                                     <font-awesome-layers class="icon-link fa-2x">
                                         <font-awesome-icon icon="square"></font-awesome-icon>
-                                        <font-awesome-icon 
+                                        <font-awesome-icon
                                             :icon="[
                                                 'fab',
                                                 'facebook-f',
-                                            ]" 
+                                            ]"
                                             :style="{ color: 'white' }"
-                                            transform="shrink-6" 
+                                            transform="shrink-6"
                                         ></font-awesome-icon>
                                     </font-awesome-layers>
                                 </a>
@@ -69,7 +69,7 @@
                     <div class="text-uppercase">
                         <div class="row">
                             <div class="col-12 col-sm-6">
-                                <div class="text-center text-sm-left">&copy; ***REMOVED*** {{ date('Y') }}</div>
+                                <div class="text-center text-sm-left">&copy; Jono de Faye {{ date('Y') }}</div>
                             </div>
                             <div class="col-12 col-sm-6">
                                 <div class="text-center text-sm-right">Website by <a href="https://github.com/defaye" target="_blank">Jono de Faye</a></div>

@@ -44,7 +44,7 @@ class ContactController extends Controller
         //     return response()->json($validator->errors(), 422);
         // }
         error_log(date('Y-m-d H:i') . ': ' . json_encode($request->all()) . PHP_EOL, 3, storage_path('logs/contact.log'));
-        (new User(['name' => '***REMOVED***', 'email' => '***REMOVED***']))->notify(
+        (new User(['name' => config('mail.to.name'), 'email' => config('mail.to.address')]))->notify(
             (
                 new ContactNotification((object) $request->all())
             ) //->delay(now()->addSeconds(10))
