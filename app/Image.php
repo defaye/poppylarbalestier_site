@@ -92,7 +92,7 @@ class Image extends Model
 
     public static function createFromUploadedFile(UploadedFile $file)
     {
-        $reference = Str::replace('-', '', Uuid::uuid4()->toString());
+        $reference = str_replace('-', '', Uuid::uuid4()->toString());
 
         $extension = $file->guessClientExtension() ?: $file->getClientOriginalExtension();
         $filename = $extension ? "$reference.$extension" : $reference;

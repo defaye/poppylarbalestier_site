@@ -68,7 +68,9 @@ class PagesController extends Controller
         $page = Page::with('component', 'images', 'posts.category')->find($page);
 
         return response()->json(
-            $page
+            tap(new PageResource($page), function ($page) {
+                $page->preserveMarkdown();
+            })
         );
     }
 

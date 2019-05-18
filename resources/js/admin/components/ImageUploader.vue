@@ -170,61 +170,61 @@
             },
             handleChange(e) {
                 this.modal('show')
-                Array.prototype.forEach.call(
-                    e.currentTarget.files,
-                    new Promise((resolve, reject) => {
-                        try {
-                            if (/^image\//.test(file.type)) {
-                                this.readFile(file).then(src => {
-                                    resolve(
-                                        this.images.push({
-                                            file,
-                                            src
-                                        })
-                                    )
-                                }).catch(e => {
-                                    reject(e)
-                                })
-                                // this.images.push({
-                                //     file,
-                                //     lastModified: file.lastModified,
-                                //     lastModifiedDate: file.lastModifiedDate,
-                                //     name: file.name,
-                                //     size: file.size,
-                                //     src,
-                                //     type: file.type,
-                                // })
-                            } else {
-                                // console.error('Invalid format', file)
-                            }           
-                        } catch (e) {
-                            reject(e)
-                        }
-                    })
-                )
-                // Array.prototype.forEach.call(e.currentTarget.files, async file => {
-                //     if (/^image\//.test(file.type)) {
-                //         let src = await this.readFile(file)
-                //         this.images.push({
-                //             file,
-                //             src
-                //         })
-                //         // this.images.push({
-                //         //     file,
-                //         //     lastModified: file.lastModified,
-                //         //     lastModifiedDate: file.lastModifiedDate,
-                //         //     name: file.name,
-                //         //     size: file.size,
-                //         //     src,
-                //         //     type: file.type,
-                //         // })
-                //     } else {
-                //         // console.error('Invalid format', file)
-                //     }
-                // })
+                // Array.prototype.forEach.call(
+                //     e.currentTarget.files,
+                //     new Promise((resolve, reject) => {
+                //         try {
+                //             if (/^image\//.test(file.type)) {
+                //                 this.readFile(file).then(src => {
+                //                     resolve(
+                //                         this.images.push({
+                //                             file,
+                //                             src
+                //                         })
+                //                     )
+                //                 }).catch(e => {
+                //                     reject(e)
+                //                 })
+                //                 // this.images.push({
+                //                 //     file,
+                //                 //     lastModified: file.lastModified,
+                //                 //     lastModifiedDate: file.lastModifiedDate,
+                //                 //     name: file.name,
+                //                 //     size: file.size,
+                //                 //     src,
+                //                 //     type: file.type,
+                //                 // })
+                //             } else {
+                //                 // console.error('Invalid format', file)
+                //             }           
+                //         } catch (e) {
+                //             reject(e)
+                //         }
+                //     })
+                // )
+                Array.prototype.forEach.call(e.currentTarget.files, async file => {
+                    if (/^image\//.test(file.type)) {
+                        let src = await this.readFile(file)
+                        this.images.push({
+                            file,
+                            src
+                        })
+                        // this.images.push({
+                        //     file,
+                        //     lastModified: file.lastModified,
+                        //     lastModifiedDate: file.lastModifiedDate,
+                        //     name: file.name,
+                        //     size: file.size,
+                        //     src,
+                        //     type: file.type,
+                        // })
+                    } else {
+                        // console.error('Invalid format', file)
+                    }
+                })
             },
             upload() {
-                this.processWhilstNotProcessing(
+                this.processIfNotProcessing(
                     (() => {
                             const formData = new FormData()
                             this.images.forEach(image => {

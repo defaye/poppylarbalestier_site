@@ -36,8 +36,16 @@ mix
 		'vuex'
    	])
    .sass('resources/sass/app.scss', 'public/css')
-   .version();
+   .copyDirectory('resources/images', 'public/images');
+
+if (mix.inProduction) {
+   mix.version();
+}
 
 mix.js('resources/js/admin.js', 'public/js')
-   .sass('resources/sass/admin.scss', 'public/css')
-   .version();
+   .sass('resources/sass/admin.scss', 'public/css');
+
+
+if (mix.inProduction) {
+   mix.version();
+}

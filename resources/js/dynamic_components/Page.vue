@@ -1,6 +1,6 @@
 <template>
     <div v-if="page" class="container">
-        <h1 v-html="pageHeader"/>
+        <h1 v-html="pageHeader" v-if="pageHeader.toLowerCase().trim() !== 'home'"/>
 
         <div v-if="'images' in page && page.images.length">
             <carousel class="my-4"

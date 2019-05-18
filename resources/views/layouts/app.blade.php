@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col-12 col-lg-8 col-xl-6 ml-auto">
                                 <div id="site-title" role="button" class="text-center" @click.prevent="$store.dispatch('load', '/')">
-                                    <img src="https://via.placeholder.com/754x100/09f/fff.png" alt="Logo">
+                                    <img src="/images/logo.jpg" alt="Logo">
                                 </div>
                             </div>
                             <div class="d-none d-lg-flex col-lg-2 col-xl-3 align-items-center" style="font-size: 2rem;">
@@ -69,7 +69,7 @@
                     <div class="text-uppercase">
                         <div class="row">
                             <div class="col-12 col-sm-6">
-                                <div class="text-center text-sm-left">&copy; Jono de Faye {{ date('Y') }}</div>
+                                <div class="text-center text-sm-left">&copy; {{ config('app.name') }} {{ date('Y') }}</div>
                             </div>
                             <div class="col-12 col-sm-6">
                                 <div class="text-center text-sm-right">Website by <a href="https://github.com/defaye" target="_blank">Jono de Faye</a></div>

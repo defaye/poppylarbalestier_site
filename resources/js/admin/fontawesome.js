@@ -1,5 +1,11 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 
+import { faLightbulb as solidLightbulb } from '@fortawesome/free-solid-svg-icons'
+
+library.add(
+	solidLightbulb
+)
+
 import {
 	faAnchor,
 	faChevronDoubleLeft,

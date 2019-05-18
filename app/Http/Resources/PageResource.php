@@ -10,6 +10,17 @@ use Illuminate\Http\Resources\Json\Resource;
 
 class PageResource extends Resource
 {
+
+    protected $preserveMarkdown = false;
+
+    /**
+     * This is useful when used on the admin-side.
+     */
+    public function preserveMarkdown($bool = true)
+    {
+        $this->preserveMarkdown = $bool;
+    }
+
     /**
      * Transform the resource into an array.
      *
@@ -22,9 +33,9 @@ class PageResource extends Resource
             'id' => $this->id,
             'title' => $this->title,
             'name' => $this->name,
-            'body' => with(new \Parsedown())->text($this->body),
-            'body_prefix' => $this->body_prefix,
-            'body_suffix' => $this->body_suffix,
+            'body' => $this->preserveMarkdown ? $this->body : with(new \Parsedown())->text($this->body),
+            'body_prefix' => !empty($this->body_prefix) ? $this->body_prefix : '',
+            'body_suffix' => !empty($this->body_suffix) ? $this->body_suffix : '',
             'images' => ImageResource::collection($this->whenLoaded('images')),
             'navigation' => new NavigationResource($this->whenLoaded('navigation')),
             'posts' => PostResource::collection($this->whenLoaded('posts')),
