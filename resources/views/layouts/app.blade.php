@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                             <div class="d-none d-lg-flex col-lg-2 col-xl-3 align-items-center" style="font-size: 2rem;">
-                                <a class="ml-auto" href="#" target="_blank">
+                                <a class="ml-auto" href="{{ config('social.instagram_url') }}" target="_blank">
                                     <font-awesome-layers class="icon-link fa-2x">
                                         <font-awesome-icon icon="square"></font-awesome-icon>
                                         <font-awesome-icon
@@ -42,7 +42,7 @@
                                         ></font-awesome-icon>
                                     </font-awesome-layers>
                                 </a>
-                                <a class="ml-3" href="#" target="_blank">
+                                <a class="ml-3" href="{{ config('social.facebook_url') }}" target="_blank">
                                     <font-awesome-layers class="icon-link fa-2x">
                                         <font-awesome-icon icon="square"></font-awesome-icon>
                                         <font-awesome-icon
