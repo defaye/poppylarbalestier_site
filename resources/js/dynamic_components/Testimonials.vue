@@ -41,7 +41,7 @@
 </template>
 <script>
     'use strict'
-    import BButton from 'bootstrap-vue/es/components/button/button'
+    import { BButton } from 'bootstrap-vue'
 
     import processIfNotProcessing from '~/js/functions/processIfNotProcessing'
     import processing from '~/js/computed/processing'

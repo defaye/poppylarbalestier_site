@@ -79,11 +79,13 @@
 </template>
 <script>
     'use strict'
-    import bButton from 'bootstrap-vue/es/components/button/button'
-    import bFormCheckbox from 'bootstrap-vue/es/components/form-checkbox/form-checkbox'
-    import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group'
-    import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
-    import bFormInvalidFeedback from 'bootstrap-vue/es/components/form/form-invalid-feedback'
+    import {
+        BButton,
+        BFormCheckbox,
+        BFormGroup,
+        BFormInput,
+        BFormInvalidFeedback,
+    } from 'bootstrap-vue'
     import ErrorsAndProcessing from '~/js/mixins/ErrorsAndProcessing'
 
     export default {
@@ -91,11 +93,11 @@
             ErrorsAndProcessing
         ],
         components: {
-            bButton,
-            bFormCheckbox,
-            bFormGroup,
-            bFormInput,
-            bFormInvalidFeedback
+            BButton,
+            BFormCheckbox,
+            BFormGroup,
+            BFormInput,
+            BFormInvalidFeedback
         },
         data() {
             return {

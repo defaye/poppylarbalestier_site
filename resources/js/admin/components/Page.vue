@@ -202,12 +202,14 @@
     import ErrorsAndProcessing from '~/js/mixins/ErrorsAndProcessing'
     import ProcessIfNotProcessing from '~/js/mixins/ProcessIfNotProcessing'
 
-    // import bButton from 'bootstrap-vue/es/components/button/button'
-    // import bFormCheckbox from 'bootstrap-vue/es/components/form-checkbox/form-checkbox'
-    import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group'
-    import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
-    import bFormInvalidFeedback from 'bootstrap-vue/es/components/form/form-invalid-feedback'
-    import bFormTextarea from 'bootstrap-vue/es/components/form-textarea/form-textarea'
+    import {
+        // BButton,
+        // BFormCheckbox,
+        BFormGroup,
+        BFormInput,
+        BFormInvalidFeedback,
+        BFormTextarea,
+    } from 'bootstrap-vue'
 
     import 'prismjs'
     import 'prismjs/themes/prism.css'
@@ -216,12 +218,12 @@
 
     export default {
         components: {
-            // bButton,
-            // bFormCheckbox,
-            bFormGroup,
-            bFormInput,
-            bFormInvalidFeedback,
-            bFormTextarea,
+            // BButton,
+            // BFormCheckbox,
+            BFormGroup,
+            BFormInput,
+            BFormInvalidFeedback,
+            BFormTextarea,
             draggable,
             PrismEditor,
         },

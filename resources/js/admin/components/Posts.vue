@@ -43,13 +43,13 @@
             sortable
             stacked="lg"
         >
-            <template slot="title" slot-scope="data">
+            <template v-slot:cell(title)="data">
                 <a :href="'/admin/posts/' + data.item.id">{{ data.value }}</a>
             </template>
-            <template slot="category" slot-scope="data">
+            <template v-slot:cell(category)="data">
                 <a :href="'/admin/categories/' + data.value.id">{{ data.value.name }}</a>
             </template>
-            <template slot="published" slot-scope="data">
+            <template v-slot:cell(published)="data">
                 <span
                     role="button"
                     @click="togglePublished(data.item)"
@@ -64,16 +64,13 @@
                     />
                 </span>  
             </template>
-            <template 
-                slot="delete" 
-                slot-scope="data"
-            >
+            <template v-slot:cell(delete)="data">
                 <font-awesome-icon
                     :icon="[
                         'fal',
                         'times-square'
                     ]"
-                    @click="setPageForDestroy(data.item)"
+                    @click="setPostForDestroy(data.item)"
                     class="fa-2x text-danger"
                     title="Delete"
                 />
@@ -107,9 +104,12 @@
     /**
      * Import third-party plugins
      */
-    import bButton from 'bootstrap-vue/es/components/button/button'
-    import bPagination from 'bootstrap-vue/es/components/pagination/pagination'
-    import bTable from 'bootstrap-vue/es/components/table/table'
+    import {
+        BButton,
+        BPagination,
+        BTable,
+    } from 'bootstrap-vue'
+
     // import draggable from 'vuedraggable'
     import moment from 'moment'
 
@@ -124,9 +124,9 @@
         components: {
             confirmationModal,
             // draggable,
-            bButton,
-            bPagination,
-            bTable,
+            BButton,
+            BPagination,
+            BTable,
         },
         mixins: [
             ErrorsAndProcessing,
@@ -158,11 +158,20 @@
                 })
             )
         },
+        computed: {
+            window() {
+                return window
+            }
+        },
         methods: {
             moment,
             setPosts(post) {
                 this.posts = Object.assign([], post)
                 this.editablePosts = Object.assign([], post)
+            },
+            setPostForDestroy(post) {
+                this.postStagedForDestroy = post
+                this.showPostStagedForDestroyConfirmationModal = true
             },
             togglePublished(post) {
                 this.processIfNotProcessing(

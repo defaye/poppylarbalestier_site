@@ -122,19 +122,21 @@
 	import ErrorsAndProcessing from '~/js/mixins/ErrorsAndProcessing'
 	import ProcessIfNotProcessing from '~/js/mixins/ProcessIfNotProcessing'
 
-    import bButton from 'bootstrap-vue/es/components/button/button'
-    import bFormGroup from 'bootstrap-vue/es/components/form-group/form-group'
-    import bFormInput from 'bootstrap-vue/es/components/form-input/form-input'
-    // import bFormInvalidFeedback from 'bootstrap-vue/es/components/form/form-invalid-feedback'
-    // import bFormTextarea from 'bootstrap-vue/es/components/form-textarea/form-textarea'
+	import {
+    	BButton,
+    	BFormGroup,
+    	BFormInput,
+    	// BFormInvalidFeedback,
+    	// BFormTextarea,
+    } from 'bootstrap-vue'
 
     export default {
         components: {
-            bButton,
-            bFormGroup,
-            bFormInput,
-            // bFormInvalidFeedback,
-            // bFormTextarea,
+            BButton,
+            BFormGroup,
+            BFormInput,
+            // BFormInvalidFeedback,
+            // BFormTextarea,
         },
 		mixins: [
 			ErrorsAndProcessing,

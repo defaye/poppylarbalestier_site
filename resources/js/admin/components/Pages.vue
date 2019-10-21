@@ -44,13 +44,13 @@
             sortable
             stacked="lg"
         >
-            <template slot="title" slot-scope="data">
+            <template v-slot:cell(title)="data">
                 <a :href="'/admin/pages/' + data.item.id">{{ data.value }}</a>
             </template>
-            <template slot="component" slot-scope="data">
+            <template v-slot:cell(component)="data">
                 <a :href="'/admin/components/' + data.value.id">{{ data.value.name }}</a>
             </template>
-            <template slot="published" slot-scope="data">
+            <template v-slot:cell(published)="data">
                 <span
                     role="button"
                     @click="togglePublished(data.item)"
@@ -65,10 +65,7 @@
                     />
                 </span>  
             </template>
-            <template 
-                slot="delete" 
-                slot-scope="data"
-            >
+            <template v-slot:cell(delete)="data">
                 <font-awesome-icon
                     :icon="[
                         'fal',
@@ -108,9 +105,12 @@
     /**
      * Import third-party plugins
      */
-    import bButton from 'bootstrap-vue/es/components/button/button'
-    import bPagination from 'bootstrap-vue/es/components/pagination/pagination'
-    import bTable from 'bootstrap-vue/es/components/table/table'
+    import {
+        BButton,
+        BPagination,
+        BTable,
+    } from 'bootstrap-vue'
+
     // import draggable from 'vuedraggable'
     import moment from 'moment'
 
@@ -125,9 +125,9 @@
         components: {
             confirmationModal,
             // draggable,
-            bButton,
-            bPagination,
-            bTable,
+            BButton,
+            BPagination,
+            BTable,
         },
         mixins: [
             ErrorsAndProcessing,
