@@ -1,7 +1,7 @@
 <template>
 	<b-modal  
 	    :ok-variant="variant"
-	    :visible="visible"
+	    v-model="visible"
 	    @change="$emit('change', $event)" 
 	    @ok="$emit('confirmed')"
 	    ok-title="Confirm" 
