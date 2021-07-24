@@ -12,7 +12,7 @@
                     </tr>
                 </thead>
                 <draggable v-model="editablePosts" element="tbody" @change="onDragChange">
-                    <tr v-for="post in editablePosts">
+                    <tr v-for="post in editablePosts" :key="post.id">
                         <td><a :href="`/admin/posts/${post.id}`" target="_blank">{{ post.id }}</a></td>
                         <td>{{ post.title }}</td>
                         <td>{{ post.category.name }}</td>
@@ -70,7 +70,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="post in results">
+                    <tr v-for="post in results" :key="post.id">
                         <td><a :href="`/admin/posts/${post.id}`" target="_blank">{{ post.id }}</a></td>
                         <td>{{ post.title }}</td>
                         <td>{{ post.category.name }}</td>
