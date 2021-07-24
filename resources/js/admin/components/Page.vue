@@ -83,8 +83,8 @@
                         v-autosize
                         :required="true"
                         tabindex="1"
-                    > -->
-                    </b-form-textarea>
+                    >
+                    </b-form-textarea> -->
                     <small class="form-text">This section is intended for structured data (written in HTML).</small>
                     <b-form-invalid-feedback v-if="errors.has('body_prefix')">
                         {{ errors.get('body_prefix').join(' ').trim() }}
@@ -135,8 +135,8 @@
                         v-autosize
                         :required="true"
                         tabindex="1"
-                    > -->
-                    </b-form-textarea>
+                    >
+                    </b-form-textarea> -->
                     <small class="form-text">This section is intended for structured data (written in HTML).</small>
                     <b-form-invalid-feedback v-if="errors.has('body_suffix')">
                         {{ errors.get('body_suffix').join(' ').trim() }}
@@ -151,7 +151,7 @@
                 <div class="form-group">
                     <label for="component">Component</label>
                     <select name="component" id="component" v-model="page.component_id" class="form-control" :disabled="processing">
-                        <option v-for="component in components" :value="component.id">{{ component.name }}</option>
+                        <option v-for="component in components" :key="component.id" :value="component.id">{{ component.name }}</option>
                     </select>
                 </div>
             </div>
@@ -161,7 +161,7 @@
                     <image-uploader :multiple="true" @change="assignImages(page, $event)" :url="`/api/admin/pages/${page.id}/images`" class="form-group"></image-uploader>
                     <div v-if="page.hasOwnProperty('images') && page.images.length" class="form-group">
                         <draggable v-model="page.images" class="row" element="div">
-                            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-1" v-for="(image, index) in page.images">
+                            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-1" v-for="(image, index) in page.images" :key="image.id">
                                 <div class="card">
                                     <div class="card-header">
                                         <span>Delete</span>
@@ -194,139 +194,144 @@
     </div>
 </template>
 <script>
-    'use strict'
-    import draggable from 'vuedraggable'
-    import ManageImages from '~/js/admin/mixins/ManageImages.js'
-    import Tabs from '~/js/admin/mixins/Tabs.js'
+"use strict";
+import draggable from "vuedraggable";
+import ManageImages from "~/js/admin/mixins/ManageImages.js";
+import Tabs from "~/js/admin/mixins/Tabs.js";
 
-    import ErrorsAndProcessing from '~/js/mixins/ErrorsAndProcessing'
-    import ProcessIfNotProcessing from '~/js/mixins/ProcessIfNotProcessing'
+import ErrorsAndProcessing from "~/js/mixins/ErrorsAndProcessing";
+import ProcessIfNotProcessing from "~/js/mixins/ProcessIfNotProcessing";
 
-    import {
-        // BButton,
-        // BFormCheckbox,
-        BFormGroup,
-        BFormInput,
-        BFormInvalidFeedback,
-        BFormTextarea,
-    } from 'bootstrap-vue'
+import {
+  // BButton,
+  // BFormCheckbox,
+  BFormGroup,
+  BFormInput,
+  BFormInvalidFeedback,
+  BFormTextarea,
+} from "bootstrap-vue";
 
-    import 'prismjs'
-    import 'prismjs/themes/prism.css'
-    import PrismEditor from 'vue-prism-editor'
-    import 'vue-prism-editor/dist/VuePrismEditor.css'
+import "prismjs";
+import "prismjs/themes/prism.css";
+import PrismEditor from "vue-prism-editor";
+import "vue-prism-editor/dist/VuePrismEditor.css";
 
-    export default {
-        components: {
-            // BButton,
-            // BFormCheckbox,
-            BFormGroup,
-            BFormInput,
-            BFormInvalidFeedback,
-            BFormTextarea,
-            draggable,
-            PrismEditor,
-        },
-        mixins: [
-            ErrorsAndProcessing,
-            ManageImages,
-            ProcessIfNotProcessing,
-            Tabs
-        ],
-        data() {
-            return {
-                page: {
-                    title: undefined,
-                    name: undefined,
-                    body_prefix: undefined,
-                    body: undefined,
-                    body_suffix: undefined,
-                    published: undefined,
-                    component_id: undefined,
-                    images: [],
-                    posts: []
-                },
-                components: []
-            }
-        },
-        mounted() {
-            window.onpopstate = event => {
-                document.title = event.state.title
-                this.page = event.state
-            }
-        },
-        beforeMount() {
-            axios.get('/api/admin/components').then(response => {
-                if (response.data.length) {
-                    this.components = response.data
-                    this.page.component_id = this.components[0].id
-                } else {
-                    this.errors = { message: 'You need to create a component template before you create a page.' }
-                }
-            }).catch(e => {
-                console.error(e)
-                this.errors = e.response.data
-            }).finally(() => {
-                const url = new URL(window.location.href)
-                const regex = /^\/admin\/pages\/(\d+)$/
-                if (regex.test(url.pathname)) {
-                    const matches = regex.exec(url.pathname)
-                    this.retrievePage(matches[1])
-                } else {
-                    this.retrievePage()
-                }
-            })
-        },
-        methods: {
-            retrievePage(id) {
-                if (id) {
-                    this.processIfNotProcessing(
-                        axios.get(`/api/admin/pages/${id}`).then(response => {
-                            console.log(response.data)
-                            this.page = response.data
-                            
-                        }).catch(e => {
-                            console.error(e)
-                            this.errors = e.response.data
-                        })
-                    )
-                }
-            },
-            submit() {
-                const isUpdateMode = 'number' === typeof this.page.id
-                this.processIfNotProcessing(
-                    axios({
-                        data: this.page,
-                        method: isUpdateMode ? 'PATCH' : 'POST',
-                        url: '/api/admin/pages' + (isUpdateMode ? ('/' + this.page.id) : ''),
-                    }).then(response => {
-                        this.$store.state.notifications = [{
-                            type: 'success',
-                            message: 'Page ' + (isUpdateMode ? 'updated' : 'created'),
-                        }]
-                        if (isUpdateMode) {
-                            // this.page = response.data
-                        } else {
-                            this.page = response.data
-                            window.history.pushState(
-                                Object.assign(
-                                    {}, 
-                                    response.data
-                                ), 
-                                'Edit page', 
-                                `/admin/pages/${response.data.id}`
-                            )
-                        }
-                        this.errors.clear()
-                    }).catch(e => {
-                        console.error(e)
-                        this.errors = e.response.data
-                    })
-                )
-            },
-            download(image) {
-                window.open(image.path, '_blank')
-            }
+export default {
+  components: {
+    // BButton,
+    // BFormCheckbox,
+    BFormGroup,
+    BFormInput,
+    BFormInvalidFeedback,
+    BFormTextarea,
+    draggable,
+    PrismEditor,
+  },
+  mixins: [ErrorsAndProcessing, ManageImages, ProcessIfNotProcessing, Tabs],
+  data() {
+    return {
+      page: {
+        title: undefined,
+        name: undefined,
+        body_prefix: undefined,
+        body: undefined,
+        body_suffix: undefined,
+        published: undefined,
+        component_id: undefined,
+        images: [],
+        posts: [],
+      },
+      components: [],
+    };
+  },
+  mounted() {
+    window.onpopstate = (event) => {
+      document.title = event.state.title;
+      this.page = event.state;
+    };
+  },
+  beforeMount() {
+    axios
+      .get("/api/admin/components")
+      .then((response) => {
+        if (response.data.length) {
+          this.components = response.data;
+          this.page.component_id = this.components[0].id;
+        } else {
+          this.errors = {
+            message:
+              "You need to create a component template before you create a page.",
+          };
         }
-    }
+      })
+      .catch((e) => {
+        console.error(e);
+        this.errors = e.response.data;
+      })
+      .finally(() => {
+        const url = new URL(window.location.href);
+        const regex = /^\/admin\/pages\/(\d+)$/;
+        if (regex.test(url.pathname)) {
+          const matches = regex.exec(url.pathname);
+          this.retrievePage(matches[1]);
+        } else {
+          this.retrievePage();
+        }
+      });
+  },
+  methods: {
+    retrievePage(id) {
+      if (id) {
+        this.processIfNotProcessing(
+          axios
+            .get(`/api/admin/pages/${id}`)
+            .then((response) => {
+              console.log(response.data);
+              this.page = response.data;
+            })
+            .catch((e) => {
+              console.error(e);
+              this.errors = e.response.data;
+            })
+        );
+      }
+    },
+    submit() {
+      const isUpdateMode = "number" === typeof this.page.id;
+      this.processIfNotProcessing(
+        axios({
+          data: this.page,
+          method: isUpdateMode ? "PATCH" : "POST",
+          url: "/api/admin/pages" + (isUpdateMode ? "/" + this.page.id : ""),
+        })
+          .then((response) => {
+            this.$store.state.notifications = [
+              {
+                type: "success",
+                message: "Page " + (isUpdateMode ? "updated" : "created"),
+              },
+            ];
+            if (isUpdateMode) {
+              // this.page = response.data
+            } else {
+              this.page = response.data;
+              window.history.pushState(
+                Object.assign({}, response.data),
+                "Edit page",
+                `/admin/pages/${response.data.id}`
+              );
+            }
+            this.errors.clear();
+          })
+          .catch((e) => {
+            console.error(e);
+            this.errors = e.response.data;
+          })
+      );
+    },
+    download(image) {
+      window.open(image.path, "_blank");
+    },
+  },
+};
 </script>

@@ -19,7 +19,7 @@
             showPagination: Boolean
         },
         watch: {
-            images(images) {
+            images() {
                 this.reconfigure()
             }
         },
