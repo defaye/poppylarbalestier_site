@@ -3,7 +3,7 @@
 use App\Component;
 use Illuminate\Database\Seeder;
 
-class ComponentsTableSeeder extends Seeder
+class ComponentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
