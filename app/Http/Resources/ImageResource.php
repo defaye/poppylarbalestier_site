@@ -4,9 +4,9 @@ namespace App\Http\Resources;
 
 use App\Http\Resources\PageResource;
 use App\Http\Resources\PostResource;
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class ImageResource extends Resource
+class ImageResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

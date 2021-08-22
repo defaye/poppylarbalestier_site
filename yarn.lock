@@ -890,9 +890,9 @@
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.35.tgz#01dd3d054da07a00b764d78748df20daf2b317e9"
   integrity sha512-IHUfxSEDS9dDGqYwIW7wTN6tn/O8E0n5PcAHz9cAaBoZw6UpG20IG/YM3NNLaGPwPqgjBAFjIURzqoQs3rrtuw==
 
-"@fortawesome/fontawesome-pro@file:../../.fontawesome/fortawesome-fontawesome-pro-5.15.3.tgz":
+"@fortawesome/fontawesome-pro@file:fontawesome_icons/fortawesome-fontawesome-pro-5.15.3.tgz":
   version "5.15.3"
-  resolved "file:../../.fontawesome/fortawesome-fontawesome-pro-5.15.3.tgz#e669b6c34017022c531cb07e57638f7154308d51"
+  resolved "file:fontawesome_icons/fortawesome-fontawesome-pro-5.15.3.tgz#e669b6c34017022c531cb07e57638f7154308d51"
 
 "@fortawesome/fontawesome-svg-core@^1.2.15":
   version "1.2.35"
@@ -915,27 +915,27 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.35"
 
-"@fortawesome/pro-duotone-svg-icons@file:../../.fontawesome/fortawesome-pro-duotone-svg-icons-5.15.3.tgz":
+"@fortawesome/pro-duotone-svg-icons@file:fontawesome_icons/fortawesome-pro-duotone-svg-icons-5.15.3.tgz":
   version "5.15.3"
-  resolved "file:../../.fontawesome/fortawesome-pro-duotone-svg-icons-5.15.3.tgz#a097667e8538c7d8e62789b38ae2ba1d256e3028"
+  resolved "file:fontawesome_icons/fortawesome-pro-duotone-svg-icons-5.15.3.tgz#a097667e8538c7d8e62789b38ae2ba1d256e3028"
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.35"
 
-"@fortawesome/pro-light-svg-icons@file:../../.fontawesome/fortawesome-pro-light-svg-icons-5.15.3.tgz":
+"@fortawesome/pro-light-svg-icons@file:fontawesome_icons/fortawesome-pro-light-svg-icons-5.15.3.tgz":
   version "5.15.3"
-  resolved "file:../../.fontawesome/fortawesome-pro-light-svg-icons-5.15.3.tgz#b89cb4ece8c2709ac38bd63cd9edcd9d9a4ada21"
+  resolved "file:fontawesome_icons/fortawesome-pro-light-svg-icons-5.15.3.tgz#b89cb4ece8c2709ac38bd63cd9edcd9d9a4ada21"
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.35"
 
-"@fortawesome/pro-regular-svg-icons@file:../../.fontawesome/fortawesome-pro-regular-svg-icons-5.15.3.tgz":
+"@fortawesome/pro-regular-svg-icons@file:fontawesome_icons/fortawesome-pro-regular-svg-icons-5.15.3.tgz":
   version "5.15.3"
-  resolved "file:../../.fontawesome/fortawesome-pro-regular-svg-icons-5.15.3.tgz#e812fd5a77af5a439ed10b130de6000e221fb1ad"
+  resolved "file:fontawesome_icons/fortawesome-pro-regular-svg-icons-5.15.3.tgz#e812fd5a77af5a439ed10b130de6000e221fb1ad"
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.35"
 
-"@fortawesome/pro-solid-svg-icons@file:../../.fontawesome/fortawesome-pro-solid-svg-icons-5.15.3.tgz":
+"@fortawesome/pro-solid-svg-icons@file:fontawesome_icons/fortawesome-pro-solid-svg-icons-5.15.3.tgz":
   version "5.15.3"
-  resolved "file:../../.fontawesome/fortawesome-pro-solid-svg-icons-5.15.3.tgz#9656c04a4695cac05a29441007318f8e99cca725"
+  resolved "file:fontawesome_icons/fortawesome-pro-solid-svg-icons-5.15.3.tgz#9656c04a4695cac05a29441007318f8e99cca725"
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.35"
 
@@ -1423,12 +1423,12 @@ autosize@^4.0.0:
   resolved "https://registry.yarnpkg.com/autosize/-/autosize-4.0.4.tgz#924f13853a466b633b9309330833936d8bccce03"
   integrity sha512-5yxLQ22O0fCRGoxGfeLSNt3J8LB1v+umtpMnPW6XjkTWXKoN0AmXAIhelJcDtFT/Y/wYWmfE+oqU10Q0b8FhaQ==
 
-axios@^0.19:
-  version "0.19.2"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.2.tgz#3ea36c5d8818d0d5f8a8a97a6d36b86cdc00cb27"
-  integrity sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
+axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
   dependencies:
-    follow-redirects "1.5.10"
+    follow-redirects "^1.10.0"
 
 babel-code-frame@^6.26.0:
   version "6.26.0"
@@ -2577,13 +2577,6 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3:
   dependencies:
     ms "2.0.0"
 
-debug@=3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
-  integrity sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
-  dependencies:
-    ms "2.0.0"
-
 debug@^3.1.1, debug@^3.2.6:
   version "3.2.7"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.2.7.tgz#72580b7e9145fb39b6676f9c5e5fb100b934179a"
@@ -3332,14 +3325,7 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-follow-redirects@1.5.10:
-  version "1.5.10"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.10.tgz#7b7a9f9aea2fdff36786a94ff643ed07f4ff5e2a"
-  integrity sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
-  dependencies:
-    debug "=3.1.0"
-
-follow-redirects@^1.0.0:
+follow-redirects@^1.0.0, follow-redirects@^1.10.0:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.1.tgz#d9114ded0a1cfdd334e164e6662ad02bfd91ff43"
   integrity sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg==
@@ -6402,7 +6388,7 @@ shellwords@^0.1.1:
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
 
-showdown@^1.9.0:
+showdown@^1.9.1:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/showdown/-/showdown-1.9.1.tgz#134e148e75cd4623e09c21b0511977d79b5ad0ef"
   integrity sha512-9cGuS382HcvExtf5AHk7Cb4pAeQQ+h0eTr33V1mu+crYWV4KvWAw6el92bDrqGEk5d46Ai/fhbEUwqJ/mTCNEA==

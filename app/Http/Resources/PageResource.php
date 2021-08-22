@@ -6,9 +6,9 @@ use App\Http\Resources\ComponentResource;
 use App\Http\Resources\ImageResource;
 use App\Http\Resources\NavigationResource;
 use App\Http\Resources\PostResource;
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class PageResource extends Resource
+class PageResource extends JsonResource
 {
 
     protected $preserveMarkdown = false;
