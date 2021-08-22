@@ -890,9 +890,9 @@
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.35.tgz#01dd3d054da07a00b764d78748df20daf2b317e9"
   integrity sha512-IHUfxSEDS9dDGqYwIW7wTN6tn/O8E0n5PcAHz9cAaBoZw6UpG20IG/YM3NNLaGPwPqgjBAFjIURzqoQs3rrtuw==
 
-"@fortawesome/fontawesome-pro@file:../../.fontawesome/fortawesome-fontawesome-pro-5.15.3.tgz":
+"@fortawesome/fontawesome-pro@file:fontawesome_icons/fortawesome-fontawesome-pro-5.15.3.tgz":
   version "5.15.3"
-  resolved "file:../../.fontawesome/fortawesome-fontawesome-pro-5.15.3.tgz#e669b6c34017022c531cb07e57638f7154308d51"
+  resolved "file:fontawesome_icons/fortawesome-fontawesome-pro-5.15.3.tgz#e669b6c34017022c531cb07e57638f7154308d51"
 
 "@fortawesome/fontawesome-svg-core@^1.2.15":
   version "1.2.35"
@@ -915,27 +915,27 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.35"
 
-"@fortawesome/pro-duotone-svg-icons@file:../../.fontawesome/fortawesome-pro-duotone-svg-icons-5.15.3.tgz":
+"@fortawesome/pro-duotone-svg-icons@file:fontawesome_icons/fortawesome-pro-duotone-svg-icons-5.15.3.tgz":
   version "5.15.3"
-  resolved "file:../../.fontawesome/fortawesome-pro-duotone-svg-icons-5.15.3.tgz#a097667e8538c7d8e62789b38ae2ba1d256e3028"
+  resolved "file:fontawesome_icons/fortawesome-pro-duotone-svg-icons-5.15.3.tgz#a097667e8538c7d8e62789b38ae2ba1d256e3028"
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.35"
 
-"@fortawesome/pro-light-svg-icons@file:../../.fontawesome/fortawesome-pro-light-svg-icons-5.15.3.tgz":
+"@fortawesome/pro-light-svg-icons@file:fontawesome_icons/fortawesome-pro-light-svg-icons-5.15.3.tgz":
   version "5.15.3"
-  resolved "file:../../.fontawesome/fortawesome-pro-light-svg-icons-5.15.3.tgz#b89cb4ece8c2709ac38bd63cd9edcd9d9a4ada21"
+  resolved "file:fontawesome_icons/fortawesome-pro-light-svg-icons-5.15.3.tgz#b89cb4ece8c2709ac38bd63cd9edcd9d9a4ada21"
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.35"
 
-"@fortawesome/pro-regular-svg-icons@file:../../.fontawesome/fortawesome-pro-regular-svg-icons-5.15.3.tgz":
+"@fortawesome/pro-regular-svg-icons@file:fontawesome_icons/fortawesome-pro-regular-svg-icons-5.15.3.tgz":
   version "5.15.3"
-  resolved "file:../../.fontawesome/fortawesome-pro-regular-svg-icons-5.15.3.tgz#e812fd5a77af5a439ed10b130de6000e221fb1ad"
+  resolved "file:fontawesome_icons/fortawesome-pro-regular-svg-icons-5.15.3.tgz#e812fd5a77af5a439ed10b130de6000e221fb1ad"
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.35"
 
-"@fortawesome/pro-solid-svg-icons@file:../../.fontawesome/fortawesome-pro-solid-svg-icons-5.15.3.tgz":
+"@fortawesome/pro-solid-svg-icons@file:fontawesome_icons/fortawesome-pro-solid-svg-icons-5.15.3.tgz":
   version "5.15.3"
-  resolved "file:../../.fontawesome/fortawesome-pro-solid-svg-icons-5.15.3.tgz#9656c04a4695cac05a29441007318f8e99cca725"
+  resolved "file:fontawesome_icons/fortawesome-pro-solid-svg-icons-5.15.3.tgz#9656c04a4695cac05a29441007318f8e99cca725"
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.35"
 
