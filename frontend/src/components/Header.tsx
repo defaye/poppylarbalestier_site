@@ -115,25 +115,25 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
           {/* Social Icons */}
           <div className="hidden lg:flex lg:w-2/12 xl:w-3/12 items-center text-2xl px-4">
             <a 
-              className="ml-auto text-gray-600 hover:text-purple-600 transition-colors" 
+              className="ml-auto text-stone-400 hover:text-purple-600 transition-colors" 
               href="https://www.instagram.com/PoppyLarbalestierPhotography/" 
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="relative inline-flex items-center justify-center w-8 h-8">
-                <FontAwesomeIcon icon={['fas', 'square']} className="absolute inset-0 w-8 h-8 text-gray-800" />
-                <FontAwesomeIcon icon={['fab', 'instagram']} className="relative w-4 h-4 text-white" />
+              <div className="relative inline-flex items-center justify-center w-16 h-16">
+                <FontAwesomeIcon icon={['fas', 'square']} className="absolute inset-0 w-16 h-16 text-stone-400" />
+                <FontAwesomeIcon icon={['fab', 'instagram']} className="relative w-10 h-10 text-white" />
               </div>
             </a>
             <a 
-              className="ml-3 text-gray-600 hover:text-purple-600 transition-colors" 
+              className="ml-3 text-stone-400 hover:text-purple-600 transition-colors" 
               href="https://www.facebook.com/PoppyLarbalestierPhotography/" 
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="relative inline-flex items-center justify-center w-8 h-8">
-                <FontAwesomeIcon icon={['fas', 'square']} className="absolute inset-0 w-8 h-8 text-gray-800" />
-                <FontAwesomeIcon icon={['fab', 'facebook-f']} className="relative w-4 h-4 text-white" />
+              <div className="relative inline-flex items-center justify-center w-16 h-16">
+                <FontAwesomeIcon icon={['fas', 'square']} className="absolute inset-0 w-16 h-16 text-stone-400" />
+                <FontAwesomeIcon icon={['fab', 'facebook-f']} className="relative w-10 h-10 text-white" />
               </div>
             </a>
           </div>
