@@ -53,7 +53,7 @@ const ContactPage: React.FC = () => {
           >
             <div className="flex-shrink-0">
               <div 
-                className="fa-layers fa-4x relative inline-block w-16 h-16"
+                className="fa-layers fa-4x relative inline-block w-18 h-18"
               >
                 <FontAwesomeIcon 
                   icon={faSquare}
@@ -67,7 +67,7 @@ const ContactPage: React.FC = () => {
                   className="absolute inset-0 flex items-center justify-center"
                   style={{ 
                     left: '50%',
-                    top: '110%',
+                    top: '100%',
                     transform: 'translate(-50%, -50%) scale(0.5)',
                     color: 'white',
                     zIndex: 1
