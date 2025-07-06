@@ -48,6 +48,21 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+/* PostsGallery styles to match original */
+.PostsGallery--header {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: #333;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.PostsGallery--header:hover {
+  color: #666;
+  text-decoration: none;
+}
+
 .container {
   max-width: 826px;
 }

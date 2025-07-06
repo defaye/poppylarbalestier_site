@@ -1,111 +1,156 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useQuery } from '@tanstack/react-query';
-import { getNavigation } from '@/lib/api';
+import api from '@/lib/api';
 
-const Header = () => {
+interface NavigationItem {
+  id: number;
+  position: number;
+  page: {
+    id: number;
+    title: string;
+    slug: string;
+  };
+}
+
+interface HeaderProps {
+  onNavigate: (path: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
-  const { data: navigation } = useQuery({
+  const { data: navigation } = useQuery<NavigationItem[]>({
     queryKey: ['navigation'],
-    queryFn: getNavigation,
+    queryFn: async () => {
+      const response = await api.get('/navigation');
+      return response.data;
+    },
   });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    // Listen for path changes
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('popstate', handlePopState);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleNavClick = (path: string) => {
+    setCurrentPath(path);
+    onNavigate(path);
+    setIsMenuOpen(false);
+  };
+
   return (
-    <header id="top" className="my-4">
-      {/* Mobile Navigation Toggle - ABOVE header content */}
-      <nav className="navbar navbar-expand-lg navbar-light d-block d-lg-none">
-        <div className="container">
-          <button
-            className="navbar-toggler mb-1"
-            type="button"
-            onClick={toggleMenu}
-            aria-controls="headerNavigation"
-            aria-expanded={isMenuOpen}
-            aria-label="Toggle navigation"
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
+      }`}
+    >
+      <div className="page-container">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <button 
+            onClick={() => handleNavClick('/')}
+            className="flex items-center space-x-2"
           >
-            <span className="navbar-toggler-icon"></span>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="text-2xl font-serif font-light text-sage-900"
+            >
+              Poppy Larbalestier
+            </motion.div>
           </button>
-          <div className={`navbar-collapse ${isMenuOpen ? 'show' : 'collapse'}`} id="headerNavigation">
-            <ul className="navbar-nav mx-auto">
-              {navigation?.filter(item => item.position > 0).map((item) => (
-                <li key={item.id} className="nav-item">
-                  <Link
-                    to={`/${item.page.slug}`}
-                    className="nav-link text-uppercase"
-                    onClick={() => setIsMenuOpen(false)}
-                    dangerouslySetInnerHTML={{ __html: item.page.title }}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </nav>
 
-      {/* Header Content */}
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-12 col-lg-8 col-xl-6 ml-auto">
-            <div id="site-title" className="text-center">
-              <Link to="/">
-                <img src="/images/logo.jpg" alt="Logo" />
-              </Link>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            <button
+              onClick={() => handleNavClick('/')}
+              className={`nav-link ${currentPath === '/' ? 'nav-link-active' : ''}`}
+            >
+              Home
+            </button>
+            {navigation?.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => handleNavClick(`/${item.page.slug}`)}
+                className={`nav-link ${
+                  currentPath === `/${item.page.slug}` ? 'nav-link-active' : ''
+                }`}
+              >
+                {item.page.title}
+              </button>
+            ))}
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={toggleMenu}
+            className="md:hidden p-2 rounded-md text-sage-700 hover:text-sage-900 transition-colors"
+          >
+            {isMenuOpen ? (
+              <XMarkIcon className="h-6 w-6" />
+            ) : (
+              <Bars3Icon className="h-6 w-6" />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-white/95 backdrop-blur-sm border-t border-sage-200"
+          >
+            <div className="py-4 space-y-4">
+              <button
+                onClick={() => handleNavClick('/')}
+                className={`block px-4 py-2 text-sage-700 hover:text-sage-900 w-full text-left ${
+                  currentPath === '/' ? 'font-semibold' : ''
+                }`}
+              >
+                Home
+              </button>
+              {navigation?.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavClick(`/${item.page.slug}`)}
+                  className={`block px-4 py-2 text-sage-700 hover:text-sage-900 w-full text-left ${
+                    currentPath === `/${item.page.slug}` ? 'font-semibold' : ''
+                  }`}
+                >
+                  {item.page.title}
+                </button>
+              ))}
             </div>
-          </div>
-          <div className="d-none d-lg-flex col-lg-2 col-xl-3 align-items-center" style={{ fontSize: '2rem' }}>
-            <a className="ml-auto" href="https://www.instagram.com/poppylarbalestier/" target="_blank" rel="noopener noreferrer">
-              <div className="icon-link fa-2x" style={{ position: 'relative', display: 'inline-block' }}>
-                <i className="fas fa-square" style={{ color: '#000' }}></i>
-                <i className="fab fa-instagram" style={{ 
-                  position: 'absolute', 
-                  top: '50%', 
-                  left: '50%', 
-                  transform: 'translate(-50%, -50%) scale(0.6)',
-                  color: 'white' 
-                }}></i>
-              </div>
-            </a>
-            <a className="ml-3" href="https://www.facebook.com/poppylarbalestier/" target="_blank" rel="noopener noreferrer">
-              <div className="icon-link fa-2x" style={{ position: 'relative', display: 'inline-block' }}>
-                <i className="fas fa-square" style={{ color: '#000' }}></i>
-                <i className="fab fa-facebook-f" style={{ 
-                  position: 'absolute', 
-                  top: '50%', 
-                  left: '50%', 
-                  transform: 'translate(-50%, -50%) scale(0.6)',
-                  color: 'white' 
-                }}></i>
-              </div>
-            </a>
-          </div>
-        </div>
+          </motion.div>
+        )}
       </div>
-
-      {/* Desktop Navigation - BELOW header content */}
-      <nav className="navbar navbar-expand-lg navbar-light d-none d-lg-block">
-        <div className="container">
-          <div className="navbar-collapse">
-            <ul className="navbar-nav mx-auto">
-              {navigation?.filter(item => item.position > 0).map((item) => (
-                <li key={item.id} className="nav-item">
-                  <Link
-                    to={`/${item.page.slug}`}
-                    className="nav-link text-uppercase"
-                    dangerouslySetInnerHTML={{ __html: item.page.title }}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+    </motion.header>
   );
 };
 

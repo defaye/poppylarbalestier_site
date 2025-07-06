@@ -1,156 +1,179 @@
+import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
-import { useEffect, useState } from 'react';
-import { getHomePage } from '@/lib/api';
+import { getHomePage, getPosts } from '@/lib/api';
+import ImageGallery from '@/components/ImageGallery';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const { data: homePage, isLoading } = useQuery({
+  const { data: homePage, isLoading: homeLoading } = useQuery({
     queryKey: ['home'],
     queryFn: getHomePage,
   });
 
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const { data: posts, isLoading: postsLoading } = useQuery({
+    queryKey: ['posts'],
+    queryFn: getPosts,
+  });
 
-  useEffect(() => {
-    if (homePage?.images && homePage.images.length > 0) {
-      // Initialize carousel event listeners
-      const carousel = document.getElementById('homeCarousel');
-      if (carousel) {
-        // @ts-ignore
-        $(carousel).on('slide.bs.carousel', function (e: any) {
-          const newIndex = e.to;
-          setCurrentSlide(newIndex);
-        });
-        
-        // Ensure carousel is initialized
-        // @ts-ignore
-        $(carousel).carousel();
-      }
-    }
-  }, [homePage?.images]);
-
-  if (isLoading) {
+  if (homeLoading || postsLoading) {
     return (
-      <div className="container">
-        <div className="text-center py-5">
-          <div className="spinner-border" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-        </div>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-sage-900"></div>
       </div>
     );
   }
 
-  if (!homePage) {
-    return null;
-  }
-
-  const handleThumbnailClick = (imageIndex: number) => {
-    console.log(`Thumbnail clicked: ${imageIndex}`);
-    
-    // Manual slide activation - more reliable than Bootstrap carousel methods
-    const carousel = document.getElementById('homeCarousel');
-    if (carousel) {
-      const items = carousel.querySelectorAll('.carousel-item');
-      items.forEach((item, idx) => {
-        if (idx === imageIndex) {
-          item.classList.add('active');
-        } else {
-          item.classList.remove('active');
-        }
-      });
-      setCurrentSlide(imageIndex);
-    }
-  };
-
   return (
-    <div className="container">
-      {homePage.images && homePage.images.length > 0 && (
-        <div className="my-4">
-          {homePage.images.length > 1 ? (
-            <>
-              {/* Main Carousel - No arrow controls like original */}
-              <div id="homeCarousel" className="carousel slide carousel-fade" data-ride="carousel" data-interval="4000">
-                <div className="carousel-inner">
-                  {homePage.images.map((image, index) => (
-                    <div key={image.id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                      <img
-                        src={image.path}
-                        alt={homePage.title || 'Home image'}
-                        className="d-block w-100"
-                        style={{ cursor: 'pointer' }}
-                        onClick={() => {
-                          // Click to advance like original
-                          const carousel = document.getElementById('homeCarousel');
-                          if (carousel) {
-                            // @ts-ignore
-                            $(carousel).carousel('next');
-                          }
-                        }}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              {/* Thumbnail Pagination - Simple grid layout like original */}
-              <div className="mt-5 d-none d-md-block">
-                <div className="row justify-content-center">
-                  {homePage.images.map((image, index) => {
-                    const isActive = index === currentSlide;
-                    return (
-                      <div key={image.id} className="col-auto">
-                        <img
-                          src={image.path}
-                          alt={`Thumbnail ${index + 1}`}
-                          className={`img-fluid ${isActive ? 'border border-primary' : ''}`}
-                          style={{ 
-                            cursor: 'pointer', 
-                            height: '80px', 
-                            width: '80px',
-                            objectFit: 'cover',
-                            borderRadius: '4px',
-                            opacity: isActive ? 1 : 0.7,
-                            transition: 'all 0.3s ease',
-                            margin: '0 2px',
-                            pointerEvents: 'auto',
-                            userSelect: 'none'
-                          }}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            handleThumbnailClick(index);
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.cursor = 'pointer';
-                            if (!isActive) {
-                              e.currentTarget.style.opacity = '0.9';
-                            }
-                          }}
-                          onMouseLeave={(e) => {
-                            if (!isActive) {
-                              e.currentTarget.style.opacity = '0.7';
-                            }
-                          }}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </>
-          ) : (
-            // Single image
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      {homePage?.images && homePage.images.length > 0 && (
+        <motion.section
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="relative h-screen overflow-hidden"
+        >
+          <div className="absolute inset-0">
             <img
               src={homePage.images[0].path}
-              alt={homePage.title || 'Home image'}
-              className="w-100"
+              alt="Hero image"
+              className="w-full h-full object-cover"
             />
-          )}
-        </div>
+            <div className="absolute inset-0 bg-black bg-opacity-30" />
+          </div>
+          
+          <div className="relative z-10 h-full flex items-center justify-center text-center text-white">
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="max-w-4xl px-4"
+            >
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-light mb-6">
+                Poppy Larbalestier
+              </h1>
+              <p className="text-xl md:text-2xl font-light mb-8 text-gray-200">
+                Photography
+              </p>
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 1, duration: 0.6 }}
+              >
+                <Link
+                  to="/gallery"
+                  className="inline-block bg-white bg-opacity-20 backdrop-blur-sm text-white px-8 py-4 rounded-sm hover:bg-opacity-30 transition-all duration-300 font-medium"
+                >
+                  View Portfolio
+                </Link>
+              </motion.div>
+            </motion.div>
+          </div>
+        </motion.section>
       )}
 
-      {homePage.content && (
-        <div className="my-4" dangerouslySetInnerHTML={{ __html: homePage.content }} />
+      {/* About Section */}
+      {homePage?.content && (
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="section-padding"
+        >
+          <div className="page-container">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="heading-secondary mb-8">Welcome</h2>
+              <div
+                className="body-text text-lg leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: homePage.content }}
+              />
+            </div>
+          </div>
+        </motion.section>
+      )}
+
+      {/* Featured Images */}
+      {homePage?.images && homePage.images.length > 1 && (
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="section-padding bg-white"
+        >
+          <div className="page-container">
+            <h2 className="heading-secondary text-center mb-12">Featured Work</h2>
+            <ImageGallery 
+              images={homePage.images.slice(1)} 
+              className="max-w-6xl mx-auto"
+            />
+          </div>
+        </motion.section>
+      )}
+
+      {/* Recent Posts */}
+      {posts && posts.length > 0 && (
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="section-padding"
+        >
+          <div className="page-container">
+            <h2 className="heading-secondary text-center mb-12">Recent Work</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {posts.slice(0, 6).map((post, index) => (
+                <motion.div
+                  key={post.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="group"
+                >
+                  <Link to={`/posts/${post.slug}`}>
+                    <div className="relative overflow-hidden rounded-lg shadow-lg">
+                      {post.images && post.images.length > 0 && (
+                        <img
+                          src={post.images[0].path}
+                          alt={post.title}
+                          className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300" />
+                    </div>
+                    <div className="mt-4">
+                      <h3 className="heading-tertiary group-hover:text-sage-700 transition-colors">
+                        {post.title}
+                      </h3>
+                      {post.excerpt && (
+                        <p className="body-text mt-2 text-sm">
+                          {post.excerpt}
+                        </p>
+                      )}
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+            
+            {posts.length > 6 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                viewport={{ once: true }}
+                className="text-center mt-12"
+              >
+                <Link to="/gallery" className="btn-secondary">
+                  View All Work
+                </Link>
+              </motion.div>
+            )}
+          </div>
+        </motion.section>
       )}
     </div>
   );

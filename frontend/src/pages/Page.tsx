@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getPage } from '@/lib/api';
+import TestimonialsGallery from '@/components/TestimonialsGallery';
 
 const Page = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -37,6 +38,22 @@ const Page = () => {
   if (!page) {
     return null;
   }
+
+  // Render dynamic component based on component configuration
+  const renderDynamicComponent = () => {
+    if (!page.component || !page.component.name) {
+      return null;
+    }
+
+    // Map component names to React components
+    switch (page.component.name) {
+      case 'Testimonials':
+        return <TestimonialsGallery pageSlug={page.slug} />;
+      // Add other dynamic components here as needed
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="container">
@@ -87,6 +104,9 @@ const Page = () => {
       {page.content && (
         <div className="my-4" dangerouslySetInnerHTML={{ __html: page.content }} />
       )}
+
+      {/* Render dynamic component if it exists */}
+      {renderDynamicComponent()}
     </div>
   );
 };
