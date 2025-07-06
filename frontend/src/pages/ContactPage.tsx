@@ -42,7 +42,7 @@ const ContactPage: React.FC = () => {
     <div className="container mx-auto px-4">
       <h1 className="text-center mb-8">Get In Touch</h1>
       
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-xs mx-auto">
         {contactMethods.map((contactMethod, index) => (
           <div
             key={index}
