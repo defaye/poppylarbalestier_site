@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
 import { getHomePage } from '@/lib/api';
 
 const Home = () => {
@@ -6,6 +7,26 @@ const Home = () => {
     queryKey: ['home'],
     queryFn: getHomePage,
   });
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    if (homePage?.images && homePage.images.length > 0) {
+      // Initialize carousel event listeners
+      const carousel = document.getElementById('homeCarousel');
+      if (carousel) {
+        // @ts-ignore
+        $(carousel).on('slide.bs.carousel', function (e: any) {
+          const newIndex = e.to;
+          setCurrentSlide(newIndex);
+        });
+        
+        // Ensure carousel is initialized
+        // @ts-ignore
+        $(carousel).carousel();
+      }
+    }
+  }, [homePage?.images]);
 
   if (isLoading) {
     return (
@@ -23,14 +44,32 @@ const Home = () => {
     return null;
   }
 
+  const handleThumbnailClick = (imageIndex: number) => {
+    console.log(`Thumbnail clicked: ${imageIndex}`);
+    
+    // Manual slide activation - more reliable than Bootstrap carousel methods
+    const carousel = document.getElementById('homeCarousel');
+    if (carousel) {
+      const items = carousel.querySelectorAll('.carousel-item');
+      items.forEach((item, idx) => {
+        if (idx === imageIndex) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+      setCurrentSlide(imageIndex);
+    }
+  };
+
   return (
     <div className="container">
       {homePage.images && homePage.images.length > 0 && (
         <div className="my-4">
           {homePage.images.length > 1 ? (
             <>
-              {/* Main Carousel */}
-              <div id="homeCarousel" className="carousel slide" data-ride="carousel">
+              {/* Main Carousel - No arrow controls like original */}
+              <div id="homeCarousel" className="carousel slide carousel-fade" data-ride="carousel" data-interval="4000">
                 <div className="carousel-inner">
                   {homePage.images.map((image, index) => (
                     <div key={image.id} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
@@ -38,63 +77,64 @@ const Home = () => {
                         src={image.path}
                         alt={homePage.title || 'Home image'}
                         className="d-block w-100"
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => {
+                          // Click to advance like original
+                          const carousel = document.getElementById('homeCarousel');
+                          if (carousel) {
+                            // @ts-ignore
+                            $(carousel).carousel('next');
+                          }
+                        }}
                       />
                     </div>
                   ))}
                 </div>
-                <a className="carousel-control-prev" href="#homeCarousel" role="button" data-slide="prev">
-                  <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Previous</span>
-                </a>
-                <a className="carousel-control-next" href="#homeCarousel" role="button" data-slide="next">
-                  <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Next</span>
-                </a>
               </div>
               
-              {/* Thumbnail Pagination Carousel */}
+              {/* Thumbnail Pagination - Simple grid layout like original */}
               <div className="mt-5 d-none d-md-block">
-                <div id="homePaginatorCarousel" className="carousel slide" data-interval="false">
-                  <div className="carousel-inner">
-                    {/* Group thumbnails in sets of 5 */}
-                    {Array.from({ length: Math.ceil((homePage.images || []).length / 5) }, (_, groupIndex) => (
-                      <div key={groupIndex} className={`carousel-item ${groupIndex === 0 ? 'active' : ''}`}>
-                        <div className="row">
-                          {(homePage.images || [])
-                            .slice(groupIndex * 5, (groupIndex + 1) * 5)
-                            .map((image, index) => (
-                              <div key={image.id} className="col">
-                                <img
-                                  src={image.path}
-                                  alt={`Thumbnail ${groupIndex * 5 + index + 1}`}
-                                  className="img-fluid"
-                                  style={{ cursor: 'pointer', height: '80px', objectFit: 'cover', width: '100%' }}
-                                  onClick={() => {
-                                    const carousel = document.getElementById('homeCarousel');
-                                    if (carousel) {
-                                      // @ts-ignore
-                                      $(carousel).carousel(groupIndex * 5 + index);
-                                    }
-                                  }}
-                                />
-                              </div>
-                            ))}
-                        </div>
+                <div className="row justify-content-center">
+                  {homePage.images.map((image, index) => {
+                    const isActive = index === currentSlide;
+                    return (
+                      <div key={image.id} className="col-auto">
+                        <img
+                          src={image.path}
+                          alt={`Thumbnail ${index + 1}`}
+                          className={`img-fluid ${isActive ? 'border border-primary' : ''}`}
+                          style={{ 
+                            cursor: 'pointer', 
+                            height: '80px', 
+                            width: '80px',
+                            objectFit: 'cover',
+                            borderRadius: '4px',
+                            opacity: isActive ? 1 : 0.7,
+                            transition: 'all 0.3s ease',
+                            margin: '0 2px',
+                            pointerEvents: 'auto',
+                            userSelect: 'none'
+                          }}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            handleThumbnailClick(index);
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.cursor = 'pointer';
+                            if (!isActive) {
+                              e.currentTarget.style.opacity = '0.9';
+                            }
+                          }}
+                          onMouseLeave={(e) => {
+                            if (!isActive) {
+                              e.currentTarget.style.opacity = '0.7';
+                            }
+                          }}
+                        />
                       </div>
-                    ))}
-                  </div>
-                  {Math.ceil((homePage.images || []).length / 5) > 1 && (
-                    <>
-                      <a className="carousel-control-prev" href="#homePaginatorCarousel" role="button" data-slide="prev">
-                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span className="sr-only">Previous</span>
-                      </a>
-                      <a className="carousel-control-next" href="#homePaginatorCarousel" role="button" data-slide="next">
-                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span className="sr-only">Next</span>
-                      </a>
-                    </>
-                  )}
+                    );
+                  })}
                 </div>
               </div>
             </>
