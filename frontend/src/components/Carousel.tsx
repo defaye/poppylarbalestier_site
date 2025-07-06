@@ -91,11 +91,7 @@ const Carousel: React.FC<CarouselProps> = ({
       {/* Pagination thumbnails */}
       {showPagination && images.length > 1 && (
         <div className="carousel-paginator mt-5">
-          <div className="relative overflow-hidden">
-            {/* Shadow gradients */}
-            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-            
+          <div className="relative">
             {/* Thumbnail container - 5 thumbnails filling full width with small gaps */}
             <div className="flex w-full gap-1">
               {images.map((image, index) => {
