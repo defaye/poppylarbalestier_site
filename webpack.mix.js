@@ -43,7 +43,8 @@ if (mix.inProduction) {
 }
 
 mix.js('resources/js/admin.js', 'public/js')
-   .sass('resources/sass/admin.scss', 'public/css');
+   .sass('resources/sass/admin.scss', 'public/css')
+   .js('resources/js/app-static.js', 'public/js');
 
 
 if (mix.inProduction) {

@@ -3,37 +3,30 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {
     faCircle,
     faEnvelope,
-    faEnvelopeSquare,
     faEye,
-    faMailbox,
-    faPenSquare,
     faPhone,
-    faPhoneSquare,
     faSpinner,
     faSquare,
-} from '@fortawesome/pro-solid-svg-icons'
+} from '@fortawesome/free-solid-svg-icons'
 
 library.add(
     faCircle,
     faEnvelope,
-    faEnvelopeSquare,
     faEye,
-    faMailbox,
-    faPenSquare,
     faPhone,
-    faPhoneSquare,
     faSpinner,
     faSquare,
 )
 
+// Note: Using free solid versions instead of pro regular
 import {
-    faCompressAlt,
-    faExpandAlt,
-} from '@fortawesome/pro-regular-svg-icons'
+    faCompress,
+    faExpand,
+} from '@fortawesome/free-solid-svg-icons'
 
 library.add(
-    faCompressAlt,
-    faExpandAlt,
+    faCompress,
+    faExpand,
 )
 
 import { 

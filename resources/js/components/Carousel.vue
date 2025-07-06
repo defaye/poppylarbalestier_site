@@ -230,7 +230,7 @@
                                                             style: 'color: white;'
                                                         },
                                                         props: {
-                                                            icon: ['far', 'compress-alt'],
+                                                            icon: ['fas', 'compress'],
                                                         }
                                                     }
                                                 )
@@ -271,7 +271,7 @@
                                                             style: 'color: white;'
                                                         },
                                                         props: {
-                                                            icon: ['far', 'expand-alt'],
+                                                            icon: ['fas', 'expand'],
                                                         }
                                                     }
                                                 )

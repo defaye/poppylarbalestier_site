@@ -1,0 +1,56 @@
+name: Deploy Static Site to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
+        extensions: mbstring, xml, ctype, json, curl, zip, pdo, pdo_mysql
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    
+    - name: Install PHP dependencies
+      run: composer install --no-dev --optimize-autoloader
+    
+    - name: Install Node.js dependencies
+      run: npm install
+    
+    - name: Copy environment file
+      run: cp .env.example .env
+    
+    - name: Generate application key
+      run: php artisan key:generate
+    
+    - name: Create SQLite database
+      run: |
+        mkdir -p database
+        touch database/database.sqlite
+    
+    - name: Run database migrations
+      run: |
+        php artisan migrate --force
+        php artisan db:seed --force
+    
+    - name: Build static site
+      run: ./build-static.sh
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
