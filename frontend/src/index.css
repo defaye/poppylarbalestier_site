@@ -319,32 +319,6 @@
   .GetInTouchContactMethod {
     margin-top: 1em;
     cursor: pointer;
-    padding: 0.5em 0;
-  }
-
-  .GetInTouchContactMethod .col-2,
-  .GetInTouchContactMethod .col-md-2 {
-    padding-right: 1.5rem;
-  }
-
-  .GetInTouchContactMethod .fa-square {
-    color: #212529; /* $gray-900 equivalent */
-  }
-
-  .GetInTouchContactMethod .fa-layers svg:first-child {
-    color: #212529; /* $gray-900 equivalent */
-  }
-
-  .GetInTouchContactMethod .fa-layers svg:last-child {
-    color: white;
-  }
-
-  .GetInTouchContactMethod:hover .fa-square {
-    color: #6c757d; /* $gray-600 equivalent */
-  }
-
-  .GetInTouchContactMethod:hover .fa-layers svg:first-child {
-    color: #6c757d; /* $gray-600 equivalent */
   }
 
   .GetInTouchContactMethod:hover {
@@ -354,21 +328,6 @@
   .fa-4x {
     font-size: 4em;
     line-height: 1;
-  }
-
-  /* Additional styling for React FontAwesome layers */
-  .fa-layers {
-    display: inline-block;
-    position: relative;
-    text-align: center;
-    vertical-align: middle;
-    overflow: hidden;
-  }
-
-  .fa-layers svg {
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
   }
 
   .fa-layers svg {
