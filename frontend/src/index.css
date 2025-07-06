@@ -55,6 +55,50 @@
     font-family: 'LarbSerif', "Times New Roman", serif;
   }
 
+  /* Responsive heading sizes matching original */
+  h1 { font-size: 2.1875rem; } /* $h1-font-size * 0.875 (2.5 * 0.875) */
+  h2 { font-size: 1.75rem; }   /* $h2-font-size * 0.875 (2 * 0.875) */
+  h3 { font-size: 1.53125rem; } /* $h3-font-size * 0.875 (1.75 * 0.875) */
+  h4 { font-size: 1.3125rem; }  /* $h4-font-size * 0.875 (1.5 * 0.875) */
+  h5 { font-size: 1.09375rem; } /* $h5-font-size * 0.875 (1.25 * 0.875) */
+  h6 { font-size: 0.875rem; }   /* $h6-font-size * 0.875 (1 * 0.875) */
+
+  @screen sm {
+    h1 { font-size: 2.34375rem; } /* $h1-font-size * 0.9375 */
+    h2 { font-size: 1.875rem; }
+    h3 { font-size: 1.640625rem; }
+    h4 { font-size: 1.40625rem; }
+    h5 { font-size: 1.171875rem; }
+    h6 { font-size: 0.9375rem; }
+  }
+
+  @screen md {
+    h1 { font-size: 2.65625rem; } /* $h1-font-size * 1.0625 */
+    h2 { font-size: 2.125rem; }
+    h3 { font-size: 1.859375rem; }
+    h4 { font-size: 1.59375rem; }
+    h5 { font-size: 1.328125rem; }
+    h6 { font-size: 1.0625rem; }
+  }
+
+  @screen lg {
+    h1 { font-size: 2.8125rem; } /* $h1-font-size * 1.125 */
+    h2 { font-size: 2.25rem; }
+    h3 { font-size: 1.96875rem; }
+    h4 { font-size: 1.6875rem; }
+    h5 { font-size: 1.40625rem; }
+    h6 { font-size: 1.125rem; }
+  }
+
+  @screen xl {
+    h1 { font-size: 2.96875rem; } /* $h1-font-size * 1.1875 */
+    h2 { font-size: 2.375rem; }
+    h3 { font-size: 2.078125rem; }
+    h4 { font-size: 1.78125rem; }
+    h5 { font-size: 1.484375rem; }
+    h6 { font-size: 1.1875rem; }
+  }
+
   /* Selection styling */
   ::selection {
     background: #8043cc; /* Purple from original */
@@ -74,16 +118,25 @@
 }
 
 @layer components {
-  /* Navigation styling */
+  /* Navigation styling to match original */
   .nav-link {
     color: #777;
     letter-spacing: 0.2rem;
+    font-size: 0.9rem; /* Matching original desktop nav font size */
+    text-transform: uppercase;
     @apply transition-colors duration-200;
   }
   
   .nav-link:hover,
   .nav-link:active {
     color: #8043cc; /* Purple */
+  }
+
+  /* Mobile navigation styling */
+  @screen sm {
+    .nav-link {
+      font-size: 1.2rem; /* Larger on mobile */
+    }
   }
 
   /* Icon links */

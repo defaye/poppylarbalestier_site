@@ -85,11 +85,11 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
               className="mt-4 bg-gray-100/50 rounded-lg"
             >
               <div className="py-2">
-                {navigation?.map((item) => (
+                {navigation?.filter(item => item.position > 0).map((item) => (
                   <button
                     key={item.id}
                     onClick={() => handleNavClick(`/${item.page.slug}`)}
-                    className={`block w-full px-4 py-2 text-center hover:bg-purple-500/50 hover:text-gray-100 ${
+                    className={`block w-full px-4 py-2 text-center hover:bg-purple-500/50 hover:text-gray-100 uppercase ${
                       currentPath === `/${item.page.slug}` ? 'bg-purple-500/25' : ''
                     }`}
                   >
@@ -150,14 +150,14 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
       </div>
 
       {/* Desktop Navigation */}
-      <nav className="hidden lg:block mt-12 text-sm border-t border-gray-200" style={{ borderBottomWidth: '2px', borderBottomColor: '#d1d5db' }}>
+      <nav className="hidden lg:block mt-12 text-sm border-t border-gray-200" style={{ borderBottomWidth: '2px', borderBottomColor: '#dee2e6' }}>
         <div className="container mx-auto px-4">
           <div className="flex justify-center space-x-8 py-4">
-            {navigation?.map((item) => (
+            {navigation?.filter(item => item.position > 0).map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(`/${item.page.slug}`)}
-                className={`nav-link text-gray-600 hover:text-purple-600 transition-colors tracking-wider ${
+                className={`nav-link text-gray-600 hover:text-purple-600 transition-colors tracking-wider uppercase ${
                   currentPath === `/${item.page.slug}` ? 'text-purple-600 font-medium' : ''
                 }`}
               >
