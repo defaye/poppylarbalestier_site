@@ -39,6 +39,31 @@ export const getPost = async (slug: string): Promise<Post> => {
   return response.data;
 };
 
+// Testimonials
+export const getTestimonials = async (page: number = 1, perPage: number = 32): Promise<{
+  data: Category[];
+  meta: {
+    count: number;
+    current_page: number;
+    first_item: number;
+    has_more_pages: boolean;
+    last_item: number;
+    last_page: number;
+    per_page: number;
+    total: number;
+  };
+}> => {
+  const response = await api.get('/categories', {
+    params: {
+      with: ['images', 'tags'],
+      name: 'testimonial',
+      page,
+      per_page: perPage
+    }
+  });
+  return response.data;
+};
+
 // Categories
 export const getCategories = async (): Promise<Category[]> => {
   const response = await api.get<Category[]>('/categories');

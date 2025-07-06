@@ -24,6 +24,15 @@ export interface Category {
   description?: string;
   created_at: string;
   updated_at: string;
+  // Additional properties for testimonials
+  title?: string;
+  body?: string;
+  images?: Image[];
+  tags?: Tag[];
+  published?: boolean;
+  component?: {
+    element_name: string;
+  };
 }
 
 export interface Tag {
