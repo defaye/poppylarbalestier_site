@@ -61,7 +61,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
           <div className="flex items-center justify-between">
             <button
               onClick={toggleMenu}
-              className="p-2 text-gray-700 hover:text-purple-600"
+              className="p-2 text-gray-700 hover:text-purple-600 border border-gray-200"
             >
               {isMenuOpen ? (
                 <XMarkIcon className="h-9 w-9" />
