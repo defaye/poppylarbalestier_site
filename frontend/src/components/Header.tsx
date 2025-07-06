@@ -84,7 +84,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
                   <button
                     key={item.id}
                     onClick={() => handleNavClick(`/${item.page.slug}`)}
-                    className={`block w-full px-4 py-2 text-center hover:bg-purple-500/50 hover:text-gray-100 uppercase ${
+                    className={`block w-full px-4 py-2 text-center hover:bg-purple-500/50 hover:text-gray-100 uppercase tracking-[0.15em] transition-colors text-base ${
                       currentPath === `/${item.page.slug}` ? 'bg-purple-500/25' : ''
                     }`}
                   >
@@ -148,10 +148,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
               <button
                 key={item.id}
                 onClick={() => handleNavClick(`/${item.page.slug}`)}
-                className={`nav-link transition-colors tracking-wider uppercase ${
+                className={`text-base transition-colors duration-200 uppercase ${
                   currentPath === `/${item.page.slug}` 
-                    ? 'text-purple-600 font-medium' 
-                    : 'text-gray-600 hover:text-purple-600'
+                    ? 'text-purple-600 font-medium tracking-[0.15em]' 
+                    : 'text-gray-600 hover:text-purple-600 tracking-[0.15em]'
                 }`}
               >
                 {item.page.title}
