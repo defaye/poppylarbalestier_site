@@ -69,7 +69,7 @@ const Carousel: React.FC<CarouselProps> = ({
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden pointer-events-auto">
           <AnimatePresence mode="wait">
             <motion.img
               key={currentIndex}
