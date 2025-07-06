@@ -60,7 +60,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
     <header id="top" className="my-4">
       {/* Mobile Navigation */}
       <nav className="block lg:hidden">
-        <div className="container mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <button 
               onClick={() => handleNavClick('/')}
@@ -106,7 +106,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
       </nav>
 
       {/* Desktop Header */}
-      <div className="container-fluid mx-auto">
+      <div className="w-full mx-auto px-4">
         <div className="flex flex-col lg:flex-row">
           {/* Logo section */}
           <div className="w-full lg:w-8/12 xl:w-6/12 lg:ml-auto">
@@ -168,13 +168,13 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
 
       {/* Desktop Navigation */}
       <nav className="hidden lg:block mt-12 text-sm border-t border-gray-200 border-b-2 border-b-gray-300">
-        <div className="container mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-center space-x-8 py-4">
             {navigation?.filter(item => item.position > 0).map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(`/${item.page.slug}`)}
-                className={`nav-link text-gray-600 hover:text-purple-600 transition-colors tracking-wider uppercase ${
+                className={`text-gray-600 hover:text-purple-600 transition-colors tracking-wider uppercase font-sans text-sm ${
                   currentPath === `/${item.page.slug}` ? 'text-purple-600 font-medium' : ''
                 }`}
               >
