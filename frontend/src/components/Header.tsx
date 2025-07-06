@@ -62,12 +62,6 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
       <nav className="block lg:hidden">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between">
-            <button 
-              onClick={() => handleNavClick('/')}
-              className="text-lg font-serif hover:text-purple-600 transition-colors"
-            >
-              Poppy Larbalestier
-            </button>
             <button
               onClick={toggleMenu}
               className="p-2 text-gray-700 hover:text-purple-600 transition-colors"
