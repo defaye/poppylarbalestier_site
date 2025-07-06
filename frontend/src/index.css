@@ -285,6 +285,32 @@
     border-color: #dc3545;
     box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
   }
+
+  /* Large contact icons for the bespoke contact page */
+  .contact-icon-large {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto;
+  }
+
+  .icon-background-large {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    background-color: #000;
+    border-radius: 0.25rem;
+    position: relative;
+  }
+
+  .icon-symbol-large {
+    font-size: 2rem;
+    color: white;
+  }
 }
 
 /* Purple color for consistency */

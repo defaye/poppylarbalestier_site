@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Page from './components/dynamic/Page'
+import ContactPage from './pages/ContactPage'
 import api from './lib/api'
 
 // Dynamic imports for other components
@@ -32,6 +33,7 @@ interface PageData {
 const dynamicComponents = {
   page: Page,
   contact: Contact,
+  'contact-page': ContactPage,
   testimonials: Testimonials,
 }
 
@@ -43,6 +45,29 @@ function App() {
     try {
       setLoading(true)
       console.log('Loading page:', path)
+      
+      // Check if this is the contact page - prioritize our bespoke contact page
+      if (path === '/contact') {
+        // Set a fake page object for the contact page
+        const contactPageData: PageData = {
+          id: 0,
+          title: 'Contact',
+          name: 'Get In Touch',
+          body: '',
+          slug: 'contact',
+          published: true,
+          component: {
+            element_name: 'contact-page'
+          }
+        }
+        
+        document.title = 'Contact — Poppy Larbalestier Photography'
+        window.history.pushState(contactPageData, 'Contact — Poppy Larbalestier Photography', path)
+        setPage(contactPageData)
+        setLoading(false)
+        return
+      }
+      
       const response = await api.post('/router', { path })
       const pageData = response.data
       console.log('Page data:', pageData)
