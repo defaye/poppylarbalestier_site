@@ -1,6 +1,7 @@
 import React from 'react'
 import Carousel from '../Carousel'
 import PostsGallery from '../PostsGallery'
+import { CMSContent } from '@/components/FormattedText'
 
 interface PageProps {
   page: {
@@ -52,18 +53,18 @@ const Page: React.FC<PageProps> = ({ page, onNavigate }) => {
 
       {/* Body prefix */}
       {page.body_prefix && (
-        <div 
+        <CMSContent 
+          content={page.body_prefix}
           className="mb-4 prose prose-sm max-w-none"
-          dangerouslySetInnerHTML={{ __html: page.body_prefix }}
         />
       )}
 
       <div className="flex flex-col">
         {/* Main body content */}
         {page.body && (
-          <div 
+          <CMSContent 
+            content={page.body}
             className="mb-4 prose prose-sm max-w-none order-2 lg:order-1"
-            dangerouslySetInnerHTML={{ __html: page.body }}
           />
         )}
 
@@ -77,9 +78,9 @@ const Page: React.FC<PageProps> = ({ page, onNavigate }) => {
 
       {/* Body suffix */}
       {page.body_suffix && (
-        <div 
+        <CMSContent 
+          content={page.body_suffix}
           className="mt-4 prose prose-sm max-w-none"
-          dangerouslySetInnerHTML={{ __html: page.body_suffix }}
         />
       )}
     </div>
