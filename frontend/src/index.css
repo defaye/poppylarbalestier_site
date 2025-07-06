@@ -123,16 +123,10 @@
 @layer components {
   /* Navigation styling to match original */
   .nav-link {
-    color: #777;
     letter-spacing: 0.2rem;
     font-size: 0.9rem; /* Matching original desktop nav font size */
     text-transform: uppercase;
     @apply transition-colors duration-200;
-  }
-  
-  .nav-link:hover,
-  .nav-link:active {
-    color: #8043cc; /* Purple */
   }
 
   /* Mobile navigation styling */

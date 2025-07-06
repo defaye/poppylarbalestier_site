@@ -120,8 +120,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="relative inline-flex items-center justify-center w-16 h-16">
-                <FontAwesomeIcon icon={['fas', 'square']} className="absolute inset-0 w-16 h-16 text-stone-400" />
+              <div className="relative inline-flex items-center justify-center w-16 h-16 hover:text-purple-600 transition-colors">
+                <FontAwesomeIcon icon={['fas', 'square']} className="absolute inset-0 w-16 h-16 text-current" />
                 <FontAwesomeIcon icon={['fab', 'instagram']} className="relative w-10 h-10 text-white" />
               </div>
             </a>
@@ -131,8 +131,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="relative inline-flex items-center justify-center w-16 h-16">
-                <FontAwesomeIcon icon={['fas', 'square']} className="absolute inset-0 w-16 h-16 text-stone-400" />
+              <div className="relative inline-flex items-center justify-center w-16 h-16 hover:text-purple-600 transition-colors">
+                <FontAwesomeIcon icon={['fas', 'square']} className="absolute inset-0 w-16 h-16 text-current" />
                 <FontAwesomeIcon icon={['fab', 'facebook-f']} className="relative w-10 h-10 text-white" />
               </div>
             </a>
@@ -148,8 +148,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
               <button
                 key={item.id}
                 onClick={() => handleNavClick(`/${item.page.slug}`)}
-                className={`nav-link text-gray-600 hover:text-purple-600 transition-colors tracking-wider uppercase ${
-                  currentPath === `/${item.page.slug}` ? 'text-purple-600 font-medium' : ''
+                className={`nav-link transition-colors tracking-wider uppercase ${
+                  currentPath === `/${item.page.slug}` 
+                    ? 'text-purple-600 font-medium' 
+                    : 'text-gray-600 hover:text-purple-600'
                 }`}
               >
                 {item.page.title}
