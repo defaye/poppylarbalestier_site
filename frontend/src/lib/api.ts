@@ -86,4 +86,16 @@ export const getTags = async (): Promise<Tag[]> => {
   return response.data;
 };
 
+// Contact
+export const submitContact = async (formData: {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  recaptcha: string;
+}): Promise<boolean> => {
+  const response = await api.post('/contact', formData);
+  return response.data;
+};
+
 export default api;
