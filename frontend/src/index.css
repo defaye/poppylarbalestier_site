@@ -1,3 +1,6 @@
+/* Import FontAwesome CSS */
+@import '@fortawesome/fontawesome-free/css/all.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -311,6 +314,49 @@
     font-size: 2rem;
     color: white;
   }
+
+  /* Contact page styling - matching original SCSS exactly */
+  .GetInTouchContactMethod {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+
+  .GetInTouchContactMethod .fa-square {
+    color: #212529; /* $gray-900 equivalent */
+  }
+
+  .GetInTouchContactMethod .fa-layers svg:first-child {
+    color: #212529; /* $gray-900 equivalent */
+  }
+
+  .GetInTouchContactMethod .fa-layers svg:last-child {
+    color: white;
+  }
+
+  .GetInTouchContactMethod:hover .fa-square {
+    color: #6c757d; /* $gray-600 equivalent */
+  }
+
+  .GetInTouchContactMethod:hover .fa-layers svg:first-child {
+    color: #6c757d; /* $gray-600 equivalent */
+  }
+
+  .GetInTouchContactMethod:hover {
+    color: #6c757d; /* $gray-600 equivalent */
+  }
+
+  .fa-4x {
+    font-size: 4em;
+    line-height: 1;
+  }
+
+  /* Additional styling for React FontAwesome layers */
+  .fa-layers {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+  }
 }
 
 /* Purple color for consistency */
@@ -449,3 +495,4 @@
     max-width: 1140px;
   }
 }
+

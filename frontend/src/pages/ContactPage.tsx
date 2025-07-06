@@ -1,46 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faPhone, faSquare } from '@fortawesome/free-solid-svg-icons'
+import { faFacebookF, faInstagram } from '@fortawesome/free-brands-svg-icons'
 
 // Contact methods data from the original Vue template
 const contactMethods = [
   {
     href: 'mailto:poppy@poppylarbalestier.com',
-    icon: ['fas', 'envelope'],
+    icon: faEnvelope,
     name: 'poppy@poppylarbalestier.com',
     transform: 'shrink-8',
   },
   {
     href: 'https://www.facebook.com/PoppyLarbalestierPhotography',
     target: '_blank',
-    icon: ['fab', 'facebook-f'],
+    icon: faFacebookF,
     name: 'PoppyLarbalestierPhotography',
   },
   {
     href: 'https://www.instagram.com/PoppyLarbalestierPhotography',
     target: '_blank',
-    icon: ['fab', 'instagram'],
+    icon: faInstagram,
     name: 'PoppyLarbalestierPhotography',
   },
   {
     href: 'tel:00447700832331',
-    icon: ['fas', 'phone'],
+    icon: faPhone,
     name: '+44 (0) 7700 832 331',
     transform: 'shrink-8',
   },
 ]
 
-// Icon mapping for the contact methods
-const getIconSymbol = (iconArray: string[]) => {
-  const [, iconName] = iconArray
-  const iconMap: Record<string, string> = {
-    'envelope': '✉️',
-    'facebook-f': '📘',
-    'instagram': '📷',
-    'phone': '📞',
-  }
-  return iconMap[iconName] || '📧'
-}
-
 const ContactPage: React.FC = () => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  
   const handleContactClick = (contactMethod: typeof contactMethods[0]) => {
     window.open(contactMethod.href, contactMethod.target || '_self')
   }
@@ -56,19 +49,32 @@ const ContactPage: React.FC = () => {
               key={index}
               className="GetInTouchContactMethod row"
               onClick={() => handleContactClick(contactMethod)}
-              style={{ cursor: 'pointer' }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
               <div className="col-12 col-md-1 text-center">
-                <div className="contact-icon-large">
-                  <div className="icon-background-large">
-                    <span className="icon-symbol-large">
-                      {getIconSymbol(contactMethod.icon)}
-                    </span>
-                  </div>
+                <div className="fa-layers fa-4x" style={{ position: 'relative', display: 'inline-block' }}>
+                  <FontAwesomeIcon 
+                    icon={faSquare}
+                    style={{ color: hoveredIndex === index ? '#6c757d' : '#212529' }}
+                  />
+                  <FontAwesomeIcon 
+                    icon={contactMethod.icon}
+                    style={{ 
+                      position: 'absolute',
+                      left: '50%',
+                      top: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      color: 'white',
+                      fontSize: contactMethod.transform?.includes('shrink') ? '0.75em' : '1em'
+                    }}
+                  />
                 </div>
               </div>
               <div className="col-12 col-md-11 d-flex align-items-center justify-content-center mt-3 mt-md-0">
-                <h5>{contactMethod.name}</h5>
+                <h5 style={{ color: hoveredIndex === index ? '#6c757d' : 'inherit' }}>
+                  {contactMethod.name}
+                </h5>
               </div>
             </div>
           ))}
