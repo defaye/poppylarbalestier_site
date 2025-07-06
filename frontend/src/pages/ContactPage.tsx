@@ -39,8 +39,8 @@ const ContactPage: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-4">
-      <h1 className="text-center mb-8">Get In Touch</h1>
+    <div className="mx-auto px-4 max-w-xl">
+      <h1 className="mb-6">Get In Touch</h1>
       
       <div className="max-w-xs mx-auto">
         {contactMethods.map((contactMethod, index) => (
