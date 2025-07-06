@@ -94,37 +94,45 @@ const Carousel: React.FC<CarouselProps> = ({
           <div className="relative">
             {/* Thumbnail container - 5 thumbnails filling full width with small gaps */}
             <div className="flex w-full gap-1">
-              {images.map((image, index) => {
-                const isActive = index === currentIndex
-                const distance = Math.abs(index - currentIndex)
+              {(() => {
                 const maxVisible = 5
-                const isVisible = distance <= Math.floor(maxVisible / 2)
+                const half = Math.floor(maxVisible / 2)
+                const visibleIndices = []
                 
-                if (!isVisible) return null
+                // Create array of 5 indices centered around currentIndex with wraparound
+                for (let i = -half; i <= half; i++) {
+                  let index = (currentIndex + i + images.length) % images.length
+                  visibleIndices.push(index)
+                }
                 
-                return (
-                  <motion.div
-                    key={image.id}
-                    className="cursor-pointer relative flex-1"
-                    onClick={() => handleThumbnailClick(index)}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <img
-                      src={image.path}
-                      alt={image.name}
-                      className="w-full h-auto object-cover"
-                      style={{
-                        aspectRatio: `${ratioX}/${ratioY}`
-                      }}
-                    />
-                    {/* Overlay for active (current) thumbnail - greyed out */}
-                    {isActive && (
-                      <div className="absolute inset-0 bg-gray-400 opacity-40" />
-                    )}
-                  </motion.div>
-                )
-              })}
+                return visibleIndices.map((index, position) => {
+                  const image = images[index]
+                  const isActive = index === currentIndex
+                  
+                  return (
+                    <motion.div
+                      key={`${image.id}-${position}`}
+                      className="cursor-pointer relative flex-1"
+                      onClick={() => handleThumbnailClick(index)}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <img
+                        src={image.path}
+                        alt={image.name}
+                        className="w-full h-auto object-cover"
+                        style={{
+                          aspectRatio: `${ratioX}/${ratioY}`
+                        }}
+                      />
+                      {/* Overlay for active (current) thumbnail - greyed out */}
+                      {isActive && (
+                        <div className="absolute inset-0 bg-gray-400 opacity-40" />
+                      )}
+                    </motion.div>
+                  )
+                })
+              })()}
             </div>
           </div>
         </div>
