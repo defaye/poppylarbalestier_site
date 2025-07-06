@@ -14,12 +14,19 @@
 Route::group(['middleware' => 'throttle:60,1'], function () {
 
     Route::get('categories')->uses('CategoriesController@get');
+    Route::get('categories/{slug}')->uses('CategoriesController@getBySlug');
+    Route::get('categories/{slug}/posts')->uses('CategoriesController@getPosts');
+    
     Route::get('images')->uses('ImagesController@get');
     Route::get('navigation')->uses('NavigationController@get');
+    
     Route::get('pages')->uses('PagesController@get');
+    Route::get('pages/home')->uses('PagesController@getHome');
+    Route::get('pages/{slug}')->uses('PagesController@getBySlug');
     // Route::post('pages')->uses('PagesController@find');
 
     Route::get('posts')->uses('PostsController@get');
+    Route::get('posts/{slug}')->uses('PostsController@getBySlug');
     Route::post('posts')->uses('PostsController@search');
 
     Route::get('tags')->uses('TagsController@get');

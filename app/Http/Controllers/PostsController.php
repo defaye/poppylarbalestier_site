@@ -11,6 +11,15 @@ class PostsController extends Controller
 {
     public function get(Request $request)
     {
+        // Simple version for React frontend - return all published posts with relationships
+        if (!$request->has('with') && !$request->has('category') && !$request->has('tag')) {
+            return Post::with(['images', 'category', 'tags'])
+                ->where('published', true)
+                ->orderBy('created_at', 'desc')
+                ->get();
+        }
+
+        // Original complex logic for backward compatibility
         $validator = Validator::make($request->all(), [
             'with' => 'array|in:category,images,tags,pages',
             'category' => 'string|max:255',
@@ -102,5 +111,19 @@ class PostsController extends Controller
             \App\Http\Resources\PostResource::collection($posts->get())
             // new PostCollection($posts->paginate($perPage))
         );
+    }
+
+    public function getBySlug($slug)
+    {
+        $post = Post::with(['images', 'category', 'tags'])
+            ->where('published', true)
+            ->where('slug', $slug)
+            ->first();
+
+        if (!$post) {
+            abort(404);
+        }
+
+        return $post;
     }
 }

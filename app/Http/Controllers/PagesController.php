@@ -107,6 +107,44 @@ class PagesController extends Controller
         );
     }
 
+    public function getAll()
+    {
+        return Page::with(['component', 'images'])
+            ->where('published', true)
+            ->orderBy('title')
+            ->get();
+    }
+
+    public function getHome()
+    {
+        $homePage = Page::with(['component', 'images'])
+            ->where('published', true)
+            ->where('slug', '')
+            ->first();
+
+        if (!$homePage) {
+            $homePage = Page::with(['component', 'images'])
+                ->where('published', true)
+                ->first();
+        }
+
+        return $homePage;
+    }
+
+    public function getBySlug($slug)
+    {
+        $page = Page::with(['component', 'images'])
+            ->where('published', true)
+            ->where('slug', $slug)
+            ->first();
+
+        if (!$page) {
+            abort(404);
+        }
+
+        return $page;
+    }
+
     // public function find(Request $request)
     // {
     //     $validator = Validator::make($request->all(), [

@@ -25,9 +25,12 @@ class NavigationController extends Controller
                 return [
                     'id' => $item->id,
                     'position' => $item->position,
-                    'title' => $item->title,
-                    'name' => $item->name,
-                    'slug' => $item->slug,
+                    'page' => [
+                        'id' => $item->id,
+                        'title' => $item->title,
+                        'slug' => $item->slug,
+                        'name' => $item->name,
+                    ],
                 ];
             })
         );

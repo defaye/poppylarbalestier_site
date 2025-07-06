@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-cream-50 text-sage-900;
+  }
+}
+
+@layer components {
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-padding {
+    @apply py-12 lg:py-16;
+  }
+  
+  .heading-primary {
+    @apply text-4xl md:text-5xl lg:text-6xl font-serif font-light text-sage-900 leading-tight;
+  }
+  
+  .heading-secondary {
+    @apply text-2xl md:text-3xl lg:text-4xl font-serif font-light text-sage-900 leading-tight;
+  }
+  
+  .heading-tertiary {
+    @apply text-xl md:text-2xl font-serif font-light text-sage-900 leading-tight;
+  }
+  
+  .body-text {
+    @apply text-sage-700 leading-relaxed;
+  }
+  
+  .nav-link {
+    @apply text-sage-700 hover:text-sage-900 transition-colors duration-200 font-medium;
+  }
+  
+  .nav-link-active {
+    @apply text-sage-900 font-semibold;
+  }
+  
+  .btn-primary {
+    @apply bg-sage-800 hover:bg-sage-900 text-white px-6 py-3 rounded-sm transition-colors duration-200 font-medium;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border border-sage-700 hover:bg-sage-700 hover:text-white text-sage-700 px-6 py-3 rounded-sm transition-all duration-200 font-medium;
+  }
+  
+  .image-overlay {
+    @apply absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-300;
+  }
+  
+  .gallery-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+  
+  .gallery-item {
+    @apply relative overflow-hidden rounded-sm shadow-lg hover:shadow-xl transition-shadow duration-300;
+  }
+}
