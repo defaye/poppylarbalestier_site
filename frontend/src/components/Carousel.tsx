@@ -112,10 +112,8 @@ const Carousel: React.FC<CarouselProps> = ({
                   return (
                     <motion.div
                       key={`${image.id}-${position}`}
-                      className="cursor-pointer relative flex-1"
+                      className="cursor-pointer relative flex-1 group"
                       onClick={() => handleThumbnailClick(index)}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
                     >
                       <img
                         src={image.path}
@@ -128,6 +126,10 @@ const Carousel: React.FC<CarouselProps> = ({
                       {/* Overlay for active (current) thumbnail - greyed out */}
                       {isActive && (
                         <div className="absolute inset-0 bg-gray-400 opacity-40" />
+                      )}
+                      {/* Hover overlay - more white and fades in */}
+                      {!isActive && (
+                        <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
                       )}
                     </motion.div>
                   )
