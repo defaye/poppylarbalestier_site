@@ -117,7 +117,7 @@ const Carousel: React.FC<CarouselProps> = ({
                     <img
                       src={image.path}
                       alt={image.name}
-                      className="w-full h-20 object-cover"
+                      className="w-full h-auto object-cover"
                       style={{
                         aspectRatio: `${ratioX}/${ratioY}`
                       }}
