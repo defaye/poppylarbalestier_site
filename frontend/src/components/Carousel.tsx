@@ -61,13 +61,15 @@ const Carousel: React.FC<CarouselProps> = ({
   if (!images || images.length === 0) return null
 
   return (
-    <div className="carousel">
+    <div 
+      className="carousel"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       {/* Main image display */}
       <div 
         className="carousel-primary relative cursor-pointer"
         onClick={handleMainImageClick}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
       >
         <div className="relative overflow-hidden pointer-events-auto">
           <AnimatePresence mode="wait">
