@@ -32,7 +32,7 @@ const Page: React.FC<PageProps> = ({ page, onNavigate }) => {
   return (
     <div className="container mx-auto px-4">
       {showHeader && (
-        <h1 className="text-center mb-6 font-serif text-2xl font-normal text-gray-900">
+        <h1 className="mb-6 font-serif text-gray-900">
           {pageHeader}
         </h1>
       )}

@@ -97,7 +97,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ page, onNavigate }) => {
     <div className="container mx-auto px-4">
       {page.name && (
         <h1 
-          className="text-center mb-6 font-serif text-2xl font-normal text-gray-900"
+          className="mb-6 font-serif text-gray-900"
           dangerouslySetInnerHTML={{ __html: page.name }}
         />
       )}
