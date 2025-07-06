@@ -106,25 +106,27 @@ function App() {
     : dynamicComponents.page
 
   return (
-    <div className="min-h-screen bg-cream-50">
-      <Header onNavigate={handleNavigation} />
-      <motion.main 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="pt-20"
-      >
-        {page && ComponentToRender ? (
-          <React.Suspense fallback={<div className="container mx-auto px-4 py-8">Loading...</div>}>
-            <ComponentToRender page={page} onNavigate={handleNavigation} />
-          </React.Suspense>
-        ) : (
-          <div className="container mx-auto px-4 py-8">
-            <h1 className="text-2xl font-bold text-brown-800">Page not found</h1>
-            <p className="text-brown-600 mt-2">Sorry, the page you're looking for doesn't exist.</p>
-          </div>
-        )}
-      </motion.main>
+    <div className="min-h-screen flex flex-col">
+      <div id="top-wrapper" className="flex-1">
+        <Header onNavigate={handleNavigation} />
+        <motion.main 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          id="content"
+        >
+          {page && ComponentToRender ? (
+            <React.Suspense fallback={<div className="container mx-auto px-4 py-8">Loading...</div>}>
+              <ComponentToRender page={page} onNavigate={handleNavigation} />
+            </React.Suspense>
+          ) : (
+            <div className="container mx-auto px-4 py-8">
+              <h1 className="text-2xl font-bold text-gray-900">Page not found</h1>
+              <p className="text-gray-600 mt-2">Sorry, the page you're looking for doesn't exist.</p>
+            </div>
+          )}
+        </motion.main>
+      </div>
       <Footer />
     </div>
   )
