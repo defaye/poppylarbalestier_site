@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ApiResponse, NavigationItem, Page, Post, Category, Tag } from '@/types';
+import { NavigationItem, Page, Post, Category, Tag } from '@/types';
 
 const api = axios.create({
   baseURL: '/api',

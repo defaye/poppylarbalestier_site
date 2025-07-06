@@ -2,8 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import the original fonts - serif for headings */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+/* Original font definitions */
+@font-face {
+  font-family: 'LarbSansSerif';
+  font-weight: normal;
+  src: url('/fonts/sans.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'LarbSansSerif';
+  font-weight: bold;
+  src: url('/fonts/sans-bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'LarbSerif';
+  src: url('/fonts/serif.woff2') format('woff2');
+}
 
 @layer base {
   html {
@@ -13,7 +26,7 @@
   
   body {
     font-size: 13px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'LarbSansSerif', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     @apply text-gray-900;
     
     /* Responsive font sizes matching original */
@@ -39,7 +52,7 @@
 
   /* Typography matching original */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'LarbSerif', "Times New Roman", serif;
   }
 
   /* Selection styling */
