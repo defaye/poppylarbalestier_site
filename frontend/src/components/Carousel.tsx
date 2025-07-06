@@ -90,16 +90,16 @@ const Carousel: React.FC<CarouselProps> = ({
 
       {/* Pagination thumbnails */}
       {showPagination && images.length > 1 && (
-        <div className="carousel-paginator mt-5 hidden md:block">
-          <div className="relative">
+        <div className="carousel-paginator mt-5">
+          <div className="relative overflow-hidden">
             {/* Shadow gradients */}
-            <div className="absolute left-0 top-0 bottom-0 w-3 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-3 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
             
-            {/* Thumbnail container */}
-            <div className="flex justify-center space-x-1 px-3 overflow-x-auto scrollbar-hide">
+            {/* Thumbnail container - 5 thumbnails filling full width with no gaps */}
+            <div className="flex w-full">
               {images.map((image, index) => {
-                const isCenter = index === currentIndex
+                const isActive = index === currentIndex
                 const distance = Math.abs(index - currentIndex)
                 const maxVisible = 5
                 const isVisible = distance <= Math.floor(maxVisible / 2)
@@ -109,28 +109,22 @@ const Carousel: React.FC<CarouselProps> = ({
                 return (
                   <motion.div
                     key={image.id}
-                    className={`flex-shrink-0 cursor-pointer relative ${
-                      isCenter ? 'ring-2 ring-white shadow-lg z-20' : 'z-10'
-                    }`}
+                    className="cursor-pointer relative flex-1"
                     onClick={() => handleThumbnailClick(index)}
-                    whileHover={{ scale: isCenter ? 1 : 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    style={{
-                      transform: isCenter ? 'scale(1.1)' : 'scale(1)',
-                      zIndex: isCenter ? 20 : 10
-                    }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     <img
                       src={image.path}
                       alt={image.name}
-                      className={`w-16 h-16 object-cover ${isCenter ? 'rounded' : 'rounded opacity-75'}`}
+                      className="w-full h-20 object-cover"
                       style={{
                         aspectRatio: `${ratioX}/${ratioY}`
                       }}
                     />
-                    {/* Overlay for non-active thumbnails */}
-                    {!isCenter && (
-                      <div className="absolute inset-0 bg-gray-100 opacity-25 rounded" />
+                    {/* Overlay for active (current) thumbnail - greyed out */}
+                    {isActive && (
+                      <div className="absolute inset-0 bg-gray-400 opacity-40" />
                     )}
                   </motion.div>
                 )
