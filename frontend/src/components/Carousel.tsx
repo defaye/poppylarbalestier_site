@@ -123,9 +123,9 @@ const Carousel: React.FC<CarouselProps> = ({
                           aspectRatio: `${ratioX}/${ratioY}`
                         }}
                       />
-                      {/* Overlay for active (current) thumbnail - greyed out */}
+                      {/* Overlay for active (current) thumbnail - whiter highlight */}
                       {isActive && (
-                        <div className="absolute inset-0 bg-gray-400 opacity-40" />
+                        <div className="absolute inset-0 bg-white opacity-20" />
                       )}
                       {/* Hover overlay - more white and fades in */}
                       {!isActive && (
