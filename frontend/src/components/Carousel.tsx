@@ -96,8 +96,8 @@ const Carousel: React.FC<CarouselProps> = ({
             <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
             <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
             
-            {/* Thumbnail container - 5 thumbnails filling full width with no gaps */}
-            <div className="flex w-full">
+            {/* Thumbnail container - 5 thumbnails filling full width with small gaps */}
+            <div className="flex w-full gap-1">
               {images.map((image, index) => {
                 const isActive = index === currentIndex
                 const distance = Math.abs(index - currentIndex)
