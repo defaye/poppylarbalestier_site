@@ -2,7 +2,7 @@ import axios from 'axios';
 import { NavigationItem, Page, Post, Category, Tag } from '@/types';
 
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: `${import.meta.env.BASE_URL}api`,
   timeout: 10000,
 });
 

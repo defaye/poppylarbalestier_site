@@ -52,13 +52,6 @@ done
 echo "Copying storage assets..."
 cp -r ./public/storage ./dist/storage
 
-# Inject base tag for GitHub Pages deployment
-if [ ! -z "$BASE_PATH" ]; then
-    echo "Injecting base tag for GitHub Pages deployment: $BASE_PATH"
-    # Inject <base> tag after the <meta charset> tag
-    sed -i '' "s|<meta charset=\"UTF-8\" />|<meta charset=\"UTF-8\" />\n    <base href=\"$BASE_PATH/\" />|" ./dist/index.html
-fi
-
 # Create .nojekyll file for GitHub Pages
 echo "Creating .nojekyll file..."
 touch ./dist/.nojekyll
