@@ -3,6 +3,7 @@
 echo "Building static React version of Poppy Larbalestier Photography..."
 
 # Clean previous build
+echo "Cleaning previous build..."
 rm -rf ./dist
 
 # Build React app first
@@ -50,7 +51,14 @@ done
 
 # Copy storage assets
 echo "Copying storage assets..."
+# Remove existing storage directory to prevent duplication
+rm -rf ./dist/storage
+# Copy storage assets (following symlink)
 cp -r ./public/storage ./dist/storage
+
+# Fix image paths in API files to use correct base path for GitHub Pages
+echo "Fixing image paths in API files..."
+find ./dist/api -name "*.json" -exec perl -i -pe 's|"\\/storage\\/|"\\/poppylarbalestier-site\\/storage\\/|g' {} \;
 
 # Create .nojekyll file for GitHub Pages
 echo "Creating .nojekyll file..."

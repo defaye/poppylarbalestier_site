@@ -2,40 +2,40 @@ import axios from 'axios';
 import { NavigationItem, Page, Post, Category, Tag } from '@/types';
 
 const api = axios.create({
-  baseURL: `${import.meta.env.BASE_URL}api`,
+  baseURL: `${import.meta.env.BASE_URL}api/`,
   timeout: 10000,
 });
 
 // Navigation
 export const getNavigation = async (): Promise<NavigationItem[]> => {
-  const response = await api.get<NavigationItem[]>('/navigation.json');
+  const response = await api.get<NavigationItem[]>('navigation.json');
   return response.data;
 };
 
 // Pages
 export const getPages = async (): Promise<Page[]> => {
-  const response = await api.get<Page[]>('/pages');
+  const response = await api.get<Page[]>('pages');
   return response.data;
 };
 
 export const getPage = async (slug: string): Promise<Page> => {
-  const response = await api.get<Page>(`/${slug}.json`);
+  const response = await api.get<Page>(`${slug}.json`);
   return response.data;
 };
 
 export const getHomePage = async (): Promise<Page> => {
-  const response = await api.get<Page>('/home.json');
+  const response = await api.get<Page>('home.json');
   return response.data;
 };
 
 // Posts
 export const getPosts = async (): Promise<Post[]> => {
-  const response = await api.get<Post[]>('/posts');
+  const response = await api.get<Post[]>('posts');
   return response.data;
 };
 
 export const getPost = async (slug: string): Promise<Post> => {
-  const response = await api.get<Post>(`/posts/${slug}`);
+  const response = await api.get<Post>(`posts/${slug}`);
   return response.data;
 };
 
@@ -53,7 +53,7 @@ export const getTestimonials = async (page: number = 1, perPage: number = 32): P
     total: number;
   };
 }> => {
-  const response = await api.get('/categories', {
+  const response = await api.get('categories', {
     params: {
       with: ['images', 'tags'],
       name: 'testimonial',
@@ -66,23 +66,23 @@ export const getTestimonials = async (page: number = 1, perPage: number = 32): P
 
 // Categories
 export const getCategories = async (): Promise<Category[]> => {
-  const response = await api.get<Category[]>('/categories');
+  const response = await api.get<Category[]>('categories');
   return response.data;
 };
 
 export const getCategory = async (slug: string): Promise<Category> => {
-  const response = await api.get<Category>(`/categories/${slug}`);
+  const response = await api.get<Category>(`categories/${slug}`);
   return response.data;
 };
 
 export const getCategoryPosts = async (slug: string): Promise<Post[]> => {
-  const response = await api.get<Post[]>(`/categories/${slug}/posts`);
+  const response = await api.get<Post[]>(`categories/${slug}/posts`);
   return response.data;
 };
 
 // Tags
 export const getTags = async (): Promise<Tag[]> => {
-  const response = await api.get<Tag[]>('/tags');
+  const response = await api.get<Tag[]>('tags');
   return response.data;
 };
 
@@ -94,7 +94,7 @@ export const submitContact = async (formData: {
   message: string;
   recaptcha: string;
 }): Promise<boolean> => {
-  const response = await api.post('/contact', formData);
+  const response = await api.post('contact', formData);
   return response.data;
 };
 
