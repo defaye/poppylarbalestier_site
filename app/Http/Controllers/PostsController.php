@@ -126,4 +126,48 @@ class PostsController extends Controller
 
         return $post;
     }
+
+    /**
+     * Get a post by page slug and post slug (for nested routes like /weddings/ellen-alex.json)
+     */
+    public function getByPageAndSlug($pageSlug, $postSlug)
+    {
+        $post = Post::with(['images'])
+            ->whereHas('pages', function ($query) use ($pageSlug) {
+                $query->where('slug', $pageSlug);
+            })
+            ->where('published', true)
+            ->where('slug', $postSlug)
+            ->first();
+
+        if (!$post) {
+            abort(404);
+        }
+
+        // Format the response to match static JSON structure
+        $page = $post->pages()->where('slug', $pageSlug)->first();
+        
+        return [
+            'id' => $post->id,
+            'title' => $post->title,
+            'slug' => $post->slug,
+            'summary' => $post->summary,
+            'body' => $post->body,
+            'body_prefix' => $post->body_prefix,
+            'body_suffix' => $post->body_suffix,
+            'published' => $post->published,
+            'page' => [
+                'id' => $page->id,
+                'title' => $page->title,
+                'slug' => $page->slug
+            ],
+            'images' => $post->images->map(function ($image) {
+                return [
+                    'id' => $image->id,
+                    'path' => $image->path,
+                    'name' => $image->name
+                ];
+            })
+        ];
+    }
 }

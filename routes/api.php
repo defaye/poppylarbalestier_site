@@ -19,10 +19,16 @@ Route::group(['middleware' => 'throttle:60,1'], function () {
     
     Route::get('images')->uses('ImagesController@get');
     Route::get('navigation')->uses('NavigationController@get');
+    Route::get('navigation.json')->uses('NavigationController@get'); // Static-compatible
     
     Route::get('pages')->uses('PagesController@get');
     Route::get('pages/home')->uses('PagesController@getHome');
     Route::get('pages/{slug}')->uses('PagesController@getBySlug');
+    
+    // Static-compatible routes
+    Route::get('home.json')->uses('PagesController@getHome');
+    Route::get('{page}.json')->uses('PagesController@getBySlug')->where('page', '[a-z-]+');
+    Route::get('{page}/{post}.json')->uses('PostsController@getByPageAndSlug')->where(['page' => '[a-z-]+', 'post' => '[a-z-]+']);
     // Route::post('pages')->uses('PagesController@find');
 
     Route::get('posts')->uses('PostsController@get');

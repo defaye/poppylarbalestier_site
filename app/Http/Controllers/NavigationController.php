@@ -24,13 +24,10 @@ class NavigationController extends Controller
             $navigation->get()->map(function ($item) {
                 return [
                     'id' => $item->id,
-                    'position' => $item->position,
-                    'page' => [
-                        'id' => $item->id,
-                        'title' => $item->title,
-                        'slug' => $item->slug,
-                        'name' => $item->name,
-                    ],
+                    'title' => $item->title,
+                    'name' => $item->name,
+                    'slug' => $item->slug,
+                    'href' => '/' . $item->slug,
                 ];
             })
         );
