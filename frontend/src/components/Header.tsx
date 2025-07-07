@@ -106,7 +106,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
               className="text-center cursor-pointer"
               onClick={() => handleNavClick('/')}
             >
-              <img src={`${import.meta.env.VITE_BASE_PATH || ''}/images/logo.jpg`} alt="Logo" className="max-w-full mx-auto" />
+              <img src="/images/logo.jpg" alt="Logo" className="max-w-full mx-auto" />
             </div>
           </div>
           
