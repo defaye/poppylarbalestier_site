@@ -74,9 +74,21 @@ const Carousel: React.FC<CarouselProps> = ({
     }
   }
 
-  const handleFullscreenToggle = (e: React.MouseEvent) => {
-    e.stopPropagation() // Prevent triggering the main image click
+  const handleFullscreenToggle = (e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation() // Prevent triggering the main image click
+    }
     setIsFullscreen(!isFullscreen)
+  }
+
+  const handleFullscreenClose = () => {
+    setIsFullscreen(false)
+  }
+
+  const handleFullscreenImageClick = () => {
+    if (images.length > 1) {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
+    }
   }
 
   const handleMouseEnter = () => {
@@ -191,25 +203,33 @@ const Carousel: React.FC<CarouselProps> = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black z-50 flex items-center justify-center"
-          onClick={handleFullscreenToggle}
+          className="fixed inset-0 bg-black z-50"
         >
-          {/* Close button */}
-          <button
-            onClick={handleFullscreenToggle}
-            className="absolute h-16 w-16 top-4 right-4 bg-purple-600 bg-opacity-40 text-white rounded-full hover:bg-opacity-60 z-10"
-            aria-label="Close fullscreen"
-          >
-            <FontAwesomeIcon icon={faDownLeftAndUpRightToCenter} className="w-full" />
-          </button>
-          
-          {/* Fullscreen image */}
-          <img
-            src={images[currentIndex].path}
-            alt={images[currentIndex].name}
-            className="w-full h-auto object-contain"
-            onClick={(e) => e.stopPropagation()}
+          {/* Background that closes on click */}
+          <div 
+            className="absolute inset-0" 
+            onClick={handleFullscreenClose}
           />
+          
+          {/* Content container */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            {/* Close button */}
+            <button
+              onClick={handleFullscreenClose}
+              className="absolute h-16 w-16 top-4 right-4 bg-purple-600 bg-opacity-40 text-white rounded-full hover:bg-opacity-60 z-20 pointer-events-auto"
+              aria-label="Close fullscreen"
+            >
+              <FontAwesomeIcon icon={faDownLeftAndUpRightToCenter} className="w-full" />
+            </button>
+            
+            {/* Fullscreen image */}
+            <img
+              src={images[currentIndex].path}
+              alt={images[currentIndex].name}
+              className="w-full h-auto object-contain cursor-pointer pointer-events-auto"
+              onClick={handleFullscreenImageClick}
+            />
+          </div>
         </motion.div>
       )}
     </div>
