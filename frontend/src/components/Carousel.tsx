@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faExpand, faCompress } from '@fortawesome/free-solid-svg-icons'
+import { faUpRightAndDownLeftFromCenter, faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons'
 
 interface CarouselProps {
   images: Array<{
@@ -128,7 +128,7 @@ const Carousel: React.FC<CarouselProps> = ({
             className="absolute h-16 w-16 top-4 right-4 bg-purple-600 bg-opacity-40 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-opacity-60"
             aria-label="Toggle fullscreen"
           >
-            <FontAwesomeIcon icon={faExpand} className="w-full" />
+            <FontAwesomeIcon icon={faUpRightAndDownLeftFromCenter} className="w-full" />
           </button>
         </div>
       </div>
@@ -200,7 +200,7 @@ const Carousel: React.FC<CarouselProps> = ({
             className="absolute h-16 w-16 top-4 right-4 bg-purple-600 bg-opacity-40 text-white rounded-full hover:bg-opacity-60 z-10"
             aria-label="Close fullscreen"
           >
-            <FontAwesomeIcon icon={faCompress} className="w-full" />
+            <FontAwesomeIcon icon={faDownLeftAndUpRightToCenter} className="w-full" />
           </button>
           
           {/* Fullscreen image */}
