@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowsPointingOutIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { XMarkIcon } from '@heroicons/react/24/outline'
 
 interface CarouselProps {
   images: Array<{
@@ -124,10 +124,18 @@ const Carousel: React.FC<CarouselProps> = ({
           {/* Fullscreen icon - appears on hover */}
           <button
             onClick={handleFullscreenToggle}
-            className="absolute top-4 right-4 p-2 bg-black bg-opacity-50 text-white rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-opacity-70"
+            className="absolute top-4 right-4 p-3 bg-purple-600 bg-opacity-40 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-opacity-60"
             aria-label="Toggle fullscreen"
           >
-            <ArrowsPointingOutIcon className="w-5 h-5" />
+            {isFullscreen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+              </svg>
+            )}
           </button>
         </div>
       </div>
@@ -209,36 +217,6 @@ const Carousel: React.FC<CarouselProps> = ({
             className="w-full h-auto object-contain"
             onClick={(e) => e.stopPropagation()}
           />
-          
-          {/* Navigation arrows for fullscreen */}
-          {images.length > 1 && (
-            <>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length)
-                }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black bg-opacity-50 text-white rounded-md hover:bg-opacity-70"
-                aria-label="Previous image"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
-                }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black bg-opacity-50 text-white rounded-md hover:bg-opacity-70"
-                aria-label="Next image"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </>
-          )}
         </motion.div>
       )}
     </div>
