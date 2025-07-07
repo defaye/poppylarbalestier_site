@@ -1,8 +1,6 @@
 #!/bin/bash
 
-echo "Building stat# Get all pages to generate their JSON files
-echo "Fetching all page data..."
-PAGES=$(curl -s "http://localhost:8000/api/pages/all" | jq -r '.[] | .slug' | grep -v '^home$')React version of Poppy Larbalestier Photography..."
+echo "Building static React version of Poppy Larbalestier Photography..."
 
 # Clean previous build
 rm -rf ./dist
