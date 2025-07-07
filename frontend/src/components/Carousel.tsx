@@ -109,9 +109,10 @@ const Carousel: React.FC<CarouselProps> = ({
               key={currentIndex}
               src={images[currentIndex].path}
               alt={images[currentIndex].name}
-              className="w-full h-auto block"
+              className="w-full h-auto block object-cover"
               style={{
-                aspectRatio: autoHeight ? 'auto' : `${ratioX}/${ratioY}`
+                aspectRatio: autoHeight ? 'auto' : `${ratioX}/${ratioY}`,
+                width: '100%'
               }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -205,7 +206,7 @@ const Carousel: React.FC<CarouselProps> = ({
           <img
             src={images[currentIndex].path}
             alt={images[currentIndex].name}
-            className="max-w-full max-h-full object-contain"
+            className="w-full h-auto object-contain"
             onClick={(e) => e.stopPropagation()}
           />
           
