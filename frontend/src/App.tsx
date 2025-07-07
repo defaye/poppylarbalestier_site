@@ -68,7 +68,19 @@ function App() {
         return
       }
       
-      const response = await api.post('/router', { path })
+      // Extract slug from path
+      const slug = path === '/' ? 'home' : path.replace(/^\//, '').replace(/\/$/, '') || 'home'
+      
+      // Check if this is a nested route (e.g., /weddings/john-and-jane)
+      const pathParts = slug.split('/')
+      let apiUrl = `/${slug}.json`
+      
+      if (pathParts.length === 2) {
+        // This is a post detail page
+        apiUrl = `/${pathParts[0]}/${pathParts[1]}.json`
+      }
+      
+      const response = await api.get(apiUrl)
       const pageData = response.data
       console.log('Page data:', pageData)
       

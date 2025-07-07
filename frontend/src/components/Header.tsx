@@ -7,12 +7,10 @@ import api from '@/lib/api';
 
 interface NavigationItem {
   id: number;
-  position: number;
-  page: {
-    id: number;
-    title: string;
-    slug: string;
-  };
+  title: string;
+  name: string;
+  slug: string;
+  href: string;
 }
 
 interface HeaderProps {
@@ -26,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   const { data: navigation } = useQuery<NavigationItem[]>({
     queryKey: ['navigation'],
     queryFn: async () => {
-      const response = await api.get('/navigation');
+      const response = await api.get('/navigation.json');
       return response.data;
     },
   });
@@ -80,15 +78,15 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
               className="mt-4 bg-gray-100/50 rounded-lg"
             >
               <div className="py-2">
-                {navigation?.filter(item => item.position > 0).map((item) => (
+                {navigation?.map((item) => (
                   <button
                     key={item.id}
-                    onClick={() => handleNavClick(`/${item.page.slug}`)}
+                    onClick={() => handleNavClick(item.href)}
                     className={`block w-full px-4 py-2 text-center hover:bg-purple-500/50 hover:text-gray-100 uppercase tracking-[0.15em] transition-colors text-base ${
-                      currentPath === `/${item.page.slug}` ? 'bg-purple-500/25' : ''
+                      currentPath === item.href ? 'bg-purple-500/25' : ''
                     }`}
                   >
-                    {item.page.title}
+                    {item.name || item.title}
                   </button>
                 ))}
               </div>
@@ -144,17 +142,17 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
       <nav className="hidden lg:block mt-12 text-sm border-t border-gray-200" style={{ borderBottomWidth: '2px', borderBottomColor: '#dee2e6' }}>
         <div className="container mx-auto px-4">
           <div className="flex justify-center space-x-8 py-4">
-            {navigation?.filter(item => item.position > 0).map((item) => (
+            {navigation?.map((item) => (
               <button
                 key={item.id}
-                onClick={() => handleNavClick(`/${item.page.slug}`)}
+                onClick={() => handleNavClick(item.href)}
                 className={`text-base transition-colors duration-200 uppercase ${
-                  currentPath === `/${item.page.slug}` 
+                  currentPath === item.href
                     ? 'text-purple-600 font-medium tracking-[0.15em]' 
                     : 'text-gray-600 hover:text-purple-600 tracking-[0.15em]'
                 }`}
               >
-                {item.page.title}
+                {item.name || item.title}
               </button>
             ))}
           </div>

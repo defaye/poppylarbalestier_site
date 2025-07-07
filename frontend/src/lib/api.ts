@@ -8,7 +8,7 @@ const api = axios.create({
 
 // Navigation
 export const getNavigation = async (): Promise<NavigationItem[]> => {
-  const response = await api.get<NavigationItem[]>('/navigation');
+  const response = await api.get<NavigationItem[]>('/navigation.json');
   return response.data;
 };
 
@@ -19,12 +19,12 @@ export const getPages = async (): Promise<Page[]> => {
 };
 
 export const getPage = async (slug: string): Promise<Page> => {
-  const response = await api.get<Page>(`/pages/${slug}`);
+  const response = await api.get<Page>(`/${slug}.json`);
   return response.data;
 };
 
 export const getHomePage = async (): Promise<Page> => {
-  const response = await api.get<Page>('/pages/home');
+  const response = await api.get<Page>('/home.json');
   return response.data;
 };
 
