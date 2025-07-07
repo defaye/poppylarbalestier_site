@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faExpand, faCompress } from '@fortawesome/free-solid-svg-icons'
 
 interface CarouselProps {
   images: Array<{
@@ -124,18 +125,10 @@ const Carousel: React.FC<CarouselProps> = ({
           {/* Fullscreen icon - appears on hover */}
           <button
             onClick={handleFullscreenToggle}
-            className="absolute top-4 right-4 p-3 bg-purple-600 bg-opacity-40 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-opacity-60"
+            className="absolute h-16 w-16 top-4 right-4 bg-purple-600 bg-opacity-40 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-opacity-60"
             aria-label="Toggle fullscreen"
           >
-            {isFullscreen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-              </svg>
-            )}
+            <FontAwesomeIcon icon={faExpand} className="w-full" />
           </button>
         </div>
       </div>
@@ -204,10 +197,10 @@ const Carousel: React.FC<CarouselProps> = ({
           {/* Close button */}
           <button
             onClick={handleFullscreenToggle}
-            className="absolute top-4 right-4 p-2 bg-black bg-opacity-50 text-white rounded-md hover:bg-opacity-70 z-10"
+            className="absolute h-16 w-16 top-4 right-4 bg-purple-600 bg-opacity-40 text-white rounded-full hover:bg-opacity-60 z-10"
             aria-label="Close fullscreen"
           >
-            <XMarkIcon className="w-6 h-6" />
+            <FontAwesomeIcon icon={faCompress} className="w-full" />
           </button>
           
           {/* Fullscreen image */}
