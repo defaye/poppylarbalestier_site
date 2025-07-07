@@ -1,6 +1,8 @@
 #!/bin/bash
 
-echo "Building static React version of Poppy Larbalestier Photography..."
+echo "Building stat# Get all pages to generate their JSON files
+echo "Fetching all page data..."
+PAGES=$(curl -s "http://localhost:8000/api/pages/all" | jq -r '.[] | .slug' | grep -v '^home$')React version of Poppy Larbalestier Photography..."
 
 # Clean previous build
 rm -rf ./dist
@@ -11,129 +13,42 @@ cd frontend
 npm run build
 cd ..
 
-# Generate API data directly in dist (from Laravel)
-echo "Generating API data..."
+# Ensure Laravel server is running (check if we can reach it)
+if ! curl -s http://localhost:8000/api/navigation.json > /dev/null; then
+    echo "Error: Laravel server is not running on localhost:8000"
+    echo "Please start the server with: php artisan serve"
+    exit 1
+fi
+
+# Generate API data directly in dist (from Laravel API endpoints)
+echo "Generating API data from Laravel API..."
 mkdir -p ./dist/api
 
 # Generate navigation data
-php -r "
-require_once 'vendor/autoload.php';
-\$app = require_once 'bootstrap/app.php';
-\$kernel = \$app->make(Illuminate\Contracts\Console\Kernel::class);
-\$kernel->bootstrap();
+echo "Fetching navigation data..."
+curl -s "http://localhost:8000/api/navigation.json" > ./dist/api/navigation.json
 
-\$pages = App\Page::join('navigations', 'pages.id', '=', 'navigations.page_id')
-    ->orderBy('position')
-    ->select('pages.*')
-    ->where('pages.published', true)
-    ->where('pages.slug', '!=', 'home')
-    ->get();
+# Generate home page data
+echo "Fetching home page data..."
+curl -s "http://localhost:8000/api/home.json" > ./dist/api/home.json
 
-\$navigation = \$pages->map(function (\$page) {
-    return [
-        'id' => \$page->id,
-        'title' => \$page->title,
-        'name' => \$page->name,
-        'slug' => \$page->slug,
-        'href' => \$page->slug === 'home' ? '/' : '/' . \$page->slug
-    ];
-});
+# Get all pages to generate their JSON files
+echo "Fetching all page data..."
+PAGES=$(curl -s "http://localhost:8000/api/pages/all" | jq -r '.[] | .slug' | grep -v '^home$')
 
-file_put_contents('./dist/api/navigation.json', json_encode(\$navigation));
-echo 'Navigation data generated.\n';
-"
-
-# Generate page data
-echo "Generating page data..."
-php -r "
-require_once 'vendor/autoload.php';
-\$app = require_once 'bootstrap/app.php';
-\$kernel = \$app->make(Illuminate\Contracts\Console\Kernel::class);
-\$kernel->bootstrap();
-
-\$pages = App\Page::where('published', true)->get();
-
-foreach (\$pages as \$page) {
-    \$posts = [];
-    if (\$page->posts) {
-        \$posts = \$page->posts->map(function (\$post) {
-            return [
-                'id' => \$post->id,
-                'title' => \$post->title,
-                'slug' => \$post->slug,
-                'summary' => \$post->summary,
-                'body' => \$post->body,
-                'body_prefix' => \$post->body_prefix,
-                'body_suffix' => \$post->body_suffix,
-                'images' => \$post->images->map(function (\$image) {
-                    return [
-                        'id' => \$image->id,
-                        'path' => \$image->path,
-                        'name' => \$image->name
-                    ];
-                })
-            ];
-        });
-        
-        // Generate individual post JSON files
-        foreach (\$page->posts as \$post) {
-            \$postData = [
-                'id' => \$post->id,
-                'title' => \$post->title,
-                'slug' => \$post->slug,
-                'summary' => \$post->summary,
-                'body' => \$post->body,
-                'body_prefix' => \$post->body_prefix,
-                'body_suffix' => \$post->body_suffix,
-                'published' => true,
-                'page' => [
-                    'id' => \$page->id,
-                    'title' => \$page->title,
-                    'slug' => \$page->slug
-                ],
-                'images' => \$post->images->map(function (\$image) {
-                    return [
-                        'id' => \$image->id,
-                        'path' => \$image->path,
-                        'name' => \$image->name
-                    ];
-                })
-            ];
-            
-            // Create directory for page if it doesn't exist
-            if (!is_dir('./dist/api/' . \$page->slug)) {
-                mkdir('./dist/api/' . \$page->slug, 0755, true);
-            }
-            
-            file_put_contents('./dist/api/' . \$page->slug . '/' . \$post->slug . '.json', json_encode(\$postData));
-            echo 'Generated data for post: ' . \$post->title . '\n';
-        }
-    }
+for slug in $PAGES; do
+    echo "Fetching data for page: $slug"
+    curl -s "http://localhost:8000/api/$slug.json" > "./dist/api/$slug.json"
     
-    \$pageData = [
-        'id' => \$page->id,
-        'title' => \$page->title,
-        'name' => \$page->name,
-        'slug' => \$page->slug,
-        'summary' => \$page->summary,
-        'body' => \$page->body,
-        'body_prefix' => \$page->body_prefix,
-        'body_suffix' => \$page->body_suffix,
-        'published' => \$page->published,
-        'posts' => \$posts,
-        'images' => \$page->images->map(function (\$image) {
-            return [
-                'id' => \$image->id,
-                'path' => \$image->path,
-                'name' => \$image->name
-            ];
-        })
-    ];
+    # Generate individual post JSON files for this page
+    POSTS=$(curl -s "http://localhost:8000/api/$slug.json" | jq -r '.posts[]? | "'$slug'/" + .slug')
     
-    file_put_contents('./dist/api/' . \$page->slug . '.json', json_encode(\$pageData));
-    echo 'Generated data for page: ' . \$page->title . '\n';
-}
-"
+    for postPath in $POSTS; do
+        echo "Fetching data for post: $postPath"
+        mkdir -p "./dist/api/$(dirname "$postPath")"
+        curl -s "http://localhost:8000/api/$postPath.json" > "./dist/api/$postPath.json"
+    done
+done
 
 # Copy storage assets
 echo "Copying storage assets..."

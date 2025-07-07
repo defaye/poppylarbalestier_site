@@ -22,6 +22,7 @@ Route::group(['middleware' => 'throttle:60,1'], function () {
     Route::get('navigation.json')->uses('NavigationController@get'); // Static-compatible
     
     Route::get('pages')->uses('PagesController@get');
+    Route::get('pages/all')->uses('PagesController@getAll');
     Route::get('pages/home')->uses('PagesController@getHome');
     Route::get('pages/{slug}')->uses('PagesController@getBySlug');
     

@@ -18,6 +18,7 @@ class NavigationController extends Controller
                 'pages.slug',
             ])
             ->where('pages.published', true)
+            ->where('pages.slug', '!=', 'home')
             ->orderBy('navigations.position');
 
         return response()->json(
