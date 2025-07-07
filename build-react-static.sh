@@ -52,6 +52,16 @@ done
 echo "Copying storage assets..."
 cp -r ./public/storage ./dist/storage
 
+# Fix image paths for GitHub Pages (only if BASE_PATH is set)
+if [ ! -z "$BASE_PATH" ]; then
+    echo "Updating image and logo paths for base path: $BASE_PATH"
+    # Escape the base path for JSON (replace / with \/)
+    ESCAPED_BASE_PATH=$(echo "$BASE_PATH" | sed 's|/|\\/|g')
+    find ./dist/api -name "*.json" -exec sed -i '' "s|\\\\/storage\\\\/|\\\\$ESCAPED_BASE_PATH\\\\/storage\\\\/|g" {} \;
+    find ./dist -name "*.html" -exec sed -i '' "s|/images/|$BASE_PATH/images/|g" {} \;
+    find ./dist -name "*.js" -exec sed -i '' "s|/images/|$BASE_PATH/images/|g" {} \;
+fi
+
 # Create .nojekyll file for GitHub Pages
 echo "Creating .nojekyll file..."
 touch ./dist/.nojekyll
