@@ -58,7 +58,7 @@ cp -r ./public/storage ./dist/storage
 
 # Fix image paths in API files to use correct base path for GitHub Pages
 echo "Fixing image paths in API files..."
-find ./dist/api -name "*.json" -exec perl -i -pe 's|"\\/storage\\/|"\\/poppylarbalestier-site\\/storage\\/|g' {} \;
+find ./dist/api -name "*.json" -exec perl -i -pe 's|"\\/storage\\/|"\\/storage\\/|g' {} \;
 
 # Create .nojekyll file for GitHub Pages
 echo "Creating .nojekyll file..."
