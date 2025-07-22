@@ -18,16 +18,17 @@ class NavigationController extends Controller
                 'pages.slug',
             ])
             ->where('pages.published', true)
+            ->where('pages.slug', '!=', 'home')
             ->orderBy('navigations.position');
 
         return response()->json(
             $navigation->get()->map(function ($item) {
                 return [
                     'id' => $item->id,
-                    'position' => $item->position,
                     'title' => $item->title,
                     'name' => $item->name,
                     'slug' => $item->slug,
+                    'href' => '/' . $item->slug,
                 ];
             })
         );

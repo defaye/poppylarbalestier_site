@@ -32,10 +32,10 @@ class Navigation extends Model
     protected $with = [];
 
     /**
-     * Get the pages this navigation has.
+     * Get the page this navigation belongs to.
      */
-    public function pages()
+    public function page()
     {
-        return $this->hasMany('App\Page');
+        return $this->belongsTo('App\Page');
     }
 }

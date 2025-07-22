@@ -3,9 +3,9 @@
 namespace App\Http\Resources;
 
 use App\Http\Resources\PostResource;
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\Resource;
 
-class TagResource extends JsonResource
+class TagResource extends Resource
 {
     /**
      * Transform the resource into an array.

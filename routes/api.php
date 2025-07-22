@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,12 +14,26 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'throttle:60,1'], function () {
 
     Route::get('categories')->uses('CategoriesController@get');
+    Route::get('categories/{slug}')->uses('CategoriesController@getBySlug');
+    Route::get('categories/{slug}/posts')->uses('CategoriesController@getPosts');
+    
     Route::get('images')->uses('ImagesController@get');
     Route::get('navigation')->uses('NavigationController@get');
+    Route::get('navigation.json')->uses('NavigationController@get'); // Static-compatible
+    
     Route::get('pages')->uses('PagesController@get');
+    Route::get('pages/all')->uses('PagesController@getAll');
+    Route::get('pages/home')->uses('PagesController@getHome');
+    Route::get('pages/{slug}')->uses('PagesController@getBySlug');
+    
+    // Static-compatible routes
+    Route::get('home.json')->uses('PagesController@getHome');
+    Route::get('{page}.json')->uses('PagesController@getBySlug')->where('page', '[a-z-]+');
+    Route::get('{page}/{post}.json')->uses('PostsController@getByPageAndSlug')->where(['page' => '[a-z-]+', 'post' => '[a-z-]+']);
     // Route::post('pages')->uses('PagesController@find');
 
     Route::get('posts')->uses('PostsController@get');
+    Route::get('posts/{slug}')->uses('PostsController@getBySlug');
     Route::post('posts')->uses('PostsController@search');
 
     Route::get('tags')->uses('TagsController@get');

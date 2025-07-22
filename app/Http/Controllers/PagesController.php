@@ -107,6 +107,120 @@ class PagesController extends Controller
         );
     }
 
+    public function getAll()
+    {
+        return Page::with(['component', 'images'])
+            ->where('published', true)
+            ->orderBy('title')
+            ->get();
+    }
+
+    public function getHome()
+    {
+        $homePage = Page::with(['component', 'images', 'posts.images'])
+            ->where('published', true)
+            ->whereIn('slug', ['', 'home'])
+            ->first();
+
+        if (!$homePage) {
+            $homePage = Page::with(['component', 'images', 'posts.images'])
+                ->where('published', true)
+                ->first();
+        }
+
+        if (!$homePage) {
+            abort(404);
+        }
+
+        // Format to match static JSON structure
+        return [
+            'id' => $homePage->id,
+            'title' => $homePage->title,
+            'name' => $homePage->name,
+            'slug' => 'home', // Always return 'home' for consistency
+            'summary' => $homePage->summary,
+            'body' => $homePage->body,
+            'body_prefix' => $homePage->body_prefix,
+            'body_suffix' => $homePage->body_suffix,
+            'published' => $homePage->published,
+            'posts' => $homePage->posts->map(function ($post) {
+                return [
+                    'id' => $post->id,
+                    'title' => $post->title,
+                    'slug' => $post->slug,
+                    'summary' => $post->summary,
+                    'body' => $post->body,
+                    'body_prefix' => $post->body_prefix,
+                    'body_suffix' => $post->body_suffix,
+                    'images' => $post->images->map(function ($image) {
+                        return [
+                            'id' => $image->id,
+                            'path' => $image->path,
+                            'name' => $image->name
+                        ];
+                    })
+                ];
+            }),
+            'images' => $homePage->images->map(function ($image) {
+                return [
+                    'id' => $image->id,
+                    'path' => $image->path,
+                    'name' => $image->name
+                ];
+            })
+        ];
+    }
+
+    public function getBySlug($slug)
+    {
+        $page = Page::with(['component', 'images', 'posts.images'])
+            ->where('published', true)
+            ->where('slug', $slug)
+            ->first();
+
+        if (!$page) {
+            abort(404);
+        }
+
+        // Format to match static JSON structure
+        return [
+            'id' => $page->id,
+            'title' => $page->title,
+            'name' => $page->name,
+            'slug' => $page->slug,
+            'summary' => $page->summary,
+            'body' => $page->body,
+            'body_prefix' => $page->body_prefix,
+            'body_suffix' => $page->body_suffix,
+            'published' => $page->published,
+            'posts' => $page->posts->map(function ($post) {
+                return [
+                    'id' => $post->id,
+                    'title' => $post->title,
+                    'slug' => $post->slug,
+                    'summary' => $post->summary,
+                    'body' => $post->body,
+                    'body_prefix' => $post->body_prefix,
+                    'body_suffix' => $post->body_suffix,
+                    'images' => $post->images->map(function ($image) {
+                        return [
+                            'id' => $image->id,
+                            'path' => $image->path,
+                            'name' => $image->name
+                        ];
+                    })
+                ];
+            }),
+            'images' => $page->images->map(function ($image) {
+                return [
+                    'id' => $image->id,
+                    'path' => $image->path,
+                    'name' => $image->name
+                ];
+            })
+        ];
+    }
+
     // public function find(Request $request)
     // {
     //     $validator = Validator::make($request->all(), [

@@ -11,7 +11,7 @@ class TestDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UserSeeder::class);
+        $this->call(UsersTableSeeder::class);
 
         factory(App\Page::class, 1)->create()->each(function ($page) {
             $page->images()->saveMany(factory(App\Image::class, rand(5, 15))->make());

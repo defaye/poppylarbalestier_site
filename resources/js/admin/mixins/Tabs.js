@@ -7,7 +7,8 @@ export default {
     },
     mounted() {
         const url = new URL(window.location.href)
-        const tab = url.searchParams.get('tab')
+        const params = url.searchParams
+        let  tab = url.searchParams.get('tab')
         this.tab = tab ? tab : 'main'
     },
     methods: {

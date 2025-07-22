@@ -55,7 +55,7 @@ storeConfiguration.actions = {
 
 const store = new Vuex.Store(storeConfiguration)
 
-new Vue({
+const app = new Vue({
     el: '#app',
     store,
     computed: {

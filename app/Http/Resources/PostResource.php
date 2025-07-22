@@ -6,9 +6,9 @@ use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ImageResource;
 use App\Http\Resources\PageResource;
 use App\Http\Resources\TagResource;
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\Resource;
 
-class PostResource extends JsonResource
+class PostResource extends Resource
 {
     /**
      * Transform the resource into an array.

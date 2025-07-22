@@ -10,7 +10,7 @@
                         col-lg-6
                         p-lg-5
                     "
-                    v-for="testimonial in testimonials"
+                    v-for="(testimonial, index) in testimonials"
                 >
                     <a 
                         :href="`/${page.slug}/${testimonial.slug}`"

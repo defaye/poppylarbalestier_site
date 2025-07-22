@@ -3,9 +3,9 @@
 namespace App\Http\Resources;
 
 use App\Http\Resources\PageResource;
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\Resource;
 
-class NavigationResource extends JsonResource
+class NavigationResource extends Resource
 {
     /**
      * Transform the resource into an array.

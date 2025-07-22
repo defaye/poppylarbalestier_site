@@ -8,47 +8,47 @@ library.add(
 
 import {
 	faAnchor,
-	faChevronDoubleLeft,
-	faChevronDoubleRight,
+	faChevronLeft,
+	faChevronRight,
 	faFile,
 	faHome,
 	faLightbulb,
 	faMagic,
-	faMinusOctagon,
+	faMinusCircle,
 	faNewspaper,
-	faPlusOctagon,
+	faPlusCircle,
 	faPowerOff,
 	faSquare,
-	faTimesSquare,
+	faTimesCircle,
 	faUserCircle,
-} from '@fortawesome/pro-light-svg-icons'
+} from '@fortawesome/free-solid-svg-icons'
 
 library.add(
 	faAnchor,
-	faChevronDoubleLeft,
-	faChevronDoubleRight,
+	faChevronLeft,
+	faChevronRight,
 	faFile,
 	faHome,
 	faLightbulb,
 	faMagic,
-	faMinusOctagon,
+	faMinusCircle,
 	faNewspaper,
-	faPlusOctagon,
+	faPlusCircle,
 	faPowerOff,
 	faSquare,
-	faTimesSquare,
+	faTimesCircle,
 	faUserCircle,
 )
 
 
 import {
-	faCompressAlt,
-	faExpandAlt,
-} from '@fortawesome/pro-regular-svg-icons'
+	faSquare as faSquareRegular,
+	faCircle as faCircleRegular,
+} from '@fortawesome/free-regular-svg-icons'
 
 library.add(
-	faCompressAlt,
-	faExpandAlt,
+	faSquareRegular,
+	faCircleRegular,
 )
 
 

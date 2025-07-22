@@ -11,6 +11,15 @@ class PostsController extends Controller
 {
     public function get(Request $request)
     {
+        // Simple version for React frontend - return all published posts with relationships
+        if (!$request->has('with') && !$request->has('category') && !$request->has('tag')) {
+            return Post::with(['images', 'category', 'tags'])
+                ->where('published', true)
+                ->orderBy('created_at', 'desc')
+                ->get();
+        }
+
+        // Original complex logic for backward compatibility
         $validator = Validator::make($request->all(), [
             'with' => 'array|in:category,images,tags,pages',
             'category' => 'string|max:255',
@@ -102,5 +111,63 @@ class PostsController extends Controller
             \App\Http\Resources\PostResource::collection($posts->get())
             // new PostCollection($posts->paginate($perPage))
         );
+    }
+
+    public function getBySlug($slug)
+    {
+        $post = Post::with(['images', 'category', 'tags'])
+            ->where('published', true)
+            ->where('slug', $slug)
+            ->first();
+
+        if (!$post) {
+            abort(404);
+        }
+
+        return $post;
+    }
+
+    /**
+     * Get a post by page slug and post slug (for nested routes like /weddings/ellen-alex.json)
+     */
+    public function getByPageAndSlug($pageSlug, $postSlug)
+    {
+        $post = Post::with(['images'])
+            ->whereHas('pages', function ($query) use ($pageSlug) {
+                $query->where('slug', $pageSlug);
+            })
+            ->where('published', true)
+            ->where('slug', $postSlug)
+            ->first();
+
+        if (!$post) {
+            abort(404);
+        }
+
+        // Format the response to match static JSON structure
+        $page = $post->pages()->where('slug', $pageSlug)->first();
+        
+        return [
+            'id' => $post->id,
+            'title' => $post->title,
+            'slug' => $post->slug,
+            'summary' => $post->summary,
+            'body' => $post->body,
+            'body_prefix' => $post->body_prefix,
+            'body_suffix' => $post->body_suffix,
+            'published' => $post->published,
+            'page' => [
+                'id' => $page->id,
+                'title' => $page->title,
+                'slug' => $page->slug
+            ],
+            'images' => $post->images->map(function ($image) {
+                return [
+                    'id' => $image->id,
+                    'path' => $image->path,
+                    'name' => $image->name
+                ];
+            })
+        ];
     }
 }

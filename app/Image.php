@@ -102,7 +102,7 @@ class Image extends Model
         return static::create([
             'name' => $file->getClientOriginalName(),
             'extension' => $extension,
-            'size' => $file->getSize(),
+            'size' => $file->getClientSize(),
             'reference' => $reference,
         ]);
     }

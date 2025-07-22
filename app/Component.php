@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
@@ -60,10 +59,10 @@ class Component extends Model
             if (!is_dir($dir = resource_path('js/dynamic_components'))) {
                 mkdir($dir);
             }
-            File::put(resource_path("js/dynamic_components/" . Str::studly($model->name) . ".vue"), $model->body);
+            File::put(resource_path("js/dynamic_components/" . studly_case($model->name) . ".vue"), $model->body);
             File::put(resource_path('js/components.js'), null);
             static::each(function ($model) {
-                File::append(resource_path('js/components.js'), "Vue.component('" . Str::snake($model->name) . "', require('./dynamic_components/" . Str::studly($model->name) . ".vue'));\n");
+                File::append(resource_path('js/components.js'), "Vue.component('" . snake_case($model->name) . "', require('./dynamic_components/" . studly_case($model->name) . ".vue'));\n");
             });
             $current = getcwd();
             chdir(base_path());
@@ -92,7 +91,7 @@ class Component extends Model
      */
     public function getBodyAttribute()
     {
-        $filename = Str::studly($this->name);
+        $filename = studly_case($this->name);
         return File::get(resource_path("js/dynamic_components/$filename.vue"));
     }
 }
