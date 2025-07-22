@@ -2,7 +2,7 @@
 
 # Start the React development server
 echo "Starting React development server..."
-cd frontend && npm run dev &
+cd new_frontend && npm run dev &
 REACT_PID=$!
 
 # Wait a moment for React to start
@@ -14,7 +14,7 @@ cd ..
 php artisan serve &
 LARAVEL_PID=$!
 
-echo "React frontend running on http://localhost:3000"
+echo "React new frontend running on http://localhost:3000"
 echo "Laravel backend running on http://localhost:8000"
 echo "Press Ctrl+C to stop both servers"
 

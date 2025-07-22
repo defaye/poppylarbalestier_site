@@ -8,7 +8,7 @@ rm -rf ./dist
 
 # Build React app first
 echo "Building React application..."
-cd frontend
+cd new_frontend
 npm run build
 cd ..
 
